@@ -1,0 +1,149 @@
+#contact {
+  background-color: var(--color-bg-darkgrey);
+  min-height: 1000px;
+}
+
+.contact__container {
+  margin-top: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.contact__title > h2 {
+  color: var(--color-white);
+  font-size: 4vw;
+}
+
+.contact__title > h1 {
+  color: var(--color-white);
+  font-size: 3.5vw;
+  margin-top: 8rem;
+}
+
+.build__text {
+  color: var(--color-bg-variant);
+}
+
+.contact__card {
+  background: var(--color-white);
+  border: 2px solid black;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.contact__details {
+  margin-top: 2rem;
+}
+
+.contact__info {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.contact__info > h3,
+.contact__info > h4,
+.contact__icon,
+.join__button {
+  font-size: 1vw;
+}
+
+.contact__button {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 60px;
+}
+
+.join__button {
+  border-radius: 2rem;
+  border: 2px solid var(--color-bg);
+  color: var(--color-white);
+  background-color: var(--color-bg);
+  padding: 1rem 2.5rem;
+}
+
+@media screen and (max-width: 1300px) {
+  .contact__title > h2 {
+    font-size: 4vw;
+  }
+
+  .contact__title > h1 {
+    font-size: 3vw;
+    margin-top: 6rem;
+  }
+
+  .contact__info > h3,
+  .contact__info > h4,
+  .contact__icon,
+  .join__button {
+    font-size: 1.5vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+
+  #contact {
+    min-height: 700px;
+  }
+  
+  .contact__title > h2 {
+    font-size: 4.2vw;
+  }
+
+  .contact__title > h1 {
+    font-size: 3vw;
+    margin-top: 3rem;
+  }
+
+  .contact__info > h3,
+  .contact__info > h4,
+  .contact__icon,
+  .join__button {
+    font-size: 2vw;
+  }
+}
+
+@media screen and (max-width: 574px) {
+
+  #contact {
+    min-height: 700px;
+  }
+
+  .contact__info {
+    margin-bottom: 2rem;
+  }
+  .contact__container {
+    margin-top: 100px;
+  }
+
+  .contact__title > h2 {
+    font-size: 7vw;
+    text-align: center;
+  }
+
+  .contact__title > h1 {
+    font-size: 5vw;
+    margin-top: 2rem;
+  }
+
+  .contact__info > h3,
+  .contact__info > h4,
+  .contact__icon,
+  .join__button {
+    font-size: 3vw;
+  }
+
+  .contact__button {
+    margin-right: 20px;
+  }
+}

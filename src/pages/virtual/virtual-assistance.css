@@ -1,0 +1,164 @@
+.reusable__space{
+  min-height: 120px;
+}
+
+.viras__container {
+  width: var(--container-width-lg);
+  margin-inline: auto;
+}
+.viras__maincontainer > h1,
+.viras__maincontainer > p {
+  color: white;
+}
+
+.viras__maincontainer > h1 {
+  font-size: 90px;
+  width: 80%;
+}
+
+.viras__maincontainer > p {
+  font-size: 20px;
+}
+
+.viras__maincontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.span__text {
+  color: var(--color-bg-variant);
+}
+
+.va__container {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  padding: 2rem 4rem;
+  border-radius: 1.5rem;
+  gap: 1rem;
+}
+
+.viras__list {
+  margin-bottom: 2.5rem;
+}
+
+.viras__list > h1,
+.viras__list > p {
+  margin-bottom: 2.5rem;
+}
+
+.title__viras {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.bullet__list li {
+  list-style-type: circle;
+  margin-left: 20px;
+}
+
+.viras__gridlist {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 1.5rem;
+}
+
+.coming__soon {
+  font-size: 20px;
+  color: rgb(116, 116, 116);
+}
+
+.vaback__container{
+  text-align: center;
+  padding: 0 0 30px 0;
+}
+
+@media screen and (max-width: 910px) {
+    .viras__maincontainer > h1,
+    .span__text {
+      font-size: 60px;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .viras__maincontainer > p {
+        font-size: 16px;
+        text-align: justify;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+  .viras__container {
+    width: 100%;
+  }
+
+  .reusable__space{
+    min-height: 40px;
+  }
+
+  .viras__gridlist {
+    grid-template-columns: repeat(2, auto);
+    gap: 1rem;
+  }
+
+  .va__container {
+    padding: 2rem 2rem;
+  }
+
+  .vaback__container {
+    margin-left: 2rem;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .viras__maincontainer > h1,
+  .span__text {
+    font-size: 40px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .viras__maincontainer > p {
+    font-size: 15px;
+    text-align: justify;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  .viras__list {
+    margin-bottom: 0.5rem;
+  }
+
+  .viras__list > h1,
+  .viras__list > p {
+    margin-bottom: 1.2rem;
+  }
+
+  .list__title {
+    font-size: 5vw;
+  }
+
+  .viras__list > h2,
+  .coming__soon {
+    font-size: 4.3vw;
+  }
+  .viras__list > p {
+    font-size: 3.5vw;
+  }
+  .viras__gridlist {
+    display: block;
+  }
+
+  .grid__content {
+    margin-bottom: 1.5rem;
+  }
+  .grid__content > h2 {
+    font-size: 4.3vw;
+  }
+
+  .bullet__list > li {
+    font-size: 3.5vw;
+    margin-bottom: 5px;
+  }
+}

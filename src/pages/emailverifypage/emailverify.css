@@ -1,0 +1,69 @@
+.emailverifymain__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+}
+
+.welcomemessage__container {
+    padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+  gap: 1rem;
+}
+
+.welcomemessage__container > h1 {
+  color: var(--color-white);
+  font-size: 60px;
+  text-align: center;
+}
+
+.welcomemessage__container > h2 {
+  color: var(--color-white);
+  font-size: 35px;
+  text-align: center;
+}
+
+.welcomemessage__container > h3 {
+    color: var(--color-white);
+    font-size: 30px;
+    text-align: center;
+  }
+
+.emailverifymain__container > p {
+  color: var(--color-white);
+  font-size: 20px;
+  text-align: center;
+}
+
+.bee__verify {
+    animation: flyUpDown 2.5s ease-in-out infinite;
+    width: 200px;
+  }
+
+@media screen and (max-width: 768px) {
+  .emailverifymain__container {
+    height: auto; 
+    padding: 20px;
+  }
+
+  .welcomemessage__container > h1 {
+    font-size: 40px; 
+  }
+
+  .welcomemessage__container > h2 {
+    font-size: 18px; 
+  }
+
+  .emailverifymain__container > p {
+    font-size: 15px; 
+  }
+
+  .bee__verify {
+    width: 100px;
+  }
+}

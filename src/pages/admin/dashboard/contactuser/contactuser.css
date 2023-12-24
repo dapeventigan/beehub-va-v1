@@ -1,0 +1,43 @@
+.box__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: #fff;
+  border: 2px solid #000;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.5);
+  padding: 16px;
+}
+
+.textarea__input {
+  width: 100%;
+  border: 1px solid black;
+  padding: 8px;
+  border-radius: 8px;
+  resize: none;
+}
+
+.userdetails__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.3rem;
+}
+
+.contant__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contactuser__container {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1.5rem;
+  justify-content: flex-end;
+}
+
+.contactuser__title{
+    font-weight: bold;
+}

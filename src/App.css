@@ -1,0 +1,179 @@
+/* POPPIN FONT */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+/* Default CSS values from scratch */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+/* REUSABLE STYLES */
+:root {
+  /* COLOR */
+  --color-bg: #0a0b11;
+  --color-bg-darkgrey: #111111;
+  --color-bg-light: #3f404f;
+  --color-bg-variant: #ffd325;
+  --color-white: #fff;
+  /* CONTAINER RESP SIZE*/
+  --container-width-zero: 97%;
+  --container-width-lg: 80%;
+  --container-width-md: 86%;
+  --container-width-sm: 90%;
+
+  /* TRANSITION */
+  --transition: all 400ms ease;
+}
+
+/* DAPE SCROLLBAR */
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #111111;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+body,
+html {
+  font-family: "Poppins", sans-serif;
+  background: var(--color-white);
+  line-height: 1.7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  font-weight: 600;
+}
+
+/* BUTTON GLOBAL */
+.btn {
+  width: max-content;
+  display: inline-block;
+  color: var(--color-primary);
+  padding: 0.75rem 1.2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 1px solid var(--color-bg);
+  transition: var(--transition);
+}
+
+.btn:hover {
+  background: var(--color-white);
+  color: var(--color-bg);
+  border-color: transparent;
+}
+
+.btn-primary {
+  background: transparent;
+  color: var(--color-bg);
+  text-align: center;
+}
+
+.container {
+  width: var(--container-width-lg);
+  margin-inline: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: 1.2;
+}
+
+img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+.reusable__boxspace {
+  min-height: 200px;
+}
+
+/* GO BACK BUTTON */
+.goback__container {
+  text-align: center;
+  padding: 0 0 30px 0;
+}
+
+.goback__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  background-color: var(--color-bg-light);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.goback__button:hover {
+  background-color: var(--color-bg-variant);
+  color: #0a0b11;
+}
+
+.goback__icon {
+  margin-right: 5px;
+}
+
+main {
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+@media screen and (max-width: 768px) {
+  .goback__button {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
+
+@media screen and (min-width: 4600px) {
+  body> :not(#header) {
+    width: 4080px;
+    margin: 0 auto;
+  }
+
+  #header {
+    height: 1500px;
+  }
+
+  #about {
+    height: 4000px;
+  }
+}
+
+@media screen and (max-width: 316px) {
+  body> :not(#header) {
+    width: 400px;
+    margin: 0 auto;
+  }
+}

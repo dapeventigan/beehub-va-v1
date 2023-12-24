@@ -1,0 +1,4 @@
+[[statics]]
+  include = "/*"
+  headers = { "Cache-Control" = "public, max-age=0, must-revalidate" }
+  rewrite = { source = "/(.*)", destination = "/index.html" }

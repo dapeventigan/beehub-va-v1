@@ -1,0 +1,47 @@
+.dashboard-container {
+  position: relative;
+  /* Add any other styles for your dashboard container */
+}
+
+.sticky__button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 120px;
+}
+
+.admindashheader__container {
+  display: flex;
+  padding: 2rem 0;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.datatable__container {
+  padding: 3rem;
+}
+
+.datatable__container > h1 {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.dashheader__container, .datatable__container {
+  color: rgb(189, 189, 189);
+}
+
+.dashheader__container{
+  width: 70%;
+}
+
+.adminflex__container{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 425px) {
+  .admindashheader__container {
+    display: flex;
+    align-items: normal;
+  }
+}
