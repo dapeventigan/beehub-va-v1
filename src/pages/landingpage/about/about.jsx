@@ -3,15 +3,6 @@ import "./about.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-// import About1 from "../../../assets/about1.png";
-// import About2 from "../../../assets/about2.png";
-// import About3 from "../../../assets/about3.png";
-import BeeAbout from "../../../assets/bee__about.png";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Modal from "@mui/material/Modal";
-import Grid from "@mui/material/Grid";
-
 const About = () => {
   const elementRef = useRef(null);
   const [openPhi, setOpenPhi] = useState(false);
@@ -150,194 +141,30 @@ const About = () => {
       <div className="about__container">
         <div className="container abouthead__container">
           <div
-            className="about__beeimg"
-            data-aos="fade-down"
-            data-aos-once="true"
-          >
-            <img className="bee__about" src={BeeAbout} alt="" />
-          </div>
-
-          <div
             className="company__profile"
             data-aos="fade-up"
             data-aos-anchor-placement="top-center"
             data-aos-once="true"
           >
-            <div className="head__container">
-              <div className="company__welcome">
-                <h2>Welcome to </h2>
-                <h1>BeeHub Virtual Assistants Co.</h1>
-              </div>
-
+            <div className="head__container"> 
               <div className="company__desc">
-                <p>
-                  Your strategic partner in developing high-performing virtual
-                  teams, virtual staffing, and workforce solutions for the
-                  modern age. We specialize in connecting businesses with
+                <p>We specialize in connecting businesses with
                   top-tier remote specialists, delivering a seamless and
                   flexible solution for today's modern workplace. We are
                   committed to transforming the future of work by connecting
                   businesses with the right talent, regardless of geographic
-                  location.
-                </p>
+                  location.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="con aboutus__container">
-          <div className="aboutus__title">
-            <h1 data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-once="true">
-              About BeeHub Virtual Assistant Co.
-            </h1>
-            <div className="aboutus__titlep">
-              <div className="titlep__contents" data-aos-anchor-placement="top-center" data-aos="fade-up" data-aos-once="true"> 
-                <p>
-                  BeeHub Virtual Assistants Co. was founded on the idea of
-                  establishing a workforce that defies traditional constraints.
-                  We were founded in 2023 with the goal of redefining the future
-                  of work by effortlessly linking businesses with a vast talent
-                  network.
-                </p>
-                <div className="tagline" data-aos="fade" data-aos-anchor-placement="center-center" data-aos-once="true">
-                  <p>
-                    "We at BeeHub Virtual Assistants Co. believe in breaking
-                    down barriers and maximizing the potential of a diverse,
-                    competent, and remote workforce."
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className="aboutus__content"
-            data-aos="fade-up"
-            data-aos-once="true"
-            data-aos-anchor-placement="top-center"
-          >
-            <div
-              ref={elementRef}
-              data-aos="fade-up"
-              data-aos-delay="0"
-              data-aos-once="true"
-              data-aos-anchor-placement="top-center"
-              className="content__container"
-            >
-              {/* <img className="aboutus__img" src={About2} alt="" /> */}
-              <h3>OUR MISSION</h3>
-              <p>
-                Our mission is simple but powerful: to bridge the
-                talent-opportunity gap, to transcend geographical constraints,
-                and to unlock the full potential of a diverse and competent
-                virtual workforce by enabling individuals to achieve greatness
-                and reach their full potential by providing the tools,
-                resources, and support they need to excel.
-              </p>
-              <p>
-                We want to live in a world where excellence, not geography,
-                defines work.
-              </p>
-            </div>
-
-            <div
-              ref={elementRef}
-              data-aos="fade-up"
-              data-aos-delay="100"
-              data-aos-once="true"
-              data-aos-anchor-placement="top-center"
-              className="content__container"
-            >
-              {/* <img className="aboutus__img" src={About3} alt="" /> */}
-              <h3>OUR PHILOSOPHY</h3>
-              <p>
-                Our concept at BeeHub Virtual Assistant Co. is based on the
-                belief that the true potential of a company is greatest when
-                individuals are enabled to grow and succeed. We regard ourselves
-                not solely as a virtual staffing option but as bridge builders,
-                developing and connecting outstanding individuals with
-                progressive businesses.
-              </p>
-              <Button sx={buttonStyle} onClick={handleOpenPhi}>
-                View Company's Philosophy
-              </Button>
-              <Modal
-                open={openPhi}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-              >
-                <Grid container justifyContent="center">
-                  <Grid item xs={12} sm={10} md={8} lg={6}>
-                    <Box sx={boxStyle} className="box__container">
-                      <h1>Company's Philosophy</h1>
-                      {philoData.map((item, i) => (
-                        <div key={item.title} className="philo__container">
-                          <div className="philo__details">
-                            <h1>{item.title}</h1>
-                            <p>{item.desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </Box>
-                  </Grid>
-                </Grid>
-              </Modal>
-            </div>
-
-            <div
-              ref={elementRef}
-              data-aos="fade-up"
-              data-aos-delay="200"
-              data-aos-once="true"
-              data-aos-anchor-placement="top-center"
-              className="content__container"
-            >
-              {/* <img className="aboutus__img" src={About1} alt="" /> */}
-              <h3>OUR CORE VALUES</h3>
-              <p>
-                These basic principles define our company's culture, driving our
-                decisions, activities, and relationships. They symbolize not
-                just what we do, but also who we are as a corporation dedicated
-                to quality, ethics, and a future where work has no limits.
-              </p>
-              <Button sx={buttonStyle} onClick={handleOpenCor}>
-                View Company's Core Values
-              </Button>
-              <Modal
-                open={openCor}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-              >
-                <Grid container justifyContent="center">
-                  <Grid item xs={12} sm={10} md={8} lg={6}>
-                    <Box sx={boxStyle} className="box__container">
-                      <h1>Company's Core Values</h1>
-                      {coreData.map((item, i) => (
-                        <div key={item.title} className="philo__container">
-                          <div className="philo__details">
-                            <h1>{item.title}</h1>
-                            <p>{item.desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </Box>
-                  </Grid>
-                </Grid>
-              </Modal>
-            </div>
-          </div>
-
-          <div className="reusable__boxspace"></div>
-
-          <div className="about__tagline">
+        <div className="about__tagline">
             <div className="tagline__details">
               <h1>Empowering Excellence</h1>
               <h2>Unleashing Potential</h2>
             </div>
           </div>
-        </div>
       </div>
     </section>
   );

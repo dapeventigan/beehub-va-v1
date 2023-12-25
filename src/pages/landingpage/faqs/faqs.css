@@ -1,8 +1,5 @@
 #faqs {
   min-height: 1100px;
-  border-bottom-left-radius: 280px; /* Bottom left corner */
-  border-bottom-right-radius: 280px;
-  background-color: var(--color-bg-variant);
 }
 .faqs__container {
   padding: 80px 0;

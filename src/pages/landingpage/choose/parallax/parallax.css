@@ -1,25 +1,25 @@
 .parallax {
-  background-color: var(--color-bg-darkgrey);
   position: relative;
+  background-color: var(--color-bg-variant);
 }
 
 .parallax__container {
   overflow: hidden;
   position: relative;
-  min-height: 1400px;
+  min-height: 500px;
   width: 100%;
 }
 
 .parallax__title {
   margin-top: 0px;
   font-weight: bold;
-  color: white;
   font-size: 4rem;
   z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  font-family: 'Times New Roman', Times, serif; 
 }
 
 .parallax__image {

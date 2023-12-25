@@ -62,8 +62,6 @@ const Choose = () => {
   return (
     <section id="choose">
       <ParallaxEffect />
-      <img src={ParallaxImgDown} alt="" />
-
       <div className="choose__container">
         <div className="choose__content">
           <div
@@ -72,7 +70,7 @@ const Choose = () => {
             data-aos-once="true"
           >
             <p>
-              BeeHub Virtual Assistants Co. allows organizations to BENEFIT on
+              BeeHub Virtual Assistants Co. allows organizations to benefit on
               the following advantages, resulting in a more agile,
               cost-effective, and internationally competitive workforce that
               adapts to the needs of the current business landscape.

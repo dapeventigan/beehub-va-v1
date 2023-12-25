@@ -1,0 +1,35 @@
+#hiring {
+  background-color: var(--color-bg-variant);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 800px;
+}
+
+.hiring__title {
+  padding-top: 10rem;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 4rem;
+}
+
+.hiring__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+  gap: 2rem;
+  width: 50%;
+}
+
+.hiring__contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 2rem;
+}

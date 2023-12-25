@@ -1,6 +1,5 @@
 #choose {
-  min-height: 2500px;
-  background-color: var( --color-bg-variant);
+  min-height: 1200px;
 }
 
 .choose__container {
@@ -15,8 +14,8 @@
 
 .choose__title > p {
   font-size: 25px;
-  font-weight: bold;
   text-align: center;
+  color: var(--color-font-darkgrey);
 }
 
 .choose__desc {
@@ -24,15 +23,15 @@
 }
 
 .carousel__container {
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
 }
 
 .carousel__class {
   padding: 0.5rem 2rem;
-  margin-top: 3rem;
+  margin-top: 8rem;
   border-radius: 0.5rem;
-  background-color: #000000;
+  background-color: var(--color-bg-variant);
   animation: glow2 2s ease-in-out infinite alternate;
 }
 .choose__details {
@@ -41,6 +40,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.details__container{
+  color: #000000;
 }
 
 .details__container > p {

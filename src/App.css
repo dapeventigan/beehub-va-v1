@@ -21,7 +21,8 @@
   --color-bg-darkgrey: #111111;
   --color-bg-light: #3f404f;
   --color-bg-variant: #ffd325;
-  --color-white: #fff;
+  --color-white: #f8f8f8;
+  --color-font-darkgrey: #353640;
   /* CONTAINER RESP SIZE*/
   --container-width-zero: 97%;
   --container-width-lg: 80%;

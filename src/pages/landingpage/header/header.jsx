@@ -10,10 +10,17 @@ const Header = () => {
       <div className="container header__container">
         <div className="title__container">
           <div className="title__contents">
-            <h1>BeeHub</h1>
+            <h2>Unlock Growth Beyond Borders, Beyond Limits:</h2>
+            <h2>Virtual Staffing, Real Results</h2>
+          </div>
+          <p>
+            Your strategic partner in developing high-performing virtual
+            teams, virtual staffing, and workforce solutions for the
+            modern age
+          </p>
 
-            <h2>Virtual Assistant Co.</h2>
-            <h2 className="animate-charcter"> Service Beyond Borders</h2>
+          <div className="header__logo">
+            <Lottie animationData={HeaderLogo} className="animated__logo" />
           </div>
           <div className="title__button">
             <Link to="/applyregister" className="btn btn-primary">
@@ -25,9 +32,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="header__logo">
-          <Lottie animationData={HeaderLogo} className="animated__logo" />
-        </div>
+
 
         <div className="title__button mobile">
           <Link to="/applyregister" className="btn btn-primary">

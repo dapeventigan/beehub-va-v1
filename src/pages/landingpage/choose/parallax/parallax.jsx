@@ -40,15 +40,12 @@ const ParallaxEffect = () => {
   );
   return (
     <div className="parallax">
-      <div className="reusable__boxspace"></div>
       <div ref={ref} className="parallax__container">
         <div className="parallax__header">
           <motion.h1 style={{ y: textY }} className="parallax__title">
             Why Choose BeeHub Virtual Assistants Co.
           </motion.h1>
         </div>
-
-        <img className="parallax__image" src={ParallaxImg} alt="" />
       </div>
     </div>
   );
