@@ -1,14 +1,18 @@
 #contact {
   background-color: var(--color-bg-darkgrey);
-  min-height: 1000px;
+  min-height: 1400px;
 }
 
 .contact__container {
-  padding-top : 180px;
+  padding-top: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.contact__card{
+  padding-bottom: 10rem;
 }
 
 .contact__title {
@@ -19,36 +23,45 @@
   margin-bottom: 30px;
 }
 
-.contact__title > h2 {
-  color: var(--color-white);
-  font-size: 4vw;
-}
-
 .contact__title > h1 {
   color: var(--color-white);
-  font-size: 3.5vw;
-  margin-top: 8rem;
+  font-size: 4vw;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  margin-bottom: 8rem;
+}
+
+.contact__title > h2 {
+  color: var(--color-white);
+  font-size: 1.5vw;
+  margin-top: 0.2rem;
+  text-align: center;
 }
 
 .build__text {
   color: var(--color-bg-variant);
 }
 
-.contact__card {
-  background: var(--color-white);
-  border: 2px solid black;
-  border-radius: 1rem;
-  padding: 2rem;
-}
-
 .contact__details {
   margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7rem;
 }
 
 .contact__info {
+  background-color: #161616;
+  color: var(--color-white);
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
   margin-bottom: 3rem;
+  min-width: 400px;
+  padding: 4rem 2rem;
+  border-radius: 0.5rem;
 }
 
 .contact__info > h3,
@@ -58,19 +71,6 @@
   font-size: 1vw;
 }
 
-.contact__button {
-  display: flex;
-  flex-direction: row-reverse;
-  margin-right: 60px;
-}
-
-.join__button {
-  border-radius: 2rem;
-  border: 2px solid var(--color-bg);
-  color: var(--color-white);
-  background-color: var(--color-bg);
-  padding: 1rem 2.5rem;
-}
 
 @media screen and (max-width: 1300px) {
   .contact__title > h2 {
@@ -91,11 +91,10 @@
 }
 
 @media screen and (max-width: 800px) {
-
   #contact {
     min-height: 700px;
   }
-  
+
   .contact__title > h2 {
     font-size: 4.2vw;
   }
@@ -114,7 +113,6 @@
 }
 
 @media screen and (max-width: 574px) {
-
   #contact {
     min-height: 700px;
   }

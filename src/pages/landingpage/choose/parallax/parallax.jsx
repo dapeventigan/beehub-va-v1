@@ -25,7 +25,7 @@ const ParallaxEffect = () => {
   const smallScreenRange = ["150%", "1000%"];
   const mediumScreenRange = ["70%", "800%"];
   const medLargeScreenRange = ["40%", "1000%"];
-  const largeScreenRange = ["150%", "2000%"];
+  const largeScreenRange = ["150%", "800%"];
 
   const textY = useTransform(
     scrollYProgress,

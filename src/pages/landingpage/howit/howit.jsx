@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
 import { FaCheckCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./howit.css";
 
 const HowIt = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1500 });
+  }, []);
+
   return (
     <section id="howit">
       <div className="container howit__container">
         <div className="howit__contents">
-          <div className="howit__desc">
+          <div className="howit__desc" data-aos="fade-right" data-aos-once="true">
             <h1 className="howit__title">Our Virtual Assistants</h1>
             <p className="howit__text">
               Partnering with our team of Filipino virtual assistants means
@@ -36,7 +41,7 @@ const HowIt = () => {
               </div>
             </div>
           </div>
-          <div className="howit__img">
+          <div className="howit__img" data-aos="fade-left" data-aos-once="true">
             <img
               className="how__img"
               src="https://images.pexels.com/photos/4132403/pexels-photo-4132403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -45,14 +50,14 @@ const HowIt = () => {
           </div>
         </div>
         <div className="howit__contents">
-          <div className="howit__img">
+          <div className="howit__img" data-aos="fade-right" data-aos-once="true">
             <img
               className="how__img"
               src="https://images.pexels.com/photos/4064640/pexels-photo-4064640.jpeg"
               alt=""
             ></img>
           </div>
-          <div className="howit__desc">
+          <div className="howit__desc" data-aos="fade-left" data-aos-once="true">
             <h1 className="howit__title">We'll take care your business for you</h1>
             <p className="howit__text">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
@@ -62,7 +67,7 @@ const HowIt = () => {
           </div>
         </div>
         <div className="howit__contents">
-          <div className="howit__desc">
+          <div className="howit__desc" data-aos="fade-right" data-aos-once="true">
             <h1 className="howit__title">TITLE</h1>
             <p className="howit__text">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
@@ -78,7 +83,7 @@ const HowIt = () => {
                 <p>Lorem ipsum dolor sit amet.</p>
               </div>
           </div>
-          <div className="howit__img">
+          <div className="howit__img" data-aos="fade-left" data-aos-once="true">
             <img
               className="how__img"
               src="https://images.pexels.com/photos/5712043/pexels-photo-5712043.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"

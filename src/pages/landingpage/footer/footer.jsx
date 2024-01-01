@@ -1,6 +1,6 @@
 import React from "react";
 
-import vaLogo from "../../../assets/navlogo.png";
+import vaLogo from "../../../assets/Logo v1/Black And White/black2.png";
 import { FaFacebookSquare } from "react-icons/fa";
 import { BsLinkedin } from "react-icons/bs";
 import "./footer.css";
@@ -11,7 +11,11 @@ const Footer = () => {
       <div className="footer__container">
         <div className="footer__space">
           <div className="footer__contents">
-            <img src={vaLogo} alt="" className="footer__logo" />
+            <div className="footerlogo__container">
+              <img src={vaLogo} alt="" className="footer__logo" />
+              <p>Copyright © 2023 BeeHub Virtual Assistant Co.</p>
+            </div>
+
             <div className="footer__links">
               <div className="links__content">
                 <a href="mailto:beehubvirtualassistant@gmail.com">
@@ -28,6 +32,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="footer__socials">
+              <p>Follow Us</p>
               <a
                 href="https://www.facebook.com/beehubvas"
                 target="_blank"

@@ -1,0 +1,42 @@
+#whyheader{
+    background-color: var(--color-bg-variant);
+    min-height: 750px;
+}
+
+.whyworkheader__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.whyworkheader__title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 0rem;
+    
+}
+
+.whyworkheader__title > h1 {
+    font-family: 'Times New Roman', Times, serif; 
+    text-align: center;
+    font-size: 4rem;
+    padding-bottom: 1rem;
+}
+
+.whyworkheader__title > h2 {
+    width: 95%;
+    font-size: 1rem;
+    text-align: center;
+    padding-bottom: 4rem;
+}
+
+
+.whyworkheader__title > p {
+    width: 80%;
+    font-size: 1rem;
+    text-align: center;
+}
+

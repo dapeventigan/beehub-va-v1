@@ -3,6 +3,7 @@ import {
   Route,
   createRoutesFromElements,
   RouterProvider,
+  Navigate,
 } from "react-router-dom";
 import LandingPage from "./pages/landingpage/landingpage.jsx";
 import Login from "./pages/login/login.jsx";
@@ -22,6 +23,10 @@ import InitalJoinRegister from "./pages/join/JoinRegister/initaljoinregister.jsx
 import CheckEmail from "./pages/forgotpassword/checkemail.jsx";
 import ForgotPassword from "./pages/forgotpassword/forgotpassword.jsx";
 
+//AboutUsFolder
+import WhyWork from "./pages/aboutus/whywork/whywork.jsx";
+import OurTeam from "./pages/aboutus/ourteam/ourteam.jsx";
+
 import "./App.css";
 //RootLayout
 import RootLayouts from "./layouts/rootlayouts.jsx";
@@ -36,10 +41,15 @@ const router = createBrowserRouter(
       <Route path="resetpasswordverify" element={<CheckEmail />} />
       <Route path="virtualassistant" element={<VirtualAssistance />} />
       <Route path="/admindashboard" element={<Dashboard />} />
+      <Route path="/aboutus/why-work-with-us" element={<WhyWork />}></Route>
+      <Route path="/aboutus/our-team" element={<OurTeam />}></Route>
       {/* <Route path="/applyhome" element={<ApplyHome />} />
       <Route path="/joinhome" element={<JoinHome />} /> */}
       {/* <Route path="/verify/:id/:token" element={<EmailVerify />} /> */}
       <Route path="/reset/:id/:token" element={<ForgotPassword />} />
+
+      <Route path="/*" element={<Navigate to="/" />} />
+      {/* TODO: 404 page */}
       <Route path="*" element={<LandingPage />} />
     </Route>
   )

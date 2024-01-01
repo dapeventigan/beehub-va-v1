@@ -101,10 +101,6 @@
     height: 500px;
   }
 
-  .title__button {
-    display: none;
-  }
-
   .mobile {
     display: flex;
     padding-right: 0;

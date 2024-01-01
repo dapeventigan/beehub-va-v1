@@ -1,0 +1,21 @@
+#whystats {
+  /* background-color: var(--color-bg-variant); */
+  padding: 5rem 0;
+}
+
+.whystats__content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 5rem;
+}
+
+.whystats__details > h1 {
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  font-size: 4rem;
+}
+
+.whystats__details > p {
+  text-align: center;
+}

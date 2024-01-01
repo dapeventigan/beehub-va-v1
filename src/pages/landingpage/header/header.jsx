@@ -34,14 +34,14 @@ const Header = () => {
 
 
 
-        <div className="title__button mobile">
+        {/* <div className="title__button mobile">
           <Link to="/applyregister" className="btn btn-primary">
             Apply Now
           </Link>
           <Link to="/joinregister" className="btn btn-primary">
             Join Now
           </Link>
-        </div>
+        </div> */}
       </div>
     </header>
   );

@@ -1,4 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
+import { FaPeopleGroup } from "react-icons/fa6";
+import { FaHandshake } from "react-icons/fa";
+import { FaComputer } from "react-icons/fa6";
+import { FaCogs } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "./about.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -20,10 +25,7 @@ const About = () => {
   };
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: false,
-    });
+    AOS.init({ duration: 1500 });
 
     const options = {
       root: null,
@@ -35,7 +37,7 @@ const About = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           AOS.refresh();
-          AOS.init();
+          AOS.init({ duration: 1500 });
           observer.unobserve(entry.target);
         }
       });
@@ -139,32 +141,44 @@ const About = () => {
   return (
     <section id="about">
       <div className="about__container">
-        <div className="container abouthead__container">
-          <div
-            className="company__profile"
-            data-aos="fade-up"
-            data-aos-anchor-placement="top-center"
-            data-aos-once="true"
-          >
-            <div className="head__container"> 
-              <div className="company__desc">
-                <p>We specialize in connecting businesses with
-                  top-tier remote specialists, delivering a seamless and
-                  flexible solution for today's modern workplace. We are
-                  committed to transforming the future of work by connecting
-                  businesses with the right talent, regardless of geographic
-                  location.</p>
-              </div>
+        <div className="abouthead__container">
+          <div className="va__title">
+            <h1>Our Virtual Assistance</h1>
+            <h2>This is our talented virtual assistants</h2>
+          </div>
+
+          <div className="va__icons">
+            <div className="virtualassist__container">
+              <FaPeopleGroup size={100} />
+              <h1>Strategic Workforce Planning</h1>
             </div>
+            <div className="virtualassist__container">
+              <FaHandshake size={100} />
+              <h1>Talent Acquisition and Recruitment</h1>
+            </div>
+            <div className="virtualassist__container">
+              <FaComputer size={100} />
+              <h1>Technology Integration</h1>
+            </div>
+            <div className="virtualassist__container">
+              <FaCogs size={100} />
+              <h1>Customized Solution</h1>
+            </div>
+          </div>
+
+          <div className="title__button">
+            <Link to="/applyregister" className="btn btn-primary">
+              See More
+            </Link>
           </div>
         </div>
 
         <div className="about__tagline">
-            <div className="tagline__details">
-              <h1>Empowering Excellence</h1>
-              <h2>Unleashing Potential</h2>
-            </div>
+          <div className="tagline__details">
+            <h1>Empowering Excellence</h1>
+            <h2>Unleashing Potential</h2>
           </div>
+        </div>
       </div>
     </section>
   );

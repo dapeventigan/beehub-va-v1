@@ -5,45 +5,48 @@ import { GrMail } from "react-icons/gr";
 import { Link } from "react-router-dom";
 
 import "./contact.css";
-
 const Contact = () => {
   return (
     <section id="contact">
-      <div className="container contact__container">
+      <div className="contact__container">
         <div className="contact__title">
-          <h2>
+          <h1>
             LET'S <span className="build__text"> BUILD</span> YOUR BUSINESS
             TOGETHER
-          </h2>
-          <h1>
-            Contact <span className="build__text">Beehub</span>
           </h1>
+          <h2>Interesed? Any Questions?</h2>
+          <h2>
+            Contact <span className="build__text">Beehub</span>
+          </h2>
         </div>
 
         <div className="contact__card">
           <div className="contact__details">
             <div className="contact__info">
-              <ImLocation className="contact__icon" />
-              <h3>Address:</h3>
-              <h4>Baguio City </h4>
-            </div>
-            <div className="contact__info">
               <FaPhoneAlt className="contact__icon" />
-              <h3>Phone: </h3>
+              <h3>Call us at </h3>
               <h4>+63922021298 </h4>
             </div>
             <div className="contact__info">
+              <ImLocation className="contact__icon" />
+              <h4>#999 Random Location, In Baguio </h4>
+              <h4>Baguio City, 2600 </h4>
+            </div>
+            <div className="contact__info">
               <GrMail className="contact__icon" />
-              <h3>Email:</h3>
+              <h3>Email us at</h3>
               <h4>beehubvirtualassistant@gmail.com </h4>
             </div>
-
-            <div className="contact__button">
-              <Link to="/joinregister" className="join__button">
-                Join Us
-              </Link>
-            </div>
           </div>
+        </div>
+
+        <div className="title__button">
+          <Link to="/applyregister" className="btn-contact btn-primary">
+            Apply Now
+          </Link>
+          <Link to="/joinregister" className="btn-contact btn-primary">
+            Join Now
+          </Link>
         </div>
       </div>
     </section>

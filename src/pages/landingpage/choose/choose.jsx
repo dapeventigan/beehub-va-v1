@@ -56,7 +56,7 @@ const Choose = () => {
   ];
 
   useEffect(() => {
-    AOS.init();
+    AOS.init({ duration: 1500 });
   }, []);
 
   return (
