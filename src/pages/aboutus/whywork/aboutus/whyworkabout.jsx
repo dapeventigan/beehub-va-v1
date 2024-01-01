@@ -116,7 +116,7 @@ const WhyWorkAbout = () => {
       <div className="container whyworkabout__container">
         <div
           className="whyworkabout__title"
-          data-aos="fade-up"
+          data-aos="fade"
           data-aos-once="true"
         >
           <h1>About Us</h1>
