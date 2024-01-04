@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import ParallaxEffect from "./parallax/parallax";
-import ParallaxImgDown from "../../../assets/parallax-down.png";
+import vaLogo from "../../../assets/Logo v1/Black And White/black2.png";
 import { Carousel } from "react-responsive-carousel";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -63,7 +63,9 @@ const Choose = () => {
     <section id="choose">
       <ParallaxEffect />
       <div className="choose__container">
+   
         <div className="choose__content">
+        <img src={vaLogo} alt="" />
           <div
             className="choose__title"
             data-aos="fade-down"

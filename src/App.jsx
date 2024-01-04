@@ -27,6 +27,9 @@ import ForgotPassword from "./pages/forgotpassword/forgotpassword.jsx";
 import WhyWork from "./pages/aboutus/whywork/whywork.jsx";
 import OurTeam from "./pages/aboutus/ourteam/ourteam.jsx";
 
+//ServicesFolder
+import Services from "./pages/services/services.jsx";
+
 import "./App.css";
 //RootLayout
 import RootLayouts from "./layouts/rootlayouts.jsx";
@@ -43,6 +46,7 @@ const router = createBrowserRouter(
       <Route path="/admindashboard" element={<Dashboard />} />
       <Route path="/aboutus/why-work-with-us" element={<WhyWork />}></Route>
       <Route path="/aboutus/our-team" element={<OurTeam />}></Route>
+      <Route path="/services" element={<Services />}></Route>
       {/* <Route path="/applyhome" element={<ApplyHome />} />
       <Route path="/joinhome" element={<JoinHome />} /> */}
       {/* <Route path="/verify/:id/:token" element={<EmailVerify />} /> */}
