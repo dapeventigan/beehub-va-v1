@@ -19,7 +19,7 @@ const ServicesContent = () => {
   }, []);
   return (
     <section id="servicescontent">
-      <div className="container servicescontent__container">
+      <div className="servicescontent__container">
         <div
           className="servicescontent__title"
           data-aos="fade"
