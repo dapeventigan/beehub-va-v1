@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import RootNav from "./navbar/navroot.jsx";
 import Header from "./header/header.jsx";
 import AboutUs from "./about/about.jsx";
@@ -12,18 +12,6 @@ import Footer from "./footer/footer.jsx";
 
 
 function LandingPage() {
-  useEffect(() => {
-    // Check if the hash exists in the URL
-    const { hash } = window.location;
-    if (hash) {
-      // Find the element with the corresponding ID and scroll to it
-      const element = document.querySelector(hash);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  }, []);
-
   return (
     <>
       <RootNav />

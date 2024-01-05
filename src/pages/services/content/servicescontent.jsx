@@ -1,12 +1,21 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
+import Contact from "../../landingpage/contact/contact";
 import AOS from "aos";
-import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import "./servicescontent.css";
 
 const ServicesContent = () => {
-  const ref = useRef();
   useEffect(() => {
     AOS.init({ duration: 1500 });
+
+    // Check if the hash exists in the URL
+    const { hash } = window.location;
+    if (hash) {
+      // Find the element with the corresponding ID and scroll to it
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   }, []);
   return (
     <section id="servicescontent">
@@ -19,14 +28,15 @@ const ServicesContent = () => {
           <h1>BeeHub's Top Tier Services</h1>
         </div>
 
-    
-
-        <div className="services__con">
-          <div className="servicescontent__profile">
+        <div className="services__con" data-aos="fade-up" data-aos-once="true">
+          <div
+            id="strategic-workforce-planning"
+            className="servicescontent__profile"
+          >
             <div className="servicescontent__contents">
               <img
                 className="servicescontent__img"
-                src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src="https://images.pexels.com/photos/7414015/pexels-photo-7414015.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt=""
               ></img>
               <div className="servicescontent__desc">
@@ -43,11 +53,14 @@ const ServicesContent = () => {
               </div>
             </div>
           </div>
-          <div className="servicescontent__profile">
+          <div
+            id="talent-acquisition-and-recruitment"
+            className="servicescontent__profile"
+          >
             <div className="servicescontent__contents">
               <img
                 className="servicescontent__img"
-                src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src="https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg"
                 alt=""
               ></img>
               <div className="servicescontent__desc">
@@ -64,11 +77,14 @@ const ServicesContent = () => {
               </div>
             </div>
           </div>
-          <div className="servicescontent__profile">
+          <div
+            id="flexible-staffing-models"
+            className="servicescontent__profile"
+          >
             <div className="servicescontent__contents">
               <img
                 className="servicescontent__img"
-                src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src="https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt=""
               ></img>
               <div className="servicescontent__desc">
@@ -83,11 +99,14 @@ const ServicesContent = () => {
               </div>
             </div>
           </div>
-          <div className="servicescontent__profile">
+          <div
+            id="management-of-virtual-teams"
+            className="servicescontent__profile"
+          >
             <div className="servicescontent__contents">
               <img
                 className="servicescontent__img"
-                src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src="https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt=""
               ></img>
               <div className="servicescontent__desc">
@@ -103,11 +122,11 @@ const ServicesContent = () => {
               </div>
             </div>
           </div>
-          <div className="servicescontent__profile">
+          <div id="technology-integration" className="servicescontent__profile">
             <div className="servicescontent__contents">
               <img
                 className="servicescontent__img"
-                src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src="https://images.pexels.com/photos/12912121/pexels-photo-12912121.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt=""
               ></img>
               <div className="servicescontent__desc">
@@ -122,11 +141,14 @@ const ServicesContent = () => {
               </div>
             </div>
           </div>
-          <div className="servicescontent__profile">
+          <div
+            id="hr-and-administrative-support"
+            className="servicescontent__profile"
+          >
             <div className="servicescontent__contents">
               <img
                 className="servicescontent__img"
-                src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src="https://images.pexels.com/photos/5673502/pexels-photo-5673502.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt=""
               ></img>
               <div className="servicescontent__desc">
@@ -141,11 +163,14 @@ const ServicesContent = () => {
               </div>
             </div>
           </div>
-          <div className="servicescontent__profile">
+          <div
+            id="compliance-and-data-security"
+            className="servicescontent__profile"
+          >
             <div className="servicescontent__contents">
               <img
                 className="servicescontent__img"
-                src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src="https://images.pexels.com/photos/5473298/pexels-photo-5473298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt=""
               ></img>
               <div className="servicescontent__desc">
@@ -161,11 +186,11 @@ const ServicesContent = () => {
               </div>
             </div>
           </div>
-          <div className="servicescontent__profile">
+          <div id="customized-solutions" className="servicescontent__profile">
             <div className="servicescontent__contents">
               <img
                 className="servicescontent__img"
-                src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt=""
               ></img>
               <div className="servicescontent__desc">
@@ -179,11 +204,14 @@ const ServicesContent = () => {
               </div>
             </div>
           </div>
-          <div className="servicescontent__profile">
+          <div
+            id="scalability-and-flexibility"
+            className="servicescontent__profile"
+          >
             <div className="servicescontent__contents">
               <img
                 className="servicescontent__img"
-                src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src="https://images.pexels.com/photos/3183172/pexels-photo-3183172.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt=""
               ></img>
               <div className="servicescontent__desc">
@@ -198,11 +226,11 @@ const ServicesContent = () => {
               </div>
             </div>
           </div>
-          <div className="servicescontent__profile">
+          <div id="consulting-services" className="servicescontent__profile">
             <div className="servicescontent__contents">
               <img
                 className="servicescontent__img"
-                src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src="https://images.pexels.com/photos/7605974/pexels-photo-7605974.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt=""
               ></img>
               <div className="servicescontent__desc">
@@ -215,11 +243,11 @@ const ServicesContent = () => {
               </div>
             </div>
           </div>
-          <div className="servicescontent__profile">
+          <div id="global-talent-sourcing" className="servicescontent__profile">
             <div className="servicescontent__contents">
               <img
                 className="servicescontent__img"
-                src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src="https://images.pexels.com/photos/6147031/pexels-photo-6147031.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt=""
               ></img>
               <div className="servicescontent__desc">
@@ -236,6 +264,7 @@ const ServicesContent = () => {
           </div>
         </div>
       </div>
+      <Contact />
     </section>
   );
 };

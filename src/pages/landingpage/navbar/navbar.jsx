@@ -126,19 +126,21 @@ const NavbarHome = () => {
               </li>
               <li>
                 <div class="dropdown">
-                  <a class="dropbtn">
+                  <a href="/services" class="dropbtn">
                     OUR SERVICES <FaAngleDown />
                   </a>
                   <div class="dropdown-content">
-                    <a href="#">Strategic Workforce Planning</a>
-                    <a href="#">Talent Acquisition and Recruitment</a>
-                    <a href="#">Flexible Staffing Model</a>
-                    <a href="#">Training and Growth Programs</a>
-                    <a href="#">Management of Virtual Teams</a>
-                    <a href="#">HR and Administrative Support</a>
-                    <a href="#">Technology Integration</a>
-                    <a href="#">Customized Solutions</a>
-                    <a href="#">Scalability and Flexibility</a>
+                    <a href="/services/#strategic-workforce-planning">Strategic Workforce Planning</a>
+                    <a href="/services/#talent-acquisition-and-recruitment">Talent Acquisition and Recruitment</a>
+                    <a href="/services/#flexible-staffing-models">Flexible Staffing Model</a>
+                    <a href="/services/#management-of-virtual-teams">Management of Virtual Teams</a>
+                    <a href="/services/#technology-integration">Technology Integration</a>
+                    <a href="/services/#hr-and-administrative-support">HR and Administrative Support</a>
+                    <a href="/services/#compliance-and-data-security">Compliance and Data Security</a>
+                    <a href="/services/#customized-solutions">Customized Solutions</a>
+                    <a href="/services/#scalability-and-flexibility">Scalability and Flexibility</a>
+                    <a href="/services/#consulting-services">Consulting Services</a>
+                    <a href="/services/#global-talent-sourcing"> Global Talent Sourcing (Coming Soon)</a>
                   </div>
                 </div>
               </li>

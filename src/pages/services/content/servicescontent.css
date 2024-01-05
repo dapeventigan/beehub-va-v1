@@ -23,7 +23,14 @@
 
 .servicescontent__profile {
   padding-bottom: 8rem;
+  transition: var(--transition)
 }
+
+
+.servicescontent__profile:hover {
+  transform: scale(1.04);
+}
+
 
 .servicescontent__img {
   height: 400px;
