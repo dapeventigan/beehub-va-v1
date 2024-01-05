@@ -45,6 +45,7 @@
 .contact__details {
   margin-top: 2rem;
   display: flex;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: center;
   gap: 7rem;

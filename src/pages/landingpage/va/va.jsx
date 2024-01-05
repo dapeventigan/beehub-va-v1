@@ -48,9 +48,9 @@ const VASection = () => {
           </div>
 
           <div className="title__button">
-            <Link to="/applyregister" className="btn btn-primary">
+            <a href="/services" className="btn btn-primary">
               See More
-            </Link>
+            </a>
           </div>
         </div>
 

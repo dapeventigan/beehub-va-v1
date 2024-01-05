@@ -15,7 +15,7 @@
 }
 
 .choose__content > img {
- width: 600px;
+ max-width: 600px;
  padding-bottom: 5rem;
 }
 .choose__content {
