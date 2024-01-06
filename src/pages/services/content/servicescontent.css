@@ -34,6 +34,7 @@
 
 .servicescontent__img {
   height: 400px;
+  box-shadow: 0px 20px var(--color-bg-variant);
   border-radius: 0 0 15rem 0;
 }
 .servicescontent__contents {
