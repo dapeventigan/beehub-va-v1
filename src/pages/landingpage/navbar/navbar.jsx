@@ -82,6 +82,9 @@ const NavbarHome = () => {
       <div className="navbar__contents">
         <div className="navbar__link">
           <div className="simple__menu">
+            <a className="link__details" onClick={toggleMenu}>
+              HOME
+            </a>
             <Button
               sx={{
                 color: "black",
@@ -100,7 +103,7 @@ const NavbarHome = () => {
           </div>
           <div className={!isOpen ? "navul__container" : "show"}>
             <ul className="navbar__links">
-            <li>
+              <li>
                 <a href="/#" className="link__details">
                   HOME
                 </a>
@@ -116,9 +119,7 @@ const NavbarHome = () => {
                     ABOUT US <FaAngleDown />
                   </a>
                   <div class="dropdown-content-small">
-                    <a href="/aboutus/why-work-with-us">
-                      Why work with BeeHub
-                    </a>
+                    <a href="/aboutus/why-work-with-us">Why work with BeeHub</a>
                     <a href="/aboutus/our-team">Our Team</a>
                   </div>
                 </div>
@@ -129,17 +130,40 @@ const NavbarHome = () => {
                     OUR SERVICES <FaAngleDown />
                   </a>
                   <div class="dropdown-content">
-                    <a href="/services/#strategic-workforce-planning">Strategic Workforce Planning</a>
-                    <a href="/services/#talent-acquisition-and-recruitment">Talent Acquisition and Recruitment</a>
-                    <a href="/services/#flexible-staffing-models">Flexible Staffing Model</a>
-                    <a href="/services/#management-of-virtual-teams">Management of Virtual Teams</a>
-                    <a href="/services/#technology-integration">Technology Integration</a>
-                    <a href="/services/#hr-and-administrative-support">HR and Administrative Support</a>
-                    <a href="/services/#compliance-and-data-security">Compliance and Data Security</a>
-                    <a href="/services/#customized-solutions">Customized Solutions</a>
-                    <a href="/services/#scalability-and-flexibility">Scalability and Flexibility</a>
-                    <a href="/services/#consulting-services">Consulting Services</a>
-                    <a href="/services/#global-talent-sourcing"> Global Talent Sourcing (Coming Soon)</a>
+                    <a href="/services/#strategic-workforce-planning">
+                      Strategic Workforce Planning
+                    </a>
+                    <a href="/services/#talent-acquisition-and-recruitment">
+                      Talent Acquisition and Recruitment
+                    </a>
+                    <a href="/services/#flexible-staffing-models">
+                      Flexible Staffing Model
+                    </a>
+                    <a href="/services/#management-of-virtual-teams">
+                      Management of Virtual Teams
+                    </a>
+                    <a href="/services/#technology-integration">
+                      Technology Integration
+                    </a>
+                    <a href="/services/#hr-and-administrative-support">
+                      HR and Administrative Support
+                    </a>
+                    <a href="/services/#compliance-and-data-security">
+                      Compliance and Data Security
+                    </a>
+                    <a href="/services/#customized-solutions">
+                      Customized Solutions
+                    </a>
+                    <a href="/services/#scalability-and-flexibility">
+                      Scalability and Flexibility
+                    </a>
+                    <a href="/services/#consulting-services">
+                      Consulting Services
+                    </a>
+                    <a href="/services/#global-talent-sourcing">
+                      {" "}
+                      Global Talent Sourcing (Coming Soon)
+                    </a>
                   </div>
                 </div>
               </li>
@@ -173,9 +197,9 @@ const NavbarHome = () => {
                 </a>
               </li>
               <li>
-              <a href="/login" className="link__details">
-                Login
-              </a>
+                <a id="login-btn" href="/login" className="link__details">
+                  Login
+                </a>
               </li>
             </ul>
           </div>
