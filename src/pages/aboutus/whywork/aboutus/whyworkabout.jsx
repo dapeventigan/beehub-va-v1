@@ -114,13 +114,12 @@ const WhyWorkAbout = () => {
   return (
     <section id="whyabout">
       <div className="container whyworkabout__container">
-
-        
         <div
           className="whyworkabout__title"
           data-aos="fade"
           data-aos-once="true"
         >
+          <div className="top-horizontal-line"></div>
           <h1>About Us</h1>
           <p>
             BeeHub Virtual Assistants Co. was founded on the idea of

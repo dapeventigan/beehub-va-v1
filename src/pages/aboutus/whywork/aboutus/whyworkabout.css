@@ -6,6 +6,15 @@
   padding: 8rem 0 3rem 0;
 }
 
+.top-horizontal-line{
+  margin-bottom: 5rem;
+  width: 80px; /* Adjust the width as needed */
+  height: 10px; /* Set the height/thickness of the line */
+  border-radius: 10rem;
+  background-color: var(--color-bg-variant); /* Set the color of the line */
+  margin-inline: auto;
+}
+
 .whyworkabout__title > h1 {
   font-family: "Times New Roman", Times, serif;
   text-align: center;

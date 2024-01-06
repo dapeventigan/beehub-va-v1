@@ -9,7 +9,8 @@ import LandingPage from "./pages/landingpage/landingpage.jsx";
 import Login from "./pages/login/login.jsx";
 import Dashboard from "./pages/admin/dashboard/dashboard.jsx";
 // import EmailVerify from "./pages/emailverifypage/emailverify.jsx";
-import VirtualAssistance from "./pages/virtual/virtual-assistance.jsx";
+import VirtualHome from "./pages/virtual/virtual-home.jsx";
+import PlansPricing from "./pages/plans-pricing/plans-pricing.jsx";
 
 //APPLY ROUTES
 // import ApplyRegister from "./pages/apply/ApplyRegister/applyregister.jsx";
@@ -42,11 +43,12 @@ const router = createBrowserRouter(
       <Route path="joinregister" element={<InitalJoinRegister />} />
       <Route path="login" element={<Login />} />
       <Route path="resetpasswordverify" element={<CheckEmail />} />
-      <Route path="virtualassistant" element={<VirtualAssistance />} />
+      <Route path="virtual-assistant" element={<VirtualHome />} />
       <Route path="/admindashboard" element={<Dashboard />} />
       <Route path="/aboutus/why-work-with-us" element={<WhyWork />}></Route>
       <Route path="/aboutus/our-team" element={<OurTeam />}></Route>
-      <Route path="/services" element={<Services />}></Route>
+      <Route path="services" element={<Services />}></Route>
+      <Route path="plans-and-pricing" element={<PlansPricing />}></Route>
       {/* <Route path="/applyhome" element={<ApplyHome />} />
       <Route path="/joinhome" element={<JoinHome />} /> */}
       {/* <Route path="/verify/:id/:token" element={<EmailVerify />} /> */}

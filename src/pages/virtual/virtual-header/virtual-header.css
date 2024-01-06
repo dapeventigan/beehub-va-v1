@@ -1,0 +1,48 @@
+#virtualheader{
+    background-color: var(--color-bg-variant);
+    min-height: 1000px;
+    position: relative;
+}
+
+.wavy-svg{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.virtualheader__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.virtualheader__title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 0rem;
+    
+}
+
+.virtualheader__title > h1 {
+    font-family: 'Times New Roman', Times, serif; 
+    text-align: center;
+    font-size: 4rem;
+    padding-bottom: 1rem;
+}
+
+.virtualheader__title > h2 {
+    width: 95%;
+    font-size: 1rem;
+    text-align: center;
+    padding-bottom: 4rem;
+}
+
+
+.virtualheader__title > p {
+    width: 80%;
+    font-size: 1rem;
+    text-align: center;
+}
+

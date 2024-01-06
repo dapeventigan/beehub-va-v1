@@ -4,7 +4,6 @@ import Button from "@mui/material/Button";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaBars } from "react-icons/fa";
 import { MdOutlineClose } from "react-icons/md";
-import { links } from "../../../assets/data";
 // import Cookies from "js-cookie";
 
 import "./navbar.css";
@@ -146,7 +145,7 @@ const NavbarHome = () => {
               </li>
               <li>
                 <div class="dropdown">
-                  <a class="dropbtn">
+                  <a href="/virtual-assistant" class="dropbtn">
                     OUR VAs <FaAngleDown />
                   </a>
                   <div class="dropdown-content">
@@ -169,19 +168,14 @@ const NavbarHome = () => {
                 </div>
               </li>
               <li>
-                <a href="#" className="link__details">
+                <a href="/plans-and-pricing" className="link__details">
                   PLANS AND PRICING
                 </a>
               </li>
               <li>
-                <a href="#about" className="link__details">
-                  CTA
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="link__details">
-                  MENU
-                </a>
+              <a href="/login" className="link__details">
+                Login
+              </a>
               </li>
             </ul>
           </div>

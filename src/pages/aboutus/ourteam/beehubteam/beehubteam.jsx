@@ -21,6 +21,7 @@ const BeehubTeam = () => {
     <section id="beehubteam">
       <div className="container beehubteam__container">
         <div className="beehubteam__title" data-aos="fade" data-aos-once="true">
+          <div className="top-horizontal-line"></div>
           <h1>Meet the BeeHub Team</h1>
           <p>Lorem ipsum dolor sit amet.</p>
         </div>

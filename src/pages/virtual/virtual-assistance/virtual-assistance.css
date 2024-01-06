@@ -2,13 +2,17 @@
   min-height: 120px;
 }
 
+.top-horizontal-line-va{
+  /* margin-bottom: 5rem; */
+  width: 180px; /* Adjust the width as needed */
+  height: 10px; /* Set the height/thickness of the line */
+  border-radius: 10rem;
+  background-color: var(--color-bg-variant); /* Set the color of the line */
+}
+
 .viras__container {
   width: var(--container-width-lg);
   margin-inline: auto;
-}
-.viras__maincontainer > h1,
-.viras__maincontainer > p {
-  color: white;
 }
 
 .viras__maincontainer > h1 {
@@ -23,7 +27,7 @@
 .viras__maincontainer {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 2rem;
 }
 
 .span__text {

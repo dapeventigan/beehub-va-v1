@@ -6,45 +6,30 @@ const VirtualAssistance = () => {
   return (
     <div className="viras__container">
       <div className="viras__content">
-        <div className="reusable__space"></div>
-        <div className="vaback__container">
-          <a href="/">
-            <button className="goback__button">
-              <FaArrowLeft className="goback__icon" />
-              <span className="goback__text">Go back</span>
-            </button>
-          </a>
-        </div>
         <div className="viras__maincontainer">
+        <div className="top-horizontal-line-va"></div>
           <h1>
-            Join the <span className="span__text">BeeHub </span> Virtual
-            Assistant Co. Experience
+            Virtual Assistants for <span className="span__text">Realtors </span>
           </h1>
 
           <p>
-            BeeHub Virtual Assistant Co. will help you take your business to new
-            heights. Whether you are a startup, a growing business, or a
-            well-established company, our comprehensive virtual workforce
-            solutions enable you to redefine success in the digital era.
-            Discover the limitless possibilities of a globally linked workforce
-            by joining the BeeHub Virtual Assistant Co. experience now!
+            Real Estate Virtual Assistants (RE VAs) are essential in providing
+            support to real estate agents by managing diverse administrative
+            responsibilities and facilitating operational efficiency.
+          </p>
+
+          <p>
+            By leveraging BeeHub’s virtual staffing services, Real Estate
+            Brokers can streamline operations, enhance client experiences, and
+            stay competitive in an evolving market. Whether it's administrative
+            support, marketing assistance, or specialized tasks, virtual
+            staffing provides tailored solutions to meet the unique needs of the
+            real estate sector.
           </p>
         </div>
         <div className="viras__maincontainer">
           <div className="va__container">
-            <div className="viras__title">
-              <h1 className="title__viras">OUR VIRTUAL ASSISTANTS</h1>
-            </div>
             <div className="viras__list">
-              <h1 className="list__title">
-                I. Virtual Assistants for Realtors
-              </h1>
-              <p className="list__desc">
-                Virtual Assistants with administrative duties, appointment
-                scheduling, email management, and other routine tasks. This
-                enables increased realtors focused on client engagements and
-                property transactions.
-              </p>
               <h2 className="list__subtitle">Transaction Coordinator</h2>
               <p>
                 The Transaction Coordinator will be responsible for ensuring
