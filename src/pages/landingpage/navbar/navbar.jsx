@@ -30,6 +30,10 @@ const NavbarHome = () => {
     setIsOpen(!isOpen);
   };
 
+  const toggleClose = () => {
+    setOpen(false);
+  }
+
   useEffect(() => {
     AOS.init({ duration: 500 });
 
@@ -257,7 +261,7 @@ const NavbarHome = () => {
         >
           <Box sx={style}>
             <div className="exit__button">
-              <IoClose size={25}/>
+              <IoClose size={25} onClick={toggleClose}/>
             </div>
             <Login />
           </Box>
