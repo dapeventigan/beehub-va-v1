@@ -151,6 +151,7 @@ nav {
   padding: 0.5rem 1.3rem;
   box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5);
   transition: box-shadow .2s ease-in-out;
+  cursor: pointer;
 }
 
 #login-btn:not([disabled]):focus {
@@ -159,6 +160,14 @@ nav {
 
 #login-btn:not([disabled]):hover {
   box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+.exit__button{
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
+  z-index: 1;
 }
 
 

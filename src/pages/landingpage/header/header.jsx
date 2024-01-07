@@ -1,9 +1,9 @@
 import React from "react";
 import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
-import "./header.css";
 import HeaderLogo from "../../../assets/header_logo.json";
 
+import "./header.css";
 const Header = () => {
   return (
     <header id="header">

@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Modal from "@mui/material/Modal";
 // import Axios from "axios";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaBars } from "react-icons/fa";
 import { MdOutlineClose } from "react-icons/md";
+import Login from "../../login/login";
+import AOS from "aos";
+import { IoClose } from "react-icons/io5";
 // import Cookies from "js-cookie";
 
 import "./navbar.css";
@@ -14,6 +19,11 @@ const NavbarHome = () => {
   // const [loginLocation, setLoginLocation] = useState("");
   // const navigate = useNavigate();
 
+  //Popup Modal
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -21,6 +31,8 @@ const NavbarHome = () => {
   };
 
   useEffect(() => {
+    AOS.init({ duration: 500 });
+
     const mediaQuery = window.matchMedia("(max-width: 800px)");
 
     const handleMediaChange = (mediaQuery) => {
@@ -76,6 +88,18 @@ const NavbarHome = () => {
   //     }
   //   });
   // }, [navigate]);
+
+  const style = {
+    position: "relative",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    borderRadius: "2rem",
+    boxShadow: 24,
+  };
 
   return (
     <nav>
@@ -197,7 +221,11 @@ const NavbarHome = () => {
                 </a>
               </li>
               <li>
-                <a id="login-btn" href="/login" className="link__details">
+                <a
+                  id="login-btn"
+                  className="link__details"
+                  onClick={handleOpen}
+                >
                   Login
                 </a>
               </li>
@@ -216,6 +244,24 @@ const NavbarHome = () => {
               </Link>
             )}
           </div> */}
+      </div>
+
+      <div>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          data-aos="fade"
+          data-aos-once="true"
+        >
+          <Box sx={style}>
+            <div className="exit__button">
+              <IoClose size={25}/>
+            </div>
+            <Login />
+          </Box>
+        </Modal>
       </div>
     </nav>
   );
