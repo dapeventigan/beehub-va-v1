@@ -1,0 +1,56 @@
+.whyworkbeehub__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 5rem;
+}
+
+.whyworkbeehub__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+}
+
+.whyworkbeehub__man {
+  max-width: 400px;
+}
+
+.whyworkbeehub__details {
+  max-width: 500px;
+}
+
+.whyworkbeehub__details > h1 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2.6rem;
+  padding-bottom: 1rem;
+  color: var(--color-bg-light);
+}
+
+.whyworkbeehub__details > h1 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2.6rem;
+  padding-bottom: 1rem;
+}
+
+.whyworkbeehub__details > p {
+  padding-bottom: 1.5rem;
+}
+
+.whyworkbeehub__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.whybeehub__list {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.whybeehub__icon {
+  color: var(--color-dark-yellow);
+  flex-shrink: 0;
+}

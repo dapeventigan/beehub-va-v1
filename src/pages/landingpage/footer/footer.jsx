@@ -2,7 +2,7 @@ import React from "react";
 
 import vaLogo from "../../../assets/Logo v1/Black And White/black2.png";
 import { FaFacebookSquare } from "react-icons/fa";
-import { BsLinkedin } from "react-icons/bs";
+import Copyright from "./copyright";
 import "./footer.css";
 
 const Footer = () => {
@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="footer__contents">
             <div className="footerlogo__container">
               <img src={vaLogo} alt="" className="footer__logo" />
-              <p>Copyright © 2023 BeeHub Virtual Assistant Co.</p>
+             
             </div>
 
             <div className="footer__links">
@@ -47,6 +47,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <Copyright/>
     </footer>
   );
 };

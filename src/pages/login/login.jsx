@@ -49,6 +49,54 @@ const Login = () => {
       }
     }
   };
+
+  const [googleSignStatus, setGoogleSignStatus] = useState();
+  const [googleFname, setGoogleFname] = useState();
+  const [googleLname, setGoogleLname] = useState();
+  const [googleEmail, setGoogleEmail] = useState();
+
+  useEffect(() => {
+    if (googleSignStatus === true) {
+      // handleGoogleLogin();
+
+      // const handleGoogleLogin = async () => {
+      //   try {
+      //     await Axios.post("http://localhost:3001/googlelogin", {
+      //       googleEmail,
+      //       googleFname,
+      //       googleLname,
+      //     }).then(async (res) => {
+      //       if (res.data.status === "ok") {
+      //         if (res.data.role === "admin") {
+      //           navigate("/admindashboard");
+      //         } else if (res.data.role === "applyUser") {
+      //           navigate("/applyhome");
+      //         } else {
+      //           navigate("/joinhome");
+      //         }
+      //       } else {
+      //       }
+      //     });
+      //   } catch (error) {
+      //     if (
+      //       error.response &&
+      //       error.response.status >= 400 &&
+      //       error.response.status <= 500
+      //     ) {
+      //       setError(error.response.data.message);
+      //     }
+      //   }
+      // };
+
+      
+    } else {
+      setGoogleSignStatus(false);
+      setGoogleFname("");
+      setGoogleLname("");
+      setGoogleEmail("");
+    }
+  }, [googleSignStatus]);
+
   return (
     <div className="login__container">
       <div className="login-design"></div>
@@ -110,6 +158,7 @@ const Login = () => {
                     );
                     console.log(credentialDecoded);
                     console.log(credentialDecoded.email_verified);
+                    setGoogleSignStatus(credentialDecoded.email_verified);
                   }}
                   onError={() => {
                     console.log("Login Failed");
