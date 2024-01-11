@@ -19,7 +19,7 @@ const Contact = () => {
             Contact <span className="build__text">Beehub</span>
           </h2>
         </div>
-
+        
         <div className="contact__card">
           <div className="contact__details">
             <div className="contact__info">
@@ -39,6 +39,48 @@ const Contact = () => {
             </div>
           </div>
         </div>
+
+        {/* <div className="acontainer">
+          <div className="card">
+            <div className="icon">
+              <ImLocation className="diamond-outline" />
+            </div>
+            <div className="content">
+              <h2>Card One</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam debitis numquam, alias laborum eaque natus dolor totam
+                perspiciatis adipisci ipsum rem amet nobis commodi placeat!
+              </p>
+            </div>
+          </div>
+          <div className="card">
+            <div className="icon">
+              <ImLocation className="diamond-outline" />
+            </div>
+            <div className="content">
+              <h2>Card Two</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam debitis numquam, alias laborum eaque natus dolor totam
+                perspiciatis adipisci ipsum rem amet nobis commodi placeat!
+              </p>
+            </div>
+          </div>
+          <div className="card">
+            <div className="icon">
+              <ImLocation className="diamond-outline" />
+            </div>
+            <div className="content">
+              <h2>Card Three</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam debitis numquam, alias laborum eaque natus dolor totam
+                perspiciatis adipisci ipsum rem amet nobis commodi placeat!
+              </p>
+            </div>
+          </div>
+        </div> */}
 
         <div className="title__button">
           <Link to="/applyregister" className="btn-contact btn-primary">

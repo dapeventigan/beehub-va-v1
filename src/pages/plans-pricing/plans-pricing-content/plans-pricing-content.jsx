@@ -15,11 +15,11 @@ const PlansPricingContent = () => {
         <div className="planspricingtitle__container">
           <div className="planspricing__title">
             <div className="top-horizontal-line"></div>
-            <h1 data-aos="fade" data-aos-once="true">
+            <h1>
               Employing the finest virtual assistant comes at no expense to your
               budget or the typical cost when you choose our services.
             </h1>
-            <p data-aos="fade" data-aos-once="true">
+            <p>
               Our service plans cater to individuals seeking highly skilled
               Virtual Assistants at rates starting from $8 per hour, ensuring
               affordability without compromising on exceptional service quality.

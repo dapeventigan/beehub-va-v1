@@ -22,8 +22,6 @@ const ServicesContent = () => {
       <div className="servicescontent__container">
         <div
           className="servicescontent__title"
-          data-aos="fade"
-          data-aos-once="true"
         >
           <div className="top-horizontal-line"></div>
           <h1>BeeHub's Top Tier Services</h1>
