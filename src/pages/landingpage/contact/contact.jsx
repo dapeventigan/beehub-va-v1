@@ -1,5 +1,5 @@
 import React from "react";
-import { ImLocation } from "react-icons/im";
+import { FaFacebookMessenger } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
 import { Link } from "react-router-dom";
@@ -19,8 +19,8 @@ const Contact = () => {
             Contact <span className="build__text">Beehub</span>
           </h2>
         </div>
-        
-        <div className="contact__card">
+
+        {/* <div className="contact__card">
           <div className="contact__details">
             <div className="contact__info">
               <FaPhoneAlt className="contact__icon" />
@@ -38,49 +38,37 @@ const Contact = () => {
               <h4>beehubvirtualassistant@gmail.com </h4>
             </div>
           </div>
-        </div>
-
-        {/* <div className="acontainer">
-          <div className="card">
-            <div className="icon">
-              <ImLocation className="diamond-outline" />
-            </div>
-            <div className="content">
-              <h2>Card One</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Quisquam debitis numquam, alias laborum eaque natus dolor totam
-                perspiciatis adipisci ipsum rem amet nobis commodi placeat!
-              </p>
-            </div>
-          </div>
-          <div className="card">
-            <div className="icon">
-              <ImLocation className="diamond-outline" />
-            </div>
-            <div className="content">
-              <h2>Card Two</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Quisquam debitis numquam, alias laborum eaque natus dolor totam
-                perspiciatis adipisci ipsum rem amet nobis commodi placeat!
-              </p>
-            </div>
-          </div>
-          <div className="card">
-            <div className="icon">
-              <ImLocation className="diamond-outline" />
-            </div>
-            <div className="content">
-              <h2>Card Three</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Quisquam debitis numquam, alias laborum eaque natus dolor totam
-                perspiciatis adipisci ipsum rem amet nobis commodi placeat!
-              </p>
-            </div>
-          </div>
         </div> */}
+
+        <div className="contact__container-card">
+          <div className="contact__card">
+            <div className="card_icon">
+              <FaPhoneAlt className="icon__card" size={80} />
+            </div>
+            <div className="card_content">
+              <h2>Call us at</h2>
+              <p>+63922021298</p>
+            </div>
+          </div>
+          <div className="contact__card">
+            <div className="card_icon">
+              <FaFacebookMessenger className="icon__card" size={80} />
+            </div>
+            <div className="card_content">
+              <h2>Message us at</h2>
+              <p>BeeHub Virtual Assistants Co.</p>
+            </div>
+          </div>
+          <div className="contact__card">
+            <div className="card_icon">
+              <GrMail className="icon__card" size={80} />
+            </div>
+            <div className="card_content">
+              <h2>Email us at</h2>
+              <p>beehubvirtualassistant@gmail.com</p>
+            </div>
+          </div>
+        </div>
 
         <div className="title__button">
           <Link to="/applyregister" className="btn-contact btn-primary">

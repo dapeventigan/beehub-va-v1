@@ -15,8 +15,8 @@ const Hiring = () => {
 
   return (
     <section id="hiring">
-      <h1 className="hiring__title" data-aos="fade" data-aos-once="true">
-        How to start your career on BeeHub
+      <h1 className="hiring__title">
+        How to start your Business with BeeHub
       </h1>
       <div
         className="container hiring__container"
@@ -80,7 +80,7 @@ const Hiring = () => {
         </div>
       </div>
       <div className="title__button">
-        <Link to="/applyregister" className="btn btn-primary">
+        <Link to="/joinregister" className="btn btn-primary">
           Apply Now
         </Link>
       </div>

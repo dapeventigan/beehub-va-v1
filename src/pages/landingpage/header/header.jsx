@@ -14,15 +14,11 @@ const Header = () => {
             <h2>Virtual Staffing, Real Results</h2>
           </div>
           <p>
-            Your strategic partner in developing high-performing virtual
-            teams, virtual staffing, and workforce solutions for the
-            modern age
+            Your strategic partner in developing high-performing virtual teams,
+            virtual staffing, and workforce solutions for the modern age
           </p>
 
-          <div className="header__logo">
-            <Lottie animationData={HeaderLogo} className="animated__logo" />
-          </div>
-          <div className="title__button">
+          <div className="title__button-header">
             <Link to="/applyregister" className="btn btn-primary">
               Apply Now
             </Link>
@@ -30,19 +26,13 @@ const Header = () => {
               Join Now
             </Link>
           </div>
+
+          <div className="header__logo">
+            <Lottie animationData={HeaderLogo} className="animated__logo" />
+          </div>
         </div>
-
-
-
-        {/* <div className="title__button mobile">
-          <Link to="/applyregister" className="btn btn-primary">
-            Apply Now
-          </Link>
-          <Link to="/joinregister" className="btn btn-primary">
-            Join Now
-          </Link>
-        </div> */}
       </div>
+
     </header>
   );
 };

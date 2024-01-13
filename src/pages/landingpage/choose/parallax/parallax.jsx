@@ -1,6 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useRef, useState, useEffect } from "react";
-import ParallaxImg from "../../../../assets/parallax-up.png";
 import "./parallax.css";
 
 const ParallaxEffect = () => {
@@ -25,7 +24,7 @@ const ParallaxEffect = () => {
   const smallScreenRange = ["150%", "1000%"];
   const mediumScreenRange = ["70%", "800%"];
   const medLargeScreenRange = ["40%", "1000%"];
-  const largeScreenRange = ["150%", "950%"];
+  const largeScreenRange = ["50%", "510%"];
 
   const textY = useTransform(
     scrollYProgress,
@@ -40,14 +39,26 @@ const ParallaxEffect = () => {
   );
   return (
     <div className="parallax">
+      <div className="top-horizontal-line-header"></div>
       <div ref={ref} className="parallax__container">
-        <div className="parallax__header">
-          <motion.h1 style={{ y: textY }} className="parallax__title">
+        <motion.div style={{ y: textY }} className="parallax__header">
+          <h1 className="parallax__title">
             Why Choose BeeHub Virtual Assistants Co.
-          </motion.h1>
-        </div>
+          </h1>
+
+          <p className="parallax__p">
+            BeeHub Virtual Assistants Co. allows organizations to benefit on the
+            following advantages, resulting in a more agile, cost-effective, and
+            internationally competitive workforce that adapts to the needs of
+            the current business landscape.
+          </p>
+        </motion.div>
       </div>
-      <svg className="wavy-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <svg
+        className="wavy-svg"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 180"
+      >
         <path
           fill="#f8f8f8"
           fill-opacity="1"

@@ -5,11 +5,6 @@ import "aos/dist/aos.css";
 
 //beehubteam
 import DabeVentigan from "../../../../../src/assets/beehubteam/dabe.png";
-import FrankOcean from "../../../../../src/assets/beehubteam/frank.png";
-import TylerOkonma from "../../../../../src/assets/beehubteam/tyler.png";
-import KilluaZoldyck from "../../../../../src/assets/beehubteam/killua.png";
-import KangKong from "../../../../../src/assets/beehubteam/kangkong.png";
-import Chipi from "../../../../../src/assets/beehubteam/chipi.png";
 import "./beehubteam.css";
 
 const BeehubTeam = () => {
@@ -37,27 +32,27 @@ const BeehubTeam = () => {
             <p>Lorem, ipsum dolor.</p>
           </div>
           <div className="beehubteam__details">
-            <img src={FrankOcean} alt="" />
+            <img src={DabeVentigan} alt="" />
             <h2>Christopher Breaux</h2>
             <p>Lorem, ipsum dolor.</p>
           </div>
           <div className="beehubteam__details">
-            <img src={TylerOkonma} alt="" />
+            <img src={DabeVentigan} alt="" />
             <h2>Tyler Okonma</h2>
             <p>Lorem, ipsum dolor.</p>
           </div>
           <div className="beehubteam__details">
-            <img src={KilluaZoldyck} alt="" />
+            <img src={DabeVentigan} alt="" />
             <h2>Killua Zoldyck</h2>
             <p>Lorem, ipsum dolor.</p>
           </div>
           <div className="beehubteam__details">
-            <img src={KangKong} alt="" />
+            <img src={DabeVentigan} alt="" />
             <h2>Kang Kong Chips</h2>
             <p>Lorem, ipsum dolor.</p>
           </div>
           <div className="beehubteam__details">
-            <img src={Chipi} alt="" />
+            <img src={DabeVentigan} alt="" />
             <h2>Chipi chipi chapa chapa</h2>
             <p>Dubi dubi daba daba</p>
           </div>

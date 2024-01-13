@@ -19,11 +19,6 @@ const PlansPricingContent = () => {
               Employing the finest virtual assistant comes at no expense to your
               budget or the typical cost when you choose our services.
             </h1>
-            <p>
-              Our service plans cater to individuals seeking highly skilled
-              Virtual Assistants at rates starting from $8 per hour, ensuring
-              affordability without compromising on exceptional service quality.
-            </p>
           </div>
         </div>
 
@@ -37,10 +32,10 @@ const PlansPricingContent = () => {
               <div className="price__title">
                 <h1>Flat Fee</h1>
               </div>
-              <div className="price__amount">
+              {/* <div className="price__amount">
                 <h2>90$</h2>
                 <p>per week</p>
-              </div>
+              </div> */}
             </div>
             <div className="planspricing__inside">
               <div className="plan__desc">
@@ -72,10 +67,10 @@ const PlansPricingContent = () => {
               <div className="price__title">
                 <h1>Fully Managed</h1>
               </div>
-              <div className="price__amount">
+              {/* <div className="price__amount">
                 <h2>120$</h2>
                 <p>per week</p>
-              </div>
+              </div> */}
             </div>
             <div className="planspricing__inside">
               <div className="plan__desc">
@@ -111,10 +106,10 @@ const PlansPricingContent = () => {
               <div className="price__title">
                 <h1>Do It Yourself</h1>
               </div>
-              <div className="price__amount">
+              {/* <div className="price__amount">
                 <h2>100$</h2>
                 <p>per week</p>
-              </div>
+              </div> */}
             </div>
             <div className="planspricing__inside">
               <div className="plan__desc">

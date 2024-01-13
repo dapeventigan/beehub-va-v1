@@ -1,18 +1,14 @@
 #contact {
   background-color: var(--color-bg-darkgrey);
-  min-height: 1400px;
+  min-height: 700px;
 }
 
 .contact__container {
-  padding-top: 20rem;
+  padding-top: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.contact__card{
-  padding-bottom: 10rem;
 }
 
 .contact__title {
@@ -20,7 +16,7 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  margin-bottom: 30px;
+  padding-bottom: 2rem;
 }
 
 .contact__title > h1 {
@@ -28,80 +24,48 @@
   font-size: 4vw;
   font-family: "Times New Roman", Times, serif;
   text-align: center;
-  margin-bottom: 8rem;
+  padding-bottom: 3rem;
 }
 
 .contact__title > h2 {
   color: var(--color-white);
-  font-size: 1.5vw;
-  margin-top: 0.2rem;
+  font-size: 25px;
   text-align: center;
+  font-family: "Rubik", sans-serif;
 }
 
 .build__text {
   color: var(--color-bg-variant);
 }
 
-.contact__details {
-  margin-top: 2rem;
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 7rem;
-}
-
-.contact__info {
-  background-color: #161616;
-  color: var(--color-white);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 3rem;
-  min-width: 400px;
-  padding: 4rem 2rem;
-  border-radius: 0.5rem;
-}
-
-.contact__info > h3,
-.contact__info > h4,
-.contact__icon,
-.join__button {
-  font-size: 1vw;
-}
-
 /* lorem30 */
 
-.acontainer {
+.contact__container-card {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  padding: 40px;
-  min-height: 100vh;
+  padding: 2rem 0;
+  gap: 10rem;
 }
 
-.card {
+.contact__card {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   position: relative;
   width: 320px;
-  height: 450px;
+  height: 350px;
   margin: 30px;
   border-radius: 20px;
   border-bottom-left-radius: 160px;
   border-bottom-right-radius: 160px;
-  box-shadow: 0 15px 0 #fff,
-          inset 0 -15px 0 rgba(255, 255, 255, 0.24),
-          0 45px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 0 #fff, inset 0 -15px 0 rgba(255, 255, 255, 0.24),
+    0 45px 0 rgba(0, 0, 0, 0.15);
   overflow: hidden;
-   
 }
 
-.card::before {
+.contact__card::before {
   content: "";
   position: absolute;
   top: -140px;
@@ -115,34 +79,45 @@
   filter: blur(5px);
 }
 
-.card:nth-child(1) {
-  background: linear-gradient(to bottom, #ff2ae0, #645bf6);
+.contact__card:nth-child(1) {
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg-variant),
+    var(--color-dark-yellow)
+  );
 }
 
-.card:nth-child(2) {
-  background: linear-gradient(to bottom, #ffec61, #f321d7);
+.contact__card:nth-child(2) {
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg-variant),
+    var(--color-dark-yellow)
+  );
 }
 
-.card:nth-child(3) {
-  background: linear-gradient(to bottom, #24ff72, #9a4eff);
+.contact__card:nth-child(3) {
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg-variant),
+    var(--color-dark-yellow)
+  );
 }
 
-.card .icon {
+.contact__card .card_icon {
   position: relative;
   width: 140px;
   height: 120px;
-  background: #3c2846;
+  background: var(--color-bg-darkgrey);
   border-bottom-left-radius: 100px;
   border-bottom-right-radius: 100px;
   box-shadow: 0 15px 0 rgba(0, 0, 0, 0.1),
-          inset 0 -8px 0 #fff;
-  z-index: 100;
+    inset 0 -8px 0 var(--color-dark-yellow);
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
-
-.card .icon::before {
+.contact__card .card_icon::before {
   content: "";
   position: absolute;
   top: 0;
@@ -151,10 +126,10 @@
   height: 50px;
   background: transparent;
   border-top-right-radius: 50px;
-  box-shadow: 15px -15px 0 15px #3c2846;
+  box-shadow: 15px -15px 0 15px var(--color-bg-darkgrey);
 }
 
-.card .icon::after {
+.contact__card .card_icon::after {
   content: "";
   position: absolute;
   top: 0;
@@ -163,19 +138,22 @@
   height: 50px;
   background: transparent;
   border-top-left-radius: 50px;
-  box-shadow: -15px -15px 0 15px #3c2846;
+  box-shadow: -15px -15px 0 15px var(--color-bg-darkgrey);
 }
 
-.card .icon ion-icon {
+/* .card .icon ion-icon {
   color: #fff;
   position: relative;
   font-size: 6em;
   z-index: 1000;
   --ionicon-stroke-width: 24px;
+} */
+
+.icon__card {
+  color: var(--color-bg-variant);
 }
 
-
-.card .content {
+.contact__card .card_content {
   position: absolute;
   width: 100%;
   padding: 30px;
@@ -183,18 +161,16 @@
   text-align: center;
 }
 
-.card .content h2 {
+.contact__card .card_content h2 {
   font-size: 1.8em;
-  color: #fff;
+  color: black;
   margin-bottom: 15px;
 }
 
-.card .content p {
-  color: #fff;
+.contact__card .card_content p {
+  color: black;
   line-height: 1.5em;
 }
-
-
 
 @media screen and (max-width: 1300px) {
   .contact__title > h2 {

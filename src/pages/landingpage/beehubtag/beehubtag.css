@@ -1,0 +1,94 @@
+#beehubtag {
+  background: url("../../../assets/vecteezy_yellow-gold-background-vector-design_14911571-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+
+.beehubtag__maincontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.beehubtag__title {
+  color: #f1faee;
+  flex-shrink: 0;
+  font-size: 3vw;
+}
+
+.beehubtag__roller {
+  height: 4.125rem;
+  line-height: 4rem;
+  position: relative;
+  overflow: hidden;
+  width: 400px;
+  display: flex;
+  align-items: center;
+  color: var(--color-bg-variant);
+  font-size: 3vw;
+  font-weight: bolder;
+}
+
+#beehubtag__rolltext {
+  position: absolute;
+  top: 0;
+  animation: slide 5s infinite;
+}
+
+@keyframes slide {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: -4rem;
+  }
+  50% {
+    top: -8rem;
+  }
+  72.5% {
+    top: -12.25rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  #beehubtag {
+    height: 100px;
+  }
+  
+  h1 {
+    text-transform: uppercase;
+    color: #f1faee;
+    font-size: 2.125rem;
+  }
+
+  .beehubtag__roller {
+    height: 2.6rem;
+    line-height: 2.125rem;
+    width: 100px;
+  }
+
+  .beehubtag__roller #beehubtag__rolltext {
+    animation: slide-mob 5s infinite;
+  }
+
+  @keyframes slide-mob {
+    0% {
+      top: 0;
+    }
+    25% {
+      top: -2.125rem;
+    }
+    50% {
+      top: -4.25rem;
+    }
+    72.5% {
+      top: -6.375rem;
+    }
+  }
+}

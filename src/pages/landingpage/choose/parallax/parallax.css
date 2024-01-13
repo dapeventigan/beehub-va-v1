@@ -6,20 +6,28 @@
 .parallax__container {
   overflow: hidden;
   position: relative;
-  min-height: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 500px;
   width: 100%;
 }
 
 .parallax__title {
-  margin-top: 0px;
   font-weight: bold;
   font-size: 4rem;
-  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-family: 'Times New Roman', Times, serif; 
+  font-family: "Times New Roman", Times, serif;
+}
+
+.parallax__p {
+  padding-top: 1.3rem;
+  margin-inline: auto;
+  text-align: center;
+  width: 70%;
 }
 
 .parallax__image {
@@ -30,16 +38,31 @@
   z-index: 20;
 }
 
-@media screen and (max-width: 1300px) {
+.top-horizontal-line-header {
+  margin-bottom: 5rem;
+  width: 80px; /* Adjust the width as needed */
+  height: 10px; /* Set the height/thickness of the line */
+  border-radius: 10rem;
+  background-color: var(--color-dark-yellow); /* Set the color of the line */
+  margin-inline: auto;
+}
 
+.top-horizontal-line-header {
+  margin-bottom: 5rem;
+  width: 80px; /* Adjust the width as needed */
+  height: 10px; /* Set the height/thickness of the line */
+  border-radius: 10rem;
+  background-color: var(--color-dark-yellow); /* Set the color of the line */
+  margin-inline: auto;
+}
+
+@media screen and (max-width: 1300px) {
   .parallax__container {
     min-height: 900px;
   }
 }
 
-
 @media screen and (max-width: 703px) {
-
   .parallax__container {
     min-height: 600px;
     width: 100%;
@@ -52,7 +75,6 @@
 }
 
 @media screen and (max-width: 418px) {
-
   .parallax__container {
     min-height: 500px;
     width: 100%;

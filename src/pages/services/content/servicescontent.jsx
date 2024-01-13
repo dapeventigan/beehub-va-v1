@@ -35,7 +35,7 @@ const ServicesContent = () => {
             <div className="servicescontent__contents">
               <img
                 className="servicescontent__img"
-                src="https://images.pexels.com/photos/7414015/pexels-photo-7414015.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src="https://images.pexels.com/photos/3184299/pexels-photo-3184299.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt=""
               ></img>
               <div className="servicescontent__desc">

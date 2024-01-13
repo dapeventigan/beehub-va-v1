@@ -86,7 +86,7 @@ const HowIt = () => {
           <div className="howit__img" data-aos="fade-left" data-aos-once="true">
             <img
               className="how__img"
-              src="https://images.pexels.com/photos/5712043/pexels-photo-5712043.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src="https://images.pexels.com/photos/3747446/pexels-photo-3747446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               alt=""
             ></img>
           </div>

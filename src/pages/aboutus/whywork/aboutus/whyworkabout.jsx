@@ -194,9 +194,9 @@ const WhyWorkAbout = () => {
                 developing and connecting outstanding individuals with
                 progressive businesses.
               </p>
-              <Button sx={buttonStyle} onClick={handleOpenPhi}>
+              {/* <Button sx={buttonStyle} onClick={handleOpenPhi}>
                 View Company's Philosophy
-              </Button>
+              </Button> */}
               <Modal
                 open={openPhi}
                 onClose={handleClose}
@@ -234,9 +234,9 @@ const WhyWorkAbout = () => {
                 just what we do, but also who we are as a corporation dedicated
                 to quality, ethics, and a future where work has no limits.
               </p>
-              <Button sx={buttonStyle} onClick={handleOpenCor}>
+              {/* <Button sx={buttonStyle} onClick={handleOpenCor}>
                 View Company's Core Values
-              </Button>
+              </Button> */}
               <Modal
                 open={openCor}
                 onClose={handleClose}
@@ -267,7 +267,7 @@ const WhyWorkAbout = () => {
             >
               <img
                 className="how__img"
-                src="https://images.pexels.com/photos/5712043/pexels-photo-5712043.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src="https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt=""
               ></img>
             </div>

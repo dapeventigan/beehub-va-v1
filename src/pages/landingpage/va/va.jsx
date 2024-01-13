@@ -16,7 +16,7 @@ const VASection = () => {
     <section id="va">
       <div className="va__container">
         <div className="aboutva__container">
-          <div className="va__title" data-aos="fade" data-aos-once="true">
+          <div className="va__title">
             <h1>Our Services</h1>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
