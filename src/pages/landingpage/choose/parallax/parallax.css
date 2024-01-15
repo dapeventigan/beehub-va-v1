@@ -1,3 +1,5 @@
+
+
 .parallax {
   position: relative;
   background-color: var(--color-bg-variant);
@@ -20,7 +22,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-family: "Times New Roman", Times, serif;
+  font-family: 'Playfair Display', serif;
 }
 
 .parallax__p {

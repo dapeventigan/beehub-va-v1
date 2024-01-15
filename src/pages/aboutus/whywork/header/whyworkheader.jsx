@@ -19,10 +19,10 @@ const WhyWorkHeader = () => {
         </div>
         <div className="title__button">
           <Link to="/applyregister" className="btn btn-primary">
-            Apply Now
+            Find Career
           </Link>
           <Link to="/joinregister" className="btn btn-primary">
-            Join Now
+            Start Hiring
           </Link>
         </div>
       </div>

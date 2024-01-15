@@ -1,6 +1,6 @@
 #header {
+  background-color: var(--color-bg-variant);
   min-height: 1100px;
-  background-color: var( --color-bg-variant);
 }
 
 .header__container {
@@ -13,7 +13,8 @@
   gap: 2rem;
 }
 
-.title__container, .title__contents{
+.title__container,
+.title__contents {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,19 +27,19 @@
   padding-top: 1.5rem;
 }
 
- .title__contents > h2 {
+.title__contents > h2 {
   font-size: 3vw;
   text-align: center;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Playfair Display', serif;
 }
 
- .title__button {
+.title__button {
   display: flex;
   flex-direction: row;
   gap: 1rem;
   flex-direction: row-reverse;
   padding-top: 3rem;
-} 
+}
 
 .title__button-header {
   display: flex;
@@ -46,12 +47,6 @@
   gap: 1rem;
   flex-direction: row-reverse;
   padding-top: 3rem;
-} 
-
-.header__logo{
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .animated__logo {
@@ -66,10 +61,9 @@
   display: none;
 }
 
-
-@media screen and (min-width: 2000px) {
+@media screen and (min-width: 4000px) {
   #header {
-    min-height:1100px;
+    min-height: 1900px;
   }
 }
 
@@ -105,10 +99,6 @@
     place-items: center;
     display: block;
   }
-
-  .animated__logo {
-    height: 500px;
-  }
 }
 
 @media screen and (max-width: 600px) {
@@ -119,7 +109,7 @@
   .title__contents > h2 {
     font-size: 20px;
   }
-  
+
   .title__contents > h1 {
     font-size: 40px;
   }
@@ -130,10 +120,6 @@
 
   .mobile {
     margin-top: 6rem;
-  }
-
-  .animated__logo {
-    height: 300px;
   }
 
   .title__button {

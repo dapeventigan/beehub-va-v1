@@ -57,7 +57,7 @@ const PlansPricingContent = () => {
                 </div>
               </div>
               <Link to="/joinregister" className="plans__button">
-                Join Now
+                Start Hiring
               </Link>
             </div>
           </div>
@@ -96,7 +96,7 @@ const PlansPricingContent = () => {
                 </div>
               </div>
               <Link to="/joinregister" className="plans__button">
-                Join Now
+                Start Hiring
               </Link>
             </div>
           </div>
@@ -134,7 +134,7 @@ const PlansPricingContent = () => {
                 </div>
               </div>
               <Link to="/joinregister" className="plans__button">
-                Join Now
+                Start Hiring
               </Link>
             </div>
           </div>

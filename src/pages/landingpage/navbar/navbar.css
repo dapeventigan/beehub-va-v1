@@ -1,6 +1,4 @@
 nav {
-  display: grid;
-  place-items: center;
   position: sticky;
   top: -1px;
   left: 0;
@@ -15,8 +13,21 @@ nav {
 .navbar__contents {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 1.5rem 0 1.5rem 0
+  justify-content: space-around;
+}
+
+.navbar__box {
+  display: flex;
+  gap: 2rem;
+  min-width: 70px;
+}
+
+.navbar__beehub {
+  flex-shrink: 0;
+}
+.navbar__beehub img {
+  width: 80px;
+  height: 80px;
 }
 
 .navbarlogo__container {
@@ -32,6 +43,7 @@ nav {
 
 .navbar__links {
   display: flex;
+  align-items: center;
   gap: 3.5rem;
 }
 
@@ -146,23 +158,27 @@ nav {
 }
 
 #login-btn {
-  background: linear-gradient(to bottom right, #ffd000, #FF9A5A);
+  background: linear-gradient(to bottom right, #ffd000, #ff9a5a);
   border-radius: 2rem;
   padding: 0.5rem 1.3rem;
-  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5);
-  transition: box-shadow .2s ease-in-out;
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.2s ease-in-out;
   cursor: pointer;
 }
 
 #login-btn:not([disabled]):focus {
-  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(136, 116, 5, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+    -0.125rem -0.125rem 1rem rgba(136, 116, 5, 0.5),
+    0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
 }
 
 #login-btn:not([disabled]):hover {
-  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+    -0.125rem -0.125rem 1rem rgba(239, 71, 101, 0.5),
+    0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
 }
 
-.exit__button{
+.exit__button {
   position: absolute;
   top: 30px;
   right: 30px;
@@ -170,15 +186,19 @@ nav {
   z-index: 1;
 }
 
-
 /* MEDIA QUERIED */
-
 @media screen and (max-width: 800px) {
+  .navbar__box {
+    display: none;
+  }
+  .navbar__contents {
+    padding: 0 2rem;
+    justify-content: space-between;
+  }
 
   .simple__menu,
   #simple__menu {
     display: block;
-
   }
 
   .navbar__link {
@@ -194,7 +214,6 @@ nav {
     max-height: 0;
     overflow: hidden;
     position: absolute;
- 
   }
 
   .navbar__links {

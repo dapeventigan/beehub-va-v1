@@ -1,5 +1,5 @@
 .servicescontent__title > h1 {
-  font-family: "Times New Roman", Times, serif;
+  font-family: 'Playfair Display', serif;
   text-align: center;
   font-size: 4rem;
   color: var(--color-font-darkgrey);
@@ -64,7 +64,7 @@
 }
 
 .servicescontent__desc > h1 {
-  font-family: "Times New Roman", Times, serif;
+  font-family: 'Playfair Display', serif;
   color: var(--color-font-darkgrey);
   font-size: 2.5rem;
   text-align: center;

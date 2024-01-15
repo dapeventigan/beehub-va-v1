@@ -81,7 +81,7 @@ const Hiring = () => {
       </div>
       <div className="title__button">
         <Link to="/joinregister" className="btn btn-primary">
-          Apply Now
+          Find Career
         </Link>
       </div>
     </section>

@@ -23,7 +23,7 @@
 
 .va__title > h1 {
   padding-top: 3rem;
-  font-family: "Times New Roman", Times, serif;
+  font-family: 'Playfair Display', serif;
   font-size: 4rem;
   color: var(--color-font-darkgrey);
 }

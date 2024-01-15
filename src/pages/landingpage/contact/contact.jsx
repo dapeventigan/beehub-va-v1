@@ -72,10 +72,10 @@ const Contact = () => {
 
         <div className="title__button">
           <Link to="/applyregister" className="btn-contact btn-primary">
-            Apply Now
+            Find Career
           </Link>
           <Link to="/joinregister" className="btn-contact btn-primary">
-            Join Now
+            Start Hiring
           </Link>
         </div>
       </div>

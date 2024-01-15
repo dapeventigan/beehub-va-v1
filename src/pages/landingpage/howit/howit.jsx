@@ -94,7 +94,7 @@ const HowIt = () => {
 
         <div className="title__button">
             <Link to="/joinregister" className="btn btn-primary">
-              Join Now
+              Start Hiring
             </Link>
           </div>
       </div>

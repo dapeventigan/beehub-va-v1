@@ -83,7 +83,7 @@
 
 .price__title > h1 {
   font-size: 30px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: 'Playfair Display', serif;
 }
 
 .price__amount {
@@ -102,11 +102,11 @@
 
 .price__amount > h2 {
   font-size: 40px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: 'Playfair Display', serif;
   color: var(--color-bg-variant);
 }
 
 .price__amount > p {
-  font-family: "Times New Roman", Times, serif;
+  font-family: 'Playfair Display', serif;
   color: var(--color-bg-variant);
 }

@@ -47,10 +47,11 @@ const ParallaxEffect = () => {
           </h1>
 
           <p className="parallax__p">
-            BeeHub Virtual Assistants Co. allows organizations to benefit on the
-            following advantages, resulting in a more agile, cost-effective, and
-            internationally competitive workforce that adapts to the needs of
-            the current business landscape.
+            Our one-stop virtual staffing hub provides top-tier virtual
+            assistants to businesses worldwide, utilizing an intelligent
+            matching algorithm for seamless hiring and job alignment,
+            transforming staffing into a dynamic solution, and driving
+            businesses to new heights in the digital world.
           </p>
         </motion.div>
       </div>

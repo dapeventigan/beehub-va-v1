@@ -9,6 +9,7 @@ import { MdOutlineClose } from "react-icons/md";
 import Login from "../../login/login";
 import AOS from "aos";
 import { IoClose } from "react-icons/io5";
+import BHLogo from "../../../assets/logo_1.png";
 // import Cookies from "js-cookie";
 
 import "./navbar.css";
@@ -32,7 +33,7 @@ const NavbarHome = () => {
 
   const toggleClose = () => {
     setOpen(false);
-  }
+  };
 
   useEffect(() => {
     AOS.init({ duration: 500 });
@@ -60,6 +61,35 @@ const NavbarHome = () => {
       mediaQuery.removeEventListener("change", mediaQueryListener);
     };
   }, []);
+
+  const [showDiv, setShowDiv] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Adjust the value based on the scroll position where you want to toggle the div
+      const scrollPosition = window.scrollY;
+      const threshold = 150; // Adjust this value according to your needs
+
+      if (scrollPosition > threshold) {
+        setShowDiv(true);
+      } else {
+        setShowDiv(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  if (showDiv === true) {
+    console.log("SHOWING");
+  } else {
+    console.log("NOT SHOWING");
+  }
 
   // Axios.defaults.withCredentials = true;
   // useEffect(() => {
@@ -105,14 +135,19 @@ const NavbarHome = () => {
     boxShadow: 24,
   };
 
+  const beeHubImg = {
+    opacity: showDiv ? "1" : "0",
+    transition: "opacity 0.5s ease-in-out",
+  };
+
   return (
     <nav>
       <div className="navbar__contents">
+        <div className="navbar__beehub" style={beeHubImg}>
+          <img src={BHLogo} alt="" />
+        </div>
         <div className="navbar__link">
           <div className="simple__menu">
-            <a className="link__details" onClick={toggleMenu}>
-              HOME
-            </a>
             <Button
               sx={{
                 color: "black",
@@ -224,17 +259,16 @@ const NavbarHome = () => {
                   PLANS AND PRICING
                 </a>
               </li>
-              <li>
-                <a
-                  id="login-btn"
-                  className="link__details"
-                  onClick={handleOpen}
-                >
-                  Login
-                </a>
-              </li>
             </ul>
           </div>
+        </div>
+        <div className="navbar__box">
+          <a id="login-btn" className="link__details" onClick={handleOpen}>
+            Sign Up
+          </a>
+          <a id="login-btn" className="link__details" onClick={handleOpen}>
+            Log In
+          </a>
         </div>
 
         {/* <div className="button__login">
@@ -261,7 +295,7 @@ const NavbarHome = () => {
         >
           <Box sx={style}>
             <div className="exit__button">
-              <IoClose size={25} onClick={toggleClose}/>
+              <IoClose size={25} onClick={toggleClose} />
             </div>
             <Login />
           </Box>
