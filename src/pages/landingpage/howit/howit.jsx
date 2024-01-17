@@ -30,7 +30,7 @@ const HowIt = () => {
           <div className="howit__img" data-aos="fade-left" data-aos-once="true">
             <img
               className="how__img"
-              src="https://images.pexels.com/photos/6921969/pexels-photo-6921969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src="https://images.pexels.com/photos/47344/dollar-currency-money-us-dollar-47344.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               alt=""
             ></img>
           </div>
