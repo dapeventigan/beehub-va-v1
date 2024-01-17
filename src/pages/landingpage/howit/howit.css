@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5rem 0;
+  padding: 2rem 0;
   gap: 6rem;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .howit__text {
-  padding-bottom: 2rem;
+  padding: 2rem 0;
 }
 
 .howit__desc > h1 {

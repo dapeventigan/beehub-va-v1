@@ -14,7 +14,7 @@ const VASection = () => {
 
   return (
     <section id="va">
-      <div className="va__container">
+      <div className="vas__container">
         <div className="aboutva__container">
           <div className="va__title">
             <h1>Our Services</h1>

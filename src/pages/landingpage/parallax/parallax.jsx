@@ -43,15 +43,12 @@ const ParallaxEffect = () => {
       <div ref={ref} className="parallax__container">
         <motion.div style={{ y: textY }} className="parallax__header">
           <h1 className="parallax__title">
-            Why Choose BeeHub Virtual Assistants Co.
+            Why Should You Consider Hiring a Virtual Assistant?
           </h1>
 
           <p className="parallax__p">
-            Our one-stop virtual staffing hub provides top-tier virtual
-            assistants to businesses worldwide, utilizing an intelligent
-            matching algorithm for seamless hiring and job alignment,
-            transforming staffing into a dynamic solution, and driving
-            businesses to new heights in the digital world.
+            Hiring a virtual assistant provides a multitude of advantages to
+            individuals or business organizations.
           </p>
         </motion.div>
       </div>

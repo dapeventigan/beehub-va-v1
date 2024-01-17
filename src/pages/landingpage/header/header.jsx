@@ -7,7 +7,7 @@ import "./header.css";
 const Header = () => {
   return (
     <header id="header">
-      <div className="container header__container">
+      <div className="header__container">
         <div className="title__container">
           <div className="title__contents">
             <h2>Unlock Growth Beyond Borders, Beyond Limits:</h2>
@@ -26,13 +26,12 @@ const Header = () => {
               Start Hiring
             </Link>
           </div>
+        </div>
 
-          <div className="header__logo">
-            <Lottie animationData={HeaderLogo} className="animated__logo" />
-          </div>
+        <div className="header__logo">
+          <Lottie animationData={HeaderLogo} className="animated__logo" />
         </div>
       </div>
-
     </header>
   );
 };

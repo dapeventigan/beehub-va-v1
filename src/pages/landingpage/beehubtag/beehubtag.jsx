@@ -16,7 +16,7 @@ const BeeHubTag = () => {
   return (
     <section id="beehubtag">
       <div className="beehubtag__maincontainer">
-        <h1 className="beehubtag__title">BeeHub can make your Business </h1>
+        <h1 className="beehubtag__title">BeeHub can help your Business </h1>
         <h1 className="beehubtag__roller">
           <span id="beehubtag__rolltext">
             SUCCESSFUL

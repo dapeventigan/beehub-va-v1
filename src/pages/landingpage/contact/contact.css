@@ -141,14 +141,6 @@
   box-shadow: -15px -15px 0 15px var(--color-bg-darkgrey);
 }
 
-/* .card .icon ion-icon {
-  color: #fff;
-  position: relative;
-  font-size: 6em;
-  z-index: 1000;
-  --ionicon-stroke-width: 24px;
-} */
-
 .icon__card {
   color: var(--color-bg-variant);
 }

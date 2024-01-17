@@ -2,9 +2,6 @@
   min-height: 900px;
   position: relative;
   background-size: cover;
-  /* display: flex;
-    align-items: center;
-    justify-content: center; */
 }
 
 .aboutva__container {
@@ -16,13 +13,14 @@
 }
 
 .va__title {
+  margin-top: 7rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .va__title > h1 {
-  padding-top: 3rem;
+  padding-top: 0rem;
   font-family: 'Playfair Display', serif;
   font-size: 4rem;
   color: var(--color-font-darkgrey);

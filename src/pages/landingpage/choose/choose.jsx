@@ -1,106 +1,158 @@
 import React, { useEffect } from "react";
-import ParallaxEffect from "./parallax/parallax";
-import vaLogo from "../../../assets/Logo v1/Black And White/black2.png";
-import { Carousel } from "react-responsive-carousel";
+import { Link } from "react-router-dom";
+import Beehive from "../../../assets/beehive.png";
+import Beehive2 from "../../../assets/beehive2.png";
+import { FaCheckCircle } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./choose.css";
 
 const Choose = () => {
-  const gridOneData = [
-    {
-      title: "Access to a Talent Pool",
-      desc: "Access to a varied talent pool that allows businesses to tap into a plethora of experience and abilities from across the globe, ensuring they select the most suitable people for their unique needs.",
-    },
-    {
-      title: "Cost-Efficiency",
-      desc: "Virtual employment reduces the need for real office space, lowering overhead expenditures like utilities, rent, and staffing. Businesses can enjoy considerable cost reductions while still retaining access to top-tier personnel.",
-    },
-    {
-      title: "Scalability and Adaptability",
-      desc: "We proved a virtual workforce allows you scalability and flexibility. Businesses may simply scale up or down their teams based on project demands, ensuring they have the proper personnel when they need them without being bound to long-term commitments.",
-    },
-    {
-      title: "Specialized Knowledge",
-      desc: "We specialize in a variety of areas, giving clients access to highly qualified and experienced people. This enables businesses to rapidly establish teams with the precise expertise needed for their projects.",
-    },
-    {
-      title: "Workforce Strategic Planning",
-      desc: "We collaborate closely with customers to understand their company goals and difficulties. This results in strategic personnel planning that is tailored to the specific needs of the company, ensuring the right people are in place to guarantee success.",
-    },
-    {
-      title: "Solutions for Integrated Technology",
-      desc: "We make use of modern virtual collaboration tools and technology. This enables continuous communication, effective project management, and a virtual workspace that promotes productivity and cooperation.",
-    },
-    {
-      title: "Risk Management and Compliance",
-      desc: "We place a premium on data security and compliance with international legislation. This reduces the hazards of remote work while also providing enterprises with a safe and compliant virtual work environment",
-    },
-    {
-      title: "Concentrate on Core Competencies",
-      desc: "Businesses can focus on their core capabilities by outsourcing staffing activities to a virtual staffing provider. This allows up time and resources for strategic projects, innovation, and corporate development.",
-    },
-    {
-      title: "Savings in Recruitment Time",
-      desc: "We simplify the hiring process by developing networks and methods for locating, evaluating, and placing eligible individuals, which saves firms a significant amount of time throughout the recruiting process.",
-    },
-    {
-      title: "Improved Work-Life Balance",
-      desc: "The staff benefit from a better work-life balance when they work from home. This may lead to enhanced work satisfaction, morale, and higher retention rates, all of which help organizations in terms of production and stability.",
-    },
-    {
-      title: "Practices that are Environmentally Friendly and Sustainable",
-      desc: "By decreasing the need for daily transportation and the related carbon footprint, virtual staffing accords with sustainable and eco-friendly practices. By adopting remote labor, businesses may help with environmental conservation.",
-    },
-  ];
-
   useEffect(() => {
     AOS.init({ duration: 1500 });
   }, []);
 
   return (
     <section id="choose">
-      <ParallaxEffect />
       <div className="choose__container">
-   
+        <img className="beehive__logo" src={Beehive} alt="" />
+        <img className="beehive__logo_two" src={Beehive2} alt="" />
         <div className="choose__content">
-        <img src={vaLogo} alt="" />
-          <div
-            className="choose__title"
-            data-aos="fade-down"
-            data-aos-once="true"
-          >
-            <p>
-              BeeHub Virtual Assistants Co. allows organizations to benefit on
-              the following advantages, resulting in a more agile,
-              cost-effective, and internationally competitive workforce that
-              adapts to the needs of the current business landscape.
-            </p>
+          <div className="choose__title">
+            <h1>Why Choose BeeHub Virtual Assistants Co.?</h1>
+          </div>
+          <div className="choosecontent__container">
+            <div className="choose__box">
+              <div className="choosebox__title">
+                <h1>All-In-One Virtual Staffing Solutions</h1>
+              </div>
+              <div className="choose__list">
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>
+                    Cost-effective and flexible approach to staffing needs,
+                    including job board selection.
+                  </p>
+                </div>
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>
+                    AI-assisted hiring and HR-assisted hiring: choose from
+                    pre-vetted Virtual Assistants
+                  </p>
+                </div>
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>
+                    Enable businesses to create customized virtual teams,
+                    offering flexibility, scalability, expertise,
+                    cost-effectiveness, and quality assurance, all while
+                    ensuring expertise and quality
+                  </p>
+                </div>
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>
+                    Offers specialized Virtual Assistants for your business's
+                    unique needs
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="choose__box">
+              <div className="choosebox__title">
+                <h1>All-Inclusive Staffing Advantage</h1>
+              </div>
+              <div className="choose__list">
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>Provides precise time tracking and streamlined payroll</p>
+                </div>
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>
+                    Offers comprehensive training, dedicated support, and
+                    proactive management
+                  </p>
+                </div>
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>
+                    Allows businesses to focus on their growth and innovation
+                  </p>
+                </div>
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>Provides a stress-free staffing experience</p>
+                </div>
+              </div>
+            </div>
+            <div className="choose__box">
+              <div className="choosebox__title">
+                <h1>Talent Matching Powered by AI</h1>
+              </div>
+              <div className="choose__list">
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>Efficient Screening and Matching</p>
+                </div>
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>Leads to time and cost savings</p>
+                </div>
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>Improved quality of hires reduces bias</p>
+                </div>
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>Aids in strategic workforce planning</p>
+                </div>
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>Secures the best talents in a competitive market</p>
+                </div>
+              </div>
+            </div>
+            <div className="choose__box">
+              <div className="choosebox__title">
+                <h1>Customized Staffing Solutions</h1>
+              </div>
+              <div className="choose__list">
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>Tailored management and service packages for businesses</p>
+                </div>
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>Delivers entry-level to executive roles</p>
+                </div>
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>
+                    Ensures appropriate Virtual Assistants for the right
+                    functions
+                  </p>
+                </div>
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>Customizable service packages expand with organization</p>
+                </div>
+                <div className="choosebox__list">
+                  <FaCheckCircle className="choosecheck__icon" size={20} />
+                  <p>
+                    Aims to realize the company's full potential with people
+                    designed for success
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div
-            className="carousel__container"
-            data-aos="fade-down"
-            data-aos-once="true"
-          >
-            <Carousel
-              className="carousel__class"
-              emulateTouch={true}
-              autoPlay={true}
-              infiniteLoop={true}
-              width="100%"
-              showThumbs={false}
-            >
-              {gridOneData.map((item, i) => (
-                <div className="choose__details" key={item.title}>
-                  <div className="details__container">
-                    <h1 className="desc__title">{item.title}</h1>
-                    <p className="desc__details">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </Carousel>
+          <div className="title__button">
+            <Link to="/joinregister" className="btn btn-primary">
+              Start Hiring
+            </Link>
           </div>
         </div>
       </div>

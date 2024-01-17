@@ -16,7 +16,7 @@
 }
 
 .beehubtag__title {
-  color: #f1faee;
+  color: var(--color-white);
   flex-shrink: 0;
   font-size: 3vw;
 }

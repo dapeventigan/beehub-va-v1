@@ -13,7 +13,7 @@ nav {
 .navbar__contents {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .navbar__box {
@@ -23,6 +23,7 @@ nav {
 }
 
 .navbar__beehub {
+  margin-right: 30px;
   flex-shrink: 0;
 }
 .navbar__beehub img {
@@ -44,7 +45,7 @@ nav {
 .navbar__links {
   display: flex;
   align-items: center;
-  gap: 3.5rem;
+  gap: 2.5rem;
 }
 
 .active-nav {
@@ -159,7 +160,7 @@ nav {
 
 #login-btn {
   background: linear-gradient(to bottom right, #ffd000, #ff9a5a);
-  border-radius: 2rem;
+  border-radius: 0.3rem;
   padding: 0.5rem 1.3rem;
   box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5);
   transition: box-shadow 0.2s ease-in-out;

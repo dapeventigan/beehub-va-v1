@@ -143,9 +143,7 @@ const NavbarHome = () => {
   return (
     <nav>
       <div className="navbar__contents">
-        <div className="navbar__beehub" style={beeHubImg}>
-          <img src={BHLogo} alt="" />
-        </div>
+   
         <div className="navbar__link">
           <div className="simple__menu">
             <Button
@@ -166,6 +164,9 @@ const NavbarHome = () => {
           </div>
           <div className={!isOpen ? "navul__container" : "show"}>
             <ul className="navbar__links">
+              <div className="navbar__beehub" style={beeHubImg}>
+                <img src={BHLogo} alt="" />
+              </div>
               <li>
                 <a href="/#" className="link__details">
                   HOME
@@ -178,7 +179,7 @@ const NavbarHome = () => {
               </li>
               <li>
                 <div class="dropdown">
-                  <a class="dropbtn">
+                  <a href="/aboutus/why-work-with-us" class="dropbtn">
                     ABOUT US <FaAngleDown />
                   </a>
                   <div class="dropdown-content-small">
@@ -259,17 +260,13 @@ const NavbarHome = () => {
                   PLANS AND PRICING
                 </a>
               </li>
+              <a id="login-btn" className="link__details" onClick={handleOpen}>
+                Login
+              </a>
             </ul>
           </div>
         </div>
-        <div className="navbar__box">
-          <a id="login-btn" className="link__details" onClick={handleOpen}>
-            Sign Up
-          </a>
-          <a id="login-btn" className="link__details" onClick={handleOpen}>
-            Log In
-          </a>
-        </div>
+       
 
         {/* <div className="button__login">
             {isUserLoggedIn ? (

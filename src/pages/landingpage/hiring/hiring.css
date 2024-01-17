@@ -1,49 +1,37 @@
 #hiring {
-  background-color: var(--color-bg-variant);
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.hiring__title {
-  padding-top: 10rem;
-  font-family: 'Playfair Display', serif;
-  font-size: 4rem;
+  position: relative;
 }
 
 .hiring__container {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 3rem 0;
-  gap: 4rem;
-  max-width: 45%;
 }
 
-.hiring__box {
-  padding: 2rem;
-  border: 0 solid var(--color-dark-yellow);
-  border-radius: 2rem;
-  transition: border 300ms ease-in-out, padding 300ms ease-in-out;
-}
-
-.hiring__box:hover {
-  cursor: pointer;
-  padding: 2.5rem;
-  border: 0.3rem solid var(--color-dark-yellow);
-}
-
-.hiring__contents {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.hiring__title {
+  padding-top: 8rem;
+  font-family: "Playfair Display", serif;
+  font-size: 4rem;
   text-align: center;
-  gap: 1.5rem;
-  max-width: 300px;
+  margin-bottom: 4rem;
+  color: var(--color-font-darkgrey);
+  z-index: 2;
 }
 
+.hiring__container > img {
+  width: 80%;
+}
 .title__button {
-  padding-bottom: 5rem;
+  padding-bottom: 3rem;
+}
+
+.beehive__logo_three{
+  height: 600px;
+  width: 600px;
+  position: absolute;
+  bottom: -20px;
+  left: -200px;
 }
