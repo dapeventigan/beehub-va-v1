@@ -28,7 +28,7 @@ const VASection = () => {
             </p>
           </div>
 
-          <div className="va__icons" data-aos="fade" data-aos-once="true">
+          <div className="va__icons">
             <div className="virtualassist__container">
               <FaPeopleGroup size={100} />
               <h1>Strategic Workforce Planning</h1>

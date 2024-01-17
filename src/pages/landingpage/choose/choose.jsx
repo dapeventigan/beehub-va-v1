@@ -21,7 +21,7 @@ const Choose = () => {
           <div className="choose__title">
             <h1>Why Choose BeeHub Virtual Assistants Co.?</h1>
           </div>
-          <div className="choosecontent__container">
+          <div className="choosecontent__container" data-aos="fade-up" data-aos-once="true" >
             <div className="choose__box">
               <div className="choosebox__title">
                 <h1>All-In-One Virtual Staffing Solutions</h1>
