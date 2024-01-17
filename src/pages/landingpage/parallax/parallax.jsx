@@ -24,7 +24,7 @@ const ParallaxEffect = () => {
   const smallScreenRange = ["150%", "1000%"];
   const mediumScreenRange = ["70%", "800%"];
   const medLargeScreenRange = ["40%", "1000%"];
-  const largeScreenRange = ["50%", "510%"];
+  const largeScreenRange = ["30%", "400%"];
 
   const textY = useTransform(
     scrollYProgress,
@@ -47,8 +47,11 @@ const ParallaxEffect = () => {
           </h1>
 
           <p className="parallax__p">
-            Hiring a virtual assistant provides a multitude of advantages to
-            individuals or business organizations.
+            Our one-stop virtual staffing hub provides top-tier virtual
+            assistants to businesses worldwide, utilizing an intelligent
+            matching algorithm for seamless hiring and job alignment,
+            transforming staffing into a dynamic solution, and driving
+            businesses to new heights in the digital world.
           </p>
         </motion.div>
       </div>
