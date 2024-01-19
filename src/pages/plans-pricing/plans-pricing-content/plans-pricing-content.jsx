@@ -12,9 +12,9 @@ const PlansPricingContent = () => {
   return (
     <section id="plans-pricing-content">
       <div className="container planspricing__container">
+        <div className="top-horizontal-line"></div>
         <div className="planspricingtitle__container">
           <div className="planspricing__title">
-            <div className="top-horizontal-line"></div>
             <h1>
               Employing the finest virtual assistant comes at no expense to your
               budget or the typical cost when you choose our services.

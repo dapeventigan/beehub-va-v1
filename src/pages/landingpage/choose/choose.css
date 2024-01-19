@@ -1,5 +1,6 @@
 #choose {
   min-height: 1000px;
+  background-color: var(--color-bg-variant);
 }
 
 .choose__container {
@@ -58,7 +59,6 @@
 
 .choose__title > h1 {
   font-family: "Playfair Display", serif;
-  color: var(--color-font-darkgrey);
   font-size: 4rem;
 }
 

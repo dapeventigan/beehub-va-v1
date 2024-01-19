@@ -191,9 +191,10 @@ const NavbarHome = () => {
               <li>
                 <div class="dropdown">
                   <a href="/services" class="dropbtn">
-                    OUR SERVICES <FaAngleDown />
+                    OUR SERVICES 
                   </a>
-                  <div class="dropdown-content">
+                  {/* <FaAngleDown /> */}
+                  {/* <div class="dropdown-content">
                     <a href="/services/#strategic-workforce-planning">
                       Strategic Workforce Planning
                     </a>
@@ -228,7 +229,7 @@ const NavbarHome = () => {
                       {" "}
                       Global Talent Sourcing (Coming Soon)
                     </a>
-                  </div>
+                  </div> */}
                 </div>
               </li>
               <li>

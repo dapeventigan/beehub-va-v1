@@ -1,0 +1,124 @@
+.realators__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: var(--color-font-darkgrey);
+  font-family: "Playfair Display", serif;
+  margin-bottom: 2rem;
+}
+
+.realators__title-desc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.realators__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8rem;
+}
+
+.realators__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  gap: 6rem;
+}
+
+.realators__img {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.realators__img::after {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  right: -60px;
+  width: 400px;
+  height: 400px;
+  background-color: var(--color-dark-yellow);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.realator__img {
+  width: 500px;
+  height: 500px;
+  z-index: 1;
+}
+
+.realators__desc > h2 {
+  color: var(--color-font-darkgrey);
+  font-family: "Playfair Display", serif;
+  font-size: 45px;
+  margin-bottom: 1rem;
+}
+
+/* Reposnive margin okay? */
+.realatorsdesc__list {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  gap: 1rem;
+  margin: 0.5rem 0; 
+  position: relative;
+  filter: drop-shadow(-1px 9px 8px rgba(0, 0, 0, 0.5));
+}
+
+.realatorsdesc__list::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: -70px;
+  right: -25px;
+  transform: scale(0.98);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background-color: var(--color-dark-yellow);
+}
+
+.realatorsdesc__list > p {
+  text-align: center;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.realators__list {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  z-index: 1;
+}
+
+.realators__icon {
+  flex-shrink: 0;
+}
+.generalrealestate__container {
+  margin: 6.5rem 0 15rem 0;
+}
+
+.generalrealestate__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  margin-bottom: 8rem;
+  color: var(--color-font-darkgrey);
+}
+.generalrealestate__box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+}

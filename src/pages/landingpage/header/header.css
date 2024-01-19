@@ -1,6 +1,6 @@
 #header {
   background-color: var(--color-bg-variant);
-  min-height: 700px;
+  min-height: 730px;
 }
 
 .header__container {
@@ -41,6 +41,7 @@
   gap: 1rem;
   flex-direction: row-reverse;
   padding-top: 3rem;
+  z-index: 1;
 }
 
 .title__button-header {
@@ -49,27 +50,15 @@
   gap: 1rem;
   flex-direction: row-reverse;
   padding-top: 3rem;
+  z-index: 1;
 }
 
-.header__logo{
-  
-}
 .animated__logo {
   max-width: 1300px;
 }
 
-.btn {
-  font-size: 1vw;
-}
-
 .mobile {
   display: none;
-}
-
-@media screen and (min-width: 4000px) {
-  #header {
-    min-height: 1900px;
-  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -96,10 +85,6 @@
     margin-top: 3rem;
   }
 
-  .btn {
-    font-size: 15px;
-  }
-
   .header__container {
     place-items: center;
     display: block;
@@ -117,10 +102,6 @@
 
   .title__contents > h1 {
     font-size: 40px;
-  }
-
-  .btn {
-    font-size: 15px;
   }
 
   .mobile {

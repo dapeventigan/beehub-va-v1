@@ -18,7 +18,7 @@
 .beehubtag__title {
   color: var(--color-white);
   flex-shrink: 0;
-  font-size: 3vw;
+  font-size: 60px;
 }
 
 .beehubtag__roller {
@@ -30,7 +30,7 @@
   display: flex;
   align-items: center;
   color: var(--color-bg-variant);
-  font-size: 3vw;
+  font-size: 60px;
   font-weight: bolder;
 }
 

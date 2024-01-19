@@ -12,7 +12,8 @@
 }
 
 .whystats__details > h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Times New Roman', Times, serif; 
+  color: var(--color-font-darkgrey);
   text-align: center;
   font-size: 4rem;
 }

@@ -22,9 +22,10 @@
 }
 
 .hiring__container > img {
-  width: 80%;
+  width: 60%;
 }
 .title__button {
+  z-index: 1;
   padding-bottom: 3rem;
 }
 

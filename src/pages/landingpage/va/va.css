@@ -1,7 +1,7 @@
 #va {
-  min-height: 900px;
+  min-height: 1200px;
   position: relative;
-  background-size: cover;
+  background-color: var(--color-bg-variant);
 }
 
 .aboutva__container {
@@ -21,16 +21,14 @@
 
 .va__title > h1 {
   padding-top: 0rem;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 4rem;
-  color: var(--color-font-darkgrey);
 }
 
 .va__title > p {
   padding-top: 1.5rem;
   text-align: center;
   width: 60%;
-  color: var(--color-font-darkgrey);
 }
 
 .va__icons {
@@ -38,20 +36,38 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
-  color: var(--color-dark-yellow);
 }
 
 .virtualassist__container {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  transition: transform .2s;
+  position: relative;
+  transition: transform 0.2s;
 }
 
-.virtualassist__container:hover{
+.virtualassist__container > h1 {
+  margin-top: 1rem;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.va-icon {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  background-color: var(--color-dark-yellow);
+  padding: 0.5rem;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.vaicon__img {
+  width: 500px;
+  height: 300px;
+}
+
+.virtualassist__container:hover {
   transform: scale(1.1);
 }

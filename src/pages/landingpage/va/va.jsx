@@ -12,6 +12,7 @@ const VASection = () => {
     AOS.init({ duration: 1500 });
   }, []);
 
+  const vaiconstyle = { zIndex: 2 };
   return (
     <section id="va">
       <div className="vas__container">
@@ -30,26 +31,41 @@ const VASection = () => {
 
           <div className="va__icons">
             <div className="virtualassist__container">
-              <FaPeopleGroup size={100} />
+              <FaPeopleGroup size={100} className="va-icon"/>
+              <img
+                className="vaicon__img"
+                src="https://images.pexels.com/photos/3184299/pexels-photo-3184299.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                alt=""
+              ></img>
               <h1>Strategic Workforce Planning</h1>
+              <p>Lorem ipsum dolor sit amet.</p>
             </div>
+
             <div className="virtualassist__container">
-              <FaHandshake size={100} />
+              <FaHandshake size={100} className="va-icon"/>
+              <img
+                className="vaicon__img"
+                src="https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg"
+                alt=""
+              ></img>
               <h1>Talent Acquisition and Recruitment</h1>
+              <p>Lorem ipsum dolor sit amet.</p>
             </div>
             <div className="virtualassist__container">
-              <FaComputer size={100} />
+              <FaComputer size={100} className="va-icon"/>
+              <img
+                className="vaicon__img"
+                src="https://images.pexels.com/photos/12912121/pexels-photo-12912121.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                alt=""
+              ></img>
               <h1>Technology Integration</h1>
-            </div>
-            <div className="virtualassist__container">
-              <FaCogs size={100} />
-              <h1>Customized Solution</h1>
+              <p>Lorem ipsum dolor sit amet.</p>
             </div>
           </div>
 
           <div className="title__button">
             <a href="/services" className="btn btn-primary">
-              See More
+              View All Services
             </a>
           </div>
         </div>

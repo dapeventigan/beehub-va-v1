@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import Contact from "../../landingpage/contact/contact";
+import Beehive from "../../../assets/beehive.png";
+import Beehive2 from "../../../assets/beehive2.png";
+import Beehive3 from "../../../assets/beehive3.png";
 import AOS from "aos";
 import "./servicescontent.css";
 
@@ -20,9 +23,10 @@ const ServicesContent = () => {
   return (
     <section id="servicescontent">
       <div className="servicescontent__container">
-        <div
-          className="servicescontent__title"
-        >
+        <img className="servicesbeehive__logo" src={Beehive} alt="" />
+        <img className="servicesbeehive__logo_two" src={Beehive2} alt="" />
+        <img className="servicesbeehive__logo_three" src={Beehive3} alt="" />
+        <div className="servicescontent__title">
           <div className="top-horizontal-line"></div>
           <h1>BeeHub's Top Tier Services</h1>
         </div>

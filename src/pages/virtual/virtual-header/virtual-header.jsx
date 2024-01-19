@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "./virtual-header.css";
 
 const VirtualHeader = () => {
+
+  useEffect(() => {
+    AOS.init({ duration: 1500 });
+  }, []);
+
   return (
     <section id="virtualheader">
       <div className="container virtualheader__container">
-        <div className="virtualheader__title">
+        <div className="virtualheader__title" data-aos="fade-down" data-aos-once="true">
           <h1>Our Virtual Assistants</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -24,11 +31,11 @@ const VirtualHeader = () => {
           </Link>
         </div>
       </div>
-      <svg className="wavy-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <svg className="wavy-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319">
         <path
           fill="#f8f8f8"
           fill-opacity="1"
-          d="M0,64L1440,320L1440,320L0,320Z"
+          d="M 0 320 L 301 216 L 1105 216 L 1440 320 Z"
         ></path>
       </svg>
     </section>

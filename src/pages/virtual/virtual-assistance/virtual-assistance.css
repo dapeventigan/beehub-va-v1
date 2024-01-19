@@ -1,18 +1,84 @@
-.reusable__space{
-  min-height: 120px;
+.vatitle__choose {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Playfair Display", serif;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--color-font-darkgrey);
 }
 
-.top-horizontal-line-va{
-  /* margin-bottom: 5rem; */
-  width: 180px; /* Adjust the width as needed */
-  height: 10px; /* Set the height/thickness of the line */
-  border-radius: 10rem;
-  background-color: var(--color-bg-variant); /* Set the color of the line */
+.vatitle__choose > h1 {
+  width: 70%;
 }
 
-.viras__container {
-  width: var(--container-width-lg);
-  margin-inline: auto;
+.va__choose {
+  margin: 5rem 0 6rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  filter: drop-shadow(-1px 9px 8px rgba(0, 0, 0, 0.5));
+}
+
+.vachoose__box {
+  padding: 1rem;
+  width: 400px;
+  text-align: center;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.vachoose__box:hover {
+  transform: scale(1.04);
+}
+
+.active__hex {
+  position: relative; /* You can adjust the color and thickness as needed */
+}
+
+.active__hex::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 10px;
+  background-color: var(--color-bg-variant); /* You can adjust the color as needed */
+  position: absolute;
+  bottom: -15px;
+}
+
+.var {
+  background: url("../../../assets/building.png");
+  color: var(--color-white);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.sva {
+  background: url("../../../assets/va-img.png");
+  color: var(--color-white);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.vcc {
+  background: url("../../../assets/callcenter.png");
+  color: var(--color-white);
+  background-position: 100% 30%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.content__tab {
+  display: none;
+}
+
+.show__content {
+  display: block;
 }
 
 .viras__maincontainer > h1 {
@@ -74,32 +140,28 @@
   color: rgb(116, 116, 116);
 }
 
-.vaback__container{
+.vaback__container {
   text-align: center;
   padding: 0 0 30px 0;
 }
 
 @media screen and (max-width: 910px) {
-    .viras__maincontainer > h1,
-    .span__text {
-      font-size: 60px;
-      text-align: center;
-      margin: 0 auto;
-    }
+  .viras__maincontainer > h1,
+  .span__text {
+    font-size: 60px;
+    text-align: center;
+    margin: 0 auto;
+  }
 
-    .viras__maincontainer > p {
-        font-size: 16px;
-        text-align: justify;
-        margin: 0 auto;
-        padding: 0 1rem;
-      }
+  .viras__maincontainer > p {
+    font-size: 16px;
+    text-align: justify;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
 
   .viras__container {
     width: 100%;
-  }
-
-  .reusable__space{
-    min-height: 40px;
   }
 
   .viras__gridlist {
