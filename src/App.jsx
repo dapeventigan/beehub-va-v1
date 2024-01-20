@@ -45,7 +45,7 @@ const router = createBrowserRouter(
       <Route path="resetpasswordverify" element={<CheckEmail />} />
       <Route path="virtual-assistant" element={<VirtualHome />} />
       <Route path="/admindashboard" element={<Dashboard />} />
-      <Route path="/aboutus/why-work-with-us" element={<WhyWork />}></Route>
+      <Route path="/aboutus" element={<WhyWork />}></Route>
       <Route path="/aboutus/our-team" element={<OurTeam />}></Route>
       <Route path="services" element={<Services />}></Route>
       <Route path="plans-and-pricing" element={<PlansPricing />}></Route>

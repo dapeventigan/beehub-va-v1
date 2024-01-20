@@ -85,12 +85,6 @@ const NavbarHome = () => {
     };
   }, []);
 
-  if (showDiv === true) {
-    console.log("SHOWING");
-  } else {
-    console.log("NOT SHOWING");
-  }
-
   // Axios.defaults.withCredentials = true;
   // useEffect(() => {
   //   Axios.get("http://localhost:3001/verifylogin").then((res) => {
@@ -179,11 +173,11 @@ const NavbarHome = () => {
               </li>
               <li>
                 <div class="dropdown">
-                  <a href="/aboutus/why-work-with-us" class="dropbtn">
+                  <a href="/aboutus" class="dropbtn">
                     ABOUT US <FaAngleDown />
                   </a>
                   <div class="dropdown-content-small">
-                    <a href="/aboutus/why-work-with-us">Why work with BeeHub</a>
+                    <a href="/aboutus/#why-work-beehub">Why work with BeeHub</a>
                     <a href="/aboutus/our-team">Our Team</a>
                   </div>
                 </div>
@@ -235,9 +229,9 @@ const NavbarHome = () => {
               <li>
                 <div class="dropdown">
                   <a href="/virtual-assistant" class="dropbtn">
-                    OUR VAs <FaAngleDown />
+                    OUR VAs
                   </a>
-                  <div class="dropdown-content">
+                  {/* <div class="dropdown-content">
                     <p className="dropdown-title">
                       Virtual Assistants for Realtors
                     </p>
@@ -253,7 +247,7 @@ const NavbarHome = () => {
                     <p className="dropdown-title">
                       Virtual Call Center (Coming Soon)
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </li>
               <li>

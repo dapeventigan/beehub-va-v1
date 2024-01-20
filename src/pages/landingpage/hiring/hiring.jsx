@@ -7,6 +7,16 @@ import "./hiring.css";
 const Hiring = () => {
   useEffect(() => {
     AOS.init({ duration: 1500 });
+
+    const { hash } = window.location;
+    if (hash) {
+  
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    
   }, []);
 
   return (

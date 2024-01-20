@@ -10,10 +10,10 @@ const ServicesContent = () => {
   useEffect(() => {
     AOS.init({ duration: 1500 });
 
-    // Check if the hash exists in the URL
+    
     const { hash } = window.location;
     if (hash) {
-      // Find the element with the corresponding ID and scroll to it
+  
       const element = document.querySelector(hash);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
