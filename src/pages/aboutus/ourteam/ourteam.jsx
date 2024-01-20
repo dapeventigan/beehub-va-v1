@@ -1,6 +1,6 @@
-import RootNav from "../../landingpage/navbar/navroot";
+import RootNav from "../../../components/navbar/navroot";
 import BeehubTeam from "./beehubteam/beehubteam";
-import Footer from "../../landingpage/footer/footer";
+import Footer from "../../../components/footer/footer.jsx";
 
 function OurTeam() {
 

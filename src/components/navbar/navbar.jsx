@@ -6,10 +6,10 @@ import Modal from "@mui/material/Modal";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaBars } from "react-icons/fa";
 import { MdOutlineClose } from "react-icons/md";
-import Login from "../../login/login";
+import Login from "../../pages/login/login.jsx";
 import AOS from "aos";
 import { IoClose } from "react-icons/io5";
-import BHLogo from "../../../assets/logo_1.png";
+import BHLogo from "../../assets/logo_1.png";
 // import Cookies from "js-cookie";
 
 import "./navbar.css";
@@ -124,8 +124,8 @@ const NavbarHome = () => {
     transform: "translate(-50%, -50%)",
     width: 400,
     bgcolor: "background.paper",
-    border: "2px solid #000",
-    borderRadius: "2rem",
+    border: "2px solid black",
+    borderRadius: "1rem",
     boxShadow: 24,
   };
 

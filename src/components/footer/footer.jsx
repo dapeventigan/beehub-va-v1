@@ -1,6 +1,6 @@
 import React from "react";
 
-import vaLogo from "../../../assets/Logo v1/Black And White/black2.png";
+import vaLogo from "../../assets/Logo v1/Black And White/black2.png";
 import { FaFacebookSquare } from "react-icons/fa";
 import Copyright from "./copyright";
 import "./footer.css";

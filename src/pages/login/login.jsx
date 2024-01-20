@@ -58,7 +58,6 @@ const Login = () => {
   useEffect(() => {
     if (googleSignStatus === true) {
       // handleGoogleLogin();
-
       // const handleGoogleLogin = async () => {
       //   try {
       //     await Axios.post("http://localhost:3001/googlelogin", {
@@ -87,8 +86,6 @@ const Login = () => {
       //     }
       //   }
       // };
-
-      
     } else {
       setGoogleSignStatus(false);
       setGoogleFname("");
@@ -99,7 +96,6 @@ const Login = () => {
 
   return (
     <div className="login__container">
-      <div className="login-design"></div>
       <div className="login__main">
         <div className="loginmain__container">
           <div className="loginform__container">
@@ -109,14 +105,16 @@ const Login = () => {
                   Login to <span className="lgn-title">BeeHub</span>
                 </h2>
                 <div className="logininput__container">
-                  <input
-                    className="logininput__form"
-                    type="email"
-                    placeholder="Email"
-                    name="email"
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
+                  <div className="password-container">
+                    <input
+                      className="logininput__form"
+                      type="email"
+                      placeholder="Email"
+                      name="email"
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </div>
                 </div>
                 <div className="logininput__container">
                   <div className="password-container">
@@ -144,26 +142,32 @@ const Login = () => {
                 </div>
                 <div className="forgotpassword__container">
                   <Link to="/resetpasswordverify" className="forgot__password">
-                    Forgot Password
+                    Forgot Password?
                   </Link>
                 </div>
                 {error && <div>{error}</div>}
-                <div className="loginbutton__container">
-                  <button id="lg-btn">Login</button>
+
+                <button id="lg-btn">LOGIN</button>
+
+                <div className="googlesign__container">
+                  <p className="googleloginborder">Or sign in with</p>
+
+                  <GoogleLogin
+                    onSuccess={(credentialResponse) => {
+                      var credentialDecoded = jwtDecode(
+                        credentialResponse.credential
+                      );
+                      console.log(credentialDecoded);
+                      console.log(credentialDecoded.email_verified);
+                      setGoogleSignStatus(credentialDecoded.email_verified);
+                    }}
+                    onError={() => {
+                      console.log("Login Failed");
+                    }}
+                  />
+
+                  <p className="login__noaccount">Don't have an account? <a href="/joinregister"><span className="signuplogin__text">Sign Up</span></a></p>
                 </div>
-                <GoogleLogin
-                  onSuccess={(credentialResponse) => {
-                    var credentialDecoded = jwtDecode(
-                      credentialResponse.credential
-                    );
-                    console.log(credentialDecoded);
-                    console.log(credentialDecoded.email_verified);
-                    setGoogleSignStatus(credentialDecoded.email_verified);
-                  }}
-                  onError={() => {
-                    console.log("Login Failed");
-                  }}
-                />
               </div>
             </form>
           </div>

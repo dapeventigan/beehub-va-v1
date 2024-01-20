@@ -1,7 +1,7 @@
-import RootNav from "../landingpage/navbar/navroot";
+import RootNav from "../../components/navbar/navroot.jsx";
 import PlansPricingHeader from "./plans-pricing-header/plans-pricing-header";
 import PlansPricingContent from "./plans-pricing-content/plans-pricing-content";
-import Footer from "../landingpage/footer/footer";
+import Footer from "../../components/footer/footer.jsx";
 
 function PlansPricing() {
 

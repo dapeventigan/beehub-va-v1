@@ -1,7 +1,7 @@
-import RootNav from "../landingpage/navbar/navroot";
+import RootNav from "../../components/navbar/navroot.jsx";
 import VirtualHeader from "./virtual-header/virtual-header";
 import VirtualAssistance from "./virtual-assistance/virtual-assistance";
-import Footer from "../landingpage/footer/footer";
+import Footer from "../../components/footer/footer.jsx";
 
 function VirtualHome() {
 
