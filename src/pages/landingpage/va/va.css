@@ -1,5 +1,5 @@
 #va {
-  min-height: 1200px;
+  min-height: 1100px;
   position: relative;
   background-color: var(--color-bg-variant);
 }
@@ -9,7 +9,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5rem;
 }
 
 .va__title {
@@ -17,6 +16,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 5rem;
 }
 
 .va__title > h1 {
@@ -45,6 +45,7 @@
   justify-content: center;
   position: relative;
   transition: transform 0.2s;
+  filter: drop-shadow(-1px 9px 8px rgba(0, 0, 0, 0.5));
 }
 
 .virtualassist__container > h1 {
@@ -58,9 +59,10 @@
   position: absolute;
   top: -20px;
   left: 0;
-  background-color: var(--color-dark-yellow);
+  background-color: var(--color-bg-variant);
   padding: 0.5rem;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+
 }
 
 .vaicon__img {

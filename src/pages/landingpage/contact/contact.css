@@ -1,5 +1,6 @@
 #contact {
-  background-color: var(--color-bg-darkgrey);
+  background: url("../../../assets/hexblack.jpg");
+  background-size: cover;
   min-height: 700px;
 }
 
@@ -164,6 +165,21 @@
   line-height: 1.5em;
 }
 
+.cnt-btn {
+  width: max-content;
+  display: inline-block;
+  padding: 1rem 2.2rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--color-bg-variant);
+  color: black;
+}
+
+.cnt-btn:hover {
+  background: #d8b321;
+  border-color: transparent;
+}
 @media screen and (max-width: 1300px) {
   .contact__title > h2 {
     font-size: 4vw;

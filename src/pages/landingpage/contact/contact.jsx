@@ -14,13 +14,12 @@ const Contact = () => {
             LET'S <span className="build__text"> BUILD</span> YOUR BUSINESS
             TOGETHER
           </h1>
-          <h2>Interesed? Any Questions?</h2>
           <h2>
-            Contact <span className="build__text">Beehub</span>
+            We'll find you the best <span className="build__text">BeeHub</span> Virtual Assistant
           </h2>
         </div>
 
-        <div className="contact__container-card">
+        {/* <div className="contact__container-card">
           <div className="contact__card">
             <div className="card_icon">
               <FaPhoneAlt className="icon__card" size={80} />
@@ -48,13 +47,13 @@ const Contact = () => {
               <p>beehubvirtualassistant@gmail.com</p>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="title__button">
-          <Link to="/applyregister" className="btn btn-primary">
+          <Link to="/applyregister" className="cnt-btn">
             Get Started
           </Link>
-          <Link to="/joinregister" className="btn btn-primary">
+          <Link to="/joinregister" className="cnt-btn">
             Learn More
           </Link>
         </div>

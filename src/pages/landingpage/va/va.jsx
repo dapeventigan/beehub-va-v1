@@ -31,7 +31,7 @@ const VASection = () => {
 
           <div className="va__icons">
             <div className="virtualassist__container">
-              <FaPeopleGroup size={100} className="va-icon"/>
+              <FaPeopleGroup size={100} className="va-icon" />
               <img
                 className="vaicon__img"
                 src="https://images.pexels.com/photos/3184299/pexels-photo-3184299.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -42,7 +42,8 @@ const VASection = () => {
             </div>
 
             <div className="virtualassist__container">
-              <FaHandshake size={100} className="va-icon"/>
+              <FaHandshake size={100} className="va-icon" />
+
               <img
                 className="vaicon__img"
                 src="https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg"
@@ -52,7 +53,7 @@ const VASection = () => {
               <p>Lorem ipsum dolor sit amet.</p>
             </div>
             <div className="virtualassist__container">
-              <FaComputer size={100} className="va-icon"/>
+              <FaComputer size={100} className="va-icon" />
               <img
                 className="vaicon__img"
                 src="https://images.pexels.com/photos/12912121/pexels-photo-12912121.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"

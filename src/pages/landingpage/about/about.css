@@ -95,7 +95,7 @@
   }
 }
 .tagline__details:before {
-  background-color: var(--color-bg-variant);
+  background-color: var(--color-dark-yellow);
   clip-path: polygon(calc(0% + (33.3333333333px)) calc(0% + (33.3333333333px)));
 }
 
