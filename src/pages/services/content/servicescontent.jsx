@@ -25,7 +25,6 @@ const ServicesContent = () => {
       <div className="servicescontent__container">
         <img className="servicesbeehive__logo" src={Beehive} alt="" />
         <img className="servicesbeehive__logo_two" src={Beehive2} alt="" />
-        <img className="servicesbeehive__logo_three" src={Beehive3} alt="" />
         <div className="servicescontent__title">
           <div className="top-horizontal-line"></div>
           <h1>BeeHub's Top Tier Services</h1>
