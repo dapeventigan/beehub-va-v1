@@ -1,0 +1,47 @@
+.clientregister__container{
+    margin-top: 4rem;
+}
+
+.registerbox__container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.registerformbox__container, .registerwhyhire__container{
+    flex-shrink: 0;
+    max-width: 430px;
+}
+
+.form__row{
+    display: flex;
+    gap: 2rem;
+}
+
+.disabled {
+  color: #999; /* or any other shade of grey */
+  background-color: #999;
+}
+
+.clientregisterform__container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.clientregisterinput__container{
+    position: relative;
+    height: 3rem;
+    padding: 15px;
+    border-radius: 7px;
+    border: 1.5px solid var(--color-font-darkgrey);
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+}
+
+.clientregisterinput__form{
+    width: 100%;
+    background-color: var(--color-white);
+}

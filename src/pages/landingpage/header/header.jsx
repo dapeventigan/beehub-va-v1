@@ -2,6 +2,7 @@ import React from "react";
 import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
 import HeaderLogo from "../../../assets/header_logo.json";
+import ClientRegister from "../../../components/clientregister/clientregister";
 
 import "./header.css";
 const Header = () => {
@@ -22,9 +23,7 @@ const Header = () => {
             <Link to="/applyregister" className="btn btn-primary">
               Find Career
             </Link>
-            <Link to="/joinregister" className="btn btn-primary">
-              Start Hiring
-            </Link>
+            <ClientRegister/>
           </div>
         </div>
 

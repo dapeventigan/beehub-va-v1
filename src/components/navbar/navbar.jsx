@@ -137,7 +137,6 @@ const NavbarHome = () => {
   return (
     <nav>
       <div className="navbar__contents">
-   
         <div className="navbar__link">
           <div className="simple__menu">
             <Button
@@ -159,7 +158,9 @@ const NavbarHome = () => {
           <div className={!isOpen ? "navul__container" : "show"}>
             <ul className="navbar__links">
               <div className="navbar__beehub" style={beeHubImg}>
-                <img src={BHLogo} alt="" />
+                <a href="/#">
+                  <img src={BHLogo} alt="" />
+                </a>
               </div>
               <li>
                 <a href="/#" className="link__details">
@@ -185,7 +186,7 @@ const NavbarHome = () => {
               <li>
                 <div class="dropdown">
                   <a href="/services" class="dropbtn">
-                    OUR SERVICES 
+                    OUR SERVICES
                   </a>
                   {/* <FaAngleDown /> */}
                   {/* <div class="dropdown-content">
@@ -261,7 +262,6 @@ const NavbarHome = () => {
             </ul>
           </div>
         </div>
-       
 
         {/* <div className="button__login">
             {isUserLoggedIn ? (

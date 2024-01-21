@@ -2,6 +2,7 @@ import React from "react";
 import { FaFacebookMessenger } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
+import ClientRegister from "../../../components/clientregister/clientregister";
 import { Link } from "react-router-dom";
 
 import "./contact.css";
@@ -15,7 +16,8 @@ const Contact = () => {
             TOGETHER
           </h1>
           <h2>
-            We'll find you the best <span className="build__text">BeeHub</span> Virtual Assistant
+            We'll find you the best <span className="build__text">BeeHub</span>{" "}
+            Virtual Assistant
           </h2>
         </div>
 
@@ -50,9 +52,7 @@ const Contact = () => {
         </div> */}
 
         <div className="title__button">
-          <Link to="/applyregister" className="cnt-btn">
-            Get Started
-          </Link>
+          <ClientRegister />
           <Link to="/joinregister" className="cnt-btn">
             Learn More
           </Link>

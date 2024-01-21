@@ -161,7 +161,7 @@ nav {
 #login-btn {
   background: linear-gradient(to bottom right, #ffd000, #ff9a5a);
   border-radius: 2rem;
-  padding: 0.5rem 1.3rem;
+  padding: 0.4rem 1.3rem;
   box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5);
   transition: box-shadow 0.2s ease-in-out;
   cursor: pointer;
