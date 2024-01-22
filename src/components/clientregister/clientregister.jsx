@@ -15,15 +15,15 @@ const ClientRegister = () => {
 
   const toggleClose = () => {
     setOpen(false);
-    setSelectedOption('');
-    setFname('');
-    setLname('');
-    setMobileNumber('');
-    setIndustry('');
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
-    setHearAbout('');
+    setSelectedOption("");
+    setFname("");
+    setLname("");
+    setMobileNumber("");
+    setIndustry("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+    setHearAbout("");
   };
 
   //form details
@@ -79,15 +79,15 @@ const ClientRegister = () => {
     // ...
 
     // Clear the input fields
-    setSelectedOption('');
-    setFname('');
-    setLname('');
-    setMobileNumber('');
-    setIndustry('');
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
-    setHearAbout('');
+    setSelectedOption("");
+    setFname("");
+    setLname("");
+    setMobileNumber("");
+    setIndustry("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+    setHearAbout("");
   };
 
   const style = {
@@ -135,7 +135,9 @@ const ClientRegister = () => {
                           value={selectedOption}
                           onChange={handleSelectChange}
                         >
-                          <option value="" disabled selected>What do you want to do?</option>
+                          <option value="" disabled selected>
+                            What do you want to do?
+                          </option>
                           <option value="option1">Hire VAs</option>
                           <option value="option2">Post A Job</option>
                           <option value="option3">Talk to us</option>
@@ -186,7 +188,21 @@ const ClientRegister = () => {
                           name="mobilenum"
                           onChange={handleMobileChange}
                           inputStyle={{
-                            maxWidth: "85%",
+                            border: "1px solid #f8f8f8",
+                            backgroundColor: "#f8f8f8"
+                          }}
+                          containerStyle={{
+                            height: "3rem",
+                            padding: "15px 0px 15px 0.5rem",
+                            borderRadius: "7px",
+                            border: "1.5px solid #353640",
+                            backgroundColor: "#f8f8f8",
+                            display: "flex",
+                            alignItems: "center",
+                          }}
+
+                          buttonStyle={{
+                            border: "1px solid #f8f8f8",
                           }}
                           disabled={!selectedOption}
                         />
@@ -288,7 +304,9 @@ const ClientRegister = () => {
                           disabled={!selectedOption}
                           required
                         >
-                          <option value="" disabled selected>Where did you hear about us?</option>
+                          <option value="" disabled selected>
+                            Where did you hear about us?
+                          </option>
                           <option value="LinkedIn">LinkedIn</option>
                           <option value="Facebook">Google</option>
                           <option value="Instagram">Instagram</option>
@@ -329,8 +347,8 @@ const ClientRegister = () => {
                             required
                             disabled={!selectedOption}
                           />
-                          I agree to the <a href="#">Terms and Conditions</a>{" "}
-                          and <a href="#">Privacy Policy</a>.
+                          I agree to the <a href="#" className="terms-link">Terms and Conditions</a>{" "}
+                          and <a href="#" className="terms-link">Privacy Policy</a>.
                         </label>
                       </div>
                     </div>
