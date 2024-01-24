@@ -13,9 +13,9 @@ import io from "socket.io-client";
 
 import "react-phone-input-2/lib/style.css";
 // const socket = io.connect("http://localhost:3001");
-const socket = io("http://localhost:3001", {
-  withCredentials: true,
-});
+// const socket = io("http://localhost:3001", {
+//   withCredentials: true,
+// });
 const InitalJoinRegister = () => {
   const navigate = useNavigate();
   // VALUES
@@ -91,10 +91,10 @@ const InitalJoinRegister = () => {
       if (res.data.message === "Email Already Exist!") {
         setIsErrorSubmitLoading(true);
       } else {
-        socket.emit("new_user", {
-          message: `${fname} is joining using ${email}.`,
-        });
-        setIsSubmitLoading(true);
+        // socket.emit("new_user", {
+        //   message: `${fname} is joining using ${email}.`,
+        // });
+        // setIsSubmitLoading(true);
       }
     });
   };

@@ -23,7 +23,7 @@ const Header = () => {
             <Link to="/applyregister" className="btn btn-primary">
               Find Career
             </Link>
-            <ClientRegister/>
+            <ClientRegister btnClass={"btn btn-primary"} btnTitle={"Find a Talent"}/>
           </div>
         </div>
 

@@ -52,10 +52,10 @@ const Contact = () => {
         </div> */}
 
         <div className="title__button">
-          <ClientRegister />
           <Link to="/joinregister" className="cnt-btn">
             Learn More
           </Link>
+          <ClientRegister btnClass={"cnt-btn"} btnTitle={"Get Started"} />
         </div>
       </div>
     </section>

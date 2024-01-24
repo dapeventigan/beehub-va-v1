@@ -73,27 +73,20 @@
 }
 
 #lg-btn {
-  background: linear-gradient(to bottom right, #ffd000, #ff9a5a);
+  display: inline-block;
+  padding: 1rem 2.2rem;
   border-radius: 2rem;
-  padding: 0.8rem 2rem;
-  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5);
-  transition: box-shadow 0.2s ease-in-out;
   cursor: pointer;
-  font-size: 15px;
-  font-weight: 600;
+  transition: var(--transition);
+  background: black;
+  color: var(--color-white);
   margin: 1.5rem 0;
 }
 
-#lg-btn:not([disabled]):focus {
-  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
-    -0.125rem -0.125rem 1rem rgba(136, 116, 5, 0.5),
-    0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
-}
-
-#lg-btn:not([disabled]):hover {
-  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
-    -0.125rem -0.125rem 1rem var(--color-dark-yellow),
-    0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
+#lg-btn:hover{
+  background: #262626;
+  color: var(--color-white);
+  border-color: transparent;
 }
 
 .googlesign__container {

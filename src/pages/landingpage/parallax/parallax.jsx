@@ -58,7 +58,7 @@ const ParallaxEffect = () => {
       <svg className="wavy-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319">
         <path
           fill="#f8f8f8"
-          fill-opacity="1"
+          fillOpacity="1"
           d="M 0 320 L 301 216 L 1105 216 L 1440 320 Z"
         ></path>
       </svg>

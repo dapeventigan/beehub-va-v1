@@ -15,9 +15,9 @@ import "react-phone-input-2/lib/style.css";
 import "./applyregister.css";
 // const socket = io.connect("http://localhost:3001");
   //socket cors
-  const socket = io("http://localhost:3001", {
-    withCredentials: true,
-  });
+  // const socket = io("http://localhost:3001", {
+  //   withCredentials: true,
+  // });
 
 const InitalApplyRegister = () => {
 
@@ -151,10 +151,10 @@ const InitalApplyRegister = () => {
       if (res.data.message === "Email Already Exist!") {
         setIsErrorSubmitLoading(true);
       } else {
-        socket.emit("new_user", {
-          message: `${fname} is applying using ${email}.`,
-        });
-        setIsSubmitLoading(true);
+        // socket.emit("new_user", {
+        //   message: `${fname} is applying using ${email}.`,
+        // });
+        // setIsSubmitLoading(true);
       }
     });
   };

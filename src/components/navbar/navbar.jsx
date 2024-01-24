@@ -173,19 +173,19 @@ const NavbarHome = () => {
                 </a>
               </li>
               <li>
-                <div class="dropdown">
-                  <a href="/aboutus" class="dropbtn">
+                <div className="dropdown">
+                  <a href="/aboutus" className="dropbtn">
                     ABOUT US <FaAngleDown />
                   </a>
-                  <div class="dropdown-content-small">
+                  <div className="dropdown-content-small">
                     <a href="/aboutus/#why-work-beehub">Why work with BeeHub</a>
                     <a href="/aboutus/our-team">Our Team</a>
                   </div>
                 </div>
               </li>
               <li>
-                <div class="dropdown">
-                  <a href="/services" class="dropbtn">
+                <div className="dropdown">
+                  <a href="/services" className="dropbtn">
                     OUR SERVICES
                   </a>
                   {/* <FaAngleDown /> */}
@@ -228,8 +228,8 @@ const NavbarHome = () => {
                 </div>
               </li>
               <li>
-                <div class="dropdown">
-                  <a href="/virtual-assistant" class="dropbtn">
+                <div className="dropdown">
+                  <a href="/virtual-assistant" className="dropbtn">
                     OUR VAs
                   </a>
                   {/* <div class="dropdown-content">
@@ -257,7 +257,7 @@ const NavbarHome = () => {
                 </a>
               </li>
               <a id="login-btn" className="link__details" onClick={handleOpen}>
-                Login
+                Log In or Sign Up
               </a>
             </ul>
           </div>

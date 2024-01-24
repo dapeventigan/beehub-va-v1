@@ -27,6 +27,7 @@
     "react-bootstrap": "^2.9.2",
     "react-data-table-component": "^7.5.4",
     "react-dom": "^18.2.0",
+    "react-google-recaptcha": "^3.1.0",
     "react-icons": "^4.11.0",
     "react-phone-input-2": "^2.15.1",
     "react-responsive-carousel": "^3.2.23",

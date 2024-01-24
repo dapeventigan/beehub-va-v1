@@ -11,9 +11,9 @@ import ViewPdf from "./viewpdf";
 import "./dashboard.css";
 
 // const socket = io.connect("http://localhost:3001");
-const socket = io("http://localhost:3001", {
-  withCredentials: true,
-});
+// const socket = io("http://localhost:3001", {
+//   withCredentials: true,
+// });
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -50,9 +50,9 @@ const Dashboard = () => {
 
   Axios.defaults.withCredentials = true;
   useEffect(() => {
-    socket.on("senduser_admin", (data) => {
-      window.location.reload();
-    });
+    // socket.on("senduser_admin", (data) => {
+    //   window.location.reload();
+    // });
 
     Axios.get("http://localhost:3001/admindashboard").then((res) => {
       if (res.data !== "User not found") {
@@ -85,8 +85,8 @@ const Dashboard = () => {
         console.log(error);
       }
     });
-  }, [navigate, socket]);
-
+  }, [navigate]);
+  // socket
   const applycolumns = [
     {
       name: "Name",

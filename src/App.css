@@ -96,6 +96,27 @@ a:hover {
   border-color: transparent;
 }
 
+.btn:disabled{
+  background: #707070;
+  color: #cccccc;
+  cursor: not-allowed;
+}
+
+.cancel-btn {
+  width: max-content;
+  display: inline-block;
+  padding: 1rem 2.2rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  border: 1.5px solid black;
+  transition: var(--transition);
+  background: var(--color-white);
+}
+
+.cancel-btn:hover {
+  background: #e7e7e7;
+}
+
 .container {
   width: var(--container-width-lg);
   margin-inline: auto;
