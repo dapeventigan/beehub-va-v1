@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import Axios from "axios";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 import PhoneInput from "react-phone-input-2";
 import { IoClose } from "react-icons/io5";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
@@ -13,8 +16,6 @@ import { jwtDecode } from "jwt-decode";
 
 import "./clientregister.css";
 
-//6LcoO1opAAAAAFpjXKglTWLRDBsp-2HKtSXo4UjZ
-
 function ClientRegister({ btnClass, btnTitle }) {
   //Popup Modal
   const [open, setOpen] = useState(false);
@@ -22,6 +23,7 @@ function ClientRegister({ btnClass, btnTitle }) {
   const handleClose = () => toggleClose();
 
   const toggleClose = () => {
+    setMessagePass("");
     setOpen(false);
     setGoogleSignStatus(false);
     setSelectedOption("");
@@ -33,7 +35,6 @@ function ClientRegister({ btnClass, btnTitle }) {
     setPassword("");
     setConfirmPassword("");
     setHearAbout("");
-    setOthersOption("");
     setIsEmailChecked(false);
     setIsTermsChecked(false);
     setCapVal(null);
@@ -68,6 +69,13 @@ function ClientRegister({ btnClass, btnTitle }) {
     setShowPassword(!showPassword);
   };
 
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const toggleCornfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
+  const [messagePass, setMessagePass] = useState("");
+
   //What to Do
   const handleSelectChange = (e) => {
     setSelectedOption(e.target.value);
@@ -97,22 +105,81 @@ function ClientRegister({ btnClass, btnTitle }) {
     setIsTermsChecked(!isTermsChecked);
   };
 
-  //SUBMIT
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    // ...
+  //Loading spinner
+  const [isLoading, setIsLoading] = useState(true);
 
-    // Clear the input fields
-    setSelectedOption("");
-    setFname("");
-    setLname("");
-    setMobileNumber("");
-    setIndustry("");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
-    setHearAbout("");
+  //SUBMIT
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (googleSignStatus === true) {
+      const formData = new FormData();
+
+      formData.append("selectedOption", selectedOption);
+      formData.append("fname", fname);
+      formData.append("lname", lname);
+      formData.append("mobileNumber", mobileNumber);
+      formData.append("industry", industry);
+      formData.append("email", email);
+      formData.append("hearAbout", hearAbout);
+      formData.append("othersOption", othersOption);
+      formData.append("emailSubscribe", isEmailChecked);
+      formData.append("googleVerified", googleSignStatus);
+
+      await Axios.post("http://localhost:3001/joinRegister", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      }).then((res) => {
+        if (res.data.message === "Email Already Exist!") {
+          // setIsErrorSubmitLoading(true);
+        } else {
+          // socket.emit("new_user", {
+          //   message: `${fname} is joining using ${email}.`,
+          // });
+          // setIsSubmitLoading(true);
+        }
+      });
+    } else {
+      if (password !== confirmPassword) {
+        setMessagePass("Password doesn't match.");
+      } else if (!/[A-Z]/.test(password)) {
+        setMessagePass("Password must contain at least one uppercase letter.");
+      } else if (!/\d/.test(password)) {
+        setMessagePass("Password must contain at least one number.");
+      } else if (!/[!@#$%^&*]/.test(password)) {
+        setMessagePass(
+          "Password must contain at least one special character (!@#$%^&*)."
+        );
+      } else if (password.length < 8) {
+        setMessagePass("Password must be at least 8 characters long.");
+      } else {
+        setMessagePass("");
+
+        const formData = new FormData();
+
+        formData.append("selectedOption", selectedOption);
+        formData.append("fname", fname);
+        formData.append("lname", lname);
+        formData.append("mobileNumber", mobileNumber);
+        formData.append("industry", industry);
+        formData.append("email", email);
+        formData.append("password", password);
+        formData.append("hearAbout", hearAbout);
+        formData.append("othersOption", othersOption);
+        formData.append("emailSubscribe", isEmailChecked);
+        await Axios.post("http://localhost:3001/joinRegister", formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        }).then((res) => {
+          if (res.data.message === "Email Already Exist!") {
+            // setIsErrorSubmitLoading(true);
+          } else {
+            // socket.emit("new_user", {
+            //   message: `${fname} is joining using ${email}.`,
+            // });
+            // setIsSubmitLoading(true);
+          }
+        });
+      }
+    }
   };
 
   const style = {
@@ -134,35 +201,6 @@ function ClientRegister({ btnClass, btnTitle }) {
       setFname(googleFname);
       setLname(googleLname);
       setEmail(googleEmail);
-      // handleGoogleLogin();
-      // const handleGoogleLogin = async () => {
-      //   try {
-      //     await Axios.post("http://localhost:3001/googlelogin", {
-      //       googleEmail,
-      //       googleFname,
-      //       googleLname,
-      //     }).then(async (res) => {
-      //       if (res.data.status === "ok") {
-      //         if (res.data.role === "admin") {
-      //           navigate("/admindashboard");
-      //         } else if (res.data.role === "applyUser") {
-      //           navigate("/applyhome");
-      //         } else {
-      //           navigate("/joinhome");
-      //         }
-      //       } else {
-      //       }
-      //     });
-      //   } catch (error) {
-      //     if (
-      //       error.response &&
-      //       error.response.status >= 400 &&
-      //       error.response.status <= 500
-      //     ) {
-      //       setError(error.response.data.message);
-      //     }
-      //   }
-      // };
     } else {
       setGoogleSignStatus(false);
       setGoogleFname("");
@@ -194,7 +232,7 @@ function ClientRegister({ btnClass, btnTitle }) {
                 <div className="registerformbox__container">
                   <h1>Get Started</h1>
 
-                  <form action="">
+                  <form onSubmit={handleSubmit}>
                     <div className="choose__register">
                       <p>Choose what you want to do first:</p>
                       <div>
@@ -365,7 +403,7 @@ function ClientRegister({ btnClass, btnTitle }) {
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Enter Password"
                             disabled={!selectedOption}
-                            required
+                            required={!googleSignStatus}
                           />
                           <button
                             type="button"
@@ -391,19 +429,19 @@ function ClientRegister({ btnClass, btnTitle }) {
                         <div className="password-container">
                           <input
                             className="logininputpass__form "
-                            type={showPassword ? "text" : "password"}
+                            type={showConfirmPassword ? "text" : "password"}
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             placeholder="Confirm Password"
                             disabled={!selectedOption}
-                            required
+                            required={!googleSignStatus}
                           />
                           <button
                             type="button"
-                            onClick={togglePasswordVisibility}
+                            onClick={toggleCornfirmPasswordVisibility}
                             className="password-toggle"
                           >
-                            {showPassword ? (
+                            {showConfirmPassword ? (
                               <AiOutlineEye />
                             ) : (
                               <AiOutlineEyeInvisible />
@@ -444,7 +482,7 @@ function ClientRegister({ btnClass, btnTitle }) {
                           type="text"
                           onChange={(e) => setOthersOption(e.target.value)}
                           placeholder="If others, please specify"
-                          required
+                          required={hearAbout === "Others"}
                           disabled={!selectedOption}
                         />
                       </div>
@@ -489,8 +527,13 @@ function ClientRegister({ btnClass, btnTitle }) {
                         sitekey="6LcoO1opAAAAAFpjXKglTWLRDBsp-2HKtSXo4UjZ"
                         onChange={(value) => setCapVal(value)}
                       />
+
+                      <p className="clientregister__errorMsg">{messagePass}</p>
                       <div className="clientregister__buttons">
-                        <button className="cancel-btn btn-primary" onClick={toggleClose}>
+                        <button
+                          className="cancel-btn btn-primary"
+                          onClick={toggleClose}
+                        >
                           Cancel
                         </button>
                         <button

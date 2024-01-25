@@ -8,7 +8,7 @@ import {
 import LandingPage from "./pages/landingpage/landingpage.jsx";
 import Login from "./pages/login/login.jsx";
 import Dashboard from "./pages/admin/dashboard/dashboard.jsx";
-// import EmailVerify from "./pages/emailverifypage/emailverify.jsx";
+import EmailVerify from "./pages/emailverifypage/emailverify.jsx";
 import VirtualHome from "./pages/virtual/virtual-home.jsx";
 import PlansPricing from "./pages/plans-pricing/plans-pricing.jsx";
 
@@ -51,7 +51,7 @@ const router = createBrowserRouter(
       <Route path="plans-and-pricing" element={<PlansPricing />}></Route>
       {/* <Route path="/applyhome" element={<ApplyHome />} />
       <Route path="/joinhome" element={<JoinHome />} /> */}
-      {/* <Route path="/verify/:id/:token" element={<EmailVerify />} /> */}
+      <Route path="/verify/:id/:token" element={<EmailVerify />} />
       <Route path="/reset/:id/:token" element={<ForgotPassword />} />
 
       <Route path="/*" element={<Navigate to="/" />} />

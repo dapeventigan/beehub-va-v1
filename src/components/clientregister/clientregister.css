@@ -109,3 +109,7 @@
   margin-top: 1rem;
   margin-bottom: 4rem;
 }
+
+.clientregister__errorMsg{
+  color: red;
+}
