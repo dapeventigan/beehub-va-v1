@@ -29,6 +29,7 @@ const Login = () => {
         password,
       }).then(async (res) => {
         if (res.data.status === "ok") {
+          console.log(res.data.role);
           if (res.data.role === "admin") {
             navigate("/admindashboard");
           } else if (res.data.role === "virtualassistant") {
