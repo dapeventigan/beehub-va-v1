@@ -13,9 +13,9 @@ import io from "socket.io-client";
 
 import "react-phone-input-2/lib/style.css";
 import "./applyregister.css";
-// const socket = io.connect("http://localhost:3001");
+// const socket = io.connect("https://server.beehubvas.com");
   //socket cors
-  // const socket = io("http://localhost:3001", {
+  // const socket = io("https://server.beehubvas.com", {
   //   withCredentials: true,
   // });
 
@@ -144,7 +144,7 @@ const InitalApplyRegister = () => {
     formData.append("skills", skills);
     formData.append("selectedValues", selectedValues);
     setIsLoading(true);
-    await Axios.post("http://localhost:3001/applyRegister", formData, {
+    await Axios.post("https://server.beehubvas.com/applyRegister", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     }).then((res) => {
       setIsLoading(false);

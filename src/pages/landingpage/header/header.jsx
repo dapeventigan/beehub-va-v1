@@ -3,6 +3,7 @@ import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
 import HeaderLogo from "../../../assets/header_logo.json";
 import ClientRegister from "../../../components/clientregister/clientregister";
+import VaRegister from "../../../components/varegister/varegister";
 
 import "./header.css";
 const Header = () => {
@@ -20,9 +21,7 @@ const Header = () => {
           </p>
 
           <div className="title__button-header">
-            <Link to="/applyregister" className="btn btn-primary">
-              Find Career
-            </Link>
+            <VaRegister btnClass={"btn btn-primary"} btnTitle={"Find a Job"}/>
             <ClientRegister btnClass={"btn btn-primary"} btnTitle={"Find a Talent"}/>
           </div>
         </div>

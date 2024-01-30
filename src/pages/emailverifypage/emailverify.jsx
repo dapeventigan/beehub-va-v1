@@ -12,17 +12,20 @@ const EmailVerify = () => {
   useEffect(() => {
     const verifyEmailUrl = async () => {
       try {
-        const url = `http://localhost:3001/verify/${param.id}/${param.token}`;
+        const url = `https://server.beehubvas.com/verify/${param.id}/${param.token}`;
         const data = await Axios.get(url);
 
-        if (data.data.message === "Link expired or Invalid token. Please try again by logging in.") {
+        if (
+          data.data.message ===
+          "Link expired or Invalid token. Please try again by logging in."
+        ) {
           setValidUrl(false);
           setErrorMsg(data.data.message);
         } else {
           setValidUrl(true);
         }
-        
       } catch (error) {
+        console.log("yes");
         console.error("Fetch Error:", error);
         setValidUrl(false);
       }
@@ -31,38 +34,41 @@ const EmailVerify = () => {
     verifyEmailUrl();
 
     const redirectTimer = setTimeout(() => {
-      window.location.href = "/login";
+      window.location.href = "/";
     }, 5000);
 
     return () => clearTimeout(redirectTimer);
-    
   }, [param.id, param.token]);
 
-  return validUrl ? (
-    <div className="container emailverify__container">
-      <div className="emailverifymain__container">
-        <div className="welcomemessage__container">
-          <div className="about__beeimg">
-            <img className="bee__verify" src={BeeAbout} alt="" />
+  return (
+    <div className="emailverify__maincontainer">
+      {validUrl ? (
+        <div className="container emailverify__container">
+          <div className="emailverifymain__container">
+            <div className="welcomemessage__container">
+              <div className="about__beeimg">
+                <img className="bee__verify" src={BeeAbout} alt="" />
+              </div>
+              <h2>Your email has been verified!</h2>
+              <h1>
+                Welcome to
+                <span className="build__text">BeeHub Virtual Assistant!</span>
+              </h1>
+            </div>
+            <p>Redirecting to home page in 5 seconds...</p>
           </div>
-          <h2>Your email has been verified!</h2>
-          <h1>
-            Welcome to
-            <span className="build__text">BeeHub Virtual Assistant!</span>
-          </h1>
         </div>
-        <p>Redirecting to the login page in 5 seconds...</p>
-      </div>
-    </div>
-  ) : (
-    <div className="emailverifymain__container">
-      <div className="welcomemessage__container">
-        <div className="about__beeimg">
-          <img className="bee__verify" src={BeeAbout} alt="" />
+      ) : (
+        <div className="emailverifymain__container">
+          <div className="welcomemessage__container">
+            <div className="about__beeimg">
+              <img className="bee__verify" src={BeeAbout} alt="" />
+            </div>
+            <h3>{errorMsg}</h3>
+          </div>
+          <p>Redirecting to the home page in 5 seconds...</p>
         </div>
-        <h3>{errorMsg}</h3>
-      </div>
-      <p>Redirecting to the login page in 5 seconds...</p>
+      )}
     </div>
   );
 };

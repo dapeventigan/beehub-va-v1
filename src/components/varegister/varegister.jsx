@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Axios from "axios";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import Axios from "axios";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import PhoneInput from "react-phone-input-2";
 import { IoClose } from "react-icons/io5";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import vaLogo from "../../assets/Logo v1/Black And White/black2.png";
-import ReCAPTCHA from "react-google-recaptcha";
 /* Google Sign in */
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
+import ReCAPTCHA from "react-google-recaptcha";
 
-import "./clientregister.css";
-
-function ClientRegister({ btnClass, btnTitle }) {
+import "./varegister.css";
+function VaRegister({ btnClass, btnTitle }) {
   //Popup Modal
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -28,15 +27,12 @@ function ClientRegister({ btnClass, btnTitle }) {
     setMessagePass("");
     setOpen(false);
     setGoogleSignStatus(false);
-    setSelectedOption("");
     setFname("");
     setLname("");
     setMobileNumber("");
-    setIndustry("");
     setEmail("");
     setPassword("");
     setConfirmPassword("");
-    setHearAbout("");
     setIsEmailChecked(false);
     setIsTermsChecked(false);
     setCapVal(null);
@@ -45,17 +41,19 @@ function ClientRegister({ btnClass, btnTitle }) {
   };
 
   //form details
-  const [selectedOption, setSelectedOption] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
-  const [mobileNumber, setMobileNumber] = useState("");
-  const [industry, setIndustry] = useState("");
   const [email, setEmail] = useState("");
+  const [mobileNumber, setMobileNumber] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [hearAbout, setHearAbout] = useState("");
-  const [othersOption, setOthersOption] = useState("");
-  const roleStatus = "client";
+  const [skills, setSkills] = useState([]);
+  const roleStatus = "virtualassistant";
+
+  //MOBILE NUMBER
+  const handleMobileChange = (value) => {
+    setMobileNumber(value);
+  };
 
   //google sign in
 
@@ -80,21 +78,6 @@ function ClientRegister({ btnClass, btnTitle }) {
 
   const [messagePass, setMessagePass] = useState("");
 
-  //What to Do
-  const handleSelectChange = (e) => {
-    setSelectedOption(e.target.value);
-  };
-
-  //What to Do
-  const handleAboutChange = (e) => {
-    setHearAbout(e.target.value);
-  };
-
-  //MOBILE NUMBER
-  const handleMobileChange = (value) => {
-    setMobileNumber(value);
-  };
-
   //Promotional Email Checkbox
   const [isEmailChecked, setIsEmailChecked] = useState(false);
 
@@ -113,6 +96,93 @@ function ClientRegister({ btnClass, btnTitle }) {
   const [isLoading, setIsLoading] = useState(false);
   const [divStatus, setDivStatus] = useState(true);
 
+  useEffect(() => {
+    if (googleSignStatus === true) {
+      setFname(googleFname);
+      setLname(googleLname);
+      setEmail(googleEmail);
+    } else {
+      setGoogleSignStatus(false);
+      setGoogleFname("");
+      setGoogleLname("");
+      setGoogleEmail("");
+    }
+  }, [googleSignStatus]);
+
+  //RESUME PARSER VALUES
+  const apiUrl = "https://api.apilayer.com/resume_parser/upload";
+  const apiKey = "kGkRkLNdq7343NZwxNk1kdOKlc7RNMEf";
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+  };
+
+  //RESUME PARSER
+  useEffect(() => {
+    const uploadResume = async () => {
+      try {
+        if (!selectedFile) {
+          return;
+        }
+
+        setIsLoading(true);
+        const fileData = await Axios.get(URL.createObjectURL(selectedFile), {
+          responseType: "arraybuffer",
+        });
+
+        const response = await Axios.post(apiUrl, fileData.data, {
+          headers: {
+            "Content-Type": "application/octet-stream",
+            apikey: apiKey,
+          },
+        });
+
+        setIsLoading(false);
+
+        setSkills(response.data.skills);
+        const parsedName = response.data.name.split(" ");
+        setFname(parsedName[0] || ""); // First name
+        const lastName = parsedName.slice(-1).join(" ");
+        setLname(lastName); // Last name
+        setEmail(response.data.email || "");
+      } catch (error) {
+        console.error("Error:", error.message);
+      }
+    };
+
+    uploadResume();
+  }, [apiUrl, apiKey, selectedFile]);
+
+  //geolocation
+  const [fromPH, setFromPH] = useState(false);
+
+  const getUserIP = async () => {
+    try {
+      await Axios.get("https://api.ipify.org/?format=json").then(
+        async (res) => {
+          const ipInfoResponse = await Axios.get(
+            `http://ip-api.com/json/${res.data.ip}`
+          );
+
+          if (ipInfoResponse.data.country === "Philippines") {
+            setFromPH(true);
+          } else {
+            setFromPH(false);
+          }
+        }
+      );
+    } catch (error) {
+      console.error("Error fetching IP address or location information", error);
+    }
+  };
+
+  useEffect(() => {
+    getUserIP();
+  }, []);
+  console.log(fromPH);
+
   //SUBMIT
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -120,14 +190,12 @@ function ClientRegister({ btnClass, btnTitle }) {
     if (googleSignStatus === true) {
       const formData = new FormData();
 
-      formData.append("selectedOption", selectedOption);
+      formData.append("pdfFile", selectedFile);
       formData.append("fname", fname);
       formData.append("lname", lname);
       formData.append("mobileNumber", mobileNumber);
-      formData.append("industry", industry);
       formData.append("email", email);
-      formData.append("hearAbout", hearAbout);
-      formData.append("othersOption", othersOption);
+      formData.append("skills", skills);
       formData.append("emailSubscribe", isEmailChecked);
       formData.append("googleVerified", googleSignStatus);
       formData.append("roleStatus", roleStatus);
@@ -151,7 +219,7 @@ function ClientRegister({ btnClass, btnTitle }) {
           );
         } else {
           setIsLoading(false);
-          navigate("/profile-bh/:username/:id");
+          navigate("/va-bh/:username/:id");
           // socket.emit("new_user", {
           //   message: `${fname} is joining using ${email}.`,
           // });
@@ -176,15 +244,13 @@ function ClientRegister({ btnClass, btnTitle }) {
 
         const formData = new FormData();
 
-        formData.append("selectedOption", selectedOption);
+        formData.append("pdfFile", selectedFile);
         formData.append("fname", fname);
         formData.append("lname", lname);
         formData.append("mobileNumber", mobileNumber);
-        formData.append("industry", industry);
+        formData.append("skills", skills);
         formData.append("email", email);
         formData.append("password", password);
-        formData.append("hearAbout", hearAbout);
-        formData.append("othersOption", othersOption);
         formData.append("emailSubscribe", isEmailChecked);
         formData.append("roleStatus", roleStatus);
         setDivStatus(false);
@@ -206,19 +272,6 @@ function ClientRegister({ btnClass, btnTitle }) {
       }
     }
   };
-
-  useEffect(() => {
-    if (googleSignStatus === true) {
-      setFname(googleFname);
-      setLname(googleLname);
-      setEmail(googleEmail);
-    } else {
-      setGoogleSignStatus(false);
-      setGoogleFname("");
-      setGoogleLname("");
-      setGoogleEmail("");
-    }
-  }, [googleSignStatus]);
 
   const style = {
     position: "relative",
@@ -262,50 +315,18 @@ function ClientRegister({ btnClass, btnTitle }) {
             ) : (
               <></>
             )}
+
             <div className="exit__button">
               <IoClose size={25} onClick={toggleClose} />
             </div>
-            <div
-              className={
-                !divStatus ? "hide__registerdiv" : "clientregister__container"
-              }
-            >
+            <div className="varegister__container">
               <div className="registerbox__container">
                 <div className="registerformbox__container">
                   <h1>Get Started</h1>
 
                   <form onSubmit={handleSubmit}>
-                    <div className="choose__register">
-                      <p>Choose what you want to do first:</p>
-                      <div>
-                        <select
-                          id="register-dropdown"
-                          value={selectedOption}
-                          onChange={handleSelectChange}
-                          className="clientregisterdropdown__con"
-                          required
-                        >
-                          <option value="" disabled selected>
-                            What do you want to do?
-                          </option>
-                          <option value="Hire">Hire VAs</option>
-                          <option value="PostJob">Post a Job</option>
-                          <option value="PDFPresentation">
-                            Get a PDF Presentation
-                          </option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div
-                      className={
-                        selectedOption
-                          ? "clientregisterform__container"
-                          : "clientregisterform__container-disabled"
-                      }
-                    >
+                    <div className="clientregisterform__container">
                       <div className="horizontal-line"></div>
-
                       <div
                         className={
                           !googleSignStatus
@@ -351,6 +372,19 @@ function ClientRegister({ btnClass, btnTitle }) {
                         </p>
                       </div>
 
+                      <div className="varesume__conainer">
+                        <p>Upload your resume here</p>
+                        <div className="resume__container">
+                          <input
+                            type="file"
+                            className="pdf-control"
+                            onChange={handleFileChange}
+                            accept="application/pdf"
+                            required
+                          />
+                        </div>
+                      </div>
+
                       <div className="form__row">
                         <div className="clientregisterinput__container">
                           <input
@@ -360,7 +394,6 @@ function ClientRegister({ btnClass, btnTitle }) {
                             value={fname}
                             placeholder="First Name"
                             required
-                            disabled={!selectedOption}
                           />
                         </div>
 
@@ -372,14 +405,13 @@ function ClientRegister({ btnClass, btnTitle }) {
                             value={lname}
                             placeholder="Last Name"
                             required
-                            disabled={!selectedOption}
                           />
                         </div>
                       </div>
 
                       <div className="clientregisterinput__con">
                         <PhoneInput
-                          country={"us"}
+                          country={"ph"}
                           value={mobileNumber}
                           inputProps={{ required: true }}
                           name="mobilenum"
@@ -401,18 +433,6 @@ function ClientRegister({ btnClass, btnTitle }) {
                             border: "1px solid #f8f8f8",
                           }}
                           required
-                          disabled={!selectedOption}
-                        />
-                      </div>
-
-                      <div className="clientregisterinput__container">
-                        <input
-                          className="clientregisterinput__form"
-                          type="text"
-                          onChange={(e) => setIndustry(e.target.value)}
-                          placeholder="What Industry are you in?"
-                          required
-                          disabled={!selectedOption}
                         />
                       </div>
 
@@ -425,7 +445,6 @@ function ClientRegister({ btnClass, btnTitle }) {
                           value={email}
                           required
                           readOnly={googleSignStatus}
-                          disabled={!selectedOption}
                         />
                       </div>
 
@@ -443,7 +462,6 @@ function ClientRegister({ btnClass, btnTitle }) {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Enter Password"
-                            disabled={!selectedOption}
                             required={!googleSignStatus}
                           />
                           <button
@@ -474,7 +492,6 @@ function ClientRegister({ btnClass, btnTitle }) {
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             placeholder="Confirm Password"
-                            disabled={!selectedOption}
                             required={!googleSignStatus}
                           />
                           <button
@@ -491,45 +508,6 @@ function ClientRegister({ btnClass, btnTitle }) {
                         </div>
                       </div>
 
-                      <div>
-                        <select
-                          id="dropdown"
-                          value={hearAbout}
-                          onChange={handleAboutChange}
-                          disabled={!selectedOption}
-                          className="clientregisterdropdown__con"
-                          required
-                        >
-                          <option value="" disabled selected>
-                            Where did you hear about us?
-                          </option>
-                          <option value="LinkedIn">LinkedIn</option>
-                          <option value="Facebook">Google</option>
-                          <option value="Instagram">Instagram</option>
-                          <option value="Friends">Friends/Colleagues</option>
-                          <option value="Others">Others</option>
-                        </select>
-                      </div>
-
-                      <div
-                        className={
-                          hearAbout === "Others"
-                            ? "clientregisterothers__container"
-                            : "hide__registerdiv"
-                        }
-                      >
-                        <input
-                          className="clientregisterinput__form"
-                          type="text"
-                          onChange={(e) => setOthersOption(e.target.value)}
-                          placeholder="If others, please specify"
-                          required={hearAbout === "Others"}
-                          disabled={!selectedOption}
-                        />
-                      </div>
-
-                      <div className="horizontal-line"></div>
-
                       <div className="clientregisterinput__con">
                         <label>
                           <input
@@ -537,7 +515,6 @@ function ClientRegister({ btnClass, btnTitle }) {
                             type="checkbox"
                             checked={isEmailChecked}
                             onChange={handleEmailCheckboxChange}
-                            disabled={!selectedOption}
                           />
                           Send me promotional emails.
                         </label>
@@ -551,7 +528,6 @@ function ClientRegister({ btnClass, btnTitle }) {
                             checked={isTermsChecked}
                             onChange={handleTermsCheckboxChange}
                             required
-                            disabled={!selectedOption}
                           />
                           I agree to the{" "}
                           <a href="#" className="terms-link">
@@ -587,8 +563,8 @@ function ClientRegister({ btnClass, btnTitle }) {
                     </div>
                   </form>
                 </div>
-                <div className="registerwhyhire__container">
-                  <h1>WHY HIRE US</h1>
+                <div className="registerwhywork__container">
+                  <h1>WHY WORK WITH US</h1>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Inventore culpa perspiciatis officia ut eum, ipsam iusto
@@ -606,22 +582,6 @@ function ClientRegister({ btnClass, btnTitle }) {
                 </div>
               </div>
             </div>
-
-            <div
-              className={
-                !divStatus && !isLoading
-                  ? "submit__status"
-                  : "hide__registerdiv"
-              }
-            >
-              <h1>
-                We've sent a verification link to you email. Kindly check and
-                verify your email.
-              </h1>
-              <button className="btn btn-primary" onClick={toggleClose}>
-                Okay
-              </button>
-            </div>
           </Box>
         </Modal>
       </div>
@@ -629,4 +589,4 @@ function ClientRegister({ btnClass, btnTitle }) {
   );
 }
 
-export default ClientRegister;
+export default VaRegister;

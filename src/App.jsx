@@ -14,11 +14,11 @@ import PlansPricing from "./pages/plans-pricing/plans-pricing.jsx";
 
 //APPLY ROUTES
 // import ApplyRegister from "./pages/apply/ApplyRegister/applyregister.jsx";
-// import ApplyHome from "./pages/apply/ApplyHome/applyhome.jsx";
+import ApplyHome from "./pages/apply/ApplyHome/applyhome.jsx";
 import InitalApplyRegister from "./pages/apply/ApplyRegister/initalapplyregister.jsx";
 //JOIN ROUTES
 // import JoinRegister from "./pages/join/JoinRegister/joinregister.jsx";
-// import JoinHome from "./pages/join/JoinHome/joinhome.jsx";
+import JoinHome from "./pages/join/JoinHome/joinhome.jsx";
 import InitalJoinRegister from "./pages/join/JoinRegister/initaljoinregister.jsx";
 //FORGOT PASSWORD
 import CheckEmail from "./pages/forgotpassword/checkemail.jsx";
@@ -49,8 +49,8 @@ const router = createBrowserRouter(
       <Route path="/aboutus/our-team" element={<OurTeam />}></Route>
       <Route path="services" element={<Services />}></Route>
       <Route path="plans-and-pricing" element={<PlansPricing />}></Route>
-      {/* <Route path="/applyhome" element={<ApplyHome />} />
-      <Route path="/joinhome" element={<JoinHome />} /> */}
+      <Route path="/va-bh/:username/:id" element={<ApplyHome />} />
+      <Route path="/profile-bh/:username/:id" element={<JoinHome />} />
       <Route path="/verify/:id/:token" element={<EmailVerify />} />
       <Route path="/reset/:id/:token" element={<ForgotPassword />} />
 

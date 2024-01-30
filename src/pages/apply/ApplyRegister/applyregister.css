@@ -16,12 +16,6 @@
   padding: 3rem;
 }
 
-.resume__container {
-  border: 1px solid black;
-  padding: 0.5rem;
-  border-radius: 7px;
-  max-width: 280px;
-}
 .form__container {
   margin-top: 1rem;
 }

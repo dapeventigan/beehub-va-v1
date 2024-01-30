@@ -144,7 +144,7 @@ const ApplyRegister = () => {
         // formData.append("password", password);
         formData.append("selectedValues", selectedValues);
 
-        await Axios.post("http://localhost:3001/applyRegister", formData, {
+        await Axios.post("https://server.beehubvas.com/applyRegister", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
 

@@ -87,7 +87,7 @@ const NavbarHome = () => {
 
   // Axios.defaults.withCredentials = true;
   // useEffect(() => {
-  //   Axios.get("http://localhost:3001/verifylogin").then((res) => {
+  //   Axios.get("https://server.beehubvas.com/verifylogin").then((res) => {
   //     try {
   //       if (res.data !== "User not found") {
   //         setUserDetails(res.data);
@@ -97,7 +97,7 @@ const NavbarHome = () => {
   //         } else if (res.data.role === "applyUser") {
   //           setLoginLocation("/applyhome");
   //         } else if (res.data.role === "joinUser") {
-  //           setLoginLocation("/joinhome");
+  //           setLoginLocation("/profile-bh/:username/:id");
   //         } else {
   //           Cookies.remove("token");
   //           window.location.reload();

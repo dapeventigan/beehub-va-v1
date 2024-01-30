@@ -24,17 +24,17 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      await Axios.post("http://localhost:3001/login", {
+      await Axios.post("https://server.beehubvas.com/login", {
         email,
         password,
       }).then(async (res) => {
         if (res.data.status === "ok") {
           if (res.data.role === "admin") {
             navigate("/admindashboard");
-          } else if (res.data.role === "applyUser") {
-            navigate("/applyhome");
+          } else if (res.data.role === "virtualassistant") {
+            navigate("/va-bh/:username/:id");
           } else {
-            navigate("/joinhome");
+            navigate("/profile-bh/:username/:id");
           }
         } else {
         }
@@ -51,48 +51,49 @@ const Login = () => {
   };
 
   const [googleSignStatus, setGoogleSignStatus] = useState();
-  const [googleFname, setGoogleFname] = useState();
-  const [googleLname, setGoogleLname] = useState();
-  const [googleEmail, setGoogleEmail] = useState();
 
   useEffect(() => {
     if (googleSignStatus === true) {
-      // handleGoogleLogin();
-      // const handleGoogleLogin = async () => {
-      //   try {
-      //     await Axios.post("http://localhost:3001/googlelogin", {
-      //       googleEmail,
-      //       googleFname,
-      //       googleLname,
-      //     }).then(async (res) => {
-      //       if (res.data.status === "ok") {
-      //         if (res.data.role === "admin") {
-      //           navigate("/admindashboard");
-      //         } else if (res.data.role === "applyUser") {
-      //           navigate("/applyhome");
-      //         } else {
-      //           navigate("/joinhome");
-      //         }
-      //       } else {
-      //       }
-      //     });
-      //   } catch (error) {
-      //     if (
-      //       error.response &&
-      //       error.response.status >= 400 &&
-      //       error.response.status <= 500
-      //     ) {
-      //       setError(error.response.data.message);
-      //     }
-      //   }
-      // };
+      Axios.defaults.withCredentials = true;
+      const googleSignIn = async () => {
+        console.log("asd");
+        try {
+          await Axios.post("https://server.beehubvas.com/login", {
+            email,
+            googleSignStatus,
+          }).then(async (res) => {
+            if (res.data.status === "ok") {
+              if (res.data.role === "admin") {
+                navigate("/admindashboard");
+              } else if (res.data.role === "applyUser") {
+                navigate("/applyhome");
+              } else {
+                const userId = res.data.userId;
+                const fname = res.data.userfname;
+                const lname = res.data.userlname;
+                const username = `${fname.toLowerCase()}-${lname.toLowerCase()}`;
+
+                navigate(`/profile-bh/${username}/${userId}`);
+              }
+            } else {
+            }
+          });
+        } catch (error) {
+          if (
+            error.response &&
+            error.response.status >= 400 &&
+            error.response.status <= 500
+          ) {
+            setError(error.response.data.message);
+          }
+        }
+      };
+
+      googleSignIn();
     } else {
       setGoogleSignStatus(false);
-      setGoogleFname("");
-      setGoogleLname("");
-      setGoogleEmail("");
     }
-  }, [googleSignStatus]);
+  }, [googleSignStatus,email,navigate]);
 
   return (
     <div className="login__container">
@@ -160,13 +161,19 @@ const Login = () => {
                       console.log(credentialDecoded);
                       console.log(credentialDecoded.email_verified);
                       setGoogleSignStatus(credentialDecoded.email_verified);
+                      setEmail(credentialDecoded.email);
                     }}
                     onError={() => {
                       console.log("Login Failed");
                     }}
                   />
 
-                  <p className="login__noaccount">Don't have an account? <a href="/joinregister"><span className="signuplogin__text">Sign Up</span></a></p>
+                  <p className="login__noaccount">
+                    Don't have an account?{" "}
+                    <a href="/joinregister">
+                      <span className="signuplogin__text">Sign Up</span>
+                    </a>
+                  </p>
                 </div>
               </div>
             </form>

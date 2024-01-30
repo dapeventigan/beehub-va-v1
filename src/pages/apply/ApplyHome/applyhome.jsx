@@ -1,21 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Axios from "axios";
-import Cookies from "js-cookie";
 
 const ApplyHome = () => {
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState(null);
+  const [viewOnly, setViewOnly] = useState(false);
+  const param = useParams();
 
   Axios.defaults.withCredentials = true;
   useEffect(() => {
-    Axios.get(
-      "http://localhost:3001/applyuserdashboard"
-    ).then((res) => {
+    Axios.get("https://server.beehubvas.com/applyuserdashboard").then((res) => {
       if (res.data !== "User not found") {
         setUserDetails(res.data);
       } else {
-        navigate("/");
+        setViewOnly(true);
+        if (viewOnly) {
+          Axios.get(
+            `https://server.beehubvas.com/va-bh/${param.username}/${param.id}`
+          ).then((res) => {
+            if (res.data !== "Profile doesn't exist") {
+              setUserDetails(res.data);
+            } else {
+              navigate("/")
+            }
+          });
+        }
       }
     });
   }, [navigate]);
@@ -23,14 +33,8 @@ const ApplyHome = () => {
   const handleLogout = (e) => {
     e.preventDefault();
 
-    try {
-      Cookies.remove("token", { secure: true, sameSite: 'None', domain: 'http://localhost:3000', path: '/applyhome' });
-      // window.location.reload();
-      setUserDetails(null);
-      navigate("/");
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
+    Axios.post("https://server.beehubvas.com/logout");
+    navigate("/");
   };
 
   return (
@@ -39,15 +43,12 @@ const ApplyHome = () => {
       {userDetails && (
         <div>
           <p>Email: {userDetails.email}</p>
-          <p>
-            Full Name:{" "}
-            {`${userDetails.fname} ${userDetails.mname} ${userDetails.lname}`}
-          </p>
-          <p>City: {userDetails.cityName}</p>
+          <p>Full Name: {`${userDetails.fname} ${userDetails.lname}`}</p>
+          <p>City: {userDetails.skills}</p>
         </div>
       )}
 
-      <button onClick={handleLogout}>Logout</button>
+      {viewOnly ? "" : <button onClick={handleLogout}>Logout</button>}
     </div>
   );
 };

@@ -1,0 +1,27 @@
+.varegister__container{
+    margin-top: 4rem;
+}
+
+.registerbox__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+
+.registerformbox__container,
+.registerwhywork__container {
+  flex-shrink: 0;
+  max-width: 430px;
+}
+
+.resume__container {
+  border: 1px solid black;
+  padding: 0.5rem;
+  border-radius: 7px;
+  /* max-width: 280px; */
+}
+
+.registerbox__container{
+  
+}

@@ -42,7 +42,7 @@ export default function ContactUser({ userID }) {
     handleClose();
 
     try {
-      await Axios.post("http://localhost:3001/contactMessage", {
+      await Axios.post("https://server.beehubvas.com/contactMessage", {
         id: userUUID,
         email: email,
         message: emailMessage,
@@ -56,7 +56,7 @@ export default function ContactUser({ userID }) {
   };
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/getSpecificUser", {
+    Axios.get("https://server.beehubvas.com/getSpecificUser", {
       params: { userID: userUUID },
     }).then((res) => {
       try {
