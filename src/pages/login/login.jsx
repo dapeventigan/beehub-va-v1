@@ -29,7 +29,6 @@ const Login = () => {
         password,
       }).then(async (res) => {
         if (res.data.status === "ok") {
-          console.log(res.data.role);
           if (res.data.role === "admin") {
             navigate("/admindashboard");
           } else if (res.data.role === "virtualassistant") {
@@ -57,7 +56,6 @@ const Login = () => {
     if (googleSignStatus === true) {
       Axios.defaults.withCredentials = true;
       const googleSignIn = async () => {
-        console.log("asd");
         try {
           await Axios.post("https://server.beehubvas.com/login", {
             email,
@@ -66,8 +64,14 @@ const Login = () => {
             if (res.data.status === "ok") {
               if (res.data.role === "admin") {
                 navigate("/admindashboard");
-              } else if (res.data.role === "applyUser") {
-                navigate("/applyhome");
+              } else if (res.data.role === "virtualassistant") {
+
+                const userId = res.data.userId;
+                const fname = res.data.userfname;
+                const lname = res.data.userlname;
+                const username = `${fname.toLowerCase()}-${lname.toLowerCase()}`;
+
+                navigate(`/va-bh/${username}/${userId}`);
               } else {
                 const userId = res.data.userId;
                 const fname = res.data.userfname;
