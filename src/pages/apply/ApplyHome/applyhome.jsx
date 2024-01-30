@@ -28,7 +28,7 @@ const ApplyHome = () => {
         }
       }
     });
-  }, [navigate]);
+  }, [viewOnly,param.username,param.id]);
 
   const handleLogout = (e) => {
     e.preventDefault();
