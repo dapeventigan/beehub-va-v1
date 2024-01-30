@@ -32,9 +32,19 @@ const Login = () => {
           if (res.data.role === "admin") {
             navigate("/admindashboard");
           } else if (res.data.role === "virtualassistant") {
-            navigate("/va-bh/:username/:id");
+            const userId = res.data.userId;
+            const fname = res.data.userfname;
+            const lname = res.data.userlname;
+            const username = `${fname.toLowerCase()}-${lname.toLowerCase()}`;
+
+            navigate(`/va-bh/${username}/${userId}`);
           } else {
-            navigate("/profile-bh/:username/:id");
+            const userId = res.data.userId;
+            const fname = res.data.userfname;
+            const lname = res.data.userlname;
+            const username = `${fname.toLowerCase()}-${lname.toLowerCase()}`;
+
+            navigate(`/profile-bh/${username}/${userId}`);
           }
         } else {
         }
@@ -65,7 +75,6 @@ const Login = () => {
               if (res.data.role === "admin") {
                 navigate("/admindashboard");
               } else if (res.data.role === "virtualassistant") {
-
                 const userId = res.data.userId;
                 const fname = res.data.userfname;
                 const lname = res.data.userlname;
@@ -98,7 +107,7 @@ const Login = () => {
     } else {
       setGoogleSignStatus(false);
     }
-  }, [googleSignStatus,email,navigate]);
+  }, [googleSignStatus, email, navigate]);
 
   return (
     <div className="login__container">
