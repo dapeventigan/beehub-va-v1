@@ -10,25 +10,34 @@ const ApplyHome = () => {
 
   Axios.defaults.withCredentials = true;
   useEffect(() => {
-    Axios.get("https://server.beehubvas.com/applyuserdashboard").then((res) => {
+    Axios.get("https://server.beehubvas.com/applyuserdashboard").then(async (res) => {
       if (res.data !== "User not found") {
         setUserDetails(res.data);
+        await Axios.get(
+          `https://server.beehubvas.com/va-bh/${param.username}/${param.id}`
+        ).then((res) => {
+          if (res.data === "Link Broken") {
+            navigate("/");
+          }
+        });
       } else {
         setViewOnly(true);
         if (viewOnly) {
           Axios.get(
             `https://server.beehubvas.com/va-bh/${param.username}/${param.id}`
           ).then((res) => {
-            if (res.data !== "Profile doesn't exist") {
+            if (res.data === "Link Broken") {
+              navigate("/");
+            } else if (res.data !== "Profile doesn't exist") {
               setUserDetails(res.data);
             } else {
-              navigate("/")
+              navigate("/");
             }
           });
         }
       }
     });
-  }, [viewOnly,param.username,param.id]);
+  }, [viewOnly, param.username, param.id]);
 
   const handleLogout = (e) => {
     e.preventDefault();
