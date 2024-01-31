@@ -163,10 +163,12 @@ function VaRegister({ btnClass, btnTitle }) {
       await Axios.get("https://api.ipify.org/?format=json").then(
         async (res) => {
           const ipInfoResponse = await Axios.get(
-            `http://ip-api.com/json/${res.data.ip}`
+            `https://ipinfo.io/${res.data.ip}?token=d5ba9203c3bd20`
           );
 
-          if (ipInfoResponse.data.country === "Philippines") {
+          console.log(ipInfoResponse.data.country);
+
+          if (ipInfoResponse.data.country === "PH") {
             setFromPH(true);
           } else {
             setFromPH(false);
