@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
-// import Axios from "axios";
+import Axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { MdAccountCircle } from "react-icons/md";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaBars } from "react-icons/fa";
 import { MdOutlineClose } from "react-icons/md";
@@ -10,15 +12,14 @@ import Login from "../../pages/login/login.jsx";
 import AOS from "aos";
 import { IoClose } from "react-icons/io5";
 import BHLogo from "../../assets/logo_1.png";
-// import Cookies from "js-cookie";
 
 import "./navbar.css";
 
 const NavbarHome = () => {
-  // const [userDetails, setUserDetails] = useState(null);
-  // const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-  // const [loginLocation, setLoginLocation] = useState("");
-  // const navigate = useNavigate();
+  const [userDetails, setUserDetails] = useState(null);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [loginLocation, setLoginLocation] = useState("");
+  const navigate = useNavigate();
 
   //Popup Modal
   const [open, setOpen] = useState(false);
@@ -42,22 +43,19 @@ const NavbarHome = () => {
 
     const handleMediaChange = (mediaQuery) => {
       if (mediaQuery.matches) {
-        setIsOpen(false); // Media screen matches condition
+        setIsOpen(false);
       } else {
         setIsOpen(false);
       }
     };
 
-    handleMediaChange(mediaQuery); // Initial check
+    handleMediaChange(mediaQuery);
 
     const mediaQueryListener = () => handleMediaChange(mediaQuery);
 
-    // Attach event listener for changes in the media query
     mediaQuery.addEventListener("change", mediaQueryListener);
 
-    // Cleanup function
     return () => {
-      // Remove event listener when component unmounts
       mediaQuery.removeEventListener("change", mediaQueryListener);
     };
   }, []);
@@ -66,9 +64,8 @@ const NavbarHome = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Adjust the value based on the scroll position where you want to toggle the div
       const scrollPosition = window.scrollY;
-      const threshold = 150; // Adjust this value according to your needs
+      const threshold = 150;
 
       if (scrollPosition > threshold) {
         setShowDiv(true);
@@ -79,43 +76,50 @@ const NavbarHome = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  // Axios.defaults.withCredentials = true;
-  // useEffect(() => {
-  //   Axios.get("https://server.beehubvas.com/verifylogin").then((res) => {
-  //     try {
-  //       if (res.data !== "User not found") {
-  //         setUserDetails(res.data);
-  //         setIsUserLoggedIn(true);
-  //         if (res.data.role === "admin") {
-  //           setLoginLocation("/admindashboard");
-  //         } else if (res.data.role === "applyUser") {
-  //           setLoginLocation("/applyhome");
-  //         } else if (res.data.role === "joinUser") {
-  //           setLoginLocation("/profile-bh/:username/:id");
-  //         } else {
-  //           Cookies.remove("token");
-  //           window.location.reload();
-  //           setLoginLocation("/");
-  //         }
-  //       } else {
-  //         setIsUserLoggedIn(false);
-  //         navigate("/");
-  //       }
-  //     } catch (error) {
-  //       //TODO: Will add popup error that you've been logged out
-  //       console.log(error);
-  //       Cookies.remove("token");
-  //       window.location.reload();
-  //       setLoginLocation("/");
-  //     }
-  //   });
-  // }, [navigate]);
+  Axios.defaults.withCredentials = true;
+  useEffect(() => {
+    Axios.get("https://server.beehubvas.com/verifylogin").then((res) => {
+      try {
+        if (res.data !== "User not found") {
+          setUserDetails(res.data);
+          setIsUserLoggedIn(true);
+          if (res.data.role === "admin") {
+            setLoginLocation("/admindashboard");
+          } else if (res.data.role === "virtualassistant") {
+            const userId = res.data._id;
+            const fname = res.data.fname;
+            const lname = res.data.lname;
+            const username = `${fname.toLowerCase()}-${lname.toLowerCase()}`;
+
+            setLoginLocation(`/va-bh/${username}/${userId}`);
+          } else if (res.data.role === "client") {
+            const userId = res.data._id;
+            const fname = res.data.fname;
+            const lname = res.data.lname;
+            const username = `${fname.toLowerCase()}-${lname.toLowerCase()}`;
+
+            setLoginLocation(`/profile-bh/${username}/${userId}`);
+          } else {
+            Axios.post("https://server.beehubvas.com/logout");
+            navigate("/");
+          }
+        } else {
+          setIsUserLoggedIn(false);
+          navigate("/");
+        }
+      } catch (error) {
+        //TODO: Will add popup error that you've been logged out
+        console.log(error);
+        Axios.post("https://server.beehubvas.com/logout");
+        navigate("/");
+      }
+    });
+  }, [navigate]);
 
   const style = {
     position: "relative",
@@ -256,24 +260,31 @@ const NavbarHome = () => {
                   PLANS AND PRICING
                 </a>
               </li>
-              <a id="login-btn" className="link__details" onClick={handleOpen}>
-                Log In or Sign Up
-              </a>
+              {isUserLoggedIn ? (
+                <a href={loginLocation} className="login-btn">
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                    }}
+                  >
+                    <MdAccountCircle size={25} />
+                    PROFILE
+                  </div>
+                </a>
+              ) : (
+                <a
+                  id="login-btn"
+                  className="link__details"
+                  onClick={handleOpen}
+                >
+                  Log In or Sign Up
+                </a>
+              )}
             </ul>
           </div>
         </div>
-
-        {/* <div className="button__login">
-            {isUserLoggedIn ? (
-              <Link to={loginLocation} className="button btn-login">
-                Coming Soon
-              </Link>
-            ) : (
-              <Link to="/login" className="button btn-login">
-                Login
-              </Link>
-            )}
-          </div> */}
       </div>
 
       <div>

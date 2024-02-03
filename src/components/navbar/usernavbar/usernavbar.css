@@ -1,0 +1,85 @@
+.usernavbar__links {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .usernavsearch__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 800px;
+    flex: 0 0 60%;
+  }
+  
+  .usernav__searchbar {
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 5rem;
+    padding: 0.5rem;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .usernav__searchbar > input {
+    background: transparent;
+    width: 90%;
+  }
+  
+  /* userdropdown Button */
+.dropbtn {
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* The container <div> - needed to position the userdropdown content */
+  .userdropdown {
+    position: relative;
+  }
+  
+  .userdropdown-content-small {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 200px;
+    max-height: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 0.4rem;
+    z-index: 1;
+    right: 0;
+  }
+  
+  /* Links inside the userdropdown */
+  .userdropdown-content a,
+  .userdropdown-content-small a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of userdropdown links on hover */
+  .userdropdown-content a:hover,
+  .userdropdown-content-small a:hover {
+    background-color: #ddd;
+  }
+  
+  /* Show the userdropdown menu on hover */
+  .userdropdown:hover .userdropdown-content {
+    display: block;
+  }
+  
+  .userdropdown:hover .userdropdown-content-small {
+    display: block;
+  }
+  
+  .userdropdown-title {
+    text-align: center;
+    font-weight: bold;
+    padding: 12px 16px;
+  }
+  

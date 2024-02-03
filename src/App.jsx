@@ -15,7 +15,6 @@ import PlansPricing from "./pages/plans-pricing/plans-pricing.jsx";
 //APPLY ROUTES
 // import ApplyRegister from "./pages/apply/ApplyRegister/applyregister.jsx";
 import ApplyHome from "./pages/apply/ApplyHome/applyhome.jsx";
-import InitalApplyRegister from "./pages/apply/ApplyRegister/initalapplyregister.jsx";
 //JOIN ROUTES
 // import JoinRegister from "./pages/join/JoinRegister/joinregister.jsx";
 import JoinHome from "./pages/join/JoinHome/joinhome.jsx";
@@ -39,8 +38,6 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayouts />}>
       <Route index element={<LandingPage />} />
-      <Route path="applyregister" element={<InitalApplyRegister />} />
-      <Route path="joinregister" element={<InitalJoinRegister />} />
       <Route path="login" element={<Login />} />
       <Route path="resetpasswordverify" element={<CheckEmail />} />
       <Route path="virtual-assistant" element={<VirtualHome />} />
