@@ -160,14 +160,21 @@ function VaRegister({ btnClass, btnTitle }) {
 
   const getUserIP = async () => {
     try {
-      const response = await Axios.get(`https://ipinfo.io/json?token=d5ba9203c3bd20`);
-      console.log(response.data.country);
-    
-      if (response.data.country === "PH") {
-        setFromPH(true);
-      } else {
-        setFromPH(false);
-      }
+      await Axios.get("https://api.ipify.org/?format=json").then(
+        async (res) => {
+          const ipInfoResponse = await Axios.get(
+            `https://ipinfo.io/${res.data.ip}/json?token=d5ba9203c3bd20`
+          );
+
+          console.log(ipInfoResponse.data.country);
+
+          if (ipInfoResponse.data.country === "PH") {
+            setFromPH(true);
+          } else {
+            setFromPH(false);
+          }
+        }
+      );
     } catch (error) {
       console.error("Error fetching IP address or location information", error);
     }
