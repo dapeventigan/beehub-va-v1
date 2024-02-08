@@ -5,6 +5,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
+import { socket } from "../../App";
 import "./login.css";
 
 const Login = () => {
@@ -29,6 +30,8 @@ const Login = () => {
         password,
       }).then(async (res) => {
         if (res.data.status === "ok") {
+          socket.emit("authenticate", res.data._id);
+          socket.emit('refresh-all', res.data._id);
           if (res.data.role === "admin") {
             navigate("/admindashboard");
           } else if (res.data.role === "virtualassistant") {
@@ -72,6 +75,8 @@ const Login = () => {
             googleSignStatus,
           }).then(async (res) => {
             if (res.data.status === "ok") {
+              socket.emit("authenticate", res.data._id);
+              socket.emit('refresh-all', res.data._id);
               if (res.data.role === "admin") {
                 navigate("/admindashboard");
               } else if (res.data.role === "virtualassistant") {

@@ -9,15 +9,9 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
-import io from "socket.io-client";
 
 import "react-phone-input-2/lib/style.css";
 import "./applyregister.css";
-// const socket = io.connect("https://server.beehubvas.com");
-  //socket cors
-  // const socket = io("https://server.beehubvas.com", {
-  //   withCredentials: true,
-  // });
 
 const InitalApplyRegister = () => {
 

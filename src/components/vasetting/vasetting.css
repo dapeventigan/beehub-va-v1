@@ -1,0 +1,93 @@
+.vasettings__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 10; /* optional: this ensures the header stays on top of other elements */
+  background-color: var(--color-bg-variant);
+}
+
+.vaheader__left{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.vaheader__left > h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.vasetting__container {
+  padding: 0 1.5rem;
+  margin: 2rem 0;
+}
+
+.vasettingresume__container{
+    margin-bottom: 1rem;
+}
+
+.vaform__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.vasettinginput__container {
+  flex: 1;
+  display: block;
+  position: relative;
+  height: 3rem;
+  padding: 15px;
+  border-radius: 7px;
+  border: 1.5px solid var(--color-font-darkgrey);
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+}
+
+.vasetting__mobilecontainer {
+  flex: 1;
+}
+
+.vasettingrdropdown__con {
+  flex: 1;
+  position: relative;
+  height: 3rem;
+  padding: 15px;
+  border-radius: 7px;
+  border: 1.5px solid var(--color-font-darkgrey);
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.vaskillssettings__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.va__label{
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-left: 0.2rem;
+    color: var(--color-font-darkgrey);
+}
+
+.vasocialmedia__links{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.vasettings-horizontal-line {
+  margin: 2rem 0;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+}

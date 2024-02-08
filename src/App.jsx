@@ -1,3 +1,7 @@
+import { useState, useEffect } from "react";
+import Axios from "axios";
+import io from "socket.io-client";
+
 import {
   createBrowserRouter,
   Route,
@@ -58,7 +62,40 @@ const router = createBrowserRouter(
   )
 );
 
+export const socket = io("https://server.beehubvas.com", {
+  withCredentials: true,
+});
+
 function App() {
+  const [isUserLogged, setIsUserLogged] = useState(false);
+
+  socket.on("refresh", () => {
+    window.location.reload();
+  });
+
+  useEffect(() => {
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    const getUserID = async () => {
+      try {
+        await Axios.get("https://server.beehubvas.com/verifylogin").then((res) => {
+          if (res.data !== "User not found") {
+            socket.emit("authenticate", res.data._id);
+
+            setIsUserLogged(true);
+          } else {
+            setIsUserLogged(false);
+          }
+        });
+      } catch (error) {}
+    };
+    getUserID();
+  }, [isUserLogged]);
+
   return <RouterProvider router={router} />;
 }
 

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Axios from "axios";
 import VaSetting from "../../vasetting/vasetting";
+import {socket} from "../../../App"
+
 import { MdAccountCircle } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa6";
@@ -13,7 +15,8 @@ import BHLogo from "../../../assets/logo_1.png";
 
 import "./usernavbar.css";
 
-const UserNavbar = ({userData}) => {
+
+const UserNavbar = ({ userData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -24,6 +27,7 @@ const UserNavbar = ({userData}) => {
   const handleLogout = (e) => {
     e.preventDefault();
 
+    socket.emit('refresh-all', userData._id);
     Axios.post("https://server.beehubvas.com/logout");
     navigate("/");
   };
@@ -91,11 +95,16 @@ const UserNavbar = ({userData}) => {
           </div>
           <div className="userdropdown">
             <a className="dropbtn">
-            <MdAccountCircle size={25}/> Account <FaAngleDown />
+              <MdAccountCircle size={25} /> Account <FaAngleDown />
             </a>
             <div className="userdropdown-content-small">
-              <a style={{cursor:"pointer"}}> <VaSetting data={userData}/></a>
-              <a style={{cursor:"pointer"}} onClick={handleLogout}>Logout</a>
+              <a style={{ cursor: "pointer" }}>
+                {" "}
+                <VaSetting data={userData} />
+              </a>
+              <a style={{ cursor: "pointer" }} onClick={handleLogout}>
+                Logout
+              </a>
             </div>
           </div>
         </ul>

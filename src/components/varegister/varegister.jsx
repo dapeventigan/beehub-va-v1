@@ -374,7 +374,7 @@ function VaRegister({ btnClass, btnTitle }) {
                         </p>
                       </div>
 
-                      <div className="varesume__conainer">
+                      <div className="varesume__container">
                         <p>Upload your resume here</p>
                         <div className="resume__container">
                           <input

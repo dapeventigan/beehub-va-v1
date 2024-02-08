@@ -20,9 +20,10 @@ import "./applyhome.css";
 const ApplyHome = () => {
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState([]);
-  const [viewOnly, setViewOnly] = useState(false);
+  const [viewOnly, setViewOnly] = useState(true);
   const [skill, setSkill] = useState([]);
-  const [jobHistory, setJobHistory] = useState([]);
+  const [mainData, setMainData] = useState([]);
+  const [isLoggedIn, setisLoggedIn] = useState(false);
 
   const param = useParams();
 
@@ -49,45 +50,38 @@ const ApplyHome = () => {
 
   Axios.defaults.withCredentials = true;
   useEffect(() => {
-    Axios.get("https://server.beehubvas.com/applyuserdashboard").then(async (res) => {
-      if (res.data !== "User not found") {
-        setUserDetails(res.data);
-        setJobHistory(res.data.jobHistory);
-        if (!res.data.skills) {
-          setSkill([]);
-        } else {
-          setSkill(res.data.skills.split(","));
-        }
-        await Axios.get(
-          `https://server.beehubvas.com/va-bh/${param.username}/${param.id}`
-        ).then((res) => {
-          if (res.data === "Link Broken") {
-            navigate("/");
+    Axios.get(`https://server.beehubvas.com/va-bh/${param.username}/${param.id}`).then(
+      async (res) => {
+        if (res.data === "Link Broken") {
+          navigate("/");
+        } else if (res.data !== "Profile doesn't exist") {
+          setViewOnly(true);
+          setUserDetails(res.data);
+          if (!res.data.skills) {
+            setSkill([]);
+          } else {
+            setSkill(res.data.skills.split(","));
           }
-        });
-      } else {
-        setViewOnly(true);
-        if (viewOnly) {
-          Axios.get(
-            `https://server.beehubvas.com/va-bh/${param.username}/${param.id}`
-          ).then((res) => {
-            if (res.data === "Link Broken") {
-              navigate("/");
-            } else if (res.data !== "Profile doesn't exist") {
-              setUserDetails(res.data);
-              if (!res.data.skills) {
-                setSkill([]);
+
+          await Axios.get("https://server.beehubvas.com/applyuserdashboard").then(
+            (res) => {
+              if (res.data !== "User not found" && res.data._id === param.id) {
+                setMainData(res.data);
+                setViewOnly(false);
+              } else if (res.data !== "User not found") {
+                setisLoggedIn(true);
+                setMainData(res.data);
               } else {
-                setSkill(res.data.skills.split(","));
+                setisLoggedIn(false);
               }
-            } else {
-              navigate("/");
             }
-          });
+          );
+        } else {
+          navigate("/");
         }
       }
-    });
-  }, [viewOnly, param.username, param.id]);
+    );
+  }, [param.username, param.id, navigate]);
 
   //DATATABLE
 
@@ -133,7 +127,15 @@ const ApplyHome = () => {
 
   return (
     <div>
-      {viewOnly ? <OfflineNavbar /> : <UserNavbar userData={userDetails} />}
+      {viewOnly && !isLoggedIn ? (
+        <OfflineNavbar />
+      ) : viewOnly && isLoggedIn ? (
+        <UserNavbar userData={mainData} />
+      ) : (
+        <UserNavbar userData={mainData} />
+      )}
+
+      {/* {viewOnly && !isLoggedIn ? <OfflineNavbar /> : <UserNavbar userData={mainData} />} */}
 
       <div className="userprofile__container">
         <div className="account__title">
@@ -142,7 +144,7 @@ const ApplyHome = () => {
             <a
               href={`https://beehubvas.com/va-bh/${param.username}/${param.id}`}
             >{`https://beehubvas.com/va-bh/${param.username}/${param.id}`}</a>
-            <div className="vertical-line"/>
+            <div className="vertical-line" />
             <IoCopyOutline />
           </div>
         </div>
@@ -198,7 +200,7 @@ const ApplyHome = () => {
                     </div>
                     <div className="profiletitle__container">
                       <h2>{`${userDetails.fname} ${userDetails.lname}`}</h2>
-                      <p>Full stack Developer</p>
+                      <p>{userDetails.userTitle || "None"}</p>
                       <p>
                         Not Verified <MdVerified color="red" />
                       </p>
@@ -218,25 +220,23 @@ const ApplyHome = () => {
                 <div className="profilecontent__container">
                   <div className="profile__firstrow">
                     <div className="aboutme__profile">
-                      <h4>About Me</h4>
-                      <p>{`${userDetails.aboutme || "None"}`}</p>
+                      <h4>Bio</h4>
+                      <p>{`${userDetails.bio || "None"}`}</p>
                     </div>
                   </div>
                   <div className="profile__secondrow">
                     <h4>Education</h4>
 
-                    <p>Bachelors Degree</p>
+                    <p>{userDetails.education || "None"}</p>
                   </div>
                   <div className="profile__thirdrow">
                     <h4>Field/Industry</h4>
 
-                    <p>Information Technology</p>
+                    <p>{userDetails.industry || "None"}</p>
                   </div>
                   <div className="profile__fourthrow">
                     <h4>Portfolio/Website</h4>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    </p>
+                    <a href={userDetails.portfolio} target="_blank" rel="noopener noreferrer"> {userDetails.portfolio} </a>
                   </div>
                   <div className="profile__fifthrow">
                     <h4>Top 5 Skills</h4>
@@ -258,10 +258,13 @@ const ApplyHome = () => {
                   <p>
                     <FaPhone /> +{userDetails.mobileNumber}
                   </p>
+           
+
+                 
                   <div className="profile__social">
-                    <FaFacebookSquare size={25} />
-                    <FaLinkedin size={25} />
-                    <FaInstagram size={25} />
+                   {userDetails.fbLink ?   <a href={userDetails.fbLink } target="_blank" rel="noopener noreferrer"> <FaFacebookSquare size={25} /> </a> : <></>}
+                   {userDetails.linkedinLink ? <a href={userDetails.linkedinLink } target="_blank" rel="noopener noreferrer">  <FaLinkedin size={25} /> </a>: <></>}
+                   {userDetails.igLink ?  <a href={userDetails.igLink} target="_blank" rel="noopener noreferrer"> <FaInstagram size={25} /> </a> : <></>}
                   </div>
                 </div>
               </div>
@@ -273,7 +276,7 @@ const ApplyHome = () => {
 
                   <DataTable
                     columns={historyColumn}
-                    data={jobHistory}
+                    data={userDetails.jobHistory}
                     theme="dape"
                   />
                 </div>

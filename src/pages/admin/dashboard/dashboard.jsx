@@ -4,16 +4,11 @@ import Axios from "axios";
 import DataTable, { createTheme } from "react-data-table-component";
 import vaLogo from "../../../assets/navlogo.png";
 import { FaArrowLeft } from "react-icons/fa";
-import io from "socket.io-client";
-
 import ContactUser from "./contactuser/contactuser";
 import ViewPdf from "./viewpdf";
 import "./dashboard.css";
 
-// const socket = io.connect("https://server.beehubvas.com");
-// const socket = io("https://server.beehubvas.com", {
-//   withCredentials: true,
-// });
+
 
 const Dashboard = () => {
   const navigate = useNavigate();
