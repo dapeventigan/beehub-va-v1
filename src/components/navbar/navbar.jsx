@@ -97,20 +97,16 @@ const NavbarHome = () => {
             const username = `${fname.toLowerCase()}-${lname.toLowerCase()}`;
 
             setLoginLocation(`/va-bh/${username}/${userId}`);
-          } else if (res.data.role === "client") {
+          } else (res.data.role === "client") {
             const userId = res.data._id;
             const fname = res.data.fname;
             const lname = res.data.lname;
             const username = `${fname.toLowerCase()}-${lname.toLowerCase()}`;
 
             setLoginLocation(`/profile-bh/${username}/${userId}`);
-          } else {
-            Axios.post("https://server.beehubvas.com/logout");
-            navigate("/");
-          }
+          } 
         } else {
           setIsUserLoggedIn(false);
-          navigate("/");
         }
       } catch (error) {
         //TODO: Will add popup error that you've been logged out
