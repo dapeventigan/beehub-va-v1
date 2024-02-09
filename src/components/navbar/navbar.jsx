@@ -97,7 +97,7 @@ const NavbarHome = () => {
             const username = `${fname.toLowerCase()}-${lname.toLowerCase()}`;
 
             setLoginLocation(`/va-bh/${username}/${userId}`);
-          } else (res.data.role === "client") {
+          } else {
             const userId = res.data._id;
             const fname = res.data.fname;
             const lname = res.data.lname;
