@@ -104,7 +104,7 @@ const NavbarHome = () => {
             const username = `${fname.toLowerCase()}-${lname.toLowerCase()}`;
 
             setLoginLocation(`/profile-bh/${username}/${userId}`);
-          } 
+          }
         } else {
           setIsUserLoggedIn(false);
         }

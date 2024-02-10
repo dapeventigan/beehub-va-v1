@@ -5,7 +5,7 @@ import DataTable, { createTheme } from "react-data-table-component";
 import vaLogo from "../../../assets/navlogo.png";
 import { FaArrowLeft } from "react-icons/fa";
 import ContactUser from "./contactuser/contactuser";
-import ViewPdf from "./viewpdf";
+import ViewPdf from "../../../components/viewpdf/viewpdf";
 import "./dashboard.css";
 
 

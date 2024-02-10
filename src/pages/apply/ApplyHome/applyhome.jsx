@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Avatar from "react-avatar";
 import Axios from "axios";
 import DataTable, { createTheme } from "react-data-table-component";
+import ViewPdf from "../../../components/viewpdf/viewpdf";
 
 import UserNavbar from "../../../components/navbar/usernavbar/usernavbar";
 import OfflineNavbar from "../../../components/navbar/offlinenavbar/offlinenavbar";
@@ -27,7 +28,18 @@ const ApplyHome = () => {
 
   const param = useParams();
 
-  //profile state
+  //copy to clipboard
+  const [copied, setCopied] = useState(false);
+  const url = `https://beehubvas.com/va-bh/${param.username}/${param.id}`;
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      alert("Copied to clipboard");
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  }
 
   //edit profile
   const handleImageChange = async (e) => {
@@ -135,17 +147,13 @@ const ApplyHome = () => {
         <UserNavbar userData={mainData} />
       )}
 
-      {/* {viewOnly && !isLoggedIn ? <OfflineNavbar /> : <UserNavbar userData={mainData} />} */}
-
       <div className="userprofile__container">
         <div className="account__title">
           <h1>My Account</h1>
           <div className="profileuri__container">
-            <a
-              href={`https://beehubvas.com/va-bh/${param.username}/${param.id}`}
-            >{`https://beehubvas.com/va-bh/${param.username}/${param.id}`}</a>
+            <p>{`https://beehubvas.com/va-bh/${param.username}/${param.id}`}</p>
             <div className="vertical-line" />
-            <IoCopyOutline />
+            <IoCopyOutline onClick={handleCopy} style={{cursor: "pointer"}}/>
           </div>
         </div>
 
@@ -236,7 +244,14 @@ const ApplyHome = () => {
                   </div>
                   <div className="profile__fourthrow">
                     <h4>Portfolio/Website</h4>
-                    <a href={userDetails.portfolio} target="_blank" rel="noopener noreferrer"> {userDetails.portfolio} </a>
+                    <a
+                      href={userDetails.portfolio}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      {userDetails.portfolio}{" "}
+                    </a>
                   </div>
                   <div className="profile__fifthrow">
                     <h4>Top 5 Skills</h4>
@@ -258,14 +273,47 @@ const ApplyHome = () => {
                   <p>
                     <FaPhone /> +{userDetails.mobileNumber}
                   </p>
-           
 
-                 
                   <div className="profile__social">
-                   {userDetails.fbLink ?   <a href={userDetails.fbLink } target="_blank" rel="noopener noreferrer"> <FaFacebookSquare size={25} /> </a> : <></>}
-                   {userDetails.linkedinLink ? <a href={userDetails.linkedinLink } target="_blank" rel="noopener noreferrer">  <FaLinkedin size={25} /> </a>: <></>}
-                   {userDetails.igLink ?  <a href={userDetails.igLink} target="_blank" rel="noopener noreferrer"> <FaInstagram size={25} /> </a> : <></>}
+                    {userDetails.fbLink ? (
+                      <a
+                        href={userDetails.fbLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {" "}
+                        <FaFacebookSquare size={25} />{" "}
+                      </a>
+                    ) : (
+                      <></>
+                    )}
+                    {userDetails.linkedinLink ? (
+                      <a
+                        href={userDetails.linkedinLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {" "}
+                        <FaLinkedin size={25} />{" "}
+                      </a>
+                    ) : (
+                      <></>
+                    )}
+                    {userDetails.igLink ? (
+                      <a
+                        href={userDetails.igLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {" "}
+                        <FaInstagram size={25} />{" "}
+                      </a>
+                    ) : (
+                      <></>
+                    )}
                   </div>
+
+                  <ViewPdf filename={userDetails.pdfFile} />
                 </div>
               </div>
               <div className="profile__sixthrow">

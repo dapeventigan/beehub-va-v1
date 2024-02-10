@@ -74,6 +74,12 @@
   gap: 0.5rem;
 }
 
+.profileuri__container > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .vertical-line {
   border-left: 3px solid rgb(163, 163, 163);
   height: 27px;
