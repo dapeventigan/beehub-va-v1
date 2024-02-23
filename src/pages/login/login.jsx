@@ -180,7 +180,7 @@ const Login = () => {
                   {/* <p className="login__noaccount">
                     Don't have an account?{" "}
                     <a href="/joinregister">
-                      <span className="signuplogin__text">Sign Up</span>
+                      <span className="signuplogin__text">Sign Up</span>3
                     </a>
                   </p> */}
                 </div>
