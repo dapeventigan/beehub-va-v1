@@ -133,7 +133,7 @@ export default function ContactUser({ userID }) {
               <TextField
                 multiline
                 label="Message"
-                rows={8}
+                rows={1}
                 fullWidth
                 placeholder="Enter message here..."
                 onChange={(e) => {

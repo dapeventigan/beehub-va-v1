@@ -1,0 +1,150 @@
+.jobboard__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.jobboard__container-all {
+  max-width: 800px;
+  margin-bottom: 2rem;
+}
+
+.jobboard__card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px -4px 5px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px;
+}
+
+.jobboard__pagination {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.jobboard__searchnav {
+  display: flex;
+  align-items: center;
+  grid-area: 2rem;
+  border: 2px solid black;
+  width: 100%;
+  padding: 0.5rem;
+  gap: 1rem;
+  border-radius: 0.5rem;
+}
+
+.jobboard__searchbar {
+  width: 95%;
+}
+
+.jobboardcard__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.jobcard__first {
+  width: 100%;
+}
+
+.jobcard__first-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.jobtype__container {
+  border: 2px solid var(--color-bg-variant);
+  background-color: rgb(255, 255, 195);
+  padding: 0.1rem;
+  font-size: 0.8rem;
+}
+
+.jobcard__title {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.jobboards__filter-container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1.5rem;
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.jobboards__filter-select {
+  border: 1px solid black;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.jobcard__header {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.jobboards__posted-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-font-lightgrey);
+  font-size: 0.8rem;
+}
+
+.nojobs__container {
+  margin: 5rem 17.9rem;
+  width: 100%;
+  text-align: center;
+}
+
+.active-label {
+  padding: 0rem 0.6rem;
+  border-radius: 3rem;
+  background-color: var(--color-bg-variant);
+}
+
+.nonactive-label {
+  padding: 0rem 0.6rem;
+  border-radius: 3rem;
+  background-color: transparent;
+}
+
+.nonactive-label:hover {
+  background-color: rgb(223, 223, 180);
+}
+
+/* HEADER */
+
+.jobboard__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 4rem 0 2rem 0;
+  width: 60%;
+  margin-inline: auto;
+}
+
+.jobboard__header > h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 3.5rem;
+  color: var(--color-font-darkgrey);
+}
+
+.jobboard__header > h4 {
+  margin-bottom: 2rem;
+  color: var(--color-font-darkgrey);
+}

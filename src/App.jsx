@@ -34,10 +34,14 @@ import OurTeam from "./pages/aboutus/ourteam/ourteam.jsx";
 //ServicesFolder
 import Services from "./pages/services/services.jsx";
 
-import "./App.css";
 //RootLayout
 import RootLayouts from "./layouts/rootlayouts.jsx";
 
+//JOB BOARDS
+import JobBoard from "./pages/jobboards/jobboards.jsx";
+import ChosenJob from "./pages/jobboards/chosenjob/chosenjob.jsx";
+
+import "./App.css";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayouts />}>
@@ -51,9 +55,11 @@ const router = createBrowserRouter(
       <Route path="services" element={<Services />}></Route>
       <Route path="plans-and-pricing" element={<PlansPricing />}></Route>
       <Route path="/va-bh/:username/:id" element={<ApplyHome />} />
-      <Route path="/profile-bh/:username/:id" element={<JoinHome />} />
+      <Route path="/profile-beehub" element={<JoinHome />} />
       <Route path="/verify/:id/:token" element={<EmailVerify />} />
       <Route path="/reset/:id/:token" element={<ForgotPassword />} />
+      <Route path="/job-boards" element={<JobBoard />} />
+      <Route path="/job-boards/bh/:id" element={<ChosenJob />} />
 
       <Route path="/*" element={<Navigate to="/" />} />
       {/* TODO: 404 page */}

@@ -1,0 +1,13 @@
+.profiletable__title {
+  position: relative;
+}
+
+.jobpost-btn {
+  position: absolute;
+  right: 2rem;
+  padding: 0.5rem 0;
+}
+
+.company__overview{
+  white-space: pre-wrap;
+}

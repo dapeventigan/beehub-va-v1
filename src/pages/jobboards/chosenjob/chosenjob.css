@@ -1,0 +1,68 @@
+.chosenjob__logo img {
+  height: 80px;
+}
+
+.chosenjob__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 4rem 0;
+}
+
+.chosenjob__content{
+  width: 60%;
+}
+
+.chosenjob__header {
+  display: flex;
+  gap: 0.5rem;
+}
+.btn-jobs {
+  padding: 1rem 2.2rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--color-bg-variant);
+}
+
+.btn-jobs:hover {
+  background: #b6b900;
+  border-color: transparent;
+}
+
+.chosenjob__header > p {
+  color: var(--color-font-lightgrey);
+}
+
+.chosenjob__overview {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.chosenjob__overview-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: -1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.chosenjob__overview-details {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.chosenjob__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chosenjob__p{
+  white-space: pre-wrap;
+}

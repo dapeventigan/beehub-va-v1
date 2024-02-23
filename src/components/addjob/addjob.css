@@ -1,0 +1,42 @@
+.textarea__form{
+    min-height: 8rem;
+    width: 100%;
+    padding: 15px;
+    border-radius: 7px;
+    border: 1.5px solid var(--color-font-darkgrey);
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+}
+
+.jobtextarea__input {
+    min-height: 100%;
+    width: 100%;
+    background-color: var(--color-white);
+  }
+
+  .rti--container {
+    width: 100%;
+    --rti-main: none;
+    --rti-border: var(--color-font-darkgrey);
+  }
+
+  .tags__form{
+    position: relative;
+  }
+
+  .remove__tags{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+  }
+
+  .datepicker__container{
+    padding: 15px;
+    border-radius: 7px;
+    border: 1.5px solid var(--color-font-darkgrey);
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+  }

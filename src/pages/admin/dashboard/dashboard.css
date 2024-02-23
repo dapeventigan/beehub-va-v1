@@ -7,7 +7,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 120px;
+  width: 70px;
 }
 
 .admindashheader__container {
@@ -18,17 +18,24 @@
 }
 
 .datatable__container {
-  padding: 3rem;
+  margin: 4rem 4rem;
+  border-radius: 2rem 2rem 0 0;
+  box-shadow: rgba(0, 0, 0, 0) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+    rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
+    rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
+
+
 
 .datatable__container > h1 {
-  margin-left: 2rem;
-  margin-bottom: 1rem;
+  background-color: var(--color-bg-variant);
+  border-radius: 1rem 1rem 0 0;
+  padding: 1.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.dashheader__container, .datatable__container {
-  color: rgb(189, 189, 189);
-}
 
 .dashheader__container{
   width: 70%;
@@ -38,6 +45,13 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+}
+
+.admineditjobbtn__container{
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  overflow: auto;
 }
 @media screen and (max-width: 425px) {
   .admindashheader__container {

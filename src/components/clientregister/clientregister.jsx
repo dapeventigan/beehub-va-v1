@@ -151,7 +151,7 @@ function ClientRegister({ btnClass, btnTitle }) {
           );
         } else {
           setIsLoading(false);
-          navigate("/profile-bh/:username/:id");
+          navigate("/profile-beehub");
           // socket.emit("new_user", {
           //   message: `${fname} is joining using ${email}.`,
           // });

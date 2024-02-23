@@ -31,7 +31,7 @@ const Login = () => {
       }).then(async (res) => {
         if (res.data.status === "ok") {
           socket.emit("authenticate", res.data._id);
-          socket.emit('refresh-all', res.data._id);
+          socket.emit("refresh-all", res.data._id);
           if (res.data.role === "admin") {
             navigate("/admindashboard");
           } else if (res.data.role === "virtualassistant") {
@@ -42,12 +42,7 @@ const Login = () => {
 
             navigate(`/va-bh/${username}/${userId}`);
           } else {
-            const userId = res.data.userId;
-            const fname = res.data.userfname;
-            const lname = res.data.userlname;
-            const username = `${fname.toLowerCase()}-${lname.toLowerCase()}`;
-
-            navigate(`/profile-bh/${username}/${userId}`);
+            navigate(`/profile-beehub`);
           }
         } else {
         }
@@ -76,7 +71,7 @@ const Login = () => {
           }).then(async (res) => {
             if (res.data.status === "ok") {
               socket.emit("authenticate", res.data._id);
-              socket.emit('refresh-all', res.data._id);
+              socket.emit("refresh-all", res.data._id);
               if (res.data.role === "admin") {
                 navigate("/admindashboard");
               } else if (res.data.role === "virtualassistant") {
@@ -87,12 +82,7 @@ const Login = () => {
 
                 navigate(`/va-bh/${username}/${userId}`);
               } else {
-                const userId = res.data.userId;
-                const fname = res.data.userfname;
-                const lname = res.data.userlname;
-                const username = `${fname.toLowerCase()}-${lname.toLowerCase()}`;
-
-                navigate(`/profile-bh/${username}/${userId}`);
+                navigate(`/profile-beehub`);
               }
             } else {
             }
@@ -187,12 +177,12 @@ const Login = () => {
                     }}
                   />
 
-                  <p className="login__noaccount">
+                  {/* <p className="login__noaccount">
                     Don't have an account?{" "}
                     <a href="/joinregister">
                       <span className="signuplogin__text">Sign Up</span>
                     </a>
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </form>

@@ -91,3 +91,11 @@
   height: 1px;
   background-color: #000;
 }
+
+.exit__button2 {
+  /* position: absolute;
+  top: 30px;
+  right: 30px; */
+  cursor: pointer;
+  z-index: 1;
+}

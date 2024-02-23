@@ -40,7 +40,7 @@ const VaSetting = ({ data }) => {
     data.portfolio ? data.portfolio : ""
   );
   const [skills, setSkills] = useState(
-    data.skills.split(",") ? data.skills.split(",") : []
+    data && data.skills ? data.skills.split(",") : []
   );
   const [fbLink, setFbLink] = useState(data.fbLink ? data.fbLink : "");
   const [linkedinLink, setLinkedinLink] = useState(
@@ -106,15 +106,14 @@ const VaSetting = ({ data }) => {
       headers: {
         "Content-Type": "multipart/form-data",
       },
-    }).then((response) => {
-      console.log("ASJDBADS");
-      console.log(response);
-      setIsLoading(false);
-      socket.emit("refresh-all", userID);
     })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+      .then((response) => {
+        setIsLoading(false);
+        socket.emit("refresh-all", userID);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   const style = {
@@ -148,7 +147,7 @@ const VaSetting = ({ data }) => {
               <div className="vasettings__header">
                 <div className="vaheader__left">
                   <IoClose
-                    className="exit__button"
+                    className="exit__button2"
                     size={25}
                     onClick={toggleClose}
                   />
@@ -166,7 +165,10 @@ const VaSetting = ({ data }) => {
               <div className="vasetting__container">
                 <div className="vasettingresume__container">
                   <h4 className="va__label">
-                    Resume | <span>{data.pdfFile.substring(13)}</span>
+                    Resume |{" "}
+                    <span>
+                      {data && data.pdfFile ? data.pdfFile.substring(13) : ""}
+                    </span>
                   </h4>
                   <div className="resume__container">
                     <input

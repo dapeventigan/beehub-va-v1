@@ -88,7 +88,7 @@ const UserNavbar = ({ userData }) => {
               <input type="text" />
             </div>
             <li>
-              <a id="login-btn" className="link__details">
+              <a href="/job-boards" id="login-btn" className="link__details">
                 Job Boards
               </a>
             </li>
@@ -99,7 +99,6 @@ const UserNavbar = ({ userData }) => {
             </a>
             <div className="userdropdown-content-small">
               <a style={{ cursor: "pointer" }}>
-                {" "}
                 <VaSetting data={userData} />
               </a>
               <a style={{ cursor: "pointer" }} onClick={handleLogout}>
