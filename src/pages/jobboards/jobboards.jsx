@@ -16,6 +16,17 @@ import "./jobboards.css";
 const JobBoards = () => {
   const [jobData, setJobData] = useState([]);
 
+  jobData.map((job) => {
+    if (
+      job.jobDeadline.substring(0, 10) ===
+      new Date().toISOString().substring(0, 10)
+    ) {
+      Axios.put("https://server.beehubvas.com/expireJob", {
+        jobID: job._id,
+      });
+    }
+  });
+
   // State for pagination and search
   const [currentPage, setCurrentPage] = useState(1);
   const [inputValue, setInputValue] = useState("");

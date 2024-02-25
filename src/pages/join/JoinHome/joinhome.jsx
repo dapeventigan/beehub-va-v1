@@ -15,8 +15,6 @@ const JoinHome = () => {
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState([]);
 
-  const param = useParams();
-
   //edit profile
   const handleImageChange = async (e) => {
     const file = e.target.files[0];
@@ -45,7 +43,7 @@ const JoinHome = () => {
         navigate("/");
       }
     });
-  }, [param.username, param.id, navigate]);
+  }, []);
 
   //DATATABLE
   const [jobHistory, setJobHistory] = useState([]);
@@ -58,7 +56,7 @@ const JoinHome = () => {
     }).then((res) => {
       setJobHistory(res.data);
     });
-  }, [jobHistory, userDetails._id]);
+  }, [userDetails]);
 
   const jobHistoryColumn = [
     {
@@ -95,6 +93,8 @@ const JoinHome = () => {
           ? "Pending"
           : row.jobVerified === "Declined"
           ? "Declined"
+          : row.jobVerified === "Expired"
+          ? "Finished"
           : "Verified",
       sortable: true,
     },

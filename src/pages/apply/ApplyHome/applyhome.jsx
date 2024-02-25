@@ -37,9 +37,9 @@ const ApplyHome = () => {
       setCopied(true);
       alert("Copied to clipboard");
     } catch (err) {
-      console.error('Failed to copy text: ', err);
+      console.error("Failed to copy text: ", err);
     }
-  }
+  };
 
   //edit profile
   const handleImageChange = async (e) => {
@@ -153,7 +153,7 @@ const ApplyHome = () => {
           <div className="profileuri__container">
             <p>{`https://beehubvas.com/va-bh/${param.username}/${param.id}`}</p>
             <div className="vertical-line" />
-            <IoCopyOutline onClick={handleCopy} style={{cursor: "pointer"}}/>
+            <IoCopyOutline onClick={handleCopy} style={{ cursor: "pointer" }} />
           </div>
         </div>
 

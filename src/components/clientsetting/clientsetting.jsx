@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Axios from "axios";
@@ -7,9 +7,9 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { IoClose } from "react-icons/io5";
 import { socket } from "../../App";
 
-import "./vasetting.css";
+import "../vasetting/vasetting.css";
 
-const VaSetting = ({ data }) => {
+const ClientSetting = ({ data }) => {
   //Popup Modal
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -19,58 +19,19 @@ const VaSetting = ({ data }) => {
 
   const toggleClose = () => {
     setOpen(false);
-    setFname(data.fname);
   };
 
   const [userID, setUserID] = useState(data._id);
-  const [resumeData, setResumeData] = useState(
-    data.pdfFile ? data.pdfFile : ""
-  );
   const [fname, setFname] = useState(data.fname);
   const [lname, setLname] = useState(data.lname);
-  const [userTitle, setUserTitle] = useState(
-    data.userTitle ? data.userTitle : ""
-  );
   const [mobileNumber, setMobileNumber] = useState(data.mobileNumber);
-  const [educationOption, setEducationOption] = useState(
-    data.education ? data.education : ""
-  );
   const [bio, setBio] = useState(data.bio ? data.bio : "");
   const [industry, setIndustry] = useState(data.industry ? data.industry : "");
-  const [portfolio, setPortfolio] = useState(
-    data.portfolio ? data.portfolio : ""
-  );
-  const [skills, setSkills] = useState(
-    data && data.skills ? data.skills.split(",") : []
-  );
-  const [fbLink, setFbLink] = useState(data.fbLink ? data.fbLink : "");
-  const [linkedinLink, setLinkedinLink] = useState(
-    data.linkedinLink ? data.linkedinLink : ""
-  );
-  const [igLink, setIgLink] = useState(data.igLink ? data.igLink : "");
 
   //PASSWORD
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
-
-  //SKILLS
-  const handleSkillChange = (index, newSkill) => {
-    const newSkills = [...skills];
-    newSkills[index] = newSkill;
-    setSkills(newSkills);
-  };
-
-  //RESUME
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setResumeData(file);
-  };
-
-  //Education Option
-  const handleEducationChange = (e) => {
-    setEducationOption(e.target.value);
-  };
 
   //MOBILE NUMBER
   const handleMobileChange = (value) => {
@@ -89,19 +50,11 @@ const VaSetting = ({ data }) => {
         setNewPassword("");
         setConfirmNewPassword("");
         formData.append("userID", userID);
-        formData.append("pdfFile", resumeData);
         formData.append("fname", fname);
         formData.append("lname", lname);
-        formData.append("userTitle", userTitle);
         formData.append("mobileNumber", mobileNumber);
-        formData.append("education", educationOption);
         formData.append("bio", bio);
         formData.append("industry", industry);
-        formData.append("portfolio", portfolio);
-        formData.append("skills", skills);
-        formData.append("fbLink", fbLink);
-        formData.append("linkedinLink", linkedinLink);
-        formData.append("igLink", igLink);
 
         setIsLoading(true);
         Axios.put("https://server.beehubvas.com/accountSettings", formData, {
@@ -139,20 +92,11 @@ const VaSetting = ({ data }) => {
                 setErrorMessage("");
                 formData.append("password", newPassword);
                 formData.append("userID", userID);
-                formData.append("pdfFile", resumeData);
                 formData.append("fname", fname);
                 formData.append("lname", lname);
-                formData.append("userTitle", userTitle);
                 formData.append("mobileNumber", mobileNumber);
-                formData.append("education", educationOption);
                 formData.append("bio", bio);
                 formData.append("industry", industry);
-                formData.append("portfolio", portfolio);
-                formData.append("skills", skills);
-                formData.append("fbLink", fbLink);
-                formData.append("linkedinLink", linkedinLink);
-                formData.append("igLink", igLink);
-        
 
                 setIsLoading(true);
                 Axios.put("https://server.beehubvas.com/accountSettings", formData, {
@@ -181,19 +125,11 @@ const VaSetting = ({ data }) => {
       setNewPassword("");
       setConfirmNewPassword("");
       formData.append("userID", userID);
-      formData.append("pdfFile", resumeData);
       formData.append("fname", fname);
       formData.append("lname", lname);
-      formData.append("userTitle", userTitle);
       formData.append("mobileNumber", mobileNumber);
-      formData.append("education", educationOption);
       formData.append("bio", bio);
       formData.append("industry", industry);
-      formData.append("portfolio", portfolio);
-      formData.append("skills", skills);
-      formData.append("fbLink", fbLink);
-      formData.append("linkedinLink", linkedinLink);
-      formData.append("igLink", igLink);
 
       setIsLoading(true);
       Axios.put("https://server.beehubvas.com/accountSettings", formData, {
@@ -210,6 +146,17 @@ const VaSetting = ({ data }) => {
         });
     }
   };
+
+  useEffect(() => {
+    if (data) {
+      setUserID(data._id);
+      setFname(data.fname);
+      setLname(data.lname);
+      setBio(data.bio ? data.bio : "");
+      setMobileNumber(data.mobileNumber ? data.mobileNumber : "");
+      setIndustry(data.industry ? data.industry : "");
+    }
+  }, [data]);
 
   const style = {
     position: "relative",
@@ -258,23 +205,6 @@ const VaSetting = ({ data }) => {
               </div>
 
               <div className="vasetting__container">
-                <div className="vasettingresume__container">
-                  <h4 className="va__label">
-                    Resume |{" "}
-                    <span>
-                      {data && data.pdfFile ? data.pdfFile.substring(13) : ""}
-                    </span>
-                  </h4>
-                  <div className="resume__container">
-                    <input
-                      type="file"
-                      className="pdf-control"
-                      onChange={handleFileChange}
-                      accept="application/pdf"
-                    />
-                  </div>
-                </div>
-
                 <div className="clientregisterform__container">
                   <div className="vasettingform__container">
                     <h4 className="va__label">Name</h4>
@@ -286,6 +216,7 @@ const VaSetting = ({ data }) => {
                           value={fname}
                           onChange={(e) => setFname(e.target.value)}
                           placeholder="First name"
+                          required
                         />
                       </div>
 
@@ -296,21 +227,9 @@ const VaSetting = ({ data }) => {
                           onChange={(e) => setLname(e.target.value)}
                           value={lname}
                           placeholder="Last Name"
+                          required
                         />
                       </div>
-                    </div>
-                  </div>
-
-                  <div className="vasettingform__container">
-                    <h4 className="va__label">Title</h4>
-                    <div className="clientregisterinput__container">
-                      <input
-                        className="clientregisterinput__form"
-                        type="text"
-                        onChange={(e) => setUserTitle(e.target.value)}
-                        value={userTitle}
-                        placeholder="Title"
-                      />
                     </div>
                   </div>
 
@@ -324,6 +243,7 @@ const VaSetting = ({ data }) => {
                         value={bio}
                         placeholder="Bio"
                         maxLength={160}
+                        required
                       />
 
                       <div style={{ textAlign: "right", marginLeft: "1rem" }}>
@@ -359,117 +279,15 @@ const VaSetting = ({ data }) => {
                       />
                     </div>
 
-                    <div>
-                      <h4 className="va__label">Education</h4>
-                      <select
-                        value={educationOption}
-                        onChange={handleEducationChange}
-                        className="vasettingrdropdown__con"
-                      >
-                        <option value="" disabled>
-                          Choose your highest education level
-                        </option>
-                        <option value="High School Diploma">
-                          High School Diploma
-                        </option>
-                        <option value="Associate's Degree">
-                          Associate's Degree
-                        </option>
-                        <option value="Bachelor's Degree">
-                          Bachelor's Degree
-                        </option>
-                        <option value="Master's Degree">Master's Degree</option>
-                        <option value="Doctorate (Ph.D. or Ed.D.)">
-                          Doctorate (Ph.D. or Ed.D.)
-                        </option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="vasettingform__container">
-                    <h4 className="va__label">Field/Industry</h4>
-                    <div className="clientregisterinput__container">
-                      <input
-                        className="clientregisterinput__form"
-                        type="text"
-                        onChange={(e) => setIndustry(e.target.value)}
-                        value={industry}
-                        placeholder="Industry"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="vasettingform__container">
-                    <h4 className="va__label">Portfolio/Website</h4>
-                    <div className="clientregisterinput__container">
-                      <input
-                        className="clientregisterinput__form"
-                        type="text"
-                        onChange={(e) => setPortfolio(e.target.value)}
-                        value={portfolio}
-                        placeholder="Portfolio/Website"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="vasettingform__container">
-                    <h4 className="va__label">Top 5 Skills</h4>
-                    <div className="vaskillssettings__container">
-                      {[...Array(5)].map((_, index) => (
-                        <div
-                          className="clientregisterinput__container"
-                          key={index}
-                        >
-                          <input
-                            className="clientregisterinput__form"
-                            type="text"
-                            value={skills[index] || ""}
-                            onChange={(e) =>
-                              handleSkillChange(index, e.target.value)
-                            }
-                            placeholder={`Skill ${index + 1}`}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="vasocialmedia__links">
                     <div className="vasettingform__container">
-                      <h4 className="va__label">Facebook Profile Link</h4>
+                      <h4 className="va__label">Field/Industry</h4>
                       <div className="clientregisterinput__container">
                         <input
                           className="clientregisterinput__form"
                           type="text"
-                          onChange={(e) => setFbLink(e.target.value)}
-                          value={fbLink}
-                          placeholder="Facebook Link"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="vasettingform__container">
-                      <h4 className="va__label">Linkedin Profile Link</h4>
-                      <div className="clientregisterinput__container">
-                        <input
-                          className="clientregisterinput__form"
-                          type="text"
-                          onChange={(e) => setLinkedinLink(e.target.value)}
-                          value={linkedinLink}
-                          placeholder="LinkedIn Link"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="vasettingform__container">
-                      <h4 className="va__label">Instagram Profile Link</h4>
-                      <div className="clientregisterinput__container">
-                        <input
-                          className="clientregisterinput__form"
-                          type="text"
-                          onChange={(e) => setIgLink(e.target.value)}
-                          value={igLink}
-                          placeholder="Instagram Link"
+                          onChange={(e) => setIndustry(e.target.value)}
+                          value={industry}
+                          placeholder="Industry"
                         />
                       </div>
                     </div>
@@ -518,7 +336,7 @@ const VaSetting = ({ data }) => {
                               setConfirmNewPassword(e.target.value)
                             }
                             value={confirmNewPassword}
-                            placeholder="Confirm New Password8"
+                            placeholder="Confirm New Password"
                           />
                         </div>
                       </div>
@@ -536,4 +354,4 @@ const VaSetting = ({ data }) => {
   );
 };
 
-export default VaSetting;
+export default ClientSetting;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Axios from "axios";
 import VaSetting from "../../vasetting/vasetting";
+import ClientSetting from "../../clientsetting/clientsetting";
 import {socket} from "../../../App"
 
 import { MdAccountCircle } from "react-icons/md";
@@ -99,7 +100,8 @@ const UserNavbar = ({ userData }) => {
             </a>
             <div className="userdropdown-content-small">
               <a style={{ cursor: "pointer" }}>
-                <VaSetting data={userData} />
+                {userData.role === "virtualassistant" ? <VaSetting data={userData} /> : <ClientSetting data={userData} />}
+                
               </a>
               <a style={{ cursor: "pointer" }} onClick={handleLogout}>
                 Logout

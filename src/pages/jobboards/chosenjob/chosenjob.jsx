@@ -55,7 +55,7 @@ const ChosenJob = () => {
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    navigate("/");
+    alert("Please sign up as Virtual Assistant to apply for this job");
   };
 
   Axios.defaults.withCredentials = true;
@@ -110,10 +110,7 @@ const ChosenJob = () => {
         </div>
 
         {isDataLoading ? (
-         <GridLoader
-         className="grid-loader"
-         color="#ffd325"
-       />
+          <GridLoader className="grid-loader" color="#ffd325" />
         ) : (
           <>
             <h1>{jobData.jobTitle}</h1>
@@ -210,7 +207,9 @@ const ChosenJob = () => {
                 </button>
               )
             ) : (
-              <button className="btn-jobs">Login to apply for this job</button>
+              <button className="btn-jobs" onClick={handleSignUp}>
+                Login to apply for this job
+              </button>
             )}
 
             <p>
