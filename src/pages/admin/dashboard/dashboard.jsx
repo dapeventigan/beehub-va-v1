@@ -18,6 +18,7 @@ const Dashboard = () => {
   const [joinUsers, setJoinUsers] = useState([]);
   const [archiveUsers, setArchiveUsers] = useState([]);
   const [pendingJobs, setPendingJobs] = useState([]);
+  const [activeJobs, setActiveJobs] = useState([]);
 
   Axios.defaults.withCredentials = true;
   useEffect(() => {
@@ -61,6 +62,14 @@ const Dashboard = () => {
     Axios.get("https://server.beehubvas.com/getPendingJobData").then((res) => {
       try {
         setPendingJobs(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    });
+
+    Axios.get("https://server.beehubvas.com/getJobData").then((res) => {
+      try {
+        setActiveJobs(res.data);
       } catch (error) {
         console.log(error);
       }
@@ -149,6 +158,62 @@ const Dashboard = () => {
     },
   ];
 
+  const activejobscolumns = [
+    {
+      name: "Job Posted",
+      selector: (row) => {
+        const date =
+          row.jobPosted instanceof Date
+            ? row.jobPosted
+            : new Date(row.jobPosted);
+        return date
+          .toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })
+          .replace(",", "");
+      },
+      sortable: true,
+    },
+    {
+      name: "Job Title",
+      selector: (row) => row.jobTitle,
+      sortable: true,
+    },
+    {
+      name: "Users Applied",
+      selector: (row) => row.usersApplied.length,
+      sortable: true,
+    },
+    {
+      name: "Job Deadline",
+      selector: (row) => {
+        const date =
+          row.jobPosted instanceof Date
+            ? row.jobPosted
+            : new Date(row.jobDeadline);
+        return date
+          .toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })
+          .replace(",", "");
+      },
+      sortable: true,
+    },
+    {
+      name: "Actions for pending jobs",
+      selector: (row) => (
+        <div className="admineditjobbtn__container">
+          <AdminDeleteJob jobData={row} />
+        </div>
+      ),
+      sortable: true,
+    },
+  ];
+
   const pendingjobscolumns = [
     {
       name: "Job Posted",
@@ -230,6 +295,13 @@ const Dashboard = () => {
           </div>
 
           <div className="horizontal-line"></div>
+
+          <div className="datatable__container">
+            <h1>Active Jobs</h1>
+            <div className="table__container">
+              <DataTable columns={activejobscolumns} data={activeJobs} />
+            </div>
+          </div>
 
           <div className="datatable__container">
             <h1>Pending Jobs</h1>
