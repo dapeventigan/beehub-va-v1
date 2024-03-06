@@ -5,7 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
 
 /* Mulish Font */
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;900&family=Playfair+Display:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;900&family=Playfair+Display:wght@400;600&display=swap");
 /* Default CSS values from scratch */
 *,
 *::before,
@@ -22,7 +22,7 @@
 /* REUSABLE STYLES */
 :root {
   /* COLOR */
-  --color-bg: #0a0b11;
+  --color-bg: #333;
   --color-bg-darkgrey: #111111;
   --color-bg-light: #3f404f;
   /* --color-bg-variant: #eec33d; */
@@ -67,7 +67,7 @@ html {
   line-height: 1.7;
 }
 
-textarea{
+textarea {
   font-family: "Arial", sans-serif;
   min-height: 8rem;
   width: 100%;
@@ -104,7 +104,7 @@ a:hover {
   border-color: transparent;
 }
 
-.btn:disabled{
+.btn:disabled {
   background: #707070;
   color: #cccccc;
   cursor: not-allowed;
@@ -148,7 +148,7 @@ img {
   min-height: 200px;
 }
 
-.grid-loader{
+.grid-loader {
   margin-top: 10rem;
 }
 
@@ -185,10 +185,24 @@ main {
   margin: 40px auto;
 }
 
-.wavy-svg{
+.wavy-svg {
   position: absolute;
   bottom: 0;
   left: 0;
+}
+
+.filterdatasearch__container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.filterdatasearch__input {
+  width: 95%;
+  border: 1px solid #d1d1d1;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
 }
 
 @media screen and (max-width: 768px) {

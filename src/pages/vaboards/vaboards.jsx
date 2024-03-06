@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import JobBoardNavbar from "../../components/navbar/jobboardnavbar/jobboardnavbar";
 import { Card, Row, Col, Pagination, Form, FormControl } from "react-bootstrap";
-import { formatDistanceToNow, set } from "date-fns";
 import { MdWork } from "react-icons/md";
 import { MdOutlineAccessTimeFilled } from "react-icons/md";
+import { RiGraduationCapFill } from "react-icons/ri";
+
 import Axios from "axios";
 import GridLoader from "react-spinners/GridLoader";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
@@ -12,10 +13,10 @@ import { IoChevronBack } from "react-icons/io5";
 import { IoChevronForward } from "react-icons/io5";
 import Footer from "../../components/footer/footer";
 
-import "./jobboards.css";
+import "../jobboards/jobboards.css";
 
-const JobBoards = () => {
-  const [jobData, setJobData] = useState([]);
+const VABoards = () => {
+  const [vaData, setVaData] = useState([]);
 
   // State for pagination and search
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,21 +40,29 @@ const JobBoards = () => {
   }, [searchTermFromParams]);
 
   //GOD FILTER
-  const filteredJobs = jobData.filter((job) => {
-    const jobDate = new Date(job.jobPosted);
+  const filteredJobs = vaData.filter((job) => {
+    const jobDate = new Date(job.joinedDate);
     const filterDate = getDateFromChoice(dateFilter);
 
     return (
-      job.jobTitle.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (selectedType === "" || job.jobEmploymentType === selectedType) &&
-      (experienceType === "" || job.jobLevelExperience === experienceType) &&
+      (job.fname.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        job.lname.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (job.industry
+          ? job.industry.toLowerCase().includes(searchTerm.toLowerCase())
+          : "")) &&
+      (selectedType === "" || job.verifiedForJob.toString() === selectedType) &&
+      (experienceType === "" || job.education === experienceType) &&
       (!filterDate || jobDate >= filterDate)
     );
   });
+
   //DATE FILTER
   function getDateFromChoice(choice) {
     const now = new Date();
     switch (choice) {
+      case "Past Year":
+        now.setFullYear(now.getFullYear() - 1);
+        break;
       case "Past Month":
         now.setMonth(now.getMonth() - 1);
         break;
@@ -67,25 +76,6 @@ const JobBoards = () => {
         return null;
     }
     return now;
-  }
-
-  //SEE MORE
-  function truncate(str, num, id) {
-    if (str.length <= num) {
-      return str;
-    }
-    return (
-      <span>
-        {str.slice(0, num)}
-        <a
-          href={`https://beehubvas.com/job-boards/bh/${id}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          ...see more
-        </a>
-      </span>
-    );
   }
 
   // Pagination logic
@@ -110,8 +100,8 @@ const JobBoards = () => {
 
   useEffect(() => {
     setIsDataLoading(true);
-    Axios.get("https://server.beehubvas.com/getJobData").then((res) => {
-      setJobData(res.data);
+    Axios.get("https://server.beehubvas.com/getVAUsers").then((res) => {
+      setVaData(res.data);
       setIsDataLoading(false);
     });
   }, []);
@@ -120,10 +110,8 @@ const JobBoards = () => {
     <div>
       <JobBoardNavbar />
       <div className="jobboard__header">
-        <h1>
-          Find your <span>new Remote Job</span> today!
-        </h1>
-        <h4>Thousands of Virtual Assistant Jobs are waiting for you.</h4>
+        <h1>Find Virtual Assistants</h1>
+        <h4>Thousands of Virtual Assistant are waiting to be deployed.</h4>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima at
           iure accusantium neque corrupti molestias provident dignissimos, quod
@@ -146,7 +134,7 @@ const JobBoards = () => {
               >
                 <FormControl
                   type="text"
-                  placeholder="Search jobs..."
+                  placeholder="Search Virtual Assistants..."
                   className="mr-sm-2"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
@@ -163,7 +151,8 @@ const JobBoards = () => {
               onChange={(e) => setDateFilter(e.target.value)}
               className="jobboards__filter-select"
             >
-              <option value="">Any time</option>
+              <option value="">Joined Date</option>
+              <option value="Past Year">Past Year</option>
               <option value="Past Month">Past Month</option>
               <option value="Past Week">Past Week</option>
               <option value="Past 24 hours">Past 24 hours</option>
@@ -175,10 +164,20 @@ const JobBoards = () => {
               onChange={(e) => setSelectedType(e.target.value)}
               className="jobboards__filter-select"
             >
-              <option value="">Employment Type</option>
-              <option value="Full-time">Full-time</option>
-              <option value="Part-time">Part-time</option>
-              <option value="Contract">Contract</option>
+              <option value="">Verification</option>
+              <option value="true">Verified</option>
+              <option value="false">Unverified</option>
+            </Form.Control>
+
+            <Form.Control
+              as="select"
+              value={selectedType}
+              onChange={(e) => setSelectedType(e.target.value)}
+              className="jobboards__filter-select"
+            >
+              <option value="">Employment Status</option>
+              <option value="true">Hired</option>
+              <option value="false">Unhired</option>
             </Form.Control>
 
             <Form.Control
@@ -187,10 +186,14 @@ const JobBoards = () => {
               onChange={(e) => setExperienceType(e.target.value)}
               className="jobboards__filter-select"
             >
-              <option value="">Experience Level</option>
-              <option value="Entry-level">Entry-level</option>
-              <option value="Mid-level">Mid-level</option>
-              <option value="Senior-level">Senior-level</option>
+              <option value="">Education Level</option>
+              <option value="High School Diploma">High School Diploma</option>
+              <option value="Associate's Degree">Associate's Degree</option>
+              <option value="Bachelor's Degree">Bachelor's Degree</option>
+              <option value="Master's Degree">Master's Degree</option>
+              <option value="Doctorate (Ph.D. or Ed.D.)">
+                Doctorate (Ph.D. or Ed.D.)
+              </option>
             </Form.Control>
           </div>
 
@@ -209,34 +212,44 @@ const JobBoards = () => {
                           <div className="jobcard__first">
                             <div className="jobcard__first-title">
                               <Card.Title className="jobcard__title">
-                                {job.jobTitle}
+                                {job.fname} {job.lname}
                               </Card.Title>
                               <Card.Text className="jobtype__container">
-                                {job.jobEmploymentType}
+                                {job.verifiedForJob ? "Verified" : "Unverified"}
                               </Card.Text>
                             </div>
                             <Card.Text className="jobcard__header">
-                              <MdWork /> {job.jobSalary} •{" "}
-                              {job.jobLevelExperience}
+                              <MdWork /> {job.industry}
+                            </Card.Text>
+                            <Card.Text className="jobcard__header">
+                              <RiGraduationCapFill /> {job.education}
                             </Card.Text>
                             <Card.Text className="jobboards__posted-text">
-                              <MdOutlineAccessTimeFilled size={17} /> Posted{" "}
-                              {formatDistanceToNow(job.jobPosted)} ago
+                              <MdOutlineAccessTimeFilled size={17} /> Joined{" "}
+                              {new Date(job.joinedDate)
+                                .toUTCString()
+                                .substring(4, 17)}
                             </Card.Text>
                             <Card.Text style={{ marginTop: "1rem" }}>
-                              {truncate(job.jobSummary, 200, job._id)}
+                              {/* {truncate(job.jobSummary, 200, job._id)} */}
                             </Card.Text>
                           </div>
 
                           <div className="jobcard__second">
                             <a
-                              href={`https://beehubvas.com/job-boards/bh/${job._id}`}
+                              href={`https://beehubvas.com/va-bh/${job.fname.toLowerCase()}-${job.lname.toLowerCase()}/${
+                                job._id
+                              }`}
                               target="_blank"
                               rel="noreferrer"
                             >
-                              <button className="btn">View Job</button>
+                              <button className="btn">View Profile</button>
                             </a>
                           </div>
+{/* 
+                          <div className="jobcard__second">
+                            <button className="btn"><AdminHire data={vaData}/></button>
+                          </div> */}
                         </Card.Body>
                       </Card>
                     </Col>
@@ -292,4 +305,4 @@ const JobBoards = () => {
   );
 };
 
-export default JobBoards;
+export default VABoards;

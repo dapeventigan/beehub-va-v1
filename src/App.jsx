@@ -17,12 +17,11 @@ import VirtualHome from "./pages/virtual/virtual-home.jsx";
 import PlansPricing from "./pages/plans-pricing/plans-pricing.jsx";
 
 //APPLY ROUTES
-// import ApplyRegister from "./pages/apply/ApplyRegister/applyregister.jsx";
 import ApplyHome from "./pages/apply/ApplyHome/applyhome.jsx";
+
 //JOIN ROUTES
-// import JoinRegister from "./pages/join/JoinRegister/joinregister.jsx";
 import JoinHome from "./pages/join/JoinHome/joinhome.jsx";
-import InitalJoinRegister from "./pages/join/JoinRegister/initaljoinregister.jsx";
+
 //FORGOT PASSWORD
 import CheckEmail from "./pages/forgotpassword/checkemail.jsx";
 import ForgotPassword from "./pages/forgotpassword/forgotpassword.jsx";
@@ -41,6 +40,15 @@ import RootLayouts from "./layouts/rootlayouts.jsx";
 import JobBoard from "./pages/jobboards/jobboards.jsx";
 import ChosenJob from "./pages/jobboards/chosenjob/chosenjob.jsx";
 
+//VA BOARDS
+import VABoards from "./pages/vaboards/vaboards.jsx";
+
+//HIRE
+import AdminHire from "./pages/admin/hire/hire.jsx";
+
+//Training
+import AdminTraining from "./pages/admin/training/training.jsx";
+
 import "./App.css";
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -50,6 +58,8 @@ const router = createBrowserRouter(
       <Route path="resetpasswordverify" element={<CheckEmail />} />
       <Route path="virtual-assistant" element={<VirtualHome />} />
       <Route path="/admindashboard" element={<Dashboard />} />
+      <Route path="/admindashboard/hire" element={<AdminHire />} />
+      <Route path="/admindashboard/training" element={<AdminTraining />} />
       <Route path="/aboutus" element={<WhyWork />}></Route>
       <Route path="/aboutus/our-team" element={<OurTeam />}></Route>
       <Route path="services" element={<Services />}></Route>
@@ -60,6 +70,7 @@ const router = createBrowserRouter(
       <Route path="/reset/:id/:token" element={<ForgotPassword />} />
       <Route path="/job-boards" element={<JobBoard />} />
       <Route path="/job-boards/bh/:id" element={<ChosenJob />} />
+      <Route path="/va-boards" element={<VABoards />} />
 
       <Route path="/*" element={<Navigate to="/" />} />
       {/* TODO: 404 page */}

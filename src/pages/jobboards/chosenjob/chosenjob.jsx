@@ -50,6 +50,8 @@ const ChosenJob = () => {
     await Axios.put("https://server.beehubvas.com/applyJob", {
       jobID: jobData._id,
       userID: userDetails._id,
+      userName:
+        userDetails.fname.toLowerCase() + "-" + userDetails.lname.toLowerCase(),
     });
   };
 
@@ -194,7 +196,15 @@ const ChosenJob = () => {
               </div>
             </div>
 
-            {isUserVA ? (
+            {jobData.jobVerified === "Expired" ||
+            jobData.jobVerified === "Closed" ? (
+              <button
+                className="btn-jobs"
+                disabled={true}
+              >
+                Job Expired
+              </button>
+            ) : isUserVA ? (
               isLoading ? (
                 <CircularProgress />
               ) : (
@@ -213,7 +223,13 @@ const ChosenJob = () => {
             )}
 
             <p>
-              Application Deadline: <span>{finalDateEnd}</span>
+              Application Deadline:{" "}
+              <span>
+                {jobData.jobVerified === "Expired" ||
+                jobData.jobVerified === "Closed"
+                  ? "Ended"
+                  : finalDateEnd}
+              </span>
             </p>
           </>
         )}

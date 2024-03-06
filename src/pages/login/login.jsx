@@ -178,9 +178,9 @@ const Login = () => {
                   />
 
                   {/* <p className="login__noaccount">
-                    Don't have an account?{" "}
+                    Don't have an account? 
                     <a href="/joinregister">
-                      <span className="signuplogin__text">Sign Up</span>3
+                      <span className="signuplogin__text"> Sign Up</span>
                     </a>
                   </p> */}
                 </div>

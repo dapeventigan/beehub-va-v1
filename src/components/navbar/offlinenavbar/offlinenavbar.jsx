@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa6";
-import { FaBars } from "react-icons/fa";
-import { MdOutlineClose } from "react-icons/md";
 import AOS from "aos";
-import { IoClose } from "react-icons/io5";
 import BHLogo from "../../../assets/logo_1.png";
+import OfflineSideBar from "../sidebar/offlinesidebar/offlinesidebar";
 
 import "../navbar.css";
 
@@ -42,27 +39,6 @@ const OfflineNavbar = () => {
     };
   }, []);
 
-  const [showDiv, setShowDiv] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const threshold = 150;
-
-      if (scrollPosition > threshold) {
-        setShowDiv(true);
-      } else {
-        setShowDiv(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   const style = {
     position: "relative",
     top: "50%",
@@ -75,35 +51,23 @@ const OfflineNavbar = () => {
     boxShadow: 24,
   };
 
-  const beeHubImg = {
-    opacity: showDiv ? "1" : "0",
-    transition: "opacity 0.5s ease-in-out",
-  };
-
   return (
-    <nav>
+    <nav className="navbar">
       <div className="navbar__contents">
-        <div className="navbar__link">
-          <div className="simple__menu">
-            <Button
-              sx={{
-                color: "black",
-                border: "2px solid black",
-                "&:hover": {
-                  border: "3px solid black",
-                },
-              }}
-              variant="outlined"
-              aria-controls="simple__menu"
-              aria-haspopup="true"
-              onClick={toggleMenu}
-            >
-              {isOpen ? <MdOutlineClose /> : <FaBars />}
-            </Button>
+      <div className="sidebar__menu">
+          <div className="navbar__beehub">
+            <a href="/#">
+              <img src={BHLogo} alt="" />
+            </a>
           </div>
+          <div className="sidebar__button">
+            <OfflineSideBar />
+          </div>
+        </div>
+        <div className="navbar__link">
           <div className={!isOpen ? "navul__container" : "show"}>
             <ul className="navbar__links">
-              <div className="navbar__beehub" style={beeHubImg}>
+              <div className="navbar__beehub">
                 <a href="/#">
                   <img src={BHLogo} alt="" />
                 </a>

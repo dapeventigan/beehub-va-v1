@@ -1,4 +1,4 @@
-nav {
+.navbar {
   position: sticky;
   top: -1px;
   left: 0;
@@ -63,8 +63,8 @@ nav {
   margin-top: 0.9rem;
 }
 
-.simple__menu,
-#simple__menu {
+.sidebar__menu,
+#sidebar__menu {
   display: none;
 }
 
@@ -163,70 +163,17 @@ nav {
 
 /* MEDIA QUERIED */
 @media screen and (max-width: 800px) {
-  .navbar__box {
-    display: none;
-  }
-  .navbar__contents {
-    padding: 0 2rem;
+  .sidebar__menu,
+  #sidebar__menu {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
+    width: 90%;
+    height: 80px;
+    padding-right: 20px; 
   }
 
-  .simple__menu,
-  #simple__menu {
-    display: block;
-  }
-
-  .navbar__link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  .navul__container {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    position: absolute;
-  }
-
-  .navbar__links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  .show {
-    opacity: 1;
-    max-height: 500px;
-    transition: opacity 0.7s ease, max-height 0.5s ease;
-  }
-
-  .dropdown {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .dropdown-content {
+  .navbar__link{
     display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 350px;
-    max-height: 300px;
-    overflow-y: scroll;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    border-radius: 0.4rem;
-    z-index: 1;
-    margin-top: 1.5rem;
-  }
-
-  .dropdown-content-small {
-    max-width: auto;
-    margin-top: 1.5rem;
   }
 }

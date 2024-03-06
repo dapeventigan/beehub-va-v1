@@ -518,7 +518,7 @@ const VaSetting = ({ data }) => {
                               setConfirmNewPassword(e.target.value)
                             }
                             value={confirmNewPassword}
-                            placeholder="Confirm New Password8"
+                            placeholder="Confirm New Password"
                           />
                         </div>
                       </div>

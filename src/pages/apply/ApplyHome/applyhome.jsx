@@ -6,6 +6,7 @@ import Axios from "axios";
 import DataTable, { createTheme } from "react-data-table-component";
 import ViewPdf from "../../../components/viewpdf/viewpdf";
 
+
 import UserNavbar from "../../../components/navbar/usernavbar/usernavbar";
 import OfflineNavbar from "../../../components/navbar/offlinenavbar/offlinenavbar";
 import Footer from "../../../components/footer/footer";
@@ -15,6 +16,7 @@ import { FaFacebookSquare, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { FaPhone } from "react-icons/fa6";
 import { IoCopyOutline } from "react-icons/io5";
+import BHLogo from "../../../assets/logo_1.png";
 
 import "./applyhome.css";
 
@@ -25,6 +27,7 @@ const ApplyHome = () => {
   const [skill, setSkill] = useState([]);
   const [mainData, setMainData] = useState([]);
   const [isLoggedIn, setisLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const param = useParams();
 
@@ -80,11 +83,14 @@ const ApplyHome = () => {
               if (res.data !== "User not found" && res.data._id === param.id) {
                 setMainData(res.data);
                 setViewOnly(false);
+                setIsLoading(false);
               } else if (res.data !== "User not found") {
                 setisLoggedIn(true);
                 setMainData(res.data);
+                setIsLoading(false);
               } else {
                 setisLoggedIn(false);
+                setIsLoading(false);
               }
             }
           );
@@ -93,30 +99,78 @@ const ApplyHome = () => {
         }
       }
     );
+
+    Axios.get("https://server.beehubvas.com/getJobHistory", {
+      params: {
+        userID: param.id,
+      },
+    }).then((res) => {
+      setJobHistory(res.data);
+    });
   }, [param.username, param.id, navigate]);
 
   //DATATABLE
 
+  const [jobHistory, setJobHistory] = useState([]);
   const historyColumn = [
     {
       name: "Date Hired",
-      selector: (row) => row.name,
+      selector: (row) => {
+        const date =
+          row.dateHired instanceof Date
+            ? row.dateHired
+            : new Date(row.dateHired);
+        return date
+          .toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })
+          .replace(",", "");
+      },
       sortable: true,
     },
     {
+      name: "Employment Status",
+      selector: (row) => row.employmentStatus,
+    },
+    {
       name: "Business/Company Name",
-      selector: (row) => row.date,
+      selector: (row) => row.clientName,
+      sortable: true,
+    },
+    {
+      name: "Job",
+      selector: (row) => row.jobTitle,
+      sortable: true,
+    },
+    {
+      name: "Employment Type",
+      selector: (row) => row.jobEmploymentType,
       sortable: true,
     },
     {
       name: "# of hours per week",
-      selector: (row) => row.jobName,
+      selector: (row) => row.jobWorkHours,
       sortable: true,
     },
-    // {
-    //   name: "Hourly Rate",
-    //   selector: (row) => row.selectedValues,
-    // },
+    {
+      name: "Date Ended",
+      selector: (row) => row.dateEnded ? (() => {
+        const date =
+        row.dateEnded instanceof Date
+            ? row.dateEnded 
+            : new Date(row.dateEnded);
+        return date
+          .toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })
+          .replace(",", "");
+      })(): "Ongoing",
+      sortable: true,
+    }
   ];
 
   createTheme("dape", {
@@ -137,12 +191,19 @@ const ApplyHome = () => {
     },
   });
 
+
   return (
     <div>
-      {viewOnly && !isLoggedIn ? (
+      {isLoading ? (
+        <nav className="navbar">
+          <div className="navbar__beehub">
+            <a href="/#">
+              <img src={BHLogo} alt="" style={{ opacity: "0" }} />
+            </a>
+          </div>
+        </nav>
+      ) : viewOnly && !isLoggedIn ? (
         <OfflineNavbar />
-      ) : viewOnly && isLoggedIn ? (
-        <UserNavbar userData={mainData} />
       ) : (
         <UserNavbar userData={mainData} />
       )}
@@ -210,7 +271,12 @@ const ApplyHome = () => {
                       <h2>{`${userDetails.fname} ${userDetails.lname}`}</h2>
                       <p>{userDetails.userTitle || "None"}</p>
                       <p>
-                        Not Verified <MdVerified color="red" />
+                        {!userDetails.verifiedForJob
+                          ? "Not Verified"
+                          : "Verified"}
+                        <MdVerified
+                          color={!userDetails.verifiedForJob ? "red" : "green"}
+                        />
                       </p>
                     </div>
                   </div>
@@ -249,8 +315,7 @@ const ApplyHome = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {" "}
-                      {userDetails.portfolio}{" "}
+                      {userDetails.portfolio || "None"}
                     </a>
                   </div>
                   <div className="profile__fifthrow">
@@ -324,8 +389,9 @@ const ApplyHome = () => {
 
                   <DataTable
                     columns={historyColumn}
-                    data={userDetails.jobHistory}
+                    data={jobHistory}
                     theme="dape"
+                    pagination
                   />
                 </div>
               </div>
@@ -340,6 +406,7 @@ const ApplyHome = () => {
                     columns={historyColumn}
                     // data={jobHistory}
                     theme="dape"
+                    pagination
                   />
                 </div>
               </div>
@@ -354,6 +421,7 @@ const ApplyHome = () => {
                     columns={historyColumn}
                     // data={jobHistory}
                     theme="dape"
+                    pagination
                   />
                 </div>
               </div>

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import Avatar from "react-avatar";
+import Button from "@mui/material/Button";
 import Axios from "axios";
 import DataTable, { createTheme } from "react-data-table-component";
 import AddJob from "../../../components/addjob/addjob";
 
 import UserNavbar from "../../../components/navbar/usernavbar/usernavbar";
+import Unhire from "../Unhire/unhire";
 import Footer from "../../../components/footer/footer";
 
 import "./joinhome.css";
@@ -95,7 +96,9 @@ const JoinHome = () => {
           ? "Declined"
           : row.jobVerified === "Expired"
           ? "Finished"
-          : "Verified",
+          : row.jobVerified === "Closed"
+          ? "Closed"
+          : "Failed",
       sortable: true,
     },
   ];
@@ -118,6 +121,93 @@ const JoinHome = () => {
     },
   });
 
+  const [myVA, setMyVA] = useState([]);
+
+  useEffect(() => {
+    Axios.get("https://server.beehubvas.com/getHiredVA", {
+      params: {
+        userID: userDetails._id,
+      },
+    }).then((res) => {
+      setMyVA(res.data);
+    });
+  }, [userDetails]);
+
+  const MyVAColumn = [
+    {
+      name: "Unhire a VA",
+      selector: (row) => <Unhire jobData={row} />,
+    },
+    {
+      name: "Date Hired",
+      selector: (row) => {
+        const date =
+          row.dateHired instanceof Date
+            ? row.dateHired
+            : new Date(row.dateHired);
+        return date
+          .toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })
+          .replace(",", "");
+      },
+      sortable: true,
+    },
+    {
+      name: "Virtual Assistant",
+      selector: (row) => row.vaName,
+      sortable: true,
+    },
+    {
+      name: "Job Assigned",
+      selector: (row) => row.jobTitle,
+      sortable: true,
+    },
+    {
+      name: "Date Ended",
+      selector: (row) => row.dateEnded ? (() => {
+        const date =
+        row.dateEnded instanceof Date
+            ? row.dateEnded 
+            : new Date(row.dateEnded);
+        return date
+          .toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })
+          .replace(",", "");
+      })(): "Ongoing",
+      sortable: true,
+    },
+    {
+      name: "View Profile",
+      selector: (row) => (
+        <a
+          href={`https://beehubvas.com/va-bh/${row.vaName
+            .toLowerCase()
+            .split(" ")
+            .join("-")}/${row.vaID}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button sx={buttonStyle}>View Profile</Button>
+        </a>
+      ),
+    },
+  ];
+
+  const buttonStyle = {
+    backgroundColor: "#111111",
+    color: "white",
+    borderRadius: 1,
+    "&:hover": {
+      backgroundColor: "#202020",
+    },
+  };
+
   return (
     <div>
       <UserNavbar userData={userDetails} />
@@ -134,44 +224,10 @@ const JoinHome = () => {
               <div className="profiletop__container">
                 <div className="profileheader__row">
                   <div className="profiletitleheader__container">
-                    <div className="profile_picture">
-                      <label
-                        htmlFor="profilePictureInput"
-                        className="avatar-label"
-                      >
-                        {!userDetails.profilePicture ? (
-                          <>
-                            <Avatar
-                              size="200"
-                              name={`${userDetails.fname} ${userDetails.lname}`}
-                              round={true}
-                              color="#e5ac3f"
-                            />
-                          </>
-                        ) : (
-                          <>
-                            <Avatar
-                              size="200"
-                              src={`https://server.beehubvas.com/profilepicture/${userDetails.profilePicture}`}
-                              round={true}
-                            />
-                          </>
-                        )}
-
-                        <input
-                          type="file"
-                          id="profilePictureInput"
-                          accept="image/*"
-                          onChange={handleImageChange}
-                          style={{ display: "none" }}
-                        />
-
-                        <span className="change-avatar-text">
-                          Change avatar
-                        </span>
-                      </label>
-                    </div>
-                    <div className="profiletitle__container">
+                    <div
+                      className="profiletitle__container"
+                      style={{ margin: "3rem" }}
+                    >
                       <h2>{`${userDetails.fname} ${userDetails.lname}`}</h2>
                     </div>
                   </div>
@@ -207,6 +263,7 @@ const JoinHome = () => {
                     columns={jobHistoryColumn}
                     data={jobHistory}
                     theme="dape"
+                    pagination
                   />
                 </div>
               </div>
@@ -218,9 +275,10 @@ const JoinHome = () => {
                   </div>
 
                   <DataTable
-                    // columns={historyColumn}
-                    // data={jobHistory}
+                    columns={MyVAColumn}
+                    data={myVA}
                     theme="dape"
+                    pagination
                   />
                 </div>
               </div>

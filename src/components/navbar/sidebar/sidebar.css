@@ -1,0 +1,97 @@
+.sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 80%;
+  height: 100%;
+  background-color: #f4f4f4;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  overflow: auto;
+  background-color: var(--color-bg-variant);
+  box-shadow: rgba(0, 0, 0, 0) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+    rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
+    rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar__toggle-btn {
+  cursor: pointer;
+}
+
+.sidebar__toggle-btn-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.sidebar__header {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar__header img {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.sidebar__contents {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  width: 80%;
+  margin-inline: auto;
+}
+
+.sidebar__dropbtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 0.2rem;
+}
+
+.sidebar__dropbtn-show {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.sidebar__dropdown,
+.sidebar__dropdown-show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 2rem;
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.sidebar__dropdown {
+  margin-top: 0rem;
+  transform: scaleY(0);
+  max-height: 0; /* adjust this value as needed */
+}
+
+.sidebar__dropdown-show {
+  transform: scaleY(1);
+  max-height: 500px; /* adjust this value as needed */
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    width: 30%;
+  }
+}

@@ -1,0 +1,9 @@
+.admintraining__form{
+    width: 500px;
+    margin: 0 auto;
+}
+
+.training__buttons{
+    display: flex;
+    justify-content: space-evenly;
+}

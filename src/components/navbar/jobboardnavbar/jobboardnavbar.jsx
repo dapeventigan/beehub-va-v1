@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Button from "@mui/material/Button";
 import Axios from "axios";
-import VaSetting from "../../vasetting/vasetting";
 import { socket } from "../../../App";
 
 import { MdAccountCircle } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
-import { FaBars } from "react-icons/fa";
-import { MdOutlineClose } from "react-icons/md";
+import JobBoardSideBar from "../sidebar/jobboardsidebar/jobboardsidebar";
 
 import BHLogo from "../../../assets/logo_1.png";
 import SyncLoader from "react-spinners/SyncLoader";
@@ -22,10 +19,6 @@ const JobBoardNavbar = () => {
   const [loginLocation, setLoginLocation] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -69,23 +62,16 @@ const JobBoardNavbar = () => {
   }, [navigate]);
 
   return (
-    <nav>
-      <div className="simple__menu">
-        <Button
-          sx={{
-            color: "black",
-            border: "2px solid black",
-            "&:hover": {
-              border: "3px solid black",
-            },
-          }}
-          variant="outlined"
-          aria-controls="simple__menu"
-          aria-haspopup="true"
-          onClick={toggleMenu}
-        >
-          {isOpen ? <MdOutlineClose /> : <FaBars />}
-        </Button>
+    <nav className="navbar">
+      <div className="sidebar__menu">
+        <div className="navbar__beehub">
+          <a href="/#">
+            <img src={BHLogo} alt="" style={{ marginLeft: "2rem" }}/>
+          </a>
+        </div>
+        <div className="sidebar__button">
+          <JobBoardSideBar />
+        </div>
       </div>
 
       <div className={!isOpen ? "navul__container" : "show"}>
@@ -96,7 +82,7 @@ const JobBoardNavbar = () => {
             </a>
           </div>
           <div className="usernavsearch__container">
-            <div className="usernav__searchbar">
+            {/* <div className="usernav__searchbar">
               <FaSearch />
               <input type="text" />
             </div>
@@ -104,11 +90,11 @@ const JobBoardNavbar = () => {
               <a href="/job-boards" id="login-btn" className="link__details">
                 Job Boards
               </a>
-            </li>
+            </li> */}
           </div>
 
           {isLoading ? (
-            <SyncLoader color="#000000"/>
+            <SyncLoader color="#000000" />
           ) : isUserLoggedIn ? (
             <div className="userdropdown">
               <a className="dropbtn">

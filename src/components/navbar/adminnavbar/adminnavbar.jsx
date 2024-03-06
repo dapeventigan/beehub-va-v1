@@ -4,17 +4,15 @@ import VaSetting from "../../vasetting/vasetting";
 import ClientSetting from "../../clientsetting/clientsetting";
 import { socket } from "../../../App";
 
+import AdminSideBar from "../sidebar/adminsidebar/adminsidebar";
 import { MdAccountCircle } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
 import AOS from "aos";
 import BHLogo from "../../../assets/logo_1.png";
-import UserSideBar from "../sidebar/usersidebar/usersidebar";
 
-import "./usernavbar.css";
-
-const UserNavbar = ({ userData }) => {
+const AdminNavbar = ({ userData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [loginLocation, setLoginLocation] = useState("");
   const [inputValue, setInputValue] = useState("");
@@ -45,7 +43,7 @@ const UserNavbar = ({ userData }) => {
     } else {
       setLoginLocation(`/profile-beehub`);
     }
-  }, []);
+  }, [userData.role]);
 
   useEffect(() => {
     AOS.init({ duration: 500 });
@@ -76,28 +74,30 @@ const UserNavbar = ({ userData }) => {
       <div className="sidebar__menu">
         <div className="navbar__beehub">
           <a href="/#">
-            <img src={BHLogo} alt="" />
+            <img src={BHLogo} alt="" style={{ marginLeft: "2rem" }} />
           </a>
         </div>
-        <div className="usernavsearch__container" style={{marginRight: "2rem"}}>
-          <div className="usernav__searchbar">
+        <div
+          className="usernavsearch__container"
+          style={{ marginRight: "2rem" }}
+        >
+          {/* <div className="usernav__searchbar">
             <FaSearch />
             <input
               type="text"
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  navigate(`/job-boards?search=${inputValue}`);
+                  navigate(`/clients-boards?search=${inputValue}`);
                 }
               }}
             />
-          </div>
+          </div> */}
         </div>
         <div className="sidebar__button">
-          <UserSideBar />
+       <AdminSideBar/>
         </div>
       </div>
-
       <div className={!isOpen ? "navul__container" : "show"}>
         <ul className="usernavbar__links">
           <div className="navbar__beehub">
@@ -106,21 +106,28 @@ const UserNavbar = ({ userData }) => {
             </a>
           </div>
           <div className="usernavsearch__container">
-            <div className="usernav__searchbar">
+            {/* <div className="usernav__searchbar">
               <FaSearch />
-              <input
-                type="text"
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    navigate(`/job-boards?search=${inputValue}`);
-                  }
-                }}
-              />
-            </div>
+              <input type="text" />
+            </div> */}
+            {/* <li>
+              <a href="/va-boards" id="login-btn" className="link__details">
+                Virtual Assistants
+              </a>
+            </li> */}
             <li>
               <a href="/job-boards" id="login-btn" className="link__details">
                 Job Boards
+              </a>
+            </li>
+            <li>
+              <a href="/admindashboard/hire" id="login-btn" className="link__details">
+                + Hire VA
+              </a>
+            </li>
+            <li>
+              <a href="/admindashboard/training" id="login-btn" className="link__details">
+                 + Add Trainings/Course for VA
               </a>
             </li>
           </div>
@@ -158,4 +165,4 @@ const UserNavbar = ({ userData }) => {
   );
 };
 
-export default UserNavbar;
+export default AdminNavbar;

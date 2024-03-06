@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { MdAccountCircle } from "react-icons/md";
 import { FaAngleDown } from "react-icons/fa6";
-import { FaBars } from "react-icons/fa";
-import { MdOutlineClose } from "react-icons/md";
 import Login from "../../pages/login/login.jsx";
 import AOS from "aos";
 import { IoClose } from "react-icons/io5";
 import BHLogo from "../../assets/logo_1.png";
 import SyncLoader from "react-spinners/SyncLoader";
+
+import MainSideBar from "./sidebar/mainsidebar/mainsidebar.jsx";
 
 import "./navbar.css";
 
@@ -135,26 +134,20 @@ const NavbarHome = () => {
   };
 
   return (
-    <nav>
+    <nav className="navbar">
       <div className="navbar__contents">
-        <div className="navbar__link">
-          <div className="simple__menu">
-            <Button
-              sx={{
-                color: "black",
-                border: "2px solid black",
-                "&:hover": {
-                  border: "3px solid black",
-                },
-              }}
-              variant="outlined"
-              aria-controls="simple__menu"
-              aria-haspopup="true"
-              onClick={toggleMenu}
-            >
-              {isOpen ? <MdOutlineClose /> : <FaBars />}
-            </Button>
+        <div className="sidebar__menu">
+          <div className="navbar__beehub" style={beeHubImg}>
+            <a href="/#">
+              <img src={BHLogo} alt="" />
+            </a>
           </div>
+          <div className="sidebar__button">
+            <MainSideBar />
+          </div>
+        </div>
+
+        <div className="navbar__link">
           <div className={!isOpen ? "navul__container" : "show"}>
             <ul className="navbar__links">
               <div className="navbar__beehub" style={beeHubImg}>

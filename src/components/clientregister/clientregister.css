@@ -50,11 +50,12 @@
   transition: all 0.5s ease-in;
 }
 
-.clientregisterform__container-disabled{
+.clientregisterform__container-disabled {
   opacity: 0;
 }
 
-.clientregisterinput__container,.clientregisterothers__container {
+.clientregisterinput__container,
+.clientregisterothers__container {
   display: block;
   position: relative;
   height: 3rem;
@@ -65,7 +66,6 @@
   display: flex;
   align-items: center;
 }
-
 
 .clientregisterdropdown__con {
   position: relative;
@@ -93,15 +93,15 @@
   text-decoration: underline;
 }
 
-.clientregisterinput__form:read-only{
+.clientregisterinput__form:read-only {
   color: #777777;
 }
 
-.hide__registerdiv{
+.hide__registerdiv {
   display: none;
 }
 
-.clientregister__buttons{
+.clientregister__buttons {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -110,15 +110,17 @@
   margin-bottom: 4rem;
 }
 
-.clientregister__errorMsg{
+.clientregister__errorMsg {
   color: red;
 }
 
-.submit__status{
+.submit__status {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   gap: 2rem;
+  padding: 4rem;
+  margin-top: 5rem;
 }

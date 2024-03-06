@@ -16,6 +16,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 
 import "./clientregister.css";
+import "react-phone-input-2/lib/style.css";
 
 function ClientRegister({ btnClass, btnTitle }) {
   //Popup Modal
@@ -619,7 +620,7 @@ function ClientRegister({ btnClass, btnTitle }) {
                 verify your email.
               </h1>
               <button className="btn btn-primary" onClick={toggleClose}>
-                Okay
+                Continue
               </button>
             </div>
           </Box>

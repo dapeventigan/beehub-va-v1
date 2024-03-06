@@ -318,269 +318,278 @@ function VaRegister({ btnClass, btnTitle }) {
             <div className="exit__button">
               <IoClose size={25} onClick={toggleClose} />
             </div>
-            <div className="varegister__container">
-              <div className="registerbox__container">
-                <div className="registerformbox__container">
-                  <h1>Get Started</h1>
 
-                  <form onSubmit={handleSubmit}>
-                    <div className="clientregisterform__container">
-                      <div className="horizontal-line"></div>
-                      <div
-                        className={
-                          !googleSignStatus
-                            ? "google__register"
-                            : "hide__registerdiv"
-                        }
-                      >
-                        <GoogleLogin
-                          onSuccess={(credentialResponse) => {
-                            var credentialDecoded = jwtDecode(
-                              credentialResponse.credential
-                            );
-                            setGoogleSignStatus(
-                              credentialDecoded.email_verified
-                            );
-                            setGoogleEmail(credentialDecoded.email);
-                            setGoogleFname(credentialDecoded.given_name);
-                            setGoogleLname(credentialDecoded.family_name);
-                          }}
-                          onError={() => {
-                            console.log("Login Failed");
-                          }}
-                          size="large"
-                          text="continue_with"
-                          width="400"
-                          disabled={true}
+            {isLoading ? (
+              <></>
+            ) : (
+              <div className="varegister__container">
+                <div className="registerbox__container">
+                  <div className="registerformbox__container">
+                    <h1>Get Started</h1>
+
+                    <form onSubmit={handleSubmit}>
+                      <div className="clientregisterform__container">
+                        <div className="horizontal-line"></div>
+                        <div
+                          className={
+                            !googleSignStatus
+                              ? "google__register"
+                              : "hide__registerdiv"
+                          }
+                        >
+                          <GoogleLogin
+                            onSuccess={(credentialResponse) => {
+                              var credentialDecoded = jwtDecode(
+                                credentialResponse.credential
+                              );
+                              setGoogleSignStatus(
+                                credentialDecoded.email_verified
+                              );
+                              setGoogleEmail(credentialDecoded.email);
+                              setGoogleFname(credentialDecoded.given_name);
+                              setGoogleLname(credentialDecoded.family_name);
+                            }}
+                            onError={() => {
+                              console.log("Login Failed");
+                            }}
+                            size="large"
+                            text="continue_with"
+                            width="400"
+                            disabled={true}
+                          />
+
+                          <p>or</p>
+                        </div>
+
+                        <div
+                          className={
+                            !googleSignStatus
+                              ? "hide__registerdiv"
+                              : "google__register"
+                          }
+                        >
+                          <FcGoogle size={40} />
+                          <p>
+                            You have been successfully signed in using Google.
+                            Please fill out the remaining information.
+                          </p>
+                        </div>
+
+                        <div className="varesume__container">
+                          <p>Upload your resume here</p>
+                          <div className="resume__container">
+                            <input
+                              type="file"
+                              className="pdf-control"
+                              onChange={handleFileChange}
+                              accept="application/pdf"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div className="form__row">
+                          <div className="clientregisterinput__container">
+                            <input
+                              className="clientregisterinput__form"
+                              type="text"
+                              onChange={(e) => setFname(e.target.value)}
+                              value={fname}
+                              placeholder="First Name"
+                              required
+                            />
+                          </div>
+
+                          <div className="clientregisterinput__container">
+                            <input
+                              className="clientregisterinput__form"
+                              type="text"
+                              onChange={(e) => setLname(e.target.value)}
+                              value={lname}
+                              placeholder="Last Name"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div className="clientregisterinput__con">
+                          <PhoneInput
+                            country={"ph"}
+                            value={mobileNumber}
+                            inputProps={{ required: true }}
+                            name="mobilenum"
+                            onChange={handleMobileChange}
+                            inputStyle={{
+                              border: "1px solid #f8f8f8",
+                              backgroundColor: "#f8f8f8",
+                            }}
+                            containerStyle={{
+                              height: "3rem",
+                              padding: "15px 0px 15px 0.5rem",
+                              borderRadius: "7px",
+                              border: "1.5px solid #353640",
+                              backgroundColor: "#f8f8f8",
+                              display: "flex",
+                              alignItems: "center",
+                            }}
+                            buttonStyle={{
+                              border: "1px solid #f8f8f8",
+                            }}
+                            required
+                          />
+                        </div>
+
+                        <div className="clientregisterinput__container">
+                          <input
+                            className="clientregisterinput__form"
+                            type="email"
+                            placeholder="Enter Email"
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                            required
+                            readOnly={googleSignStatus}
+                          />
+                        </div>
+
+                        <div
+                          className={
+                            !googleSignStatus
+                              ? "clientregisterinput__con"
+                              : "hide__registerdiv"
+                          }
+                        >
+                          <div className="password-container">
+                            <input
+                              className="logininputpass__form "
+                              type={showPassword ? "text" : "password"}
+                              value={password}
+                              onChange={(e) => setPassword(e.target.value)}
+                              placeholder="Enter Password"
+                              required={!googleSignStatus}
+                            />
+                            <button
+                              type="button"
+                              onClick={togglePasswordVisibility}
+                              className="password-toggle"
+                            >
+                              {showPassword ? (
+                                <AiOutlineEye />
+                              ) : (
+                                <AiOutlineEyeInvisible />
+                              )}
+                            </button>
+                          </div>
+                        </div>
+
+                        <div
+                          className={
+                            !googleSignStatus
+                              ? "clientregisterinput__con"
+                              : "hide__registerdiv"
+                          }
+                        >
+                          <div className="password-container">
+                            <input
+                              className="logininputpass__form "
+                              type={showConfirmPassword ? "text" : "password"}
+                              value={confirmPassword}
+                              onChange={(e) =>
+                                setConfirmPassword(e.target.value)
+                              }
+                              placeholder="Confirm Password"
+                              required={!googleSignStatus}
+                            />
+                            <button
+                              type="button"
+                              onClick={toggleCornfirmPasswordVisibility}
+                              className="password-toggle"
+                            >
+                              {showConfirmPassword ? (
+                                <AiOutlineEye />
+                              ) : (
+                                <AiOutlineEyeInvisible />
+                              )}
+                            </button>
+                          </div>
+                        </div>
+
+                        <div className="clientregisterinput__con">
+                          <label>
+                            <input
+                              className="clientregistercheckbox__form"
+                              type="checkbox"
+                              checked={isEmailChecked}
+                              onChange={handleEmailCheckboxChange}
+                            />
+                            Send me promotional emails.
+                          </label>
+                        </div>
+
+                        <div className="clientregisterinput__con">
+                          <label>
+                            <input
+                              className="clientregistercheckbox__form"
+                              type="checkbox"
+                              checked={isTermsChecked}
+                              onChange={handleTermsCheckboxChange}
+                              required
+                            />
+                            I agree to the{" "}
+                            <a href="#" className="terms-link">
+                              Terms and Conditions
+                            </a>{" "}
+                            and{" "}
+                            <a href="#" className="terms-link">
+                              Privacy Policy
+                            </a>
+                            .
+                          </label>
+                        </div>
+                        <ReCAPTCHA
+                          sitekey="6LcoO1opAAAAAFpjXKglTWLRDBsp-2HKtSXo4UjZ"
+                          onChange={(value) => setCapVal(value)}
                         />
 
-                        <p>or</p>
-                      </div>
-
-                      <div
-                        className={
-                          !googleSignStatus
-                            ? "hide__registerdiv"
-                            : "google__register"
-                        }
-                      >
-                        <FcGoogle size={40} />
-                        <p>
-                          You have been successfully signed in using Google.
-                          Please fill out the remaining information.
+                        <p className="clientregister__errorMsg">
+                          {messagePass}
                         </p>
-                      </div>
-
-                      <div className="varesume__container">
-                        <p>Upload your resume here</p>
-                        <div className="resume__container">
-                          <input
-                            type="file"
-                            className="pdf-control"
-                            onChange={handleFileChange}
-                            accept="application/pdf"
-                            required
-                          />
-                        </div>
-                      </div>
-
-                      <div className="form__row">
-                        <div className="clientregisterinput__container">
-                          <input
-                            className="clientregisterinput__form"
-                            type="text"
-                            onChange={(e) => setFname(e.target.value)}
-                            value={fname}
-                            placeholder="First Name"
-                            required
-                          />
-                        </div>
-
-                        <div className="clientregisterinput__container">
-                          <input
-                            className="clientregisterinput__form"
-                            type="text"
-                            onChange={(e) => setLname(e.target.value)}
-                            value={lname}
-                            placeholder="Last Name"
-                            required
-                          />
-                        </div>
-                      </div>
-
-                      <div className="clientregisterinput__con">
-                        <PhoneInput
-                          country={"ph"}
-                          value={mobileNumber}
-                          inputProps={{ required: true }}
-                          name="mobilenum"
-                          onChange={handleMobileChange}
-                          inputStyle={{
-                            border: "1px solid #f8f8f8",
-                            backgroundColor: "#f8f8f8",
-                          }}
-                          containerStyle={{
-                            height: "3rem",
-                            padding: "15px 0px 15px 0.5rem",
-                            borderRadius: "7px",
-                            border: "1.5px solid #353640",
-                            backgroundColor: "#f8f8f8",
-                            display: "flex",
-                            alignItems: "center",
-                          }}
-                          buttonStyle={{
-                            border: "1px solid #f8f8f8",
-                          }}
-                          required
-                        />
-                      </div>
-
-                      <div className="clientregisterinput__container">
-                        <input
-                          className="clientregisterinput__form"
-                          type="email"
-                          placeholder="Enter Email"
-                          onChange={(e) => setEmail(e.target.value)}
-                          value={email}
-                          required
-                          readOnly={googleSignStatus}
-                        />
-                      </div>
-
-                      <div
-                        className={
-                          !googleSignStatus
-                            ? "clientregisterinput__con"
-                            : "hide__registerdiv"
-                        }
-                      >
-                        <div className="password-container">
-                          <input
-                            className="logininputpass__form "
-                            type={showPassword ? "text" : "password"}
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Enter Password"
-                            required={!googleSignStatus}
-                          />
+                        <div className="clientregister__buttons">
                           <button
-                            type="button"
-                            onClick={togglePasswordVisibility}
-                            className="password-toggle"
+                            className="cancel-btn btn-primary"
+                            onClick={toggleClose}
                           >
-                            {showPassword ? (
-                              <AiOutlineEye />
-                            ) : (
-                              <AiOutlineEyeInvisible />
-                            )}
+                            Cancel
+                          </button>
+                          <button
+                            className="btn btn-primary"
+                            disabled={capVal ? false : true}
+                          >
+                            Submit
                           </button>
                         </div>
                       </div>
-
-                      <div
-                        className={
-                          !googleSignStatus
-                            ? "clientregisterinput__con"
-                            : "hide__registerdiv"
-                        }
-                      >
-                        <div className="password-container">
-                          <input
-                            className="logininputpass__form "
-                            type={showConfirmPassword ? "text" : "password"}
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            placeholder="Confirm Password"
-                            required={!googleSignStatus}
-                          />
-                          <button
-                            type="button"
-                            onClick={toggleCornfirmPasswordVisibility}
-                            className="password-toggle"
-                          >
-                            {showConfirmPassword ? (
-                              <AiOutlineEye />
-                            ) : (
-                              <AiOutlineEyeInvisible />
-                            )}
-                          </button>
-                        </div>
-                      </div>
-
-                      <div className="clientregisterinput__con">
-                        <label>
-                          <input
-                            className="clientregistercheckbox__form"
-                            type="checkbox"
-                            checked={isEmailChecked}
-                            onChange={handleEmailCheckboxChange}
-                          />
-                          Send me promotional emails.
-                        </label>
-                      </div>
-
-                      <div className="clientregisterinput__con">
-                        <label>
-                          <input
-                            className="clientregistercheckbox__form"
-                            type="checkbox"
-                            checked={isTermsChecked}
-                            onChange={handleTermsCheckboxChange}
-                            required
-                          />
-                          I agree to the{" "}
-                          <a href="#" className="terms-link">
-                            Terms and Conditions
-                          </a>{" "}
-                          and{" "}
-                          <a href="#" className="terms-link">
-                            Privacy Policy
-                          </a>
-                          .
-                        </label>
-                      </div>
-                      <ReCAPTCHA
-                        sitekey="6LcoO1opAAAAAFpjXKglTWLRDBsp-2HKtSXo4UjZ"
-                        onChange={(value) => setCapVal(value)}
-                      />
-
-                      <p className="clientregister__errorMsg">{messagePass}</p>
-                      <div className="clientregister__buttons">
-                        <button
-                          className="cancel-btn btn-primary"
-                          onClick={toggleClose}
-                        >
-                          Cancel
-                        </button>
-                        <button
-                          className="btn btn-primary"
-                          disabled={capVal ? false : true}
-                        >
-                          Submit
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <div className="registerwhywork__container">
-                  <h1>WHY WORK WITH US</h1>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Inventore culpa perspiciatis officia ut eum, ipsam iusto
-                    debitis ipsum esse quisquam aliquid, ullam, quidem doloribus
-                    tenetur beatae. Repellendus deleniti, ex tempora molestiae
-                    eius at ab praesentium nemo? Numquam, consequuntur amet hic
-                    itaque quidem incidunt officiis ad laboriosam sequi quas
-                    porro accusamus rem ea nisi ipsum est! Eum qui facilis
-                    nostrum. Molestias, temporibus vitae iusto eveniet ratione
-                    voluptatem debitis quidem totam soluta, praesentium
-                    perferendis tempora? Suscipit nam sunt tenetur cumque
-                    debitis. Porro.
-                  </p>
-                  <img src={vaLogo} alt="" />
+                    </form>
+                  </div>
+                  <div className="registerwhywork__container">
+                    <h1>WHY WORK WITH US</h1>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Inventore culpa perspiciatis officia ut eum, ipsam iusto
+                      debitis ipsum esse quisquam aliquid, ullam, quidem
+                      doloribus tenetur beatae. Repellendus deleniti, ex tempora
+                      molestiae eius at ab praesentium nemo? Numquam,
+                      consequuntur amet hic itaque quidem incidunt officiis ad
+                      laboriosam sequi quas porro accusamus rem ea nisi ipsum
+                      est! Eum qui facilis nostrum. Molestias, temporibus vitae
+                      iusto eveniet ratione voluptatem debitis quidem totam
+                      soluta, praesentium perferendis tempora? Suscipit nam sunt
+                      tenetur cumque debitis. Porro.
+                    </p>
+                    <img src={vaLogo} alt="" />
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </Box>
         </Modal>
       </div>
