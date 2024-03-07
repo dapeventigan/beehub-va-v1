@@ -127,7 +127,7 @@ const AdminEditJob = ({ jobData }) => {
   return (
     <>
       <Button sx={buttonStyle} onClick={handleOpen}>
-        Edit
+        View and Edit
       </Button>
       <div>
         <Modal

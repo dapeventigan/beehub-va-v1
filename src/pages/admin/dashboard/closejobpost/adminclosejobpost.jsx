@@ -97,12 +97,6 @@ const AdminCloseJob = ({ jobData }) => {
         >
           <Box sx={style}>
             <div className="canceljob__container">
-              <IoClose
-                className="exit__button2"
-                size={25}
-                onClick={toggleClose}
-              />
-
               <div className="canceljob__content">
                 <h1> Are you done with this job post?</h1>
                 <div className="canceljob__data">

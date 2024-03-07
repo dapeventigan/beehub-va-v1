@@ -156,7 +156,7 @@ const AdminHire = () => {
       }
     });
 
-    Axios.get("https://server.beehubvas.com/getAllJobData").then((res) => {
+    Axios.get("https://server.beehubvas.com/getHireJobData").then((res) => {
       try {
         setJobs(res.data);
       } catch (error) {
@@ -405,18 +405,6 @@ const AdminHire = () => {
           .replace(",", "");
       },
       sortable: true,
-    },
-    {
-      name: "Select a Job",
-      selector: (row) => (
-        <a
-          href={`https://beehubvas.com/job-boards/bh/${row._id}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Button sx={buttonStyle}>Select Job</Button>
-        </a>
-      ),
     },
   ];
 

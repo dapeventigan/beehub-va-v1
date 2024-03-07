@@ -8,6 +8,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import PhoneInput from "react-phone-input-2";
 import { IoClose } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
+import { MdOutlineCancel } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import vaLogo from "../../assets/Logo v1/Black And White/black2.png";
 /* Google Sign in */
@@ -180,7 +181,6 @@ function VaRegister({ btnClass, btnTitle }) {
   useEffect(() => {
     getUserIP();
   }, []);
-  console.log(fromPH);
 
   //SUBMIT
   const handleSubmit = async (e) => {
@@ -288,9 +288,14 @@ function VaRegister({ btnClass, btnTitle }) {
 
   return (
     <>
-      <div className={btnClass} onClick={handleOpen}>
-        {btnTitle}
-      </div>
+      {fromPH ? (
+        <div className={btnClass} onClick={handleOpen}>
+          {btnTitle}
+        </div>
+      ) : (
+        <></>
+      )}
+
       <div>
         <Modal
           open={open}
@@ -374,19 +379,48 @@ function VaRegister({ btnClass, btnTitle }) {
                             Please fill out the remaining information.
                           </p>
                         </div>
-
-                        <div className="varesume__container">
-                          <p>Upload your resume here</p>
-                          <div className="resume__container">
+                        {selectedFile && !isLoading ? (
+                          <div
+                            className="clientregisterinput__container"
+                            style={
+                              selectedFile
+                                ? { border: "1px solid #ffd325" }
+                                : {}
+                            }
+                          >
                             <input
-                              type="file"
-                              className="pdf-control"
-                              onChange={handleFileChange}
-                              accept="application/pdf"
+                              className="clientregisterinput__form"
+                              type="text"
+                              placeholder={
+                                selectedFile.name ? selectedFile.name : "Client"
+                              }
                               required
+                              disabled
+                            />
+
+                            <MdOutlineCancel
+                              size={23}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setSelectedFile(null);
+                              }}
+                              style={{ cursor: "pointer" }}
                             />
                           </div>
-                        </div>
+                        ) : (
+                          <div className="varesume__container">
+                            <p>Upload your resume here</p>
+                            <div className="resume__container">
+                              <input
+                                type="file"
+                                className="pdf-control"
+                                onChange={handleFileChange}
+                                accept="application/pdf"
+                                required
+                              />
+                            </div>
+                          </div>
+                        )}
 
                         <div className="form__row">
                           <div className="clientregisterinput__container">

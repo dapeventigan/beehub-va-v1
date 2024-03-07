@@ -5,7 +5,7 @@ import Avatar from "react-avatar";
 import Axios from "axios";
 import DataTable, { createTheme } from "react-data-table-component";
 import ViewPdf from "../../../components/viewpdf/viewpdf";
-
+import Button from "@mui/material/Button";
 
 import UserNavbar from "../../../components/navbar/usernavbar/usernavbar";
 import OfflineNavbar from "../../../components/navbar/offlinenavbar/offlinenavbar";
@@ -17,6 +17,7 @@ import { IoMdMail } from "react-icons/io";
 import { FaPhone } from "react-icons/fa6";
 import { IoCopyOutline } from "react-icons/io5";
 import BHLogo from "../../../assets/logo_1.png";
+import AddCertificates from "../AddCertificates/addcertificates";
 
 import "./applyhome.css";
 
@@ -31,6 +32,24 @@ const ApplyHome = () => {
 
   const param = useParams();
 
+  const buttonStyle = {
+    backgroundColor: "#111111",
+    color: "white",
+    borderRadius: 1,
+    "&:hover": {
+      backgroundColor: "#202020",
+    },
+  };
+
+  const buttonStyleRed = {
+    backgroundColor: "#ca4c4c",
+    color: "white",
+    borderRadius: 1,
+    "&:hover": {
+      backgroundColor: "#ec2929",
+    },
+  };
+
   //copy to clipboard
   const [copied, setCopied] = useState(false);
   const url = `https://beehubvas.com/va-bh/${param.username}/${param.id}`;
@@ -42,6 +61,21 @@ const ApplyHome = () => {
     } catch (err) {
       console.error("Failed to copy text: ", err);
     }
+  };
+
+  const handleDeleteCertificate = async (id, file) => {
+    await Axios.delete("https://server.beehubvas.com/deleteCertificate", {
+      data: {
+        id: id,
+        file: file,
+      },
+    }).then((res) => {
+      if (res.data === "Success") {
+        window.location.reload();
+      } else {
+        alert("Failed to delete certificate");
+      }
+    });
   };
 
   //edit profile
@@ -107,10 +141,27 @@ const ApplyHome = () => {
     }).then((res) => {
       setJobHistory(res.data);
     });
+
+    Axios.get("https://server.beehubvas.com/getTraining", {
+      params: {
+        userID: param.id,
+      },
+    }).then((res) => {
+      setTraining(res.data);
+    });
+
+    Axios.get("https://server.beehubvas.com/getCertificate", {
+      params: {
+        userID: param.id,
+      },
+    }).then((res) => {
+      setCertificate(res.data);
+    });
   }, [param.username, param.id, navigate]);
 
   //DATATABLE
 
+  //JOB HISTORY
   const [jobHistory, setJobHistory] = useState([]);
   const historyColumn = [
     {
@@ -156,11 +207,40 @@ const ApplyHome = () => {
     },
     {
       name: "Date Ended",
-      selector: (row) => row.dateEnded ? (() => {
+      selector: (row) =>
+        row.dateEnded
+          ? (() => {
+              const date =
+                row.dateEnded instanceof Date
+                  ? row.dateEnded
+                  : new Date(row.dateEnded);
+              return date
+                .toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })
+                .replace(",", "");
+            })()
+          : "Ongoing",
+      sortable: true,
+    },
+  ];
+
+  //Training Course
+  const [training, setTraining] = useState([]);
+  const trainingColumn = [
+    {
+      name: "Training/Course Taken",
+      selector: (row) => row.trainingTitle,
+    },
+    {
+      name: "Date Started",
+      selector: (row) => {
         const date =
-        row.dateEnded instanceof Date
-            ? row.dateEnded 
-            : new Date(row.dateEnded);
+          row.trainingStart instanceof Date
+            ? row.trainingStart
+            : new Date(row.trainingStart);
         return date
           .toLocaleDateString("en-US", {
             year: "numeric",
@@ -168,9 +248,102 @@ const ApplyHome = () => {
             day: "numeric",
           })
           .replace(",", "");
-      })(): "Ongoing",
+      },
       sortable: true,
-    }
+    },
+    {
+      name: "Date Ended",
+      selector: (row) => {
+        const date =
+          row.trainingEnd instanceof Date
+            ? row.trainingEnd
+            : new Date(row.trainingEnd);
+        return date
+          .toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })
+          .replace(",", "");
+      },
+      sortable: true,
+    },
+    {
+      name: "View Certificate",
+      selector: (row) => (
+        <a
+          href={`https://server.beehubvas.com/certificates/${row.certificate}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button sx={buttonStyle}>VIEW</Button>
+        </a>
+      ),
+      sortable: true,
+    },
+  ];
+
+  //Training Course
+  const [certificate, setCertificate] = useState([]);
+  const certificateColumn = [
+    {
+      name: "Certificate Title",
+      selector: (row) => row.certificateTitle,
+    },
+    {
+      name: "Date Started",
+      selector: (row) => {
+        const date =
+          row.certificateStart instanceof Date
+            ? row.certificateStart
+            : new Date(row.certificateStart);
+        return date
+          .toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })
+          .replace(",", "");
+      },
+      sortable: true,
+    },
+    {
+      name: "Date Ended",
+      selector: (row) => {
+        const date =
+          row.certificateEnd instanceof Date
+            ? row.certificateEnd
+            : new Date(row.certificateEnd);
+        return date
+          .toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })
+          .replace(",", "");
+      },
+      sortable: true,
+    },
+    {
+      name: "Action",
+      selector: (row) => (
+        <div className="admineditjobbtn__container">
+          {viewOnly && !isLoggedIn ? (
+            <></>
+          ) : (
+            <Button sx={buttonStyleRed} onClick={() => handleDeleteCertificate(row._id, row.certificate)}>DELETE</Button>
+          )}
+          <a
+            href={`https://server.beehubvas.com/certificates/${row.certificate}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button sx={buttonStyle}>VIEW</Button>
+          </a>
+        </div>
+      ),
+      sortable: true,
+    },
   ];
 
   createTheme("dape", {
@@ -190,7 +363,6 @@ const ApplyHome = () => {
       disabled: "rgba(0,0,0,.12)",
     },
   });
-
 
   return (
     <div>
@@ -403,8 +575,8 @@ const ApplyHome = () => {
                   </div>
 
                   <DataTable
-                    columns={historyColumn}
-                    // data={jobHistory}
+                    columns={trainingColumn}
+                    data={training}
                     theme="dape"
                     pagination
                   />
@@ -415,11 +587,13 @@ const ApplyHome = () => {
                 <div className="profile__table">
                   <div className="profiletable__title">
                     <h4>Certifications</h4>
+                    {viewOnly && !isLoggedIn ? <></> :
+                    <AddCertificates userdata={userDetails} />}
                   </div>
 
                   <DataTable
-                    columns={historyColumn}
-                    // data={jobHistory}
+                    columns={certificateColumn}
+                    data={certificate}
                     theme="dape"
                     pagination
                   />

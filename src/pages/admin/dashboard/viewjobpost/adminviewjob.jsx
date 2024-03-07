@@ -13,7 +13,7 @@ const AdminViewJob = ({ jobData }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => toggleClose();
   const [isLoading, setIsLoading] = useState(false);
-  const userIDs = jobData.usersApplied.map(user => user.userID);
+  const userIDs = jobData.usersApplied.map((user) => user.userID);
 
   const toggleClose = () => {
     setOpen(false);
@@ -32,6 +32,7 @@ const AdminViewJob = ({ jobData }) => {
     border: "2px solid #bdbdbd",
     borderRadius: "0.5rem",
     boxShadow: 24,
+    overflowY: "scroll",
   };
 
   const buttonStyle = {
@@ -87,7 +88,6 @@ const AdminViewJob = ({ jobData }) => {
                     >
                       <button className="btn">View Profile</button>
                     </a>
-                    <button className="btn">Hire for this Job</button>
                   </div>
                 ))}
               </div>

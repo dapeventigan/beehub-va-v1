@@ -89,6 +89,7 @@ const AddJob = ({ userdata }) => {
       if (res.data.message === "Job added successfully") {
         setIsLoading(false);
         toggleClose();
+        window.location.reload();
       }
     });
   };
@@ -151,7 +152,7 @@ const AddJob = ({ userdata }) => {
                   {isLoading ? (
                     <CircularProgress color="inherit" />
                   ) : (
-                    <button className="btn">Save</button>
+                    <button className="btn">Post</button>
                   )}
                 </div>
               </div>

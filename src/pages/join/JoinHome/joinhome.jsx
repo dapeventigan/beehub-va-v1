@@ -97,7 +97,7 @@ const JoinHome = () => {
           : row.jobVerified === "Expired"
           ? "Finished"
           : row.jobVerified === "Closed"
-          ? "Closed"
+          ? "Finished"
           : "Failed",
       sortable: true,
     },

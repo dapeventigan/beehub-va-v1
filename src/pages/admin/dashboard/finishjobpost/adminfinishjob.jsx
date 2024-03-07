@@ -4,11 +4,10 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
-import { IoClose } from "react-icons/io5";
 
-import "./admindeletejob.css";
+import "../deletejobpost/admindeletejob.css";
 
-const AdminDeleteJob = ({ jobData }) => {
+const AdminFinishJob = ({ jobData }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => toggleClose();
@@ -20,10 +19,10 @@ const AdminDeleteJob = ({ jobData }) => {
 
   const handleDeleteJob = async () => {
     setIsLoading(true);
-    await Axios.put("https://server.beehubvas.com/declineJob", {
+    await Axios.put("https://server.beehubvas.com/closeJob", {
       jobID: jobData._id,
     }).then((res) => {
-      if (res.data === "Job declined successfully") {
+      if (res.data === "Job closed successfully") {
         setIsLoading(false);
         window.location.reload();
         toggleClose();
@@ -82,8 +81,8 @@ const AdminDeleteJob = ({ jobData }) => {
 
   return (
     <>
-      <Button sx={buttonStyle} onClick={handleOpen}>
-        Decline
+      <Button sx={buttonStyle3} onClick={handleOpen}>
+        Finish
       </Button>
 
       <div>
@@ -99,7 +98,7 @@ const AdminDeleteJob = ({ jobData }) => {
             <div className="canceljob__container">
 
               <div className="canceljob__content">
-                <h1> Are you sure you want to decline this job post?</h1>
+                <h1> Are you done with this Job post?</h1>
                 <div className="canceljob__data">
                   <p>
                     {jobData.jobTitle} | {jobData.jobSalary} | {finalDate}
@@ -126,4 +125,4 @@ const AdminDeleteJob = ({ jobData }) => {
   );
 };
 
-export default AdminDeleteJob;
+export default AdminFinishJob;

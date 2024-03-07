@@ -10,6 +10,7 @@ import AdminDeleteJob from "./deletejobpost/admindeletejob";
 import AdminViewJob from "./viewjobpost/adminviewjob";
 import AdminNavbar from "../../../components/navbar/adminnavbar/adminnavbar";
 import AdminCloseJob from "./closejobpost/adminclosejobpost";
+import AdminFinishJob from "./finishjobpost/adminfinishjob";
 
 import "./dashboard.css";
 
@@ -17,7 +18,7 @@ const FilterComponent = ({ onFilter, onClear, filterText }) => (
   <div className="filterdatasearch__container">
     <input
       type="text"
-      placeholder="Filter by name"
+      placeholder="Search"
       value={filterText}
       onChange={onFilter}
       className="filterdatasearch__input"
@@ -32,8 +33,9 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState([]);
   const [applyUsers, setApplyUsers] = useState([]);
+  const [vaUsers, setVaUsers] = useState([]);
   const [joinUsers, setJoinUsers] = useState([]);
-  const [archiveUsers, setArchiveUsers] = useState([]);
+  const [activeWorkers, setActiveWorkers] = useState([]);
   const [pendingJobs, setPendingJobs] = useState([]);
   const [activeJobs, setActiveJobs] = useState([]);
   const [unhireReqData, setUnhireReqData] = useState([]);
@@ -118,17 +120,17 @@ const Dashboard = () => {
       }
     });
 
-    Axios.get("https://server.beehubvas.com/getJoinUsers").then((res) => {
+    Axios.get("https://server.beehubvas.com/getVAUsers").then((res) => {
       try {
-        setJoinUsers(res.data);
+        setVaUsers(res.data);
       } catch (error) {
         console.log(error);
       }
     });
 
-    Axios.get("https://server.beehubvas.com/getArchiveUsers").then((res) => {
+    Axios.get("https://server.beehubvas.com/getJoinUsers").then((res) => {
       try {
-        setArchiveUsers(res.data);
+        setJoinUsers(res.data);
       } catch (error) {
         console.log(error);
       }
@@ -153,6 +155,14 @@ const Dashboard = () => {
     Axios.get("https://server.beehubvas.com/getUnhireRequest").then((res) => {
       try {
         setUnhireReqData(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    });
+
+    Axios.get("https://server.beehubvas.com/getActiveWorkers").then((res) => {
+      try {
+        setActiveWorkers(res.data);
       } catch (error) {
         console.log(error);
       }
@@ -260,12 +270,42 @@ const Dashboard = () => {
     },
   ];
 
-  //---------------------------------
+  //VA FILTER---------------
 
-  const arhivedcolumns = [
+  const [filterVAText, setFilterVAText] = useState("");
+  const [resetVAPaginationToggle, setResetVAPaginationToggle] = useState(false);
+
+  const filteredVAItems = vaUsers.filter(
+    (item) =>
+      item.fname.toLowerCase().includes(filterVAText.toLowerCase()) ||
+      item.lname.toLowerCase().includes(filterVAText.toLowerCase()) ||
+      item.email.toLowerCase().includes(filterVAText.toLowerCase()) ||
+      (item.mobileNumber &&
+        item.mobileNumber.toLowerCase().includes(filterVAText.toLowerCase())) ||
+      (item.industry &&
+        item.industry.toLowerCase().includes(filterVAText.toLowerCase()))
+  );
+
+  const subVAHeaderComponentMemo = useMemo(() => {
+    const handleClear = () => {
+      if (filterVAText) {
+        setResetVAPaginationToggle(!resetVAPaginationToggle);
+        setFilterVAText("");
+      }
+    };
+    return (
+      <FilterComponent
+        onFilter={(e) => setFilterVAText(e.target.value)}
+        onClear={handleClear}
+        filterText={filterVAText}
+      />
+    );
+  }, [filterVAText, resetVAPaginationToggle]);
+
+  const vacolumns = [
     {
       name: "Name",
-      selector: (row) => row.fname + " " + row.mname + " " + row.lname,
+      selector: (row) => row.fname + " " + row.lname,
       sortable: true,
     },
     {
@@ -274,17 +314,76 @@ const Dashboard = () => {
       sortable: true,
     },
     {
-      name: "Location",
-      selector: (row) => row.cityName + ", " + row.stateName,
+      name: "Mobile Number",
+      selector: (row) =>
+        !row.mobileNumber ? "Not Provided" : "+" + row.mobileNumber,
       sortable: true,
     },
     {
-      name: "Looking for",
-      selector: (row) => row.selectedValues,
+      name: "Industry",
+      selector: (row) => row.industry,
     },
     {
-      name: "Previous Role",
-      selector: (row) => (row.role === "applyUser" ? "Applied" : "Joined"),
+      name: "View Profile",
+      selector: (row) => (
+        <a
+          href={`https://beehubvas.com/va-bh/${row.fname.toLowerCase()}-${row.lname.toLowerCase()}/${
+            row._id
+          }`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button sx={buttonStyle}>View Profile</Button>
+        </a>
+      ),
+    },
+  ];
+
+  const activeworkerscolumns = [
+    {
+      name: "Date Hired",
+      selector: (row) => {
+        const date =
+          row.dateHired instanceof Date
+            ? row.dateHired
+            : new Date(row.dateHired);
+        return date
+          .toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })
+          .replace(",", "");
+      },
+      sortable: true,
+    },
+    {
+      name: "Hired to",
+      selector: (row) => row.clientName,
+      sortable: true,
+    },
+    {
+      name: "Company name",
+      selector: (row) => row.clientCompany,
+      sortable: true,
+    },
+    {
+      name: "VA Hired",
+      selector: (row) => row.vaName,
+      sortable: true,
+    },
+    {
+      name: "Status",
+      selector: (row) => row.employmentStatus,
+      sortable: true,
+    },
+    {
+      name: "Action",
+      selector: (row) => (
+        <Button sx={buttonStyleRed} onClick={() => handleAcceptUnhire(row._id)}>
+          Unhire
+        </Button>
+      ),
     },
   ];
 
@@ -385,6 +484,11 @@ const Dashboard = () => {
       sortable: true,
     },
     {
+      name: "Job Posted by",
+      selector: (row) => row.jobPostedBy,
+      sortable: true,
+    },
+    {
       name: "Salary",
       selector: (row) => row.jobSalary,
       sortable: true,
@@ -407,12 +511,18 @@ const Dashboard = () => {
       sortable: true,
     },
     {
-      name: "Actions for pending jobs",
-      selector: (row) => (
-        <div className="admineditjobbtn__container">
-          <AdminDeleteJob jobData={row} /> <AdminEditJob jobData={row} />
-        </div>
-      ),
+      name: "View, Edit, and Approve Job",
+      selector: (row) => <AdminEditJob jobData={row} />,
+      sortable: true,
+    },
+    {
+      name: "Decline Job",
+      selector: (row) => <AdminDeleteJob jobData={row} />,
+      sortable: true,
+    },
+    {
+      name: "Finish Job",
+      selector: (row) => <AdminFinishJob jobData={row} />,
       sortable: true,
     },
   ];
@@ -437,10 +547,7 @@ const Dashboard = () => {
       name: "Actions for pending jobs",
       selector: (row) => (
         <div className="admineditjobbtn__container">
-          <Button
-            sx={buttonStyle}
-            onClick={() => handleCancelUnhire(row._id)}
-          >
+          <Button sx={buttonStyle} onClick={() => handleCancelUnhire(row._id)}>
             Cancel
           </Button>
           <Button
@@ -451,7 +558,6 @@ const Dashboard = () => {
           </Button>
         </div>
       ),
-      sortable: true,
     },
   ];
 
@@ -480,6 +586,17 @@ const Dashboard = () => {
           </div>
 
           <div className="horizontal-line"></div>
+
+          <div className="datatable__container">
+            <h1>Active Workers</h1>
+            <div className="table__container">
+              <DataTable
+                columns={activeworkerscolumns}
+                data={activeWorkers}
+                pagination
+              />
+            </div>
+          </div>
 
           <div className="datatable__container">
             <h1>Active Jobs</h1>
@@ -514,7 +631,6 @@ const Dashboard = () => {
             </div>
           </div>
 
-
           <div className="horizontal-line"></div>
 
           <div className="datatable__container">
@@ -538,7 +654,19 @@ const Dashboard = () => {
             </div>
           </div>
 
-
+          <div className="datatable__container">
+            <h1>Virtual Assistants</h1>
+            <div className="table__container">
+              <DataTable
+                columns={vacolumns}
+                data={filteredVAItems}
+                pagination
+                paginationResetDefaultPage={resetVAPaginationToggle}
+                subHeader
+                subHeaderComponent={subVAHeaderComponentMemo}
+              />
+            </div>
+          </div>
         </div>
       </div>
 
