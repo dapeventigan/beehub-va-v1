@@ -178,50 +178,6 @@ const NavbarHome = () => {
               </li>
               <li>
                 <div className="dropdown">
-                  <a href="/services" className="dropbtn">
-                    OUR SERVICES
-                  </a>
-                  {/* <FaAngleDown /> */}
-                  {/* <div class="dropdown-content">
-                    <a href="/services/#strategic-workforce-planning">
-                      Strategic Workforce Planning
-                    </a>
-                    <a href="/services/#talent-acquisition-and-recruitment">
-                      Talent Acquisition and Recruitment
-                    </a>
-                    <a href="/services/#flexible-staffing-models">
-                      Flexible Staffing Model
-                    </a>
-                    <a href="/services/#management-of-virtual-teams">
-                      Management of Virtual Teams
-                    </a>
-                    <a href="/services/#technology-integration">
-                      Technology Integration
-                    </a>
-                    <a href="/services/#hr-and-administrative-support">
-                      HR and Administrative Support
-                    </a>
-                    <a href="/services/#compliance-and-data-security">
-                      Compliance and Data Security
-                    </a>
-                    <a href="/services/#customized-solutions">
-                      Customized Solutions
-                    </a>
-                    <a href="/services/#scalability-and-flexibility">
-                      Scalability and Flexibility
-                    </a>
-                    <a href="/services/#consulting-services">
-                      Consulting Services
-                    </a>
-                    <a href="/services/#global-talent-sourcing">
-                      {" "}
-                      Global Talent Sourcing (Coming Soon)
-                    </a>
-                  </div> */}
-                </div>
-              </li>
-              <li>
-                <div className="dropdown">
                   <a href="/virtual-assistant" className="dropbtn">
                     OUR VAs
                   </a>

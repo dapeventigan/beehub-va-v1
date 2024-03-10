@@ -65,10 +65,6 @@ const OfflineSideBar = () => {
               <a href="/aboutus/our-team">Our Team</a>
             </div>
           </div>
-
-          <div className="sidebar__content">
-            <a href="/services"> OUR SERVICES</a>
-          </div>
           <div className="sidebar__content">
             <a href="/virtual-assistant">OUR VAs</a>
           </div>

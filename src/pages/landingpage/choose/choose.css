@@ -60,6 +60,7 @@
 .choose__title > h1 {
   font-family: "Playfair Display", serif;
   font-size: 4rem;
+  text-align: center;
 }
 
 .choose__list {
@@ -95,3 +96,19 @@
   color: var(--color-dark-yellow);
   flex-shrink: 0;
 }
+
+@media screen and (max-width: 800px) {
+  .choose__title > h1 {
+    font-size: 2.5rem;
+    margin: 0 auto;
+    width: 95%;
+  }
+  
+}
+
+@media screen and (max-width: 560px) {
+  .beehive__logo_two {
+    display: none;
+  }
+}
+

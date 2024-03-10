@@ -49,11 +49,15 @@ import AdminHire from "./pages/admin/hire/hire.jsx";
 //Training
 import AdminTraining from "./pages/admin/training/training.jsx";
 
+//to be deletet
+import ComingSoon from "./pages/comingsoon/comingsoon.jsx";
+
 import "./App.css";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayouts />}>
-      <Route index element={<LandingPage />} />
+      <Route index element={<ComingSoon />} />
+      <Route path="landing-page" element={<LandingPage />} />
       <Route path="login" element={<Login />} />
       <Route path="resetpasswordverify" element={<CheckEmail />} />
       <Route path="virtual-assistant" element={<VirtualHome />} />
@@ -62,7 +66,6 @@ const router = createBrowserRouter(
       <Route path="/admindashboard/training" element={<AdminTraining />} />
       <Route path="/aboutus" element={<WhyWork />}></Route>
       <Route path="/aboutus/our-team" element={<OurTeam />}></Route>
-      <Route path="services" element={<Services />}></Route>
       <Route path="plans-and-pricing" element={<PlansPricing />}></Route>
       <Route path="/va-bh/:username/:id" element={<ApplyHome />} />
       <Route path="/profile-beehub" element={<JoinHome />} />
@@ -74,7 +77,7 @@ const router = createBrowserRouter(
 
       <Route path="/*" element={<Navigate to="/" />} />
       {/* TODO: 404 page */}
-      <Route path="*" element={<LandingPage />} />
+      <Route path="*" element={<ComingSoon />} />
     </Route>
   )
 );

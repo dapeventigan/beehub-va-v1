@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import Beehive from "../../../assets/beehive.png";
 import Beehive2 from "../../../assets/beehive2.png";
 import { FaCheckCircle } from "react-icons/fa";
+import ClientRegister from "../../../components/clientregister/clientregister";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./choose.css";
@@ -21,7 +21,11 @@ const Choose = () => {
           <div className="choose__title">
             <h1>Why Choose BeeHub Virtual Assistants Co.?</h1>
           </div>
-          <div className="choosecontent__container" data-aos="fade-up" data-aos-once="true" >
+          <div
+            className="choosecontent__container"
+            data-aos="fade-up"
+            data-aos-once="true"
+          >
             <div className="choose__box">
               <div className="choosebox__title">
                 <h1>All-In-One Virtual Staffing Solutions</h1>
@@ -31,7 +35,7 @@ const Choose = () => {
                   <FaCheckCircle className="choosecheck__icon" size={20} />
                   <p>
                     Cost-effective and flexible approach to staffing needs,
-                    including job board selection.
+                    including job board selection
                   </p>
                 </div>
                 <div className="choosebox__list">
@@ -44,17 +48,16 @@ const Choose = () => {
                 <div className="choosebox__list">
                   <FaCheckCircle className="choosecheck__icon" size={20} />
                   <p>
-                    Enable businesses to create customized virtual teams,
-                    offering flexibility, scalability, expertise,
-                    cost-effectiveness, and quality assurance, all while
-                    ensuring expertise and quality
+                    Help businesses establish customized virtual teams with
+                    flexibility, scalability, expertise, cost-effectiveness, and
+                    quality assurance
                   </p>
                 </div>
                 <div className="choosebox__list">
                   <FaCheckCircle className="choosecheck__icon" size={20} />
                   <p>
-                    Offers specialized Virtual Assistants for your business's
-                    unique needs
+                    Provides specialized virtual assistants to meet the specific
+                    needs of your business
                   </p>
                 </div>
               </div>
@@ -150,9 +153,13 @@ const Choose = () => {
           </div>
 
           <div className="title__button">
-            <Link to="/joinregister" className="btn btn-primary">
-              Start Hiring
-            </Link>
+          <a href="/" className="btn btn-primary">
+            Book a Call
+          </a>
+          <ClientRegister
+            btnClass={"btn btn-primary"}
+            btnTitle={"Get Started"}
+          />
           </div>
         </div>
       </div>

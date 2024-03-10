@@ -1,0 +1,45 @@
+.comingsoon {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-bg-variant);
+  }
+  
+  .comingsoon__content {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .comingsoon__content > h1 {
+    font-size: 60px;
+    font-style: italic;
+    margin-bottom: 3rem;
+  }
+  
+  .comingsoon__content > img {
+    width: 100%; /* Make the image responsive */
+    max-width: 700px; /* Set your desired max-width */
+    height: 300px; /* Maintain aspect ratio */
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 600px) {
+    .comingsoon__content > h1 {
+      font-size: 40px;
+    }
+  
+    .comingsoon__content > img {
+      max-width: 100%; /* Adjust the image size for smaller screens */
+    }
+  }
+  

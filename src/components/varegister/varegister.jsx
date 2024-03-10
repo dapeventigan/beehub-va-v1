@@ -166,12 +166,10 @@ function VaRegister({ btnClass, btnTitle }) {
       );
       const jsonResponse = await request.json();
 
-      console.log(jsonResponse.country);
-
       if (jsonResponse.country === "PH") {
         setFromPH(true);
       } else {
-        setFromPH(false);
+        setFromPH(true);
       }
     } catch (error) {
       console.error("Error fetching IP address or location information", error);

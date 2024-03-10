@@ -23,7 +23,7 @@
 .contact__title > h1 {
   color: var(--color-white);
   font-size: 60px;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   text-align: center;
   padding-bottom: 3rem;
 }
@@ -37,6 +37,13 @@
 
 .build__text {
   color: var(--color-bg-variant);
+}
+
+.title__button-contact {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row-reverse;
+  padding-top: 3rem;
 }
 
 /* lorem30 */
@@ -182,11 +189,11 @@
 }
 @media screen and (max-width: 1300px) {
   .contact__title > h2 {
-    font-size: 4vw;
+    font-size: 2.5vw;
   }
 
   .contact__title > h1 {
-    font-size: 3vw;
+    font-size: 4vw;
     margin-top: 6rem;
   }
 
@@ -198,55 +205,47 @@
   }
 }
 
-@media screen and (max-width: 800px) {
-  #contact {
-    min-height: 700px;
-  }
-
-  .contact__title > h2 {
-    font-size: 4.2vw;
-  }
+@media screen and (max-width: 1078px) {
 
   .contact__title > h1 {
-    font-size: 3vw;
-    margin-top: 3rem;
-  }
-
-  .contact__info > h3,
-  .contact__info > h4,
-  .contact__icon,
-  .join__button {
-    font-size: 2vw;
+    margin-top: 0rem;
   }
 }
 
-@media screen and (max-width: 574px) {
+@media screen and (max-width: 800px) {
   #contact {
-    min-height: 700px;
-  }
-
-  .contact__info {
-    margin-bottom: 2rem;
-  }
-  
-  .contact__title > h2 {
-    font-size: 7vw;
-    text-align: center;
+    min-height: 600px;
   }
 
   .contact__title > h1 {
     font-size: 5vw;
-    margin-top: 2rem;
   }
 
-  .contact__info > h3,
-  .contact__info > h4,
-  .contact__icon,
-  .join__button {
-    font-size: 3vw;
+  .contact__title > h2 {
+    font-size: 3.5vw;
+  }
+}
+
+@media screen and (max-width: 574px) {
+
+
+  .contact__info {
+    margin-bottom: 2rem;
   }
 
-  .contact__button {
-    margin-right: 20px;
+  .contact__title > h2 {
+    font-size: 4.5vw;
+    text-align: center;
+    width: 90%;
+  }
+
+  .contact__title > h1 {
+    font-size: 6vw;
+    width: 90%;
+  }
+
+  .cnt-btn {
+    padding: 0.8rem 1.8rem;
+    font-size: 13px;
   }
 }

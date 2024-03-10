@@ -45,13 +45,6 @@
   width: 900px;
   height: 900px;
 }
-.services__con {
-  padding: 5rem 2rem 0 2rem;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
-  gap: 1.5rem;
-}
 
 .servicescontent__profile {
   padding-bottom: 3rem;

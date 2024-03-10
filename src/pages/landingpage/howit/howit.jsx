@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
-import { FaCheckCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import ClientRegister from "../../../components/clientregister/clientregister";
 import "./howit.css";
 
 const HowIt = () => {
@@ -11,13 +10,9 @@ const HowIt = () => {
 
   return (
     <section id="howit">
-      <div className="container howit__container">
+      <div className="howit__container">
         <div className="howit__contents">
-          <div
-            className="howit__desc"
-            data-aos="fade-right"
-            data-aos-once="true"
-          >
+          <div className="howit__desc" data-aos="fade" data-aos-once="true">
             <h1 className="howit__title">It is...</h1>
             <h1 className="howit__title">Cost-effective</h1>
             <p className="howit__text">
@@ -27,7 +22,7 @@ const HowIt = () => {
               retaining access to top-tier personnel.
             </p>
           </div>
-          <div className="howit__img" data-aos="fade-left" data-aos-once="true">
+          <div className="howit__img" data-aos="fade" data-aos-once="true">
             <img
               className="how__img"
               src="https://images.pexels.com/photos/47344/dollar-currency-money-us-dollar-47344.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -35,23 +30,15 @@ const HowIt = () => {
             ></img>
           </div>
         </div>
-        <div className="howit__contents">
-          <div
-            className="howit__img"
-            data-aos="fade-right"
-            data-aos-once="true"
-          >
+        <div className="howit__contents-reverse">
+          <div className="howit__img" data-aos="fade" data-aos-once="true">
             <img
               className="how__img"
               src="https://images.pexels.com/photos/5989931/pexels-photo-5989931.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               alt=""
             ></img>
           </div>
-          <div
-            className="howit__desc"
-            data-aos="fade-left"
-            data-aos-once="true"
-          >
+          <div className="howit__desc" data-aos="fade" data-aos-once="true">
             <h1 className="howit__title">Saves in Recruitment Time</h1>
             <p className="howit__text">
               We simplify the hiring process by developing networks and methods
@@ -61,11 +48,7 @@ const HowIt = () => {
           </div>
         </div>
         <div className="howit__contents">
-          <div
-            className="howit__desc"
-            data-aos="fade-right"
-            data-aos-once="true"
-          >
+          <div className="howit__desc" data-aos="fade" data-aos-once="true">
             <h1 className="howit__title">Improves Work-Life Balance</h1>
             <p className="howit__text">
               Hiring virtual assistants improves work-life balance by reducing
@@ -74,7 +57,7 @@ const HowIt = () => {
               and overall well-being.
             </p>
           </div>
-          <div className="howit__img" data-aos="fade-left" data-aos-once="true">
+          <div className="howit__img" data-aos="fade" data-aos-once="true">
             <img
               className="how__img"
               src="https://images.pexels.com/photos/3747446/pexels-photo-3747446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -82,23 +65,15 @@ const HowIt = () => {
             ></img>
           </div>
         </div>
-        <div className="howit__contents">
-          <div
-            className="howit__img"
-            data-aos="fade-right"
-            data-aos-once="true"
-          >
+        <div className="howit__contents-reverse">
+          <div className="howit__img" data-aos="fade" data-aos-once="true">
             <img
               className="how__img"
               src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               alt=""
             ></img>
           </div>
-          <div
-            className="howit__desc"
-            data-aos="fade-left"
-            data-aos-once="true"
-          >
+          <div className="howit__desc" data-aos="fade" data-aos-once="true">
             <h1 className="howit__title">Concentrates on Core Competencies</h1>
             <p className="howit__text">
               Businesses can focus on their core capabilities by outsourcing
@@ -109,11 +84,7 @@ const HowIt = () => {
           </div>
         </div>
         <div className="howit__contents">
-          <div
-            className="howit__desc"
-            data-aos="fade-right"
-            data-aos-once="true"
-          >
+          <div className="howit__desc" data-aos="fade" data-aos-once="true">
             <h1 className="howit__title">and you'll have</h1>
             <h1 className="howit__title">access to a Talent Pool</h1>
             <p className="howit__text">
@@ -123,7 +94,7 @@ const HowIt = () => {
               needs.
             </p>
           </div>
-          <div className="howit__img" data-aos="fade-left" data-aos-once="true">
+          <div className="howit__img" data-aos="fade" data-aos-once="true">
             <img
               className="how__img"
               src="https://images.pexels.com/photos/3184358/pexels-photo-3184358.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -132,10 +103,14 @@ const HowIt = () => {
           </div>
         </div>
 
-        <div className="title__button">
-          <Link to="/joinregister" className="btn btn-primary">
-            Start Hiring
-          </Link>
+        <div className="howit-title__button">
+          <a href="/" className="btn btn-primary">
+            Book a Call
+          </a>
+          <ClientRegister
+            btnClass={"btn btn-primary"}
+            btnTitle={"Get Started"}
+          />
         </div>
       </div>
     </section>

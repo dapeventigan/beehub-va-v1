@@ -21,9 +21,9 @@ const ParallaxEffect = () => {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const smallScreenRange = ["150%", "1000%"];
-  const mediumScreenRange = ["70%", "800%"];
-  const medLargeScreenRange = ["40%", "1000%"];
+  const smallScreenRange = ["5%", "300%"];
+  const mediumScreenRange = ["10%", "400%"];
+  const medLargeScreenRange = ["40%", "400%"];
   const largeScreenRange = ["50%", "400%"];
 
   const textY = useTransform(

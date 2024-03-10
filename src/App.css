@@ -227,6 +227,13 @@ main {
   }
 }
 
+@media screen and (max-width: 450px) {
+  .btn{
+    padding: 0.8rem 1.8rem;
+    font-size: 13px;
+  }
+}
+
 @media screen and (max-width: 316px) {
   body > :not(#header) {
     width: 400px;

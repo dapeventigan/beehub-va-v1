@@ -335,9 +335,9 @@
 
   .tagline__details:after,
   .tagline__details:before {
-    width: calc(100% + (35px * 2));
-    height: calc(100% + (35px * 2));
-    transform: translateX(-46px) translateY(-50px);
+    width: calc(100% + (30px * 2));
+    height: calc(100% + (30px * 2));
+    transform: translateX(-46px) translateY(-45px);
   }
   .titlep__contents {
     width: 100%;
@@ -348,6 +348,6 @@
   .tagline > p {
     font-size: 5vw;
     text-align: center;
-    width: 95%;
+    width: 90%;
   }
 }

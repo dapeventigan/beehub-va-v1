@@ -11,7 +11,6 @@
   justify-content: center;
   align-items: center;
   gap: 2rem;
-
 }
 
 .title__container,
@@ -20,7 +19,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
- 
 }
 
 .title__container > p {
@@ -32,7 +30,7 @@
 .title__contents > h2 {
   font-size: 60px;
   text-align: center;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
 }
 
 .title__button {
@@ -75,7 +73,7 @@
   }
 
   .title__contents > h2 {
-    font-size: 30px;
+    font-size: 50px;
   }
 
   .title__contents > h1 {
@@ -91,17 +89,13 @@
   }
 }
 
-@media screen and (max-width: 600px) {
-  #header {
-    min-height: 700px;
+@media screen and (max-width: 800px) {
+  .header__container {
+    padding: 0;
   }
 
   .title__contents > h2 {
-    font-size: 20px;
-  }
-
-  .title__contents > h1 {
-    font-size: 40px;
+    font-size: 2.5rem;
   }
 
   .mobile {
@@ -110,6 +104,23 @@
 
   .title__button {
     margin-top: 25px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .title__button-header {
+    gap: 0.2rem;
+  }
+
+  .title__contents > h2 {
+    font-size: 2rem;
+  }
+
+}
+
+@media screen and (max-width: 330px) {
+  .title__button-header {
+    gap: 0.02rem;
   }
 }
 

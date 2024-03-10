@@ -51,8 +51,8 @@ const Contact = () => {
           </div>
         </div> */}
 
-        <div className="title__button">
-          <Link to="/joinregister" className="cnt-btn">
+        <div className="title__button-contact">
+          <Link to="/" className="cnt-btn">
             Learn More
           </Link>
           <ClientRegister btnClass={"cnt-btn"} btnTitle={"Get Started"} />

@@ -1,5 +1,3 @@
-
-
 .parallax {
   position: relative;
   background-color: var(--color-bg-variant);
@@ -22,7 +20,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
 }
 
 .parallax__p {
@@ -64,7 +62,7 @@
   }
 }
 
-@media screen and (max-width: 703px) {
+@media screen and (max-width: 800px) {
   .parallax__container {
     min-height: 600px;
     width: 100%;
@@ -73,6 +71,13 @@
   .parallax__title {
     margin-top: 0;
     font-size: 2.5rem;
+  }
+
+  .parallax__p {
+    padding-top: 1.3rem;
+    margin-inline: auto;
+    text-align: center;
+    width: 90%;
   }
 }
 
@@ -85,6 +90,6 @@
   .parallax__title {
     margin-top: 0;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }
