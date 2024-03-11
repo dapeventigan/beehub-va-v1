@@ -116,18 +116,6 @@ const NavbarHome = () => {
     });
   }, [navigate]);
 
-  const style = {
-    position: "relative",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid black",
-    borderRadius: "1rem",
-    boxShadow: 24,
-  };
-
   const beeHubImg = {
     opacity: showDiv ? "1" : "0",
     transition: "opacity 0.5s ease-in-out",
@@ -181,23 +169,6 @@ const NavbarHome = () => {
                   <a href="/virtual-assistant" className="dropbtn">
                     OUR VAs
                   </a>
-                  {/* <div class="dropdown-content">
-                    <p className="dropdown-title">
-                      Virtual Assistants for Realtors
-                    </p>
-                    <a href="#">Transaction Coordinator</a>
-                    <a href="#">Listing Coordinator</a>
-                    <a href="#">General Real Estate VA/ISA</a>
-                    <p className="dropdown-title">
-                      Specialized Virtual Assistants
-                    </p>
-                    <a href="#">Tier 1 (Newbies)</a>
-                    <a href="#">Tier 2 (Has relevant experience)</a>
-                    <a href="#">Tier 3 (SMEs/Managers)</a>
-                    <p className="dropdown-title">
-                      Virtual Call Center (Coming Soon)
-                    </p>
-                  </div> */}
                 </div>
               </li>
               <li>
@@ -243,7 +214,7 @@ const NavbarHome = () => {
           data-aos="fade"
           data-aos-once="true"
         >
-          <Box sx={style}>
+          <Box className="modal__login">
             <div className="exit__button">
               <IoClose size={25} onClick={toggleClose} />
             </div>

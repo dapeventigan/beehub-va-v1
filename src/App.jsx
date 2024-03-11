@@ -49,6 +49,8 @@ import AdminHire from "./pages/admin/hire/hire.jsx";
 //Training
 import AdminTraining from "./pages/admin/training/training.jsx";
 
+//Logs
+
 //to be deletet
 import ComingSoon from "./pages/comingsoon/comingsoon.jsx";
 
@@ -64,6 +66,7 @@ const router = createBrowserRouter(
       <Route path="/admindashboard" element={<Dashboard />} />
       <Route path="/admindashboard/hire" element={<AdminHire />} />
       <Route path="/admindashboard/training" element={<AdminTraining />} />
+      <Route path="/admindashboard/logs" element={<AdminTraining />} />
       <Route path="/aboutus" element={<WhyWork />}></Route>
       <Route path="/aboutus/our-team" element={<OurTeam />}></Route>
       <Route path="plans-and-pricing" element={<PlansPricing />}></Route>

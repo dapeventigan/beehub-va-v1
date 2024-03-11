@@ -65,6 +65,10 @@
   padding: 3rem 0;
 }
 
+.howit__button{
+  z-index: 1;
+}
+
 @media screen and (max-width: 1060px) {
   .howit__contents {
     flex-direction: column;

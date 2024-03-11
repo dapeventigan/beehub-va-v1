@@ -24,7 +24,10 @@ const MainSideBar = () => {
 
   //Popup Modal
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    setOpen(true);
+    setIsOpen(!isOpen);
+  };
   const handleClose = () => setOpen(false);
 
   const toggleClose = () => {
@@ -71,18 +74,6 @@ const MainSideBar = () => {
       }
     });
   }, [navigate]);
-
-  const style = {
-    position: "relative",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid black",
-    borderRadius: "1rem",
-    boxShadow: 24,
-  };
 
   return (
     <div>
@@ -172,7 +163,7 @@ const MainSideBar = () => {
           data-aos="fade"
           data-aos-once="true"
         >
-          <Box sx={style}>
+          <Box className="modal__login">
             <div className="exit__button">
               <IoClose size={25} onClick={toggleClose} />
             </div>

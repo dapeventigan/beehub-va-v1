@@ -104,11 +104,11 @@ const HowIt = () => {
         </div>
 
         <div className="howit-title__button">
-          <a href="/" className="btn btn-primary">
+          <a href="/" className="btn btn-primary howit__button">
             Book a Call
           </a>
           <ClientRegister
-            btnClass={"btn btn-primary"}
+            btnClass={"btn btn-primary howit__button"}
             btnTitle={"Get Started"}
           />
         </div>
