@@ -17,7 +17,7 @@ const ViewPdf = ({ filename }) => {
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
-    Axios.get("https://server.beehubvas.com/viewPDF", {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/viewPDF`, {
       params: { filename: filename },
     })
       .then((response) => {

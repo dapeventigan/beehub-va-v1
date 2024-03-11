@@ -60,7 +60,7 @@ const Dashboard = () => {
 
   const handleUserVerification = async (e, userID) => {
     e.preventDefault();
-    await Axios.put("https://server.beehubvas.com/verifyUserForJob", {
+    await Axios.put(`${process.env.REACT_APP_BASE_URL}/verifyUserForJob`, {
       userID: userID,
     }).then((res) => {
       if (res.data.valid === true) {
@@ -72,7 +72,7 @@ const Dashboard = () => {
   };
 
   const handleCancelUnhire = async (id) => {
-    await Axios.put("https://server.beehubvas.com/adminUnhire", {
+    await Axios.put(`${process.env.REACT_APP_BASE_URL}/adminUnhire`, {
       id: id,
       action: "Active",
     }).then((res) => {
@@ -85,7 +85,7 @@ const Dashboard = () => {
   };
 
   const handleAcceptUnhire = async (id) => {
-    await Axios.put("https://server.beehubvas.com/adminUnhire", {
+    await Axios.put(`${process.env.REACT_APP_BASE_URL}/adminUnhire`, {
       id: id,
       action: "Unhired",
     }).then((res) => {
@@ -99,7 +99,7 @@ const Dashboard = () => {
 
   Axios.defaults.withCredentials = true;
   useEffect(() => {
-    Axios.get("https://server.beehubvas.com/admindashboard").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/admindashboard`).then((res) => {
       if (res.data !== "User not found") {
         setUserDetails(res.data);
       } else {
@@ -112,7 +112,7 @@ const Dashboard = () => {
     // socket.on("senduser_admin", (data) => {
     //   window.location.reload();
     // });
-    Axios.get("https://server.beehubvas.com/getUnverifiedUsers").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getUnverifiedUsers`).then((res) => {
       try {
         setApplyUsers(res.data);
       } catch (error) {
@@ -120,7 +120,7 @@ const Dashboard = () => {
       }
     });
 
-    Axios.get("https://server.beehubvas.com/getVAUsers").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getVAUsers`).then((res) => {
       try {
         setVaUsers(res.data);
       } catch (error) {
@@ -128,7 +128,7 @@ const Dashboard = () => {
       }
     });
 
-    Axios.get("https://server.beehubvas.com/getJoinUsers").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getJoinUsers`).then((res) => {
       try {
         setJoinUsers(res.data);
       } catch (error) {
@@ -136,7 +136,7 @@ const Dashboard = () => {
       }
     });
 
-    Axios.get("https://server.beehubvas.com/getPendingJobData").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getPendingJobData`).then((res) => {
       try {
         setPendingJobs(res.data);
       } catch (error) {
@@ -144,7 +144,7 @@ const Dashboard = () => {
       }
     });
 
-    Axios.get("https://server.beehubvas.com/getAllJobData").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getAllJobData`).then((res) => {
       try {
         setActiveJobs(res.data);
       } catch (error) {
@@ -152,7 +152,7 @@ const Dashboard = () => {
       }
     });
 
-    Axios.get("https://server.beehubvas.com/getUnhireRequest").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getUnhireRequest`).then((res) => {
       try {
         setUnhireReqData(res.data);
       } catch (error) {
@@ -160,7 +160,7 @@ const Dashboard = () => {
       }
     });
 
-    Axios.get("https://server.beehubvas.com/getActiveWorkers").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getActiveWorkers`).then((res) => {
       try {
         setActiveWorkers(res.data);
       } catch (error) {

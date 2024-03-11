@@ -104,7 +104,7 @@ const VaSetting = ({ data }) => {
         formData.append("igLink", igLink);
 
         setIsLoading(true);
-        Axios.put("https://server.beehubvas.com/accountSettings", formData, {
+        Axios.put(`${process.env.REACT_APP_BASE_URL}/accountSettings`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -117,7 +117,7 @@ const VaSetting = ({ data }) => {
             console.error("Error:", error);
           });
       } else {
-        Axios.post("https://server.beehubvas.com/verifyPassword", {
+        Axios.post(`${process.env.REACT_APP_BASE_URL}/verifyPassword`, {
           currentPassword: currentPassword,
           userID: userID,
         }).then((res) => {
@@ -155,7 +155,7 @@ const VaSetting = ({ data }) => {
         
 
                 setIsLoading(true);
-                Axios.put("https://server.beehubvas.com/accountSettings", formData, {
+                Axios.put(`${process.env.REACT_APP_BASE_URL}/accountSettings`, formData, {
                   headers: {
                     "Content-Type": "multipart/form-data",
                   },
@@ -196,7 +196,7 @@ const VaSetting = ({ data }) => {
       formData.append("igLink", igLink);
 
       setIsLoading(true);
-      Axios.put("https://server.beehubvas.com/accountSettings", formData, {
+      Axios.put(`${process.env.REACT_APP_BASE_URL}/accountSettings`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

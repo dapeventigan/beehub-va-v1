@@ -98,7 +98,7 @@ const AdminHire = () => {
     formData.append("jobEmploymentType", jobEmploymentType);
     formData.append("jobWorkHours", jobWorkHours);
 
-    await Axios.post("https://server.beehubvas.com/hire", formData, {
+    await Axios.post(`${process.env.REACT_APP_BASE_URL}/hire`, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     }).then((res) => {
       if (res.data === "Success") {
@@ -130,7 +130,7 @@ const AdminHire = () => {
 
   Axios.defaults.withCredentials = true;
   useEffect(() => {
-    Axios.get("https://server.beehubvas.com/admindashboard").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/admindashboard`).then((res) => {
       if (res.data !== "User not found") {
         setUserDetails(res.data);
       } else {
@@ -140,7 +140,7 @@ const AdminHire = () => {
   }, [navigate]);
 
   useEffect(() => {
-    Axios.get("https://server.beehubvas.com/getJoinUsers").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getJoinUsers`).then((res) => {
       try {
         setJoinUsers(res.data);
       } catch (error) {
@@ -148,7 +148,7 @@ const AdminHire = () => {
       }
     });
 
-    Axios.get("https://server.beehubvas.com/getVAUsers").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getVAUsers`).then((res) => {
       try {
         setVAUsers(res.data);
       } catch (error) {
@@ -156,7 +156,7 @@ const AdminHire = () => {
       }
     });
 
-    Axios.get("https://server.beehubvas.com/getHireJobData").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getHireJobData`).then((res) => {
       try {
         setJobs(res.data);
       } catch (error) {

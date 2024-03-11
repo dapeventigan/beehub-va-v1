@@ -1,19 +1,13 @@
-.varegister__container{
+ .varegister__container{
     margin-top: 4rem;
 }
-
-.registerbox__container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 3rem;
-  }
+/*
 
 .registerformbox__container,
 .registerwhywork__container {
   flex-shrink: 0;
   max-width: 430px;
-}
+} */
 
 /* .vaform__row{
   display: flex;

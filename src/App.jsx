@@ -85,7 +85,7 @@ const router = createBrowserRouter(
   )
 );
 
-export const socket = io("https://server.beehubvas.com", {
+export const socket = io(`${process.env.REACT_APP_BASE_URL}`, {
   withCredentials: true,
 });
 
@@ -105,7 +105,7 @@ function App() {
   useEffect(() => {
     const getUserID = async () => {
       try {
-        await Axios.get("https://server.beehubvas.com/verifylogin").then((res) => {
+        await Axios.get(`${process.env.REACT_APP_BASE_URL}/verifylogin`).then((res) => {
           if (res.data !== "User not found") {
             socket.emit("authenticate", res.data._id);
 

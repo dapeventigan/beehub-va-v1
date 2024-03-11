@@ -100,7 +100,7 @@ const VABoards = () => {
 
   useEffect(() => {
     setIsDataLoading(true);
-    Axios.get("https://server.beehubvas.com/getVAUsers").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getVAUsers`).then((res) => {
       setVaData(res.data);
       setIsDataLoading(false);
     });

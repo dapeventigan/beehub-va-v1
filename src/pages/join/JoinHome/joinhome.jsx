@@ -24,7 +24,7 @@ const JoinHome = () => {
     formData.append("profilePicture", file);
     formData.append("userId", userDetails._id);
 
-    await Axios.put("https://server.beehubvas.com/editProfilePicture", formData, {
+    await Axios.put(`${process.env.REACT_APP_BASE_URL}/editProfilePicture`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -37,7 +37,7 @@ const JoinHome = () => {
 
   Axios.defaults.withCredentials = true;
   useEffect(() => {
-    Axios.get("https://server.beehubvas.com/joinuserdashboard").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/joinuserdashboard`).then((res) => {
       if (res.data !== "User not found") {
         setUserDetails(res.data);
       } else {
@@ -50,7 +50,7 @@ const JoinHome = () => {
   const [jobHistory, setJobHistory] = useState([]);
 
   useEffect(() => {
-    Axios.get("https://server.beehubvas.com/getClientJobData", {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getClientJobData`, {
       params: {
         userID: userDetails._id,
       },
@@ -124,7 +124,7 @@ const JoinHome = () => {
   const [myVA, setMyVA] = useState([]);
 
   useEffect(() => {
-    Axios.get("https://server.beehubvas.com/getHiredVA", {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getHiredVA`, {
       params: {
         userID: userDetails._id,
       },

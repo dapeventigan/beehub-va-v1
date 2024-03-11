@@ -64,7 +64,7 @@ const ApplyHome = () => {
   };
 
   const handleDeleteCertificate = async (id, file) => {
-    await Axios.delete("https://server.beehubvas.com/deleteCertificate", {
+    await Axios.delete(`${process.env.REACT_APP_BASE_URL}/deleteCertificate`, {
       data: {
         id: id,
         file: file,
@@ -86,7 +86,7 @@ const ApplyHome = () => {
     formData.append("profilePicture", file);
     formData.append("userId", userDetails._id);
 
-    await Axios.put("https://server.beehubvas.com/editProfilePicture", formData, {
+    await Axios.put(`${process.env.REACT_APP_BASE_URL}/editProfilePicture`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -99,7 +99,7 @@ const ApplyHome = () => {
 
   Axios.defaults.withCredentials = true;
   useEffect(() => {
-    Axios.get(`https://server.beehubvas.com/va-bh/${param.username}/${param.id}`).then(
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/va-bh/${param.username}/${param.id}`).then(
       async (res) => {
         if (res.data === "Link Broken") {
           navigate("/");
@@ -112,7 +112,7 @@ const ApplyHome = () => {
             setSkill(res.data.skills.split(","));
           }
 
-          await Axios.get("https://server.beehubvas.com/applyuserdashboard").then(
+          await Axios.get(`${process.env.REACT_APP_BASE_URL}/applyuserdashboard`).then(
             (res) => {
               if (res.data !== "User not found" && res.data._id === param.id) {
                 setMainData(res.data);
@@ -134,7 +134,7 @@ const ApplyHome = () => {
       }
     );
 
-    Axios.get("https://server.beehubvas.com/getJobHistory", {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getJobHistory`, {
       params: {
         userID: param.id,
       },
@@ -142,7 +142,7 @@ const ApplyHome = () => {
       setJobHistory(res.data);
     });
 
-    Axios.get("https://server.beehubvas.com/getTraining", {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getTraining`, {
       params: {
         userID: param.id,
       },
@@ -150,7 +150,7 @@ const ApplyHome = () => {
       setTraining(res.data);
     });
 
-    Axios.get("https://server.beehubvas.com/getCertificate", {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getCertificate`, {
       params: {
         userID: param.id,
       },
@@ -272,7 +272,7 @@ const ApplyHome = () => {
       name: "View Certificate",
       selector: (row) => (
         <a
-          href={`https://server.beehubvas.com/certificates/${row.certificate}`}
+          href={`${process.env.REACT_APP_BASE_URL}/certificates/${row.certificate}`}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -334,7 +334,7 @@ const ApplyHome = () => {
             <Button sx={buttonStyleRed} onClick={() => handleDeleteCertificate(row._id, row.certificate)}>DELETE</Button>
           )}
           <a
-            href={`https://server.beehubvas.com/certificates/${row.certificate}`}
+            href={`${process.env.REACT_APP_BASE_URL}/certificates/${row.certificate}`}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -417,7 +417,7 @@ const ApplyHome = () => {
                           <>
                             <Avatar
                               size="200"
-                              src={`https://server.beehubvas.com/profilepicture/${userDetails.profilePicture}`}
+                              src={`${process.env.REACT_APP_BASE_URL}/profilepicture/${userDetails.profilePicture}`}
                               round={true}
                             />
                           </>

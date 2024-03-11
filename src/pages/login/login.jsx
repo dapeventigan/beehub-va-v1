@@ -25,7 +25,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      await Axios.post("https://server.beehubvas.com/login", {
+      await Axios.post(`${process.env.REACT_APP_BASE_URL}/login`, {
         email,
         password,
       }).then(async (res) => {
@@ -65,7 +65,7 @@ const Login = () => {
       Axios.defaults.withCredentials = true;
       const googleSignIn = async () => {
         try {
-          await Axios.post("https://server.beehubvas.com/login", {
+          await Axios.post(`${process.env.REACT_APP_BASE_URL}/login`, {
             email,
             googleSignStatus,
           }).then(async (res) => {

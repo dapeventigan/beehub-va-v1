@@ -19,7 +19,7 @@ const AdminFinishJob = ({ jobData }) => {
 
   const handleDeleteJob = async () => {
     setIsLoading(true);
-    await Axios.put("https://server.beehubvas.com/closeJob", {
+    await Axios.put(`${process.env.REACT_APP_BASE_URL}/closeJob`, {
       jobID: jobData._id,
     }).then((res) => {
       if (res.data === "Job closed successfully") {

@@ -20,7 +20,7 @@ const Unhire = ({ jobData }) => {
 
   const handleDeleteJob = async () => {
     setIsLoading(true);
-    await Axios.put("https://server.beehubvas.com/unhire", {
+    await Axios.put(`${process.env.REACT_APP_BASE_URL}/unhire`, {
       jobID: jobData._id,
     }).then((res) => {
       if (res.data === "Request sent") {

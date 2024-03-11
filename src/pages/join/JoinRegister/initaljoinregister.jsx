@@ -81,7 +81,7 @@ const InitalJoinRegister = () => {
     formData.append("email", email);
     formData.append("selectedValues", selectedValues);
     setIsLoading(true);
-    await Axios.post("https://server.beehubvas.com/joinRegister", formData, {
+    await Axios.post(`${process.env.REACT_APP_BASE_URL}/joinRegister`, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     }).then((res) => {
       setIsLoading(false);

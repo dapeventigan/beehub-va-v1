@@ -24,7 +24,7 @@ const ForgotPassword = () => {
     setUserID(param.id);
     const fetchData = async () => {
       try {
-        const url = `https://server.beehubvas.com/reset/${param.id}/${param.token}`;
+        const url = `${process.env.REACT_APP_BASE_URL}/reset/${param.id}/${param.token}`;
         const response = await Axios.get(url);
 
         const responseData = response.data;
@@ -67,7 +67,7 @@ const ForgotPassword = () => {
 
         formData.append("password", newPassword);
         formData.append("userID", userID);
-        await Axios.post("https://server.beehubvas.com/resetPassword", formData, {
+        await Axios.post(`${process.env.REACT_APP_BASE_URL}/resetPassword`, formData, {
           headers: { "Content-Type": "multipart/form-data" },
         }).then(navigate("/login"));
       } catch (error) {

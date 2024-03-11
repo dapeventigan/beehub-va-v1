@@ -85,7 +85,7 @@ const NavbarHome = () => {
   Axios.defaults.withCredentials = true;
   useEffect(() => {
     setIsLoading(true);
-    Axios.get("https://server.beehubvas.com/verifylogin").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/verifylogin`).then((res) => {
       try {
         if (res.data !== "User not found") {
           setUserDetails(res.data);
@@ -110,7 +110,7 @@ const NavbarHome = () => {
       } catch (error) {
         //TODO: Will add popup error that you've been logged out
         console.log(error);
-        Axios.post("https://server.beehubvas.com/logout");
+        Axios.post(`${process.env.REACT_APP_BASE_URL}/logout`);
         navigate("/");
       }
     });

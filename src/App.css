@@ -228,7 +228,8 @@ main {
 }
 
 @media screen and (max-width: 450px) {
-  .btn{
+  .btn,
+  .cancel-btn {
     padding: 0.8rem 1.8rem;
     font-size: 13px;
   }
@@ -244,7 +245,7 @@ main {
 /* MODAL */
 
 /* login */
-.modal__login{
+.modal__login {
   position: relative;
   top: 50%;
   left: 50%;
@@ -258,7 +259,7 @@ main {
 }
 
 @media screen and (max-width: 425px) {
-  .modal__login{
+  .modal__login {
     position: none;
     top: 0;
     left: 0;
@@ -284,7 +285,88 @@ main {
     border: none;
     border-radius: 0;
     padding: 0rem;
-
   }
 }
 
+/* register */
+.modal__clientregister {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 1000px;
+  height: 80%;
+  background-color: #fff;
+  border: 2px solid #bdbdbd;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.4);
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 880px) {
+  .modal__clientregister {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .clientregister__container,
+  .varegister__container {
+    margin-top: 0rem;
+  }
+
+  .modal__clientregister {
+    max-width: none;
+    width: 100%;
+    height: 100%;
+    position: none;
+    top: 0;
+    left: 0;
+    transform: none;
+    border: none;
+    border-radius: none;
+    box-shadow: none;
+    overflow-y: scroll;
+  }
+
+  .registerformbox__container,
+  .registerwhyhire__container {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .recaptcha-button {
+    transform: scale(0.85);
+  }
+}
+
+.modal__varegister {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 600px;
+  height: 80%;
+  background-color: #fff;
+  border: 2px solid #bdbdbd;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.4);
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 500px) {
+  .modal__varegister {
+    max-width: none;
+    width: 100%;
+    height: 100%;
+    position: none;
+    top: 0;
+    left: 0;
+    transform: none;
+    border: none;
+    border-radius: none;
+    box-shadow: none;
+    overflow-y: scroll;
+  }
+}

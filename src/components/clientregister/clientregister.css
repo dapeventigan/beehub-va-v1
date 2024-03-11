@@ -14,6 +14,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  width: 100%;
 }
 
 .google__register > p {
@@ -22,9 +23,8 @@
 
 .registerbox__container {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
-  gap: 3rem;
 }
 
 .registerformbox__container > h1 {
@@ -34,7 +34,11 @@
 .registerformbox__container,
 .registerwhyhire__container {
   flex-shrink: 0;
-  max-width: 430px;
+  width: 430px;
+}
+
+.registerwhyhire__container > p {
+  margin-top: 1rem;
 }
 
 .form__row {

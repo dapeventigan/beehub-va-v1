@@ -20,7 +20,7 @@ const AdminDeleteJob = ({ jobData }) => {
 
   const handleDeleteJob = async () => {
     setIsLoading(true);
-    await Axios.put("https://server.beehubvas.com/declineJob", {
+    await Axios.put(`${process.env.REACT_APP_BASE_URL}/declineJob`, {
       jobID: jobData._id,
     }).then((res) => {
       if (res.data === "Job declined successfully") {

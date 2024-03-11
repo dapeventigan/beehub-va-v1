@@ -9,7 +9,6 @@ import PhoneInput from "react-phone-input-2";
 import { IoClose } from "react-icons/io5";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import vaLogo from "../../assets/Logo v1/Black And White/black2.png";
 import ReCAPTCHA from "react-google-recaptcha";
 /* Google Sign in */
 import { GoogleLogin } from "@react-oauth/google";
@@ -134,7 +133,7 @@ function ClientRegister({ btnClass, btnTitle }) {
       formData.append("roleStatus", roleStatus);
       setDivStatus(false);
       setIsLoading(true);
-      await Axios.post("https://server.beehubvas.com/register", formData, {
+      await Axios.post(`${process.env.REACT_APP_BASE_URL}/register`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       }).then((res) => {
         setIsLoading(false);
@@ -190,7 +189,7 @@ function ClientRegister({ btnClass, btnTitle }) {
         formData.append("roleStatus", roleStatus);
         setDivStatus(false);
         setIsLoading(true);
-        await Axios.post("https://server.beehubvas.com/register", formData, {
+        await Axios.post(`${process.env.REACT_APP_BASE_URL}/register`, formData, {
           headers: { "Content-Type": "multipart/form-data" },
         }).then((res) => {
           setIsLoading(false);
@@ -221,20 +220,6 @@ function ClientRegister({ btnClass, btnTitle }) {
     }
   }, [googleSignStatus]);
 
-  const style = {
-    position: "relative",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    maxWidth: 1000,
-    height: !divStatus ? 500 : 800,
-    bgcolor: "background.paper",
-    border: "2px solid #bdbdbd",
-    borderRadius: "0.5rem",
-    boxShadow: 24,
-    overflowY: "scroll",
-  };
-
   return (
     <>
       <div className={btnClass} onClick={handleOpen}>
@@ -249,7 +234,7 @@ function ClientRegister({ btnClass, btnTitle }) {
           data-aos="fade"
           data-aos-once="true"
         >
-          <Box sx={style}>
+          <Box className="modal__clientregister">
             {isLoading ? (
               <Backdrop
                 sx={{
@@ -266,347 +251,378 @@ function ClientRegister({ btnClass, btnTitle }) {
             <div className="exit__button">
               <IoClose size={25} onClick={toggleClose} />
             </div>
-            <div
-              className={
-                !divStatus ? "hide__registerdiv" : "clientregister__container"
-              }
-            >
-              <div className="registerbox__container">
-                <div className="registerformbox__container">
-                  <h1>Get Started</h1>
 
-                  <form onSubmit={handleSubmit}>
-                    <div className="choose__register">
-                      <p>Choose what you want to do first:</p>
-                      <div>
-                        <select
-                          id="register-dropdown"
-                          value={selectedOption}
-                          onChange={handleSelectChange}
-                          className="clientregisterdropdown__con"
-                          required
-                        >
-                          <option value="" disabled selected>
-                            What do you want to do?
-                          </option>
-                          <option value="Hire">Hire VAs</option>
-                          <option value="PostJob">Post a Job</option>
-                          <option value="PDFPresentation">
-                            Get a PDF Presentation
-                          </option>
-                        </select>
+            {isLoading ? (
+              <></>
+            ) : (
+              <div
+                className={
+                  !divStatus ? "hide__registerdiv" : "clientregister__container"
+                }
+              >
+                <div className="registerbox__container">
+                  <div className="registerformbox__container">
+                    <h1>Get Started</h1>
+
+                    <form onSubmit={handleSubmit}>
+                      <div className="choose__register">
+                        <p>Choose what you want to do first:</p>
+                        <div>
+                          <select
+                            id="register-dropdown"
+                            value={selectedOption}
+                            onChange={handleSelectChange}
+                            className="clientregisterdropdown__con"
+                            required
+                          >
+                            <option value="" disabled selected>
+                              What do you want to do?
+                            </option>
+                            <option value="Hire">Hire VAs</option>
+                            <option value="PostJob">Post a Job</option>
+                            <option value="PDFPresentation">
+                              Get a PDF Presentation
+                            </option>
+                          </select>
+                        </div>
                       </div>
-                    </div>
-
-                    <div
-                      className={
-                        selectedOption
-                          ? "clientregisterform__container"
-                          : "clientregisterform__container-disabled"
-                      }
-                    >
-                      <div className="horizontal-line"></div>
 
                       <div
                         className={
-                          !googleSignStatus
-                            ? "google__register"
-                            : "hide__registerdiv"
+                          selectedOption
+                            ? "clientregisterform__container"
+                            : "clientregisterform__container-disabled"
                         }
                       >
-                        <GoogleLogin
-                          onSuccess={(credentialResponse) => {
-                            var credentialDecoded = jwtDecode(
-                              credentialResponse.credential
-                            );
-                            setGoogleSignStatus(
-                              credentialDecoded.email_verified
-                            );
-                            setGoogleEmail(credentialDecoded.email);
-                            setGoogleFname(credentialDecoded.given_name);
-                            setGoogleLname(credentialDecoded.family_name);
-                          }}
-                          onError={() => {
-                            console.log("Login Failed");
-                          }}
-                          size="large"
-                          text="continue_with"
-                          width="400"
-                          disabled={true}
+                        <div className="horizontal-line"></div>
+
+                        <div
+                          className={
+                            !googleSignStatus
+                              ? "google__register"
+                              : "hide__registerdiv"
+                          }
+                        >
+                          <GoogleLogin
+                            onSuccess={(credentialResponse) => {
+                              var credentialDecoded = jwtDecode(
+                                credentialResponse.credential
+                              );
+                              setGoogleSignStatus(
+                                credentialDecoded.email_verified
+                              );
+                              setGoogleEmail(credentialDecoded.email);
+                              setGoogleFname(credentialDecoded.given_name);
+                              setGoogleLname(credentialDecoded.family_name);
+                            }}
+                            onError={() => {
+                              console.log("Login Failed");
+                            }}
+                            size="large"
+                            text="continue_with"
+                            width="280"
+                            disabled={true}
+                          />
+
+                          <p>or</p>
+                        </div>
+
+                        <div
+                          className={
+                            !googleSignStatus
+                              ? "hide__registerdiv"
+                              : "google__register"
+                          }
+                        >
+                          <FcGoogle size={40} />
+                          <p>
+                            You have been successfully signed in using Google.
+                            Please fill out the remaining information.
+                          </p>
+                        </div>
+
+                        <div className="form__row">
+                          <div className="clientregisterinput__container">
+                            <input
+                              className="clientregisterinput__form"
+                              type="text"
+                              onChange={(e) => setFname(e.target.value)}
+                              value={fname}
+                              placeholder="First Name"
+                              required
+                              disabled={!selectedOption}
+                            />
+                          </div>
+
+                          <div className="clientregisterinput__container">
+                            <input
+                              className="clientregisterinput__form"
+                              type="text"
+                              onChange={(e) => setLname(e.target.value)}
+                              value={lname}
+                              placeholder="Last Name"
+                              required
+                              disabled={!selectedOption}
+                            />
+                          </div>
+                        </div>
+
+                        <div className="clientregisterinput__con">
+                          <PhoneInput
+                            country={"us"}
+                            value={mobileNumber}
+                            inputProps={{ required: true }}
+                            name="mobilenum"
+                            onChange={handleMobileChange}
+                            inputStyle={{
+                              border: "1px solid #f8f8f8",
+                              backgroundColor: "#f8f8f8",
+                            }}
+                            containerStyle={{
+                              height: "3rem",
+                              padding: "15px 0px 15px 0.5rem",
+                              borderRadius: "7px",
+                              border: "1.5px solid #353640",
+                              backgroundColor: "#f8f8f8",
+                              display: "flex",
+                              alignItems: "center",
+                            }}
+                            buttonStyle={{
+                              border: "1px solid #f8f8f8",
+                            }}
+                            required
+                            disabled={!selectedOption}
+                          />
+                        </div>
+
+                        <div className="clientregisterinput__container">
+                          <input
+                            className="clientregisterinput__form"
+                            type="text"
+                            onChange={(e) => setIndustry(e.target.value)}
+                            placeholder="What Industry are you in?"
+                            required
+                            disabled={!selectedOption}
+                          />
+                        </div>
+
+                        <div className="clientregisterinput__container">
+                          <input
+                            className="clientregisterinput__form"
+                            type="email"
+                            placeholder="Enter Email"
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                            required
+                            readOnly={googleSignStatus}
+                            disabled={!selectedOption}
+                          />
+                        </div>
+
+                        <div
+                          className={
+                            !googleSignStatus
+                              ? "clientregisterinput__con"
+                              : "hide__registerdiv"
+                          }
+                        >
+                          <div className="password-container">
+                            <input
+                              className="logininputpass__form "
+                              type={showPassword ? "text" : "password"}
+                              value={password}
+                              onChange={(e) => setPassword(e.target.value)}
+                              placeholder="Enter Password"
+                              disabled={!selectedOption}
+                              required={!googleSignStatus}
+                            />
+                            <button
+                              type="button"
+                              onClick={togglePasswordVisibility}
+                              className="password-toggle"
+                            >
+                              {showPassword ? (
+                                <AiOutlineEye />
+                              ) : (
+                                <AiOutlineEyeInvisible />
+                              )}
+                            </button>
+                          </div>
+                        </div>
+
+                        <div
+                          className={
+                            !googleSignStatus
+                              ? "clientregisterinput__con"
+                              : "hide__registerdiv"
+                          }
+                        >
+                          <div className="password-container">
+                            <input
+                              className="logininputpass__form "
+                              type={showConfirmPassword ? "text" : "password"}
+                              value={confirmPassword}
+                              onChange={(e) =>
+                                setConfirmPassword(e.target.value)
+                              }
+                              placeholder="Confirm Password"
+                              disabled={!selectedOption}
+                              required={!googleSignStatus}
+                            />
+                            <button
+                              type="button"
+                              onClick={toggleCornfirmPasswordVisibility}
+                              className="password-toggle"
+                            >
+                              {showConfirmPassword ? (
+                                <AiOutlineEye />
+                              ) : (
+                                <AiOutlineEyeInvisible />
+                              )}
+                            </button>
+                          </div>
+                        </div>
+
+                        <div>
+                          <select
+                            id="dropdown"
+                            value={hearAbout}
+                            onChange={handleAboutChange}
+                            disabled={!selectedOption}
+                            className="clientregisterdropdown__con"
+                            required
+                          >
+                            <option value="" disabled selected>
+                              Where did you hear about us?
+                            </option>
+                            <option value="LinkedIn">LinkedIn</option>
+                            <option value="Facebook">Google</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="Friends">Friends/Colleagues</option>
+                            <option value="Others">Others</option>
+                          </select>
+                        </div>
+
+                        <div
+                          className={
+                            hearAbout === "Others"
+                              ? "clientregisterothers__container"
+                              : "hide__registerdiv"
+                          }
+                        >
+                          <input
+                            className="clientregisterinput__form"
+                            type="text"
+                            onChange={(e) => setOthersOption(e.target.value)}
+                            placeholder="If others, please specify"
+                            required={hearAbout === "Others"}
+                            disabled={!selectedOption}
+                          />
+                        </div>
+
+                        <div className="horizontal-line"></div>
+
+                        <div className="clientregisterinput__con">
+                          <label>
+                            <input
+                              className="clientregistercheckbox__form"
+                              type="checkbox"
+                              checked={isEmailChecked}
+                              onChange={handleEmailCheckboxChange}
+                              disabled={!selectedOption}
+                            />
+                            Send me promotional emails.
+                          </label>
+                        </div>
+
+                        <div className="clientregisterinput__con">
+                          <label>
+                            <input
+                              className="clientregistercheckbox__form"
+                              type="checkbox"
+                              checked={isTermsChecked}
+                              onChange={handleTermsCheckboxChange}
+                              required
+                              disabled={!selectedOption}
+                            />
+                            I agree to the{" "}
+                            <a href="#" className="terms-link">
+                              Terms and Conditions
+                            </a>{" "}
+                            and{" "}
+                            <a href="#" className="terms-link">
+                              Privacy Policy
+                            </a>
+                            .
+                          </label>
+                        </div>
+                        <ReCAPTCHA
+                          className="recaptcha-button"
+                          sitekey="6LcoO1opAAAAAFpjXKglTWLRDBsp-2HKtSXo4UjZ"
+                          onChange={(value) => setCapVal(value)}
                         />
 
-                        <p>or</p>
-                      </div>
-
-                      <div
-                        className={
-                          !googleSignStatus
-                            ? "hide__registerdiv"
-                            : "google__register"
-                        }
-                      >
-                        <FcGoogle size={40} />
-                        <p>
-                          You have been successfully signed in using Google.
-                          Please fill out the remaining information.
+                        <p className="clientregister__errorMsg">
+                          {messagePass}
                         </p>
-                      </div>
-
-                      <div className="form__row">
-                        <div className="clientregisterinput__container">
-                          <input
-                            className="clientregisterinput__form"
-                            type="text"
-                            onChange={(e) => setFname(e.target.value)}
-                            value={fname}
-                            placeholder="First Name"
-                            required
-                            disabled={!selectedOption}
-                          />
-                        </div>
-
-                        <div className="clientregisterinput__container">
-                          <input
-                            className="clientregisterinput__form"
-                            type="text"
-                            onChange={(e) => setLname(e.target.value)}
-                            value={lname}
-                            placeholder="Last Name"
-                            required
-                            disabled={!selectedOption}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="clientregisterinput__con">
-                        <PhoneInput
-                          country={"us"}
-                          value={mobileNumber}
-                          inputProps={{ required: true }}
-                          name="mobilenum"
-                          onChange={handleMobileChange}
-                          inputStyle={{
-                            border: "1px solid #f8f8f8",
-                            backgroundColor: "#f8f8f8",
-                          }}
-                          containerStyle={{
-                            height: "3rem",
-                            padding: "15px 0px 15px 0.5rem",
-                            borderRadius: "7px",
-                            border: "1.5px solid #353640",
-                            backgroundColor: "#f8f8f8",
-                            display: "flex",
-                            alignItems: "center",
-                          }}
-                          buttonStyle={{
-                            border: "1px solid #f8f8f8",
-                          }}
-                          required
-                          disabled={!selectedOption}
-                        />
-                      </div>
-
-                      <div className="clientregisterinput__container">
-                        <input
-                          className="clientregisterinput__form"
-                          type="text"
-                          onChange={(e) => setIndustry(e.target.value)}
-                          placeholder="What Industry are you in?"
-                          required
-                          disabled={!selectedOption}
-                        />
-                      </div>
-
-                      <div className="clientregisterinput__container">
-                        <input
-                          className="clientregisterinput__form"
-                          type="email"
-                          placeholder="Enter Email"
-                          onChange={(e) => setEmail(e.target.value)}
-                          value={email}
-                          required
-                          readOnly={googleSignStatus}
-                          disabled={!selectedOption}
-                        />
-                      </div>
-
-                      <div
-                        className={
-                          !googleSignStatus
-                            ? "clientregisterinput__con"
-                            : "hide__registerdiv"
-                        }
-                      >
-                        <div className="password-container">
-                          <input
-                            className="logininputpass__form "
-                            type={showPassword ? "text" : "password"}
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Enter Password"
-                            disabled={!selectedOption}
-                            required={!googleSignStatus}
-                          />
+                        <div className="clientregister__buttons">
                           <button
-                            type="button"
-                            onClick={togglePasswordVisibility}
-                            className="password-toggle"
+                            className="cancel-btn btn-primary"
+                            onClick={toggleClose}
                           >
-                            {showPassword ? (
-                              <AiOutlineEye />
-                            ) : (
-                              <AiOutlineEyeInvisible />
-                            )}
+                            Cancel
+                          </button>
+                          <button
+                            className="btn btn-primary"
+                            disabled={capVal ? false : true}
+                          >
+                            Submit
                           </button>
                         </div>
                       </div>
-
-                      <div
-                        className={
-                          !googleSignStatus
-                            ? "clientregisterinput__con"
-                            : "hide__registerdiv"
-                        }
-                      >
-                        <div className="password-container">
-                          <input
-                            className="logininputpass__form "
-                            type={showConfirmPassword ? "text" : "password"}
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            placeholder="Confirm Password"
-                            disabled={!selectedOption}
-                            required={!googleSignStatus}
-                          />
-                          <button
-                            type="button"
-                            onClick={toggleCornfirmPasswordVisibility}
-                            className="password-toggle"
-                          >
-                            {showConfirmPassword ? (
-                              <AiOutlineEye />
-                            ) : (
-                              <AiOutlineEyeInvisible />
-                            )}
-                          </button>
-                        </div>
-                      </div>
-
-                      <div>
-                        <select
-                          id="dropdown"
-                          value={hearAbout}
-                          onChange={handleAboutChange}
-                          disabled={!selectedOption}
-                          className="clientregisterdropdown__con"
-                          required
-                        >
-                          <option value="" disabled selected>
-                            Where did you hear about us?
-                          </option>
-                          <option value="LinkedIn">LinkedIn</option>
-                          <option value="Facebook">Google</option>
-                          <option value="Instagram">Instagram</option>
-                          <option value="Friends">Friends/Colleagues</option>
-                          <option value="Others">Others</option>
-                        </select>
-                      </div>
-
-                      <div
-                        className={
-                          hearAbout === "Others"
-                            ? "clientregisterothers__container"
-                            : "hide__registerdiv"
-                        }
-                      >
-                        <input
-                          className="clientregisterinput__form"
-                          type="text"
-                          onChange={(e) => setOthersOption(e.target.value)}
-                          placeholder="If others, please specify"
-                          required={hearAbout === "Others"}
-                          disabled={!selectedOption}
-                        />
-                      </div>
-
-                      <div className="horizontal-line"></div>
-
-                      <div className="clientregisterinput__con">
-                        <label>
-                          <input
-                            className="clientregistercheckbox__form"
-                            type="checkbox"
-                            checked={isEmailChecked}
-                            onChange={handleEmailCheckboxChange}
-                            disabled={!selectedOption}
-                          />
-                          Send me promotional emails.
-                        </label>
-                      </div>
-
-                      <div className="clientregisterinput__con">
-                        <label>
-                          <input
-                            className="clientregistercheckbox__form"
-                            type="checkbox"
-                            checked={isTermsChecked}
-                            onChange={handleTermsCheckboxChange}
-                            required
-                            disabled={!selectedOption}
-                          />
-                          I agree to the{" "}
-                          <a href="#" className="terms-link">
-                            Terms and Conditions
-                          </a>{" "}
-                          and{" "}
-                          <a href="#" className="terms-link">
-                            Privacy Policy
-                          </a>
-                          .
-                        </label>
-                      </div>
-                      <ReCAPTCHA
-                        sitekey="6LcoO1opAAAAAFpjXKglTWLRDBsp-2HKtSXo4UjZ"
-                        onChange={(value) => setCapVal(value)}
-                      />
-
-                      <p className="clientregister__errorMsg">{messagePass}</p>
-                      <div className="clientregister__buttons">
-                        <button
-                          className="cancel-btn btn-primary"
-                          onClick={toggleClose}
-                        >
-                          Cancel
-                        </button>
-                        <button
-                          className="btn btn-primary"
-                          disabled={capVal ? false : true}
-                        >
-                          Submit
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <div className="registerwhyhire__container">
-                  <h1>WHY HIRE US</h1>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Inventore culpa perspiciatis officia ut eum, ipsam iusto
-                    debitis ipsum esse quisquam aliquid, ullam, quidem doloribus
-                    tenetur beatae. Repellendus deleniti, ex tempora molestiae
-                    eius at ab praesentium nemo? Numquam, consequuntur amet hic
-                    itaque quidem incidunt officiis ad laboriosam sequi quas
-                    porro accusamus rem ea nisi ipsum est! Eum qui facilis
-                    nostrum. Molestias, temporibus vitae iusto eveniet ratione
-                    voluptatem debitis quidem totam soluta, praesentium
-                    perferendis tempora? Suscipit nam sunt tenetur cumque
-                    debitis. Porro.
-                  </p>
-                  <img src={vaLogo} alt="" />
+                    </form>
+                  </div>
+                  <div className="registerwhyhire__container">
+                    <h1>WHY WORK WITH US</h1>
+                    <p>
+                      Partnering with BeeHub Virtual Assistants Co. can simplify
+                      operations, reduce administrative burdens, and contribute
+                      to increased overall efficiency for your businesses.
+                    </p>
+                    <p>
+                      Streamlined Processes. We handle all aspects of staffing,
+                      from recruitment to onboarding, payroll, and ongoing
+                      management.
+                    </p>
+                    <p>
+                      Streamlined Communication and Management: Working with a
+                      single provider for multiple services simplifies
+                      communication and project management. It eliminates the
+                      need to coordinate with multiple vendors, leading to more
+                      efficient operations and better outcomes.
+                    </p>
+                    <p>
+                      Time and cost savings. Our services can significantly
+                      reduce overhead costs by outsourcing HR, payroll, and
+                      administrative tasks, freeing up time for business leaders
+                      to focus on core activities and strategic goals.
+                    </p>
+                    <p>
+                      Diverse talent pool and expertise in various industries.
+                      We provide clients with access to a wide range of skills
+                      and experience. This ensures that businesses can find the
+                      right candidates with the specific skills and expertise
+                      they need, regardless of geographical boundaries.
+                    </p>
+                    <p>
+                      Centralized Management Approach. We facilitate better
+                      coordination and communication, ensuring smooth
+                      collaboration between clients and virtual staff.
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             <div
               className={

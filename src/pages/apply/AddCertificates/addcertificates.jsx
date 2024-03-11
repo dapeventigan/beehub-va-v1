@@ -59,7 +59,7 @@ const AddCertificates = ({ userdata }) => {
     formData.append("certificateStart", trainingStart);
     formData.append("certificateEnd", trainingEnd);
     formData.append("certificate", vaCertificate);
-    await Axios.post("https://server.beehubvas.com/addCertificate", formData, {
+    await Axios.post(`${process.env.REACT_APP_BASE_URL}/addCertificate`, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     }).then((res) => {
       if (res.data === "Success") {

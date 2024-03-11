@@ -47,7 +47,7 @@ const ChosenJob = () => {
     e.preventDefault();
 
     setIsLoading(true);
-    await Axios.put("https://server.beehubvas.com/applyJob", {
+    await Axios.put(`${process.env.REACT_APP_BASE_URL}/applyJob`, {
       jobID: jobData._id,
       userID: userDetails._id,
       userName:
@@ -62,7 +62,7 @@ const ChosenJob = () => {
 
   Axios.defaults.withCredentials = true;
   useEffect(() => {
-    Axios.get("https://server.beehubvas.com/verifylogin").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/verifylogin`).then((res) => {
       try {
         if (res.data !== "User not found") {
           setUserDetails(res.data);
@@ -72,7 +72,7 @@ const ChosenJob = () => {
             setIsUserVA(false);
           }
 
-          Axios.get("https://server.beehubvas.com/getAppliedJob", {
+          Axios.get(`${process.env.REACT_APP_BASE_URL}/getAppliedJob`, {
             params: { userID: res.data._id, jobID: param.id },
           }).then((res) => {
             if (res.data !== "User not found") {
@@ -86,7 +86,7 @@ const ChosenJob = () => {
       } catch (error) {
         //TODO: Will add popup error that you've been logged out
         console.log(error);
-        Axios.post("https://server.beehubvas.com/logout");
+        Axios.post(`${process.env.REACT_APP_BASE_URL}/logout`);
         navigate("/");
       }
     });
@@ -94,7 +94,7 @@ const ChosenJob = () => {
 
   useEffect(() => {
     setIsDataLoading(true);
-    Axios.get(`https://server.beehubvas.com/job-boards/bh/${param.id}`).then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/job-boards/bh/${param.id}`).then((res) => {
       if (res.data === "Job doesn't exist") {
         navigate("/job-boards");
       } else {

@@ -83,7 +83,7 @@ const AddJob = ({ userdata }) => {
     formData.append("jobBenefits", benefits);
     formData.append("jobPostedById", userdata._id);
     setIsLoading(true);
-    await Axios.post("https://server.beehubvas.com/addjob", formData, {
+    await Axios.post(`${process.env.REACT_APP_BASE_URL}/addjob`, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     }).then((res) => {
       if (res.data.message === "Job added successfully") {

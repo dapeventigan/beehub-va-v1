@@ -60,7 +60,7 @@ const AdminTraining = () => {
     formData.append("trainingStart", trainingStart);
     formData.append("trainingEnd", trainingEnd);
     formData.append("certificate", vaCertificate);
-    await Axios.post("https://server.beehubvas.com/addTraining", formData, {
+    await Axios.post(`${process.env.REACT_APP_BASE_URL}/addTraining`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -94,7 +94,7 @@ const AdminTraining = () => {
 
   Axios.defaults.withCredentials = true;
   useEffect(() => {
-    Axios.get("https://server.beehubvas.com/admindashboard").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/admindashboard`).then((res) => {
       if (res.data !== "User not found") {
         setUserDetails(res.data);
       } else {
@@ -104,7 +104,7 @@ const AdminTraining = () => {
   }, [navigate]);
 
   useEffect(() => {
-    Axios.get("https://server.beehubvas.com/getVAUsers").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getVAUsers`).then((res) => {
       try {
         setVAUsers(res.data);
       } catch (error) {

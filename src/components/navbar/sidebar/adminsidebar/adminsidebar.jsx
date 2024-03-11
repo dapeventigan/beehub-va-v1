@@ -42,14 +42,14 @@ const AdminSideBar = () => {
     e.preventDefault();
 
     socket.emit("refresh-all", userDetails._id);
-    Axios.post("https://server.beehubvas.com/logout");
+    Axios.post(`${process.env.REACT_APP_BASE_URL}/logout`);
     navigate("/");
   };
 
   Axios.defaults.withCredentials = true;
   useEffect(() => {
     setIsLoading(true);
-    Axios.get("https://server.beehubvas.com/verifylogin").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/verifylogin`).then((res) => {
       try {
         if (res.data !== "User not found") {
           setIsUserLoggedIn(true);
@@ -74,7 +74,7 @@ const AdminSideBar = () => {
       } catch (error) {
         //TODO: Will add popup error that you've been logged out
         console.log(error);
-        Axios.post("https://server.beehubvas.com/logout");
+        Axios.post(`${process.env.REACT_APP_BASE_URL}/logout`);
         navigate("/");
       }
     });

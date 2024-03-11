@@ -110,7 +110,7 @@ const JobBoards = () => {
 
   useEffect(() => {
     setIsDataLoading(true);
-    Axios.get("https://server.beehubvas.com/getJobData").then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getJobData`).then((res) => {
       setJobData(res.data);
       setIsDataLoading(false);
     });

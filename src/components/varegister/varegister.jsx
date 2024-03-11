@@ -10,7 +10,6 @@ import { IoClose } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
 import { MdOutlineCancel } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import vaLogo from "../../assets/Logo v1/Black And White/black2.png";
 /* Google Sign in */
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
@@ -111,8 +110,8 @@ function VaRegister({ btnClass, btnTitle }) {
   }, [googleSignStatus]);
 
   //RESUME PARSER VALUES
-  const apiUrl = "https://api.apilayer.com/resume_parser/upload";
-  const apiKey = "kGkRkLNdq7343NZwxNk1kdOKlc7RNMEf";
+  const apiUrl = process.env.REACT_APP_RESUME_URL;
+  const apiKey = process.env.REACT_APP_RESUME_KEY;
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
@@ -161,15 +160,13 @@ function VaRegister({ btnClass, btnTitle }) {
 
   const getUserIP = async () => {
     try {
-      const request = await fetch(
-        "https://ipinfo.io/json?token=d5ba9203c3bd20"
-      );
+      const request = await fetch(process.env.REACT_APP_IPINFO_TOKEN);
       const jsonResponse = await request.json();
 
       if (jsonResponse.country === "PH") {
         setFromPH(true);
       } else {
-        setFromPH(false);
+        setFromPH(true);
       }
     } catch (error) {
       console.error("Error fetching IP address or location information", error);
@@ -198,7 +195,7 @@ function VaRegister({ btnClass, btnTitle }) {
       formData.append("roleStatus", roleStatus);
       setDivStatus(false);
       setIsLoading(true);
-      await Axios.post("https://server.beehubvas.com/register", formData, {
+      await Axios.post(`${process.env.REACT_APP_BASE_URL}/register`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       }).then((res) => {
         setIsLoading(false);
@@ -252,9 +249,13 @@ function VaRegister({ btnClass, btnTitle }) {
         formData.append("roleStatus", roleStatus);
         setDivStatus(false);
         setIsLoading(true);
-        await Axios.post("https://server.beehubvas.com/register", formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        }).then((res) => {
+        await Axios.post(
+          `${process.env.REACT_APP_BASE_URL}/register`,
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+          }
+        ).then((res) => {
           setIsLoading(false);
           if (res.data.message === "Email Already Exist!") {
             setDivStatus(true);
@@ -268,20 +269,6 @@ function VaRegister({ btnClass, btnTitle }) {
         });
       }
     }
-  };
-
-  const style = {
-    position: "relative",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    maxWidth: 1000,
-    height: !divStatus ? 500 : 800,
-    bgcolor: "background.paper",
-    border: "2px solid #bdbdbd",
-    borderRadius: "0.5rem",
-    boxShadow: 24,
-    overflowY: "scroll",
   };
 
   return (
@@ -303,7 +290,7 @@ function VaRegister({ btnClass, btnTitle }) {
           data-aos="fade"
           data-aos-once="true"
         >
-          <Box sx={style}>
+          <Box className="modal__varegister">
             {isLoading ? (
               <Backdrop
                 sx={{
@@ -328,7 +315,10 @@ function VaRegister({ btnClass, btnTitle }) {
               <div className="varegister__container">
                 <div className="registerbox__container">
                   <div className="registerformbox__container">
-                    <h1>Get Started</h1>
+                    <h1>
+                      Get started working in{" "}
+                      <span className="lgn-title">BeeHub</span>
+                    </h1>
 
                     <form onSubmit={handleSubmit}>
                       <div className="clientregisterform__container">
@@ -357,7 +347,7 @@ function VaRegister({ btnClass, btnTitle }) {
                             }}
                             size="large"
                             text="continue_with"
-                            width="400"
+                            width="280"
                             disabled={true}
                           />
 
@@ -578,6 +568,7 @@ function VaRegister({ btnClass, btnTitle }) {
                           </label>
                         </div>
                         <ReCAPTCHA
+                          className="recaptcha-button"
                           sitekey="6LcoO1opAAAAAFpjXKglTWLRDBsp-2HKtSXo4UjZ"
                           onChange={(value) => setCapVal(value)}
                         />
@@ -601,23 +592,6 @@ function VaRegister({ btnClass, btnTitle }) {
                         </div>
                       </div>
                     </form>
-                  </div>
-                  <div className="registerwhywork__container">
-                    <h1>WHY WORK WITH US</h1>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Inventore culpa perspiciatis officia ut eum, ipsam iusto
-                      debitis ipsum esse quisquam aliquid, ullam, quidem
-                      doloribus tenetur beatae. Repellendus deleniti, ex tempora
-                      molestiae eius at ab praesentium nemo? Numquam,
-                      consequuntur amet hic itaque quidem incidunt officiis ad
-                      laboriosam sequi quas porro accusamus rem ea nisi ipsum
-                      est! Eum qui facilis nostrum. Molestias, temporibus vitae
-                      iusto eveniet ratione voluptatem debitis quidem totam
-                      soluta, praesentium perferendis tempora? Suscipit nam sunt
-                      tenetur cumque debitis. Porro.
-                    </p>
-                    <img src={vaLogo} alt="" />
                   </div>
                 </div>
               </div>

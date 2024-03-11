@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
     Axios.defaults.withCredentials = true;
     const verifyLogin = async () => {
       try {
-        const res = await Axios.get("https://server.beehubvas.com/verifylogin");
+        const res = await Axios.get(`${process.env.REACT_APP_BASE_URL}/verifylogin`);
         if (res.data !== "User not found") {
           setIsUserLogged(true);
           setUserRole(res.data.role);

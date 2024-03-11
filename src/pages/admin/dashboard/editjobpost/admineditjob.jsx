@@ -90,7 +90,7 @@ const AdminEditJob = ({ jobData }) => {
     formData.append("jobRequirements", requirements);
     formData.append("jobBenefits", benefits);
     setIsLoading(true);
-    await Axios.put("https://server.beehubvas.com/verifyJobPost", formData, {
+    await Axios.put(`${process.env.REACT_APP_BASE_URL}/verifyJobPost`, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     }).then((res) => {
       if (res.data.message === "Job posted successfully") {

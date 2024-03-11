@@ -28,7 +28,7 @@ const UserNavbar = ({ userData }) => {
     e.preventDefault();
 
     socket.emit("refresh-all", userData._id);
-    Axios.post("https://server.beehubvas.com/logout");
+    Axios.post(`${process.env.REACT_APP_BASE_URL}/logout`);
     navigate("/");
   };
 
