@@ -160,7 +160,7 @@ function VaRegister({ btnClass, btnTitle }) {
 
   const getUserIP = async () => {
     try {
-      const request = await fetch(process.env.REACT_APP_IPINFO_TOKEN);
+      const request = await fetch(`https://ipinfo.io/json?token=${process.env.REACT_APP_IPINFO_TOKEN}`);
       const jsonResponse = await request.json();
 
       if (jsonResponse.country === "PH") {
