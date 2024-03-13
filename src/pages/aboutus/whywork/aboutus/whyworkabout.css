@@ -1,4 +1,4 @@
-.whyworkabout__container{
+.whyworkabout__container {
   margin-top: 4rem;
 }
 
@@ -10,7 +10,7 @@
   padding: 0rem 0 3rem 0;
 }
 
-.top-horizontal-line{
+.top-horizontal-line {
   margin-bottom: 5rem;
   width: 80px; /* Adjust the width as needed */
   height: 10px; /* Set the height/thickness of the line */
@@ -20,7 +20,7 @@
 }
 
 .whyworkabout__title > h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   text-align: center;
   font-size: 4rem;
   color: var(--color-font-darkgrey);
@@ -44,7 +44,7 @@
   text-align: center;
   font-size: 3rem;
   margin-bottom: 3rem;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   color: var(--color-font-darkgrey);
 }
 
@@ -56,4 +56,21 @@
 .philo__details > p {
   font-size: 15px;
   margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 800px) {
+  .whyworkabout__title > h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .whyworkabout__title > h1 {
+    font-family: "Playfair Display", serif;
+    color: var(--color-font-darkgrey);
+    font-size: 2.5rem;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+  }
 }

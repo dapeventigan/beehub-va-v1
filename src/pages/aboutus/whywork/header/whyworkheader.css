@@ -6,7 +6,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
 }
 
 .whyworkheader__container {
@@ -25,7 +24,7 @@
 }
 
 .whyworkheader__title > h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   text-align: center;
   font-size: 4rem;
   padding-bottom: 1.2rem;
@@ -34,4 +33,30 @@
   width: 80%;
   font-size: 1rem;
   text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .whyworkheader__title > h1 {
+    font-size: 50px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .whyworkheader__title > h1 {
+    font-size: 2.5rem;
+  }
+
+  .whyworkheader__title > p {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .whyworkheader__title > h1 {
+    font-size: 2rem;
+  }
+
+  .whyworkheader__title > p {
+    width: 100%;
+  }
 }

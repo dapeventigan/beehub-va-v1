@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 
 import vaLogo from "../../assets/Logo v1/Black And White/black2.png";
 import { FaFacebookSquare } from "react-icons/fa";
@@ -7,6 +7,29 @@ import Copyright from "./copyright";
 import "./footer.css";
 
 const Footer = () => {
+
+    //geolocation
+    const [fromPH, setFromPH] = useState(false);
+
+    const getUserIP = async () => {
+      try {
+        const request = await fetch(`https://ipinfo.io/json?token=${process.env.REACT_APP_IPINFO_TOKEN}`);
+        const jsonResponse = await request.json();
+  
+        if (jsonResponse.country === "PH") {
+          setFromPH(true);
+        } else {
+          setFromPH(false);
+        }
+      } catch (error) {
+        console.error("Error fetching IP address or location information", error);
+      }
+    };
+  
+    useEffect(() => {
+      getUserIP();
+    }, []);
+
   return (
     <footer id="footer">
       <div className="footer__container">
@@ -29,7 +52,7 @@ const Footer = () => {
 
               <div className="links__content">
                 <strong>Coming soon</strong>
-                <a href="#footer">Unknown Link</a>
+                {fromPH ? <a href="#footer">Careers</a> : <></>}
                 <a href="#footer">Unknown Link</a>
               </div>
 

@@ -60,7 +60,7 @@ const OfflineSideBar = () => {
                 !isDropdown ? "sidebar__dropdown" : "sidebar__dropdown-show"
               }
             >
-              <a href="/aboutus/our-team">About Us</a>
+              <a href="/aboutus">About Us</a>
               <a href="/aboutus/#why-work-beehub">Why work with BeeHub</a>
               <a href="/aboutus/our-team">Our Team</a>
             </div>

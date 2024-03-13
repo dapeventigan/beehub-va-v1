@@ -1,4 +1,4 @@
-#why-work-beehub{
+#why-work-beehub {
   margin-top: 8rem;
 }
 
@@ -26,14 +26,14 @@
 }
 
 .whyworkbeehub__details > h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 2.6rem;
   padding-bottom: 1rem;
   color: var(--color-bg-light);
 }
 
 .whyworkbeehub__details > h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 2.6rem;
   padding-bottom: 1rem;
 }
@@ -57,4 +57,10 @@
 .whybeehub__icon {
   color: var(--color-dark-yellow);
   flex-shrink: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .whyworkbeehub__details {
+    text-align: center;
+  }
 }

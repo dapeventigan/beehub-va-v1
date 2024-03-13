@@ -12,7 +12,6 @@ function WhyWork() {
       <RootNav />
       <WhyWorkHeader/>
       <WhyWorkAbout/>
-      {/* <WhyWorkStats/> */}
       <WhyWorkBeeHub/>
       <Footer />
     </>

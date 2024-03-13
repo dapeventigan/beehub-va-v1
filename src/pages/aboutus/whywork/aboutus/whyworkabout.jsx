@@ -113,12 +113,12 @@ const WhyWorkAbout = () => {
 
   return (
     <section id="whyabout">
-      <div className="container whyworkabout__container">
+      <div className="whyworkabout__container">
         <div
           className="whyworkabout__title"
         >
           <div className="top-horizontal-line"></div>
-          <h1>About Us</h1>
+          <h1 className="howit__title">About Us</h1>
           <p>
             BeeHub Virtual Assistants Co. was founded on the idea of
             establishing a workforce that defies traditional constraints. We
@@ -136,7 +136,7 @@ const WhyWorkAbout = () => {
           <div className="howit__contents">
             <div
               className="howit__desc"
-              data-aos="fade-right"
+              data-aos="fade"
               data-aos-once="true"
             >
               <h1 className="howit__title">Our Mission</h1>
@@ -158,7 +158,7 @@ const WhyWorkAbout = () => {
             </div>
             <div
               className="howit__img"
-              data-aos="fade-left"
+              data-aos="fade"
               data-aos-once="true"
             >
               <img
@@ -168,10 +168,10 @@ const WhyWorkAbout = () => {
               ></img>
             </div>
           </div>
-          <div className="howit__contents">
+          <div className="howit__contents-reverse">
             <div
               className="howit__img"
-              data-aos="fade-right"
+              data-aos="fade"
               data-aos-once="true"
             >
               <img
@@ -182,7 +182,7 @@ const WhyWorkAbout = () => {
             </div>
             <div
               className="howit__desc"
-              data-aos="fade-left"
+              data-aos="fade"
               data-aos-once="true"
             >
               <h1 className="howit__title">Our Philosophy</h1>
@@ -224,7 +224,7 @@ const WhyWorkAbout = () => {
           <div className="howit__contents">
             <div
               className="howit__desc"
-              data-aos="fade-right"
+              data-aos="fade"
               data-aos-once="true"
             >
               <h1 className="howit__title">Our Core Values</h1>
@@ -262,7 +262,7 @@ const WhyWorkAbout = () => {
             </div>
             <div
               className="howit__img"
-              data-aos="fade-left"
+              data-aos="fade"
               data-aos-once="true"
             >
               <img

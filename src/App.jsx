@@ -30,6 +30,9 @@ import ForgotPassword from "./pages/forgotpassword/forgotpassword.jsx";
 import WhyWork from "./pages/aboutus/whywork/whywork.jsx";
 import OurTeam from "./pages/aboutus/ourteam/ourteam.jsx";
 
+//CAREERS
+import Careers from "./pages/careers/careers.jsx";
+
 //ServicesFolder
 import Services from "./pages/services/services.jsx";
 
@@ -51,7 +54,7 @@ import AdminTraining from "./pages/admin/training/training.jsx";
 
 //Logs
 
-//to be deletet
+//to be delete
 import ComingSoon from "./pages/comingsoon/comingsoon.jsx";
 
 import "./App.css";
@@ -77,6 +80,7 @@ const router = createBrowserRouter(
       <Route path="/job-boards" element={<JobBoard />} />
       <Route path="/job-boards/bh/:id" element={<ChosenJob />} />
       <Route path="/va-boards" element={<VABoards />} />
+      <Route path="/careers" element={<Careers />}/>
 
       <Route path="/*" element={<Navigate to="/" />} />
       {/* TODO: 404 page */}
