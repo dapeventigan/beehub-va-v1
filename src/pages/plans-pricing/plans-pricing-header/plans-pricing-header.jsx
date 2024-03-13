@@ -31,7 +31,7 @@ const PlansPricingHeader = () => {
             Start Hiring
           </Link>
         </div>
-        <svg
+        {/* <svg
           className="wavy-svg"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 319"
@@ -41,7 +41,7 @@ const PlansPricingHeader = () => {
             fillOpacity="1"
             d="M 0 320 L 301 216 L 1105 216 L 1440 320 Z"
           ></path>
-        </svg>
+        </svg> */}
       </div>
     </section>
   );

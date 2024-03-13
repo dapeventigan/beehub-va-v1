@@ -1,3 +1,7 @@
+.viras__container {
+  margin-top: 4rem;
+}
+
 .vatitle__choose {
   display: flex;
   justify-content: center;
@@ -46,7 +50,9 @@
   display: block;
   width: 100%;
   height: 10px;
-  background-color: var(--color-bg-variant); /* You can adjust the color as needed */
+  background-color: var(
+    --color-bg-variant
+  ); /* You can adjust the color as needed */
   position: absolute;
   bottom: -15px;
 }

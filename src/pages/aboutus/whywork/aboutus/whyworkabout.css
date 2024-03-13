@@ -1,3 +1,7 @@
+.whyworkabout__container{
+  margin-top: 4rem;
+}
+
 .whyworkabout__title {
   display: flex;
   flex-direction: column;

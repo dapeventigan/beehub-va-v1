@@ -21,9 +21,9 @@ const ParallaxEffect = () => {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const smallScreenRange = ["5%", "300%"];
-  const mediumScreenRange = ["10%", "400%"];
-  const medLargeScreenRange = ["40%", "400%"];
+  const smallScreenRange = ["15%", "200%"];
+  const mediumScreenRange = ["20%", "300%"];
+  const medLargeScreenRange = ["40%", "380%"];
   const largeScreenRange = ["50%", "400%"];
 
   const textY = useTransform(
@@ -55,13 +55,13 @@ const ParallaxEffect = () => {
           </p>
         </motion.div>
       </div>
-      <svg className="wavy-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319">
+      {/* <svg className="wavy-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319">
         <path
           fill="#f8f8f8"
           fillOpacity="1"
           d="M 0 320 L 301 216 L 1105 216 L 1440 320 Z"
         ></path>
-      </svg>
+      </svg> */}
     </div>
   );
 };
