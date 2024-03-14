@@ -15,111 +15,118 @@ import Footer from "../../components/footer/footer";
 import "./jobboards.css";
 
 const JobBoards = () => {
-  const [jobData, setJobData] = useState([]);
+  // const [jobData, setJobData] = useState([]);
 
-  // State for pagination and search
-  const [currentPage, setCurrentPage] = useState(1);
-  const [inputValue, setInputValue] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedType, setSelectedType] = useState("");
-  const [experienceType, setExperienceType] = useState("");
-  const [dateFilter, setDateFilter] = useState("");
-  const [isDataLoading, setIsDataLoading] = useState(false);
+  // // State for pagination and search
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [inputValue, setInputValue] = useState("");
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const [selectedType, setSelectedType] = useState("");
+  // const [experienceType, setExperienceType] = useState("");
+  // const [dateFilter, setDateFilter] = useState("");
+  // const [isDataLoading, setIsDataLoading] = useState(false);
 
-  //params
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const searchTermFromParams = params.get("search");
+  // //params
+  // const location = useLocation();
+  // const params = new URLSearchParams(location.search);
+  // const searchTermFromParams = params.get("search");
 
-  useEffect(() => {
-    if (searchTermFromParams) {
-      setInputValue(searchTermFromParams);
-      setSearchTerm(searchTermFromParams);
-    }
-  }, [searchTermFromParams]);
+  // useEffect(() => {
+  //   if (searchTermFromParams) {
+  //     setInputValue(searchTermFromParams);
+  //     setSearchTerm(searchTermFromParams);
+  //   }
+  // }, [searchTermFromParams]);
 
-  //GOD FILTER
-  const filteredJobs = jobData.filter((job) => {
-    const jobDate = new Date(job.jobPosted);
-    const filterDate = getDateFromChoice(dateFilter);
+  // //GOD FILTER
+  // const filteredJobs = jobData.filter((job) => {
+  //   const jobDate = new Date(job.jobPosted);
+  //   const filterDate = getDateFromChoice(dateFilter);
 
-    return (
-      job.jobTitle.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (selectedType === "" || job.jobEmploymentType === selectedType) &&
-      (experienceType === "" || job.jobLevelExperience === experienceType) &&
-      (!filterDate || jobDate >= filterDate)
-    );
-  });
-  //DATE FILTER
-  function getDateFromChoice(choice) {
-    const now = new Date();
-    switch (choice) {
-      case "Past Month":
-        now.setMonth(now.getMonth() - 1);
-        break;
-      case "Past Week":
-        now.setDate(now.getDate() - 7);
-        break;
-      case "Past 24 hours":
-        now.setDate(now.getDate() - 1);
-        break;
-      default:
-        return null;
-    }
-    return now;
-  }
+  //   return (
+  //     job.jobTitle.toLowerCase().includes(searchTerm.toLowerCase()) &&
+  //     (selectedType === "" || job.jobEmploymentType === selectedType) &&
+  //     (experienceType === "" || job.jobLevelExperience === experienceType) &&
+  //     (!filterDate || jobDate >= filterDate)
+  //   );
+  // });
+  // //DATE FILTER
+  // function getDateFromChoice(choice) {
+  //   const now = new Date();
+  //   switch (choice) {
+  //     case "Past Month":
+  //       now.setMonth(now.getMonth() - 1);
+  //       break;
+  //     case "Past Week":
+  //       now.setDate(now.getDate() - 7);
+  //       break;
+  //     case "Past 24 hours":
+  //       now.setDate(now.getDate() - 1);
+  //       break;
+  //     default:
+  //       return null;
+  //   }
+  //   return now;
+  // }
 
-  //SEE MORE
-  function truncate(str, num, id) {
-    if (str.length <= num) {
-      return str;
-    }
-    return (
-      <span>
-        {str.slice(0, num)}
-        <a
-          href={`https://beehubvas.com/job-boards/bh/${id}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          ...see more
-        </a>
-      </span>
-    );
-  }
+  // //SEE MORE
+  // function truncate(str, num, id) {
+  //   if (str.length <= num) {
+  //     return str;
+  //   }
+  //   return (
+  //     <span>
+  //       {str.slice(0, num)}
+  //       <a
+  //         href={`https://beehubvas.com/job-boards/bh/${id}`}
+  //         target="_blank"
+  //         rel="noreferrer"
+  //       >
+  //         ...see more
+  //       </a>
+  //     </span>
+  //   );
+  // }
 
-  // Pagination logic
-  const jobsPerPage = 6;
-  const indexOfLastJob = currentPage * jobsPerPage;
-  const indexOfFirstJob = indexOfLastJob - jobsPerPage;
-  const currentJobs = filteredJobs.slice(indexOfFirstJob, indexOfLastJob);
+  // // Pagination logic
+  // const jobsPerPage = 6;
+  // const indexOfLastJob = currentPage * jobsPerPage;
+  // const indexOfFirstJob = indexOfLastJob - jobsPerPage;
+  // const currentJobs = filteredJobs.slice(indexOfFirstJob, indexOfLastJob);
 
-  const totalPages = Math.ceil(filteredJobs.length / jobsPerPage);
-  const maxPageNumbersToShow = 5;
+  // const totalPages = Math.ceil(filteredJobs.length / jobsPerPage);
+  // const maxPageNumbersToShow = 5;
 
-  let start = currentPage - Math.floor(maxPageNumbersToShow / 2);
-  start = Math.max(start, 1);
-  let end = start + maxPageNumbersToShow - 1;
+  // let start = currentPage - Math.floor(maxPageNumbersToShow / 2);
+  // start = Math.max(start, 1);
+  // let end = start + maxPageNumbersToShow - 1;
 
-  if (end > totalPages) {
-    end = totalPages;
-    start = Math.max(end - maxPageNumbersToShow + 1, 1);
-  } else {
-    start = Math.min(start, totalPages - maxPageNumbersToShow + 1);
-  }
+  // if (end > totalPages) {
+  //   end = totalPages;
+  //   start = Math.max(end - maxPageNumbersToShow + 1, 1);
+  // } else {
+  //   start = Math.min(start, totalPages - maxPageNumbersToShow + 1);
+  // }
 
-  useEffect(() => {
-    setIsDataLoading(true);
-    Axios.get(`${process.env.REACT_APP_BASE_URL}/getJobData`).then((res) => {
-      setJobData(res.data);
-      setIsDataLoading(false);
-    });
-  }, []);
+  // useEffect(() => {
+  //   setIsDataLoading(true);
+  //   Axios.get(`${process.env.REACT_APP_BASE_URL}/getJobData`).then((res) => {
+  //     setJobData(res.data);
+  //     setIsDataLoading(false);
+  //   });
+  // }, []);
 
   return (
     <div>
       <JobBoardNavbar />
-      <div className="jobboard__header">
+      <div className="manatal__container">
+        <iframe
+          className="manatal__iframe"
+          src="https://www.careers-page.com/beehub-virtual-assistants-co"
+        ></iframe>
+      </div>
+
+      {/* <div className="jobboard__header">
         <h1>
           Find your <span>new Remote Job</span> today!
         </h1>
@@ -286,7 +293,7 @@ const JobBoards = () => {
             </div>
           )}
         </div>
-      </div>
+      </div>*/}
       <Footer />
     </div>
   );

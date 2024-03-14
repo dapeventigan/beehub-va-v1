@@ -148,3 +148,14 @@
   margin-bottom: 2rem;
   color: var(--color-font-darkgrey);
 }
+
+.manatal__container {
+  height: 800px;
+  overflow: hidden; /* Hide any overflowing content */
+}
+
+.manatal__iframe {
+  width: 100%;
+  height: 100%;
+  border: none; /* Remove iframe border */
+}

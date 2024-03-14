@@ -18,9 +18,9 @@ function LandingPage() {
       <Header />
       <ParallaxEffect />
       <HowIt />
+      <BeeHubTag />
       <Choose />
       <Hiring />
-      <BeeHubTag />
       <VASection />
       <Contact />
       <Footer />

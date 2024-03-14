@@ -5,6 +5,7 @@ import "aos/dist/aos.css";
 
 //beehubteam
 import DabeVentigan from "../../../../../src/assets/beehubteam/dabe.png";
+import DabeVentigan2 from "../../../../../src/assets/beehubteam/etest.png";
 import "./beehubteam.css";
 
 const BeehubTeam = () => {
@@ -28,6 +29,12 @@ const BeehubTeam = () => {
         >
           <div className="beehubteam__details">
             <img src={DabeVentigan} alt="" />
+            <h2>Dabe Ventigan</h2>
+            <p>Lorem, ipsum dolor.</p>
+          </div>
+
+          <div className="beehubteam__details">
+            <img src={DabeVentigan2} alt="" />
             <h2>Dabe Ventigan</h2>
             <p>Lorem, ipsum dolor.</p>
           </div>
