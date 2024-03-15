@@ -3,7 +3,7 @@ import AOS from "aos";
 import ClientRegister from "../../../components/clientregister/clientregister";
 import HoneyComb from "../../../assets/hiring.png";
 import HoneyCombMobile from "../../../assets/hiring-mobile.png";
-import BgVideo from "../../../assets/bgvideobee.webm";
+import BgVideo from "../../../assets/bgvideobeeS.mp4";
 
 import "./hiring.css";
 const Hiring = () => {
@@ -23,11 +23,13 @@ const Hiring = () => {
     <section id="hiring">
       <video
         className="video-bg"
-        autoPlay={true}
-        loop={true}
-        muted={true}
+        autoPlay
+        loop
+        muted
+        preload="none"
+        poster={HoneyComb}
       >
-        <source src={BgVideo} type="video/webm" />
+        <source src="../../../assets/bgvideobeeS.mp4" type="video/mp4" />
       </video>
       <div className="hiring__content">
         <h1 className="hiring__title">
