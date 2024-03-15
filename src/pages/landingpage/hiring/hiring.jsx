@@ -23,11 +23,9 @@ const Hiring = () => {
     <section id="hiring">
       <video
         className="video-bg"
-        autoPlay
-        loop
-        muted
-        preload="none"
-        poster={HoneyComb}
+        autoPlay={true}
+        loop={true}
+        muted={true}
       >
         <source src={BgVideo} type="video/mp4" />
       </video>
