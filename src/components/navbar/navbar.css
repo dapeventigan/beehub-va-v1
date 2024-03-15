@@ -41,6 +41,7 @@
 
 .navbar__logo{
   height: 70px;
+  width: 100%;
 }
 
 .navbar__links {
