@@ -89,9 +89,3 @@
   transform: scaleY(1);
   max-height: 500px; /* adjust this value as needed */
 }
-
-@media (min-width: 768px) {
-  .sidebar {
-    width: 30%;
-  }
-}

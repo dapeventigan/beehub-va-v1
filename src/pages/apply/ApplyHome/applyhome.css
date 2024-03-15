@@ -193,6 +193,23 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+
+.addcert-mobile,
+.profilename-mobile,
+.profileuri-mobile {
+  display: none;
+}
+
+.addcert-desktop {
+  width: max-content;
+  display: inline-block;
+  padding: 1rem 2.2rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: var(--transition);
+  background: black;
+  color: var(--color-white);
+}
 /* OFFLINE */
 
 .offline__avatar {
@@ -201,4 +218,128 @@
   margin-top: -80px;
   border: 10px solid white;
   border-radius: 50%;
+}
+
+@media screen and (max-width: 1140px) {
+  .profileuri-mobile {
+    display: flex;
+  }
+
+  .profileuri-not_mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .profileheader__row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -40px;
+  }
+
+  .profiletitle__container-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .profilename-mobile {
+    display: block;
+  }
+
+  .profilename-desktop {
+    display: none;
+  }
+
+  .profile__row {
+    padding: 1rem 0rem;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .profiletable__title {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 2rem;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .profile__container {
+    width: 100%;
+    border-radius: none;
+    box-shadow: none;
+  }
+
+  .userprofile__banner {
+    background-color: var(--color-bg-variant);
+    height: 150px;
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+
+  .account__title {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .profileuri-mobile > p,
+  .vertical-line {
+    display: none;
+  }
+
+  .profileuri-mobile {
+    padding: 0.2rem 1.5rem;
+  }
+
+  .account__title > h1 {
+    font-size: 25px;
+  }
+
+  .profiletitle__container-mobile {
+    flex-direction: column;
+  }
+
+  .profiletitle__container-mobile > p {
+    margin-top: 1rem;
+  }
+
+  .profile__row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem 2rem;
+  }
+
+  .contact__profile {
+    margin: 1.5rem 0;
+  }
+
+  .profiledesc__container {
+    margin: 0rem;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .addcert-desktop {
+    display: none;
+  }
+
+  .addcert-mobile {
+    display: block;
+    width: max-content;
+    display: inline-block;
+    padding: 0.4rem 1.5rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    background: black;
+    color: var(--color-white);
+  }
 }

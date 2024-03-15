@@ -147,7 +147,7 @@
   color: var(--color-white);
 }
 
-#login-btn:hover{
+#login-btn:hover {
   background: #262626;
   color: var(--color-white);
   border-color: transparent;
@@ -170,10 +170,16 @@
     justify-content: space-between;
     width: 90%;
     height: 80px;
-    padding-right: 20px; 
+    padding-right: 20px;
   }
 
-  .navbar__link{
+  .navbar__link {
     display: none;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .navbar__beehub {
+    margin-right: 0px;
   }
 }

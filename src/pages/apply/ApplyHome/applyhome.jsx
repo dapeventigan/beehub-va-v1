@@ -57,7 +57,7 @@ const ApplyHome = () => {
     try {
       await navigator.clipboard.writeText(url);
       setCopied(true);
-      alert("Copied to clipboard");
+      alert("Profile URL copied to clipboard");
     } catch (err) {
       console.error("Failed to copy text: ", err);
     }
@@ -86,11 +86,15 @@ const ApplyHome = () => {
     formData.append("profilePicture", file);
     formData.append("userId", userDetails._id);
 
-    await Axios.put(`${process.env.REACT_APP_BASE_URL}/editProfilePicture`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    }).then((res) => {
+    await Axios.put(
+      `${process.env.REACT_APP_BASE_URL}/editProfilePicture`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    ).then((res) => {
       if (res.data.valid === true) {
         window.location.reload();
       }
@@ -99,40 +103,40 @@ const ApplyHome = () => {
 
   Axios.defaults.withCredentials = true;
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_BASE_URL}/va-bh/${param.username}/${param.id}`).then(
-      async (res) => {
-        if (res.data === "Link Broken") {
-          navigate("/");
-        } else if (res.data !== "Profile doesn't exist") {
-          setViewOnly(true);
-          setUserDetails(res.data);
-          if (!res.data.skills) {
-            setSkill([]);
-          } else {
-            setSkill(res.data.skills.split(","));
-          }
-
-          await Axios.get(`${process.env.REACT_APP_BASE_URL}/applyuserdashboard`).then(
-            (res) => {
-              if (res.data !== "User not found" && res.data._id === param.id) {
-                setMainData(res.data);
-                setViewOnly(false);
-                setIsLoading(false);
-              } else if (res.data !== "User not found") {
-                setisLoggedIn(true);
-                setMainData(res.data);
-                setIsLoading(false);
-              } else {
-                setisLoggedIn(false);
-                setIsLoading(false);
-              }
-            }
-          );
+    Axios.get(
+      `${process.env.REACT_APP_BASE_URL}/va-bh/${param.username}/${param.id}`
+    ).then(async (res) => {
+      if (res.data === "Link Broken") {
+        navigate("/");
+      } else if (res.data !== "Profile doesn't exist") {
+        setViewOnly(true);
+        setUserDetails(res.data);
+        if (!res.data.skills) {
+          setSkill([]);
         } else {
-          navigate("/");
+          setSkill(res.data.skills.split(","));
         }
+
+        await Axios.get(
+          `${process.env.REACT_APP_BASE_URL}/applyuserdashboard`
+        ).then((res) => {
+          if (res.data !== "User not found" && res.data._id === param.id) {
+            setMainData(res.data);
+            setViewOnly(false);
+            setIsLoading(false);
+          } else if (res.data !== "User not found") {
+            setisLoggedIn(true);
+            setMainData(res.data);
+            setIsLoading(false);
+          } else {
+            setisLoggedIn(false);
+            setIsLoading(false);
+          }
+        });
+      } else {
+        navigate("/");
       }
-    );
+    });
 
     Axios.get(`${process.env.REACT_APP_BASE_URL}/getJobHistory`, {
       params: {
@@ -331,7 +335,12 @@ const ApplyHome = () => {
           {viewOnly && !isLoggedIn ? (
             <></>
           ) : (
-            <Button sx={buttonStyleRed} onClick={() => handleDeleteCertificate(row._id, row.certificate)}>DELETE</Button>
+            <Button
+              sx={buttonStyleRed}
+              onClick={() => handleDeleteCertificate(row._id, row.certificate)}
+            >
+              DELETE
+            </Button>
           )}
           <a
             href={`${process.env.REACT_APP_BASE_URL}/certificates/${row.certificate}`}
@@ -383,7 +392,12 @@ const ApplyHome = () => {
       <div className="userprofile__container">
         <div className="account__title">
           <h1>My Account</h1>
-          <div className="profileuri__container">
+          <div className="profileuri__container profileuri-mobile">
+            <p>Copy Profile Url</p>
+            <div className="vertical-line" />
+            <IoCopyOutline onClick={handleCopy} style={{ cursor: "pointer" }} />
+          </div>
+          <div className="profileuri__container profileuri-not_mobile">
             <p>{`https://beehubvas.com/va-bh/${param.username}/${param.id}`}</p>
             <div className="vertical-line" />
             <IoCopyOutline onClick={handleCopy} style={{ cursor: "pointer" }} />
@@ -439,7 +453,7 @@ const ApplyHome = () => {
                         </span>
                       </label>
                     </div>
-                    <div className="profiletitle__container">
+                    <div className="profiletitle__container profilename-desktop">
                       <h2>{`${userDetails.fname} ${userDetails.lname}`}</h2>
                       <p>{userDetails.userTitle || "None"}</p>
                       <p>
@@ -453,7 +467,20 @@ const ApplyHome = () => {
                     </div>
                   </div>
 
-                  <div>
+                  <div className="profiletitle__container-mobile">
+                    <div className="profiletitle__container profilename-mobile">
+                      <h2>{`${userDetails.fname} ${userDetails.lname}`}</h2>
+                      <p>{userDetails.userTitle || "None"}</p>
+                      <p>
+                        {!userDetails.verifiedForJob
+                          ? "Not Verified"
+                          : "Verified"}
+                        <MdVerified
+                          color={!userDetails.verifiedForJob ? "red" : "green"}
+                        />
+                      </p>
+                    </div>
+
                     <p>{`Current Employment: ${
                       userDetails.employment || "None"
                     }`}</p>
@@ -542,7 +569,6 @@ const ApplyHome = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        {" "}
                         <FaInstagram size={25} />{" "}
                       </a>
                     ) : (
@@ -587,8 +613,11 @@ const ApplyHome = () => {
                 <div className="profile__table">
                   <div className="profiletable__title">
                     <h4>Certifications</h4>
-                    {viewOnly && !isLoggedIn ? <></> :
-                    <AddCertificates userdata={userDetails} />}
+                    {viewOnly && !isLoggedIn ? (
+                      <></>
+                    ) : (
+                      <AddCertificates userdata={userDetails} />
+                    )}
                   </div>
 
                   <DataTable

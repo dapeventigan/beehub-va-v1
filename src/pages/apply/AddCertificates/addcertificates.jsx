@@ -11,6 +11,7 @@ import { FaPlus } from "react-icons/fa6";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "../../../components/addjob/addjob.css";
+import "../ApplyHome/applyhome.css"
 
 const AddCertificates = ({ userdata }) => {
   //Popup Modal
@@ -88,14 +89,22 @@ const AddCertificates = ({ userdata }) => {
     <>
       <div className="jobpost-btn" onClick={handleOpen}>
         <button
-          className="btn"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.5rem",
-          }}
+          className="addcert-desktop"
+          // style={{
+          //   alignItems: "center",
+          //   gap: "0.5rem",
+          // }}
         >
           <FaPlus /> Add Certificate
+        </button>
+        <button
+          className="addcert-mobile"
+          // style={{
+          //   alignItems: "center",
+          //   gap: "0.5rem",
+          // }}
+        >
+          <FaPlus />
         </button>
       </div>
       <div>
