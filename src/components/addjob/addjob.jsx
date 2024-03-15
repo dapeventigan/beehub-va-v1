@@ -118,14 +118,14 @@ const AddJob = ({ userdata }) => {
     <>
       <div className="jobpost-btn" onClick={handleOpen}>
         <button
-          className="btn"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.5rem",
-          }}
+          className="addcert-desktop"
         >
           <FaPlus /> Post a Job
+        </button>
+        <button
+          className="addcert-mobile"
+        >
+          <FaPlus />
         </button>
       </div>
       <div>
