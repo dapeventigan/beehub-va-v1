@@ -33,15 +33,11 @@
 
 .navbarlogo__container {
   padding-top: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
 }
 
-.navbar__logo{
-  height: 70px;
-  width: 100%;
+.navbar__logo {
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 .navbar__links {

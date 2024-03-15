@@ -21,7 +21,9 @@ const Hiring = () => {
 
   return (
     <section id="hiring">
-      <video className="video-bg" src={BgVideo} autoPlay loop muted></video>
+      <video className="video-bg" loop autoPlay muted>
+        <source src={BgVideo} type="video/mp4" />
+      </video>
       <div className="hiring__content">
         <h1 className="hiring__title">
           How to start your Business with BeeHub
@@ -34,10 +36,7 @@ const Hiring = () => {
           <a href="/" className="cnt-btn">
             Book a Call
           </a>
-          <ClientRegister
-            btnClass={"cnt-btn"}
-            btnTitle={"Get Started"}
-          />
+          <ClientRegister btnClass={"cnt-btn"} btnTitle={"Get Started"} />
         </div>
       </div>
     </section>
