@@ -21,14 +21,24 @@ const Hiring = () => {
 
   return (
     <section id="hiring">
-      <video
+         <div dangerouslySetInnerHTML={{ __html: `
+        <video
+          loop
+          muted
+          autoplay
+          playsinline
+          src="${BgVideo}"
+          class="video-bg"
+        />,
+      ` }}></div>
+      {/* <video
         className="video-bg"
         autoPlay={true}
         loop={true}
         muted={true}
       >
         <source src={BgVideo} type="video/mp4" />
-      </video>
+      </video> */}
       <div className="hiring__content">
         <h1 className="hiring__title">
           How to start your Business with BeeHub
