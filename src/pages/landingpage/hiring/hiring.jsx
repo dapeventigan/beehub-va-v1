@@ -25,9 +25,7 @@ const Hiring = () => {
         className="video-bg"
         autoPlay={true}
         loop={true}
-        controls={false}
-        playsInline
-        muted
+        muted={true}
       >
         <source src={BgVideo} type="video/webm" />
       </video>
