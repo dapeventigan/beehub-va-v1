@@ -6,9 +6,9 @@ const LogoNav = () => {
         <div className="navbar__container">
             <div className="nav__container">
                 <div className="navbarlogo__container">
-                    <div className="navbar__logo">
+                    <div>
                         <a href="/">
-                            <img src={vaLogo} alt="" />
+                            <img className="navbar__logo" src={vaLogo} alt="" />
                         </a>
                     </div>
                 </div>

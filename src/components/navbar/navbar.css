@@ -36,9 +36,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
-.navbar__logo img {
+.navbar__logo{
   height: 70px;
 }
 
