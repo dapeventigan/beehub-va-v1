@@ -26,7 +26,6 @@ const Hiring = () => {
         autoPlay
         loop
         muted
-        preload="none"
         poster={HoneyComb}
       >
         <source src="../../../assets/bgvideobeeS.mp4" type="video/mp4" />
