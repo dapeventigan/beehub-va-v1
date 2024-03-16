@@ -14,7 +14,7 @@ import Login from "../../../../pages/login/login";
 
 import "../sidebar.css";
 
-const MainSideBar = () => {
+const MainSideBar = ({phData}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdown, setIsDropdown] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -129,7 +129,7 @@ const MainSideBar = () => {
               PLANS AND PRICING
             </a>
           </div>
-          {fromPH ? (
+          {phData ? (
             <div className="sidebar__content">
               <a href="/" className="link__details">
                 CAREERS
