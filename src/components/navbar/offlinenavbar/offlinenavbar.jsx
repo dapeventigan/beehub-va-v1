@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa6";
 import AOS from "aos";
 import BHLogo from "../../../assets/logo_1.png";
@@ -9,11 +8,6 @@ import "../navbar.css";
 
 const OfflineNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
 
   useEffect(() => {
     AOS.init({ duration: 500 });
@@ -39,29 +33,41 @@ const OfflineNavbar = () => {
     };
   }, []);
 
-  const style = {
-    position: "relative",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid black",
-    borderRadius: "1rem",
-    boxShadow: 24,
+  //geolocation
+  const [fromPH, setFromPH] = useState(false);
+
+  const getUserIP = async () => {
+    try {
+      const request = await fetch(
+        `https://ipinfo.io/json?token=${process.env.REACT_APP_IPINFO_TOKEN}`
+      );
+      const jsonResponse = await request.json();
+
+      if (jsonResponse.country === "PH") {
+        setFromPH(true);
+      } else {
+        setFromPH(false);
+      }
+    } catch (error) {
+      console.error("Error fetching IP address or location information", error);
+    }
   };
+
+  useEffect(() => {
+    getUserIP();
+  }, []);
 
   return (
     <nav className="navbar">
       <div className="navbar__contents">
-      <div className="sidebar__menu">
+        <div className="sidebar__menu">
           <div className="navbar__beehub">
             <a href="/#">
               <img src={BHLogo} alt="" />
             </a>
           </div>
           <div className="sidebar__button">
-            <OfflineSideBar />
+            <OfflineSideBar phData={fromPH}/>
           </div>
         </div>
         <div className="navbar__link">
@@ -112,6 +118,16 @@ const OfflineNavbar = () => {
                   PLANS AND PRICING
                 </a>
               </li>
+              {fromPH ? (
+                <li>
+                  <a href="/" className="link__details">
+                    CAREERS
+                  </a>
+                </li>
+              ) : (
+                <></>
+              )}
+
               <a id="login-btn" className="link__details" href="/">
                 Visit BeeHub
               </a>

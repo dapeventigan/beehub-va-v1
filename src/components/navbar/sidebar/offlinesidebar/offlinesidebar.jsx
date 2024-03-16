@@ -7,7 +7,7 @@ import vaLogo from "../../../../assets/Logo v1/Black And White/black2.png";
 
 import "../sidebar.css";
 
-const OfflineSideBar = () => {
+const OfflineSideBar = ({ phData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdown, setIsDropdown] = useState(false);
   const navigate = useNavigate();
@@ -73,6 +73,16 @@ const OfflineSideBar = () => {
               PLANS AND PRICING
             </a>
           </div>
+          {phData ? (
+            <div className="sidebar__content">
+              <a href="/" className="link__details">
+                CAREERS
+              </a>
+            </div>
+          ) : (
+            <></>
+          )}
+
           <a id="login-btn" className="link__details" href="/">
             Visit BeeHub
           </a>

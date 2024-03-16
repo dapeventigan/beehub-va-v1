@@ -129,6 +129,16 @@ const MainSideBar = () => {
               PLANS AND PRICING
             </a>
           </div>
+          {fromPH ? (
+            <div className="sidebar__content">
+              <a href="/" className="link__details">
+                CAREERS
+              </a>
+            </div>
+          ) : (
+            <></>
+          )}
+
           <div className="sidebar__content">
             {isLoading ? (
               <SyncLoader color="#000000" />

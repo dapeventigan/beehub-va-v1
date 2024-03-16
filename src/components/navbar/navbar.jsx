@@ -29,10 +29,6 @@ const NavbarHome = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
   const toggleClose = () => {
     setOpen(false);
   };
@@ -121,6 +117,30 @@ const NavbarHome = () => {
     transition: "opacity 0.5s ease-in-out",
   };
 
+  //geolocation
+  const [fromPH, setFromPH] = useState(false);
+
+  const getUserIP = async () => {
+    try {
+      const request = await fetch(
+        `https://ipinfo.io/json?token=${process.env.REACT_APP_IPINFO_TOKEN}`
+      );
+      const jsonResponse = await request.json();
+
+      if (jsonResponse.country === "PH") {
+        setFromPH(true);
+      } else {
+        setFromPH(false);
+      }
+    } catch (error) {
+      console.error("Error fetching IP address or location information", error);
+    }
+  };
+
+  useEffect(() => {
+    getUserIP();
+  }, []);
+
   return (
     <nav className="navbar">
       <div className="navbar__contents">
@@ -131,7 +151,7 @@ const NavbarHome = () => {
             </a>
           </div>
           <div className="sidebar__button">
-            <MainSideBar />
+            <MainSideBar phData={fromPH}/>
           </div>
         </div>
 
@@ -176,6 +196,16 @@ const NavbarHome = () => {
                   PLANS AND PRICING
                 </a>
               </li>
+              {fromPH ? (
+                <li>
+                  <a href="/plans-and-pricing" className="link__details">
+                    CAREERS
+                  </a>
+                </li>
+              ) : (
+                <></>
+              )}
+
               {isLoading ? (
                 <SyncLoader color="#000000" />
               ) : isUserLoggedIn ? (
