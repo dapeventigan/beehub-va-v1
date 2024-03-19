@@ -160,7 +160,9 @@ function VaRegister({ btnClass, btnTitle }) {
 
   const getUserIP = async () => {
     try {
-      const request = await fetch(`https://ipinfo.io/json?token=${process.env.REACT_APP_IPINFO_TOKEN}`);
+      const request = await fetch(
+        `https://ipinfo.io/json?token=${process.env.REACT_APP_IPINFO_TOKEN}`
+      );
       const jsonResponse = await request.json();
 
       if (jsonResponse.country === "PH") {
@@ -261,10 +263,15 @@ function VaRegister({ btnClass, btnTitle }) {
             setDivStatus(true);
             setMessagePass("Email already exist! Please use another email.");
           } else {
+            Axios.post(`${process.env.REACT_APP_BASE_URL}/manatalresume`, {
+              resume: res.data.user.pdfFile,
+              manatalid: res.data.manatal.data.id,
+            });
             // socket.emit("new_user", {
             //   message: `${fname} is joining using ${email}.`,
             // });
             // setIsSubmitLoading(true);
+            // toggleClose();
           }
         });
       }
