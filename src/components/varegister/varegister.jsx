@@ -264,7 +264,7 @@ function VaRegister({ btnClass, btnTitle }) {
             setMessagePass("Email already exist! Please use another email.");
           } else {
             Axios.post(`${process.env.REACT_APP_BASE_URL}/manatalresume`, {
-              resume: res.data.user.pdfFile,
+              user: res.data.user,
               manatalid: res.data.manatal.data.id,
             });
             // socket.emit("new_user", {
