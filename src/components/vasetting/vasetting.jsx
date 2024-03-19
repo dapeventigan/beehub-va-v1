@@ -9,13 +9,15 @@ import { socket } from "../../App";
 
 import "./vasetting.css";
 
-const VaSetting = ({ data }) => {
+const VaSetting = ({ data, manatal }) => {
   //Popup Modal
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => toggleClose();
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const [manatalData, setManatalData] = useState(manatal ? manatal : []);
 
   const toggleClose = () => {
     setOpen(false);
@@ -31,7 +33,9 @@ const VaSetting = ({ data }) => {
   const [userTitle, setUserTitle] = useState(
     data.userTitle ? data.userTitle : ""
   );
-  const [mobileNumber, setMobileNumber] = useState(data.mobileNumber);
+  const [mobileNumber, setMobileNumber] = useState(
+    manatalData.phone_number ? manatalData.phone_number : ""
+  );
   const [educationOption, setEducationOption] = useState(
     data.education ? data.education : ""
   );
@@ -104,11 +108,15 @@ const VaSetting = ({ data }) => {
         formData.append("igLink", igLink);
 
         setIsLoading(true);
-        Axios.put(`${process.env.REACT_APP_BASE_URL}/accountSettings`, formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
+        Axios.put(
+          `${process.env.REACT_APP_BASE_URL}/accountSettings`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        )
           .then((response) => {
             setIsLoading(false);
             socket.emit("refresh-all", userID);
@@ -152,14 +160,17 @@ const VaSetting = ({ data }) => {
                 formData.append("fbLink", fbLink);
                 formData.append("linkedinLink", linkedinLink);
                 formData.append("igLink", igLink);
-        
 
                 setIsLoading(true);
-                Axios.put(`${process.env.REACT_APP_BASE_URL}/accountSettings`, formData, {
-                  headers: {
-                    "Content-Type": "multipart/form-data",
-                  },
-                })
+                Axios.put(
+                  `${process.env.REACT_APP_BASE_URL}/accountSettings`,
+                  formData,
+                  {
+                    headers: {
+                      "Content-Type": "multipart/form-data",
+                    },
+                  }
+                )
                   .then((response) => {
                     setIsLoading(false);
                     socket.emit("refresh-all", userID);
@@ -523,7 +534,15 @@ const VaSetting = ({ data }) => {
                         </div>
                       </div>
 
-                      <p style={{textAlign:"center", color:"red", fontWeight: "bold"}}>{errorMessage}</p>
+                      <p
+                        style={{
+                          textAlign: "center",
+                          color: "red",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        {errorMessage}
+                      </p>
                     </div>
                   </>
                 )}

@@ -24,9 +24,19 @@ import "./applyhome.css";
 const ApplyHome = () => {
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState([]);
+  const [manatalDetails, setManatalDetails] = useState([]);
+
+  const [mainData, setMainData] = useState([]);
+  const [manatalData, setManatalData] = useState([]);
+
+
+
   const [viewOnly, setViewOnly] = useState(true);
   const [skill, setSkill] = useState([]);
-  const [mainData, setMainData] = useState([]);
+
+
+  const [joinedDate, setJoinedDate] = useState();
+  const convertedDate = new Date(joinedDate).toString().substring(3, 15);
   const [isLoggedIn, setisLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -109,24 +119,30 @@ const ApplyHome = () => {
       if (res.data === "Link Broken") {
         navigate("/");
       } else if (res.data !== "Profile doesn't exist") {
+        const { user, candidates } = res.data;
         setViewOnly(true);
-        setUserDetails(res.data);
-        if (!res.data.skills) {
+        setUserDetails(user);
+        setManatalDetails(candidates);
+        setJoinedDate(candidates.created_at);
+        if (!user.skills) {
           setSkill([]);
         } else {
-          setSkill(res.data.skills.split(","));
+          setSkill(user.skills.split(","));
         }
 
         await Axios.get(
           `${process.env.REACT_APP_BASE_URL}/applyuserdashboard`
         ).then((res) => {
-          if (res.data !== "User not found" && res.data._id === param.id) {
-            setMainData(res.data);
+          const { user, candidates } = res.data;
+          if (res.data !== "User not found" && user._id === param.id) {
+            setMainData(user);
+            setManatalData(candidates);
             setViewOnly(false);
             setIsLoading(false);
           } else if (res.data !== "User not found") {
             setisLoggedIn(true);
-            setMainData(res.data);
+            setMainData(user);
+            setManatalData(candidates);
             setIsLoading(false);
           } else {
             setisLoggedIn(false);
@@ -386,7 +402,7 @@ const ApplyHome = () => {
       ) : viewOnly && !isLoggedIn ? (
         <OfflineNavbar />
       ) : (
-        <UserNavbar userData={mainData} />
+        <UserNavbar userData={mainData} manatalData={manatalData}/>
       )}
 
       <div className="userprofile__container">
@@ -406,7 +422,7 @@ const ApplyHome = () => {
 
         <div className="profile__container">
           <div className="userprofile__banner" />
-          {userDetails && (
+          {userDetails && manatalDetails && (
             <div className="profiledesc__container">
               <div className="profiletop__container">
                 <div className="profileheader__row">
@@ -418,11 +434,11 @@ const ApplyHome = () => {
                           viewOnly ? "offline__avatar" : "avatar-label"
                         }
                       >
-                        {!userDetails.profilePicture ? (
+                        {!manatalDetails.picture ? (
                           <>
                             <Avatar
                               size="200"
-                              name={`${userDetails.fname} ${userDetails.lname}`}
+                              name={`${manatalDetails.full_name}`}
                               round={true}
                               color="#e5ac3f"
                             />
@@ -431,7 +447,7 @@ const ApplyHome = () => {
                           <>
                             <Avatar
                               size="200"
-                              src={`${process.env.REACT_APP_BASE_URL}/profilepicture/${userDetails.profilePicture}`}
+                              src={`${manatalDetails.picture}`}
                               round={true}
                             />
                           </>
@@ -454,8 +470,8 @@ const ApplyHome = () => {
                       </label>
                     </div>
                     <div className="profiletitle__container profilename-desktop">
-                      <h2>{`${userDetails.fname} ${userDetails.lname}`}</h2>
-                      <p>{userDetails.userTitle || "None"}</p>
+                      <h2>{`${manatalDetails.full_name}`}</h2>
+                      <p>{manatalDetails.current_position || "None"}</p>
                       <p>
                         {!userDetails.verifiedForJob
                           ? "Not Verified"
@@ -469,8 +485,8 @@ const ApplyHome = () => {
 
                   <div className="profiletitle__container-mobile">
                     <div className="profiletitle__container profilename-mobile">
-                      <h2>{`${userDetails.fname} ${userDetails.lname}`}</h2>
-                      <p>{userDetails.userTitle || "None"}</p>
+                      <h2>{`${manatalDetails.full_name}`}</h2>
+                      <p>{manatalDetails.current_position || "None"}</p>
                       <p>
                         {!userDetails.verifiedForJob
                           ? "Not Verified"
@@ -481,9 +497,7 @@ const ApplyHome = () => {
                       </p>
                     </div>
 
-                    <p>{`Current Employment: ${
-                      userDetails.employment || "None"
-                    }`}</p>
+                    <p>{`Joined date: ${convertedDate}`}</p>
                   </div>
                 </div>
                 <div className="profile-horizontal-line"></div>
@@ -494,7 +508,7 @@ const ApplyHome = () => {
                   <div className="profile__firstrow">
                     <div className="aboutme__profile">
                       <h4>Bio</h4>
-                      <p>{`${userDetails.bio || "None"}`}</p>
+                      <p>{`${userDetails.description || "None"}`}</p>
                     </div>
                   </div>
                   <div className="profile__secondrow">
@@ -532,10 +546,10 @@ const ApplyHome = () => {
                 <div className="contact__profile">
                   <h4>Contact</h4>
                   <p>
-                    <IoMdMail /> {userDetails.email}
+                    <IoMdMail /> {manatalDetails.email}
                   </p>
                   <p>
-                    <FaPhone /> +{userDetails.mobileNumber}
+                    <FaPhone /> +{manatalDetails.phone_number}
                   </p>
 
                   <div className="profile__social">
@@ -576,7 +590,7 @@ const ApplyHome = () => {
                     )}
                   </div>
 
-                  <ViewPdf filename={userDetails.pdfFile} />
+                  <ViewPdf filename={manatalDetails.resume} />
                 </div>
               </div>
               <div className="profile__sixthrow">

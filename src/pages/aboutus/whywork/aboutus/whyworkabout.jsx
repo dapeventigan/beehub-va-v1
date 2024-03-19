@@ -114,9 +114,7 @@ const WhyWorkAbout = () => {
   return (
     <section id="whyabout">
       <div className="whyworkabout__container">
-        <div
-          className="whyworkabout__title"
-        >
+        <div className="whyworkabout__title">
           <div className="top-horizontal-line"></div>
           <h1 className="howit__title">About Us</h1>
           <p>
@@ -134,11 +132,7 @@ const WhyWorkAbout = () => {
 
         <div className="whyworkabout__profile">
           <div className="howit__contents">
-            <div
-              className="howit__desc"
-              data-aos="fade"
-              data-aos-once="true"
-            >
+            <div className="howit__desc" data-aos="fade" data-aos-once="true">
               <h1 className="howit__title">Our Mission</h1>
               <p className="howit__text">
                 Our mission is simple but powerful: to bridge the
@@ -156,11 +150,7 @@ const WhyWorkAbout = () => {
                 defines work.
               </p>
             </div>
-            <div
-              className="howit__img"
-              data-aos="fade"
-              data-aos-once="true"
-            >
+            <div className="howit__img" data-aos="fade" data-aos-once="true">
               <img
                 className="how__img"
                 src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -169,22 +159,14 @@ const WhyWorkAbout = () => {
             </div>
           </div>
           <div className="howit__contents-reverse">
-            <div
-              className="howit__img"
-              data-aos="fade"
-              data-aos-once="true"
-            >
+            <div className="howit__img" data-aos="fade" data-aos-once="true">
               <img
                 className="how__img"
                 src="https://images.pexels.com/photos/3767172/pexels-photo-3767172.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt=""
               ></img>
             </div>
-            <div
-              className="howit__desc"
-              data-aos="fade"
-              data-aos-once="true"
-            >
+            <div className="howit__desc" data-aos="fade" data-aos-once="true">
               <h1 className="howit__title">Our Philosophy</h1>
               <p className="howit__text">
                 Our concept at BeeHub Virtual Assistant Co. is based on the
@@ -222,17 +204,19 @@ const WhyWorkAbout = () => {
             </div>
           </div>
           <div className="howit__contents">
-            <div
-              className="howit__desc"
-              data-aos="fade"
-              data-aos-once="true"
-            >
+            <div className="howit__desc" data-aos="fade" data-aos-once="true">
               <h1 className="howit__title">Our Core Values</h1>
               <p className="howit__text">
-                These basic principles define our company's culture, driving our
-                decisions, activities, and relationships. They symbolize not
-                just what we do, but also who we are as a corporation dedicated
-                to quality, ethics, and a future where work has no limits.
+                Excellence, transparency, and integrity are the three guiding
+                principles of BeeHub Virtual Assistants Co. Integrity ensures
+                honesty and ethical conduct in all interactions with partners,
+                clients, and colleagues. Transparency fosters trust and open
+                communication, fostering a collaborative environment. The
+                company's dedication to excellence drives it to provide superior
+                virtual staffing solutions, surpassing client expectations.
+                Emphasis on employee well-being, professional growth, and
+                diversity fosters a positive work culture, demonstrating a
+                holistic approach to success.
               </p>
               {/* <Button sx={buttonStyle} onClick={handleOpenCor}>
                 View Company's Core Values
@@ -260,11 +244,7 @@ const WhyWorkAbout = () => {
                 </Grid>
               </Modal>
             </div>
-            <div
-              className="howit__img"
-              data-aos="fade"
-              data-aos-once="true"
-            >
+            <div className="howit__img" data-aos="fade" data-aos-once="true">
               <img
                 className="how__img"
                 src="https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"

@@ -151,7 +151,7 @@ const NavbarHome = () => {
             </a>
           </div>
           <div className="sidebar__button">
-            <MainSideBar phData={fromPH}/>
+            <MainSideBar phData={fromPH} />
           </div>
         </div>
 
@@ -175,10 +175,11 @@ const NavbarHome = () => {
               </li>
               <li>
                 <div className="dropdown">
-                  <a href="/aboutus" className="dropbtn">
+                  <div className="dropbtn">
                     ABOUT US <FaAngleDown />
-                  </a>
+                  </div>
                   <div className="dropdown-content-small">
+                    <a href="/aboutus">About Us</a>
                     <a href="/aboutus/#why-work-beehub">Why work with BeeHub</a>
                     <a href="/aboutus/our-team">Our Team</a>
                   </div>

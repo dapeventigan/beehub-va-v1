@@ -14,7 +14,7 @@ import UserSideBar from "../sidebar/usersidebar/usersidebar";
 
 import "./usernavbar.css";
 
-const UserNavbar = ({ userData }) => {
+const UserNavbar = ({ userData, manatalData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [loginLocation, setLoginLocation] = useState("");
   const [inputValue, setInputValue] = useState("");
@@ -45,7 +45,8 @@ const UserNavbar = ({ userData }) => {
     } else {
       setLoginLocation(`/profile-beehub`);
     }
-  }, []);
+
+  }, [manatalData]);
 
   useEffect(() => {
     AOS.init({ duration: 500 });
@@ -142,9 +143,9 @@ const UserNavbar = ({ userData }) => {
               </a>
               <a style={{ cursor: "pointer" }}>
                 {userData.role === "virtualassistant" ? (
-                  <VaSetting data={userData} />
+                  <VaSetting data={userData} manatal={manatalData}/>
                 ) : (
-                  <ClientSetting data={userData} />
+                  <ClientSetting data={userData} manatal={manatalData}/>
                 )}
               </a>
               <a style={{ cursor: "pointer" }} onClick={handleLogout}>
