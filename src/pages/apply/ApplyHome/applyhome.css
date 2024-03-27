@@ -132,12 +132,13 @@
 .profile__row {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
   padding: 1rem 3rem;
 }
 
 .profile__firstrow {
   display: flex;
-  justify-content: space-between;
+
 }
 
 .aboutme__profile {

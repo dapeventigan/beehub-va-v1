@@ -50,6 +50,7 @@ const JobBoardNavbar = () => {
             setLoginLocation(`/profile-beehub`);
           }
         } else {
+          setIsLoading(false);
           setIsUserLoggedIn(false);
         }
       } catch (error) {

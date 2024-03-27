@@ -1,42 +1,72 @@
-.textarea__form{
-    min-height: 8rem;
-    width: 100%;
-    padding: 15px;
-    border-radius: 7px;
-    border: 1.5px solid var(--color-font-darkgrey);
-    background-color: var(--color-white);
-    display: flex;
-    align-items: center;
+.textarea__form {
+  min-height: 8rem;
+  width: 100%;
+  padding: 15px;
+  border-radius: 7px;
+  border: 1.5px solid var(--color-font-darkgrey);
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
 }
 
 .jobtextarea__input {
-    min-height: 100%;
-    width: 100%;
-    background-color: var(--color-white);
-  }
+  min-height: 100%;
+  width: 100%;
+  background-color: var(--color-white);
+}
 
-  .rti--container {
-    width: 100%;
-    --rti-main: none;
-    --rti-border: var(--color-font-darkgrey);
-  }
+.rti--container {
+  width: 100%;
+  --rti-main: none;
+  --rti-border: var(--color-font-darkgrey);
+}
 
-  .tags__form{
-    position: relative;
-  }
+.tags__form {
+  position: relative;
+}
 
-  .remove__tags{
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    cursor: pointer;
-  }
+.remove__tags {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
 
-  .datepicker__container{
-    padding: 15px;
-    border-radius: 7px;
-    border: 1.5px solid var(--color-font-darkgrey);
-    background-color: var(--color-white);
+.datepicker__container {
+  padding: 15px;
+  border-radius: 7px;
+  border: 1.5px solid var(--color-font-darkgrey);
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+}
+
+.salary__row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.vaform__row-addjob{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.postjob__drop{
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 560px) {
+  .salary__row {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
   }
+
+  .vasettingform__container-currency{
+    width: 30%;
+  }
+}
+
+

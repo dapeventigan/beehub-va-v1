@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Axios from "axios";
+import getSymbolFromCurrency from "currency-symbol-map";
 
 import CircularProgress from "@mui/material/CircularProgress";
 import GridLoader from "react-spinners/GridLoader";
@@ -19,6 +20,7 @@ import "./chosenjob.css";
 const ChosenJob = () => {
   const navigate = useNavigate();
   const [jobData, setJobData] = useState([]);
+  const [manatalData, setManatalData] = useState([]);
   const [userDetails, setUserDetails] = useState([]);
   const [userApplied, setUserApplied] = useState(false);
   const [isUserVA, setIsUserVA] = useState(false);
@@ -49,7 +51,9 @@ const ChosenJob = () => {
     setIsLoading(true);
     await Axios.put(`${process.env.REACT_APP_BASE_URL}/applyJob`, {
       jobID: jobData._id,
+      manatalID: manatalData.id,
       userID: userDetails._id,
+      candidateID: userDetails.manatalID,
       userName:
         userDetails.fname.toLowerCase() + "-" + userDetails.lname.toLowerCase(),
     });
@@ -94,11 +98,15 @@ const ChosenJob = () => {
 
   useEffect(() => {
     setIsDataLoading(true);
-    Axios.get(`${process.env.REACT_APP_BASE_URL}/job-boards/bh/${param.id}`).then((res) => {
+    Axios.get(
+      `${process.env.REACT_APP_BASE_URL}/job-boards/bh/${param.id}`
+    ).then((res) => {
       if (res.data === "Job doesn't exist") {
         navigate("/job-boards");
       } else {
-        setJobData(res.data);
+        const { beehubjob, manataljob } = res.data;
+        setJobData(beehubjob);
+        setManatalData(manataljob);
         setIsDataLoading(false);
       }
     });
@@ -115,12 +123,34 @@ const ChosenJob = () => {
           <GridLoader className="grid-loader" color="#ffd325" />
         ) : (
           <>
-            <h1>{jobData.jobTitle}</h1>
+            <h1>{manatalData.position_name}</h1>
 
             <div className="chosenjob__header">
-              <p>{jobData.jobSalary} | </p>{" "}
-              <p>{jobData.jobEmploymentType} | </p>
-              <p>{jobData.jobLevelExperience} | </p> <p>{finalDate} </p>
+              <p>
+                {getSymbolFromCurrency(manatalData.currency)}
+                {parseFloat(manatalData.salary_min).toFixed(0)} -{" "}
+                {parseFloat(manatalData.salary_max).toFixed(0)} |{" "}
+              </p>
+              <p>
+                {manatalData.contract_details === "part_time"
+                  ? "Part time"
+                  : manatalData.contract_details === "full_time"
+                  ? "Full time"
+                  : manatalData.contract_details === "temporary"
+                  ? "Temporary"
+                  : manatalData.contract_details === "freelance"
+                  ? "Freelance"
+                  : manatalData.contract_details === "internship"
+                  ? "Internship"
+                  : manatalData.contract_details === "apprenticeship"
+                  ? "Apprenticeship"
+                  : manatalData.contract_details === "contractor"
+                  ? "Contractor"
+                  : manatalData.contract_details === "consultancy"
+                  ? "Consultancy"
+                  : ""}
+              </p>{" "}
+              |<p>{jobData.jobLevelExperience} | </p> <p>{finalDate} </p>
             </div>
 
             <div className="chosenjob__content">
@@ -197,11 +227,10 @@ const ChosenJob = () => {
             </div>
 
             {jobData.jobVerified === "Expired" ||
-            jobData.jobVerified === "Closed" ? (
-              <button
-                className="btn-jobs"
-                disabled={true}
-              >
+            jobData.jobVerified === "Closed" ||
+            manatalData.status === "lost" ||
+            manatalData.status === "won" ? (
+              <button className="btn-jobs" disabled={true}>
                 Job Expired
               </button>
             ) : isUserVA ? (

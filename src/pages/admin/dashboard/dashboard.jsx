@@ -11,6 +11,7 @@ import AdminViewJob from "./viewjobpost/adminviewjob";
 import AdminNavbar from "../../../components/navbar/adminnavbar/adminnavbar";
 import AdminCloseJob from "./closejobpost/adminclosejobpost";
 import AdminFinishJob from "./finishjobpost/adminfinishjob";
+import UnhireVA from "./unhireva/unhireva";
 
 import "./dashboard.css";
 
@@ -67,32 +68,6 @@ const Dashboard = () => {
         window.location.reload();
       } else {
         alert("Error verifying user");
-      }
-    });
-  };
-
-  const handleCancelUnhire = async (id) => {
-    await Axios.put(`${process.env.REACT_APP_BASE_URL}/adminUnhire`, {
-      id: id,
-      action: "Active",
-    }).then((res) => {
-      if (res.data.valid === true) {
-        window.location.reload();
-      } else {
-        window.location.reload();
-      }
-    });
-  };
-
-  const handleAcceptUnhire = async (id) => {
-    await Axios.put(`${process.env.REACT_APP_BASE_URL}/adminUnhire`, {
-      id: id,
-      action: "Unhired",
-    }).then((res) => {
-      if (res.data.valid === true) {
-        window.location.reload();
-      } else {
-        window.location.reload();
       }
     });
   };
@@ -339,194 +314,6 @@ const Dashboard = () => {
     },
   ];
 
-  const activeworkerscolumns = [
-    {
-      name: "Date Hired",
-      selector: (row) => {
-        const date =
-          row.dateHired instanceof Date
-            ? row.dateHired
-            : new Date(row.dateHired);
-        return date
-          .toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })
-          .replace(",", "");
-      },
-      sortable: true,
-    },
-    {
-      name: "Hired to",
-      selector: (row) => row.clientName,
-      sortable: true,
-    },
-    {
-      name: "Company name",
-      selector: (row) => row.clientCompany,
-      sortable: true,
-    },
-    {
-      name: "VA Hired",
-      selector: (row) => row.vaName,
-      sortable: true,
-    },
-    {
-      name: "Status",
-      selector: (row) => row.employmentStatus,
-      sortable: true,
-    },
-    {
-      name: "Action",
-      selector: (row) => (
-        <Button sx={buttonStyleRed} onClick={() => handleAcceptUnhire(row._id)}>
-          Unhire
-        </Button>
-      ),
-    },
-  ];
-
-  const activejobscolumns = [
-    {
-      name: "Job Posted",
-      selector: (row) => {
-        const date =
-          row.jobPosted instanceof Date
-            ? row.jobPosted
-            : new Date(row.jobPosted);
-        return date
-          .toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })
-          .replace(",", "");
-      },
-      sortable: true,
-    },
-    {
-      name: "Job Posted by",
-      selector: (row) => row.jobPostedBy,
-      sortable: true,
-    },
-    {
-      name: "Job Title",
-      selector: (row) => row.jobTitle,
-      sortable: true,
-    },
-    {
-      name: "Users Applied",
-      selector: (row) => row.usersApplied.length,
-      sortable: true,
-    },
-    {
-      name: "Application Deadline",
-      selector: (row) => {
-        const date =
-          row.jobPosted instanceof Date
-            ? row.jobPosted
-            : new Date(row.jobDeadline);
-        return date
-          .toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })
-          .replace(",", "");
-      },
-      sortable: true,
-    },
-    {
-      name: "Job Status",
-      selector: (row) => row.jobVerified,
-      sortable: true,
-    },
-    {
-      name: "Applied Users",
-      selector: (row) => (
-        <div className="admineditjobbtn__container">
-          <AdminViewJob jobData={row} />
-        </div>
-      ),
-    },
-    {
-      name: "Close Job",
-      selector: (row) => (
-        <div className="admineditjobbtn__container">
-          <AdminCloseJob jobData={row} />
-        </div>
-      ),
-    },
-  ];
-
-  const pendingjobscolumns = [
-    {
-      name: "Job Posted",
-      selector: (row) => {
-        const date =
-          row.jobPosted instanceof Date
-            ? row.jobPosted
-            : new Date(row.jobPosted);
-        return date
-          .toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })
-          .replace(",", "");
-      },
-      sortable: true,
-    },
-    {
-      name: "Job Title",
-      selector: (row) => row.jobTitle,
-      sortable: true,
-    },
-    {
-      name: "Job Posted by",
-      selector: (row) => row.jobPostedBy,
-      sortable: true,
-    },
-    {
-      name: "Salary",
-      selector: (row) => row.jobSalary,
-      sortable: true,
-    },
-    {
-      name: "Job Deadline",
-      selector: (row) => {
-        const date =
-          row.jobPosted instanceof Date
-            ? row.jobPosted
-            : new Date(row.jobDeadline);
-        return date
-          .toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })
-          .replace(",", "");
-      },
-      sortable: true,
-    },
-    {
-      name: "View, Edit, and Approve Job",
-      selector: (row) => <AdminEditJob jobData={row} />,
-      sortable: true,
-    },
-    {
-      name: "Decline Job",
-      selector: (row) => <AdminDeleteJob jobData={row} />,
-      sortable: true,
-    },
-    {
-      name: "Finish Job",
-      selector: (row) => <AdminFinishJob jobData={row} />,
-      sortable: true,
-    },
-  ];
-
   const unhirecolumns = [
     {
       name: "Requested By",
@@ -540,23 +327,13 @@ const Dashboard = () => {
     },
     {
       name: "Job",
-      selector: (row) => row.jobTitle,
+      selector: (row) => row.jobName,
       sortable: true,
     },
     {
-      name: "Actions for pending jobs",
+      name: "View Reason",
       selector: (row) => (
-        <div className="admineditjobbtn__container">
-          <Button sx={buttonStyle} onClick={() => handleCancelUnhire(row._id)}>
-            Cancel
-          </Button>
-          <Button
-            sx={buttonStyleRed}
-            onClick={() => handleAcceptUnhire(row._id)}
-          >
-            Unhire
-          </Button>
-        </div>
+        <UnhireVA data={row}/>
       ),
     },
   ];
@@ -586,39 +363,6 @@ const Dashboard = () => {
           </div>
 
           <div className="horizontal-line"></div>
-
-          <div className="datatable__container">
-            <h1>Active Workers</h1>
-            <div className="table__container">
-              <DataTable
-                columns={activeworkerscolumns}
-                data={activeWorkers}
-                pagination
-              />
-            </div>
-          </div>
-
-          <div className="datatable__container">
-            <h1>Active Jobs</h1>
-            <div className="table__container">
-              <DataTable
-                columns={activejobscolumns}
-                data={activeJobs}
-                pagination
-              />
-            </div>
-          </div>
-
-          <div className="datatable__container">
-            <h1>Pending Jobs</h1>
-            <div className="table__container">
-              <DataTable
-                columns={pendingjobscolumns}
-                data={pendingJobs}
-                pagination
-              />
-            </div>
-          </div>
 
           <div className="datatable__container">
             <h1>Unhire Request</h1>

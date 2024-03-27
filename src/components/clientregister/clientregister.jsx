@@ -31,6 +31,7 @@ function ClientRegister({ btnClass, btnTitle }) {
     setSelectedOption("");
     setFname("");
     setLname("");
+    setCompanyName("");
     setMobileNumber("");
     setIndustry("");
     setEmail("");
@@ -48,6 +49,7 @@ function ClientRegister({ btnClass, btnTitle }) {
   const [selectedOption, setSelectedOption] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
+  const [companyName, setCompanyName] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [industry, setIndustry] = useState("");
   const [email, setEmail] = useState("");
@@ -108,7 +110,7 @@ function ClientRegister({ btnClass, btnTitle }) {
   const handleTermsCheckboxChange = () => {
     setIsTermsChecked(!isTermsChecked);
   };
-
+  
   //Loading spinner
   const [isLoading, setIsLoading] = useState(false);
   const [divStatus, setDivStatus] = useState(true);
@@ -123,6 +125,7 @@ function ClientRegister({ btnClass, btnTitle }) {
       formData.append("selectedOption", selectedOption);
       formData.append("fname", fname);
       formData.append("lname", lname);
+      formData.append("company", companyName);
       formData.append("mobileNumber", mobileNumber);
       formData.append("industry", industry);
       formData.append("email", email);
@@ -139,8 +142,6 @@ function ClientRegister({ btnClass, btnTitle }) {
         setIsLoading(false);
 
         if (res.data.message === "Email Already Exist!") {
-          setFname("");
-          setLname("");
           setEmail("");
           setPassword("");
           setConfirmPassword("");
@@ -179,6 +180,7 @@ function ClientRegister({ btnClass, btnTitle }) {
         formData.append("selectedOption", selectedOption);
         formData.append("fname", fname);
         formData.append("lname", lname);
+        formData.append("company", companyName);
         formData.append("mobileNumber", mobileNumber);
         formData.append("industry", industry);
         formData.append("email", email);
@@ -189,11 +191,18 @@ function ClientRegister({ btnClass, btnTitle }) {
         formData.append("roleStatus", roleStatus);
         setDivStatus(false);
         setIsLoading(true);
-        await Axios.post(`${process.env.REACT_APP_BASE_URL}/register`, formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        }).then((res) => {
+        await Axios.post(
+          `${process.env.REACT_APP_BASE_URL}/register`,
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+          }
+        ).then((res) => {
           setIsLoading(false);
           if (res.data.message === "Email Already Exist!") {
+            setEmail("");
+            setPassword("");
+            setConfirmPassword("");
             setDivStatus(true);
             setMessagePass("Email already exist! Please use another email.");
           } else {
@@ -234,7 +243,7 @@ function ClientRegister({ btnClass, btnTitle }) {
           data-aos="fade"
           data-aos-once="true"
         >
-          <Box className="modal__clientregister">
+          <Box className={!divStatus && !isLoading ? "modal__clientregister_submit-status" : "modal__clientregister"}>
             {isLoading ? (
               <Backdrop
                 sx={{
@@ -365,6 +374,17 @@ function ClientRegister({ btnClass, btnTitle }) {
                               disabled={!selectedOption}
                             />
                           </div>
+                        </div>
+
+                        <div className="clientregisterinput__container">
+                          <input
+                            className="clientregisterinput__form"
+                            type="text"
+                            onChange={(e) => setCompanyName(e.target.value)}
+                            placeholder="What is the name of your Company?"
+                            required
+                            disabled={!selectedOption}
+                          />
                         </div>
 
                         <div className="clientregisterinput__con">
@@ -631,10 +651,14 @@ function ClientRegister({ btnClass, btnTitle }) {
                   : "hide__registerdiv"
               }
             >
-              <h1>
-                We've sent a verification link to you email. Kindly check and
-                verify your email.
-              </h1>
+              <div className="submitstatus__content">
+                <h1>Your registration is almost complete!</h1>
+                <p>
+                  We've sent a verification link to you email. Kindly check and
+                  verify your email.
+                </p>
+              </div>
+
               <button className="btn btn-primary" onClick={toggleClose}>
                 Continue
               </button>

@@ -71,6 +71,22 @@
   align-items: center;
 }
 
+.currency-input__container{
+  display: block;
+  position: relative;
+  height: 3rem;
+  padding: 15px;
+  border-radius: 7px;
+  border: 1.5px solid var(--color-font-darkgrey);
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+}
+
+.vasettingform__container-currency{
+  width: 20%;
+}
+
 .clientregisterdropdown__con {
   position: relative;
   height: 3rem;
@@ -87,6 +103,12 @@
   width: 100%;
   background-color: var(--color-white);
 }
+
+.clientregisterinput__form {
+  width: 100%;
+  background-color: var(--color-white);
+}
+
 
 .clientregistercheckbox__form {
   margin-right: 0.5rem;
@@ -125,6 +147,18 @@
   justify-content: center;
   text-align: center;
   gap: 2rem;
-  padding: 4rem;
+  padding: 2rem;
   margin-top: 5rem;
+}
+
+@media screen and (max-width: 385px) {
+  .submit__status {
+    padding: 1.5rem 0;
+    margin-top: 5rem;
+  }
+
+  .submitstatus__content > h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
 }

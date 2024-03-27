@@ -8,37 +8,39 @@ import { MdOutlineAccessTimeFilled } from "react-icons/md";
 import Axios from "axios";
 import GridLoader from "react-spinners/GridLoader";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
+import { GrMoney } from "react-icons/gr";
 import { IoChevronBack } from "react-icons/io5";
 import { IoChevronForward } from "react-icons/io5";
+import getSymbolFromCurrency from 'currency-symbol-map'
 import Footer from "../../components/footer/footer";
 
 import "./jobboards.css";
 
 const JobBoards = () => {
-  // const [jobData, setJobData] = useState([]);
+  const [jobData, setJobData] = useState([]);
 
-  // // State for pagination and search
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [inputValue, setInputValue] = useState("");
-  // const [searchTerm, setSearchTerm] = useState("");
-  // const [selectedType, setSelectedType] = useState("");
-  // const [experienceType, setExperienceType] = useState("");
-  // const [dateFilter, setDateFilter] = useState("");
-  // const [isDataLoading, setIsDataLoading] = useState(false);
+  // State for pagination and search
+  const [currentPage, setCurrentPage] = useState(1);
+  const [inputValue, setInputValue] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedType, setSelectedType] = useState("");
+  const [experienceType, setExperienceType] = useState("");
+  const [dateFilter, setDateFilter] = useState("");
+  const [isDataLoading, setIsDataLoading] = useState(false);
 
-  // //params
-  // const location = useLocation();
-  // const params = new URLSearchParams(location.search);
-  // const searchTermFromParams = params.get("search");
+  //params
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const searchTermFromParams = params.get("search");
 
-  // useEffect(() => {
-  //   if (searchTermFromParams) {
-  //     setInputValue(searchTermFromParams);
-  //     setSearchTerm(searchTermFromParams);
-  //   }
-  // }, [searchTermFromParams]);
+  useEffect(() => {
+    if (searchTermFromParams) {
+      setInputValue(searchTermFromParams);
+      setSearchTerm(searchTermFromParams);
+    }
+  }, [searchTermFromParams]);
 
-  // //GOD FILTER
+  //GOD FILTER
   // const filteredJobs = jobData.filter((job) => {
   //   const jobDate = new Date(job.jobPosted);
   //   const filterDate = getDateFromChoice(dateFilter);
@@ -50,7 +52,7 @@ const JobBoards = () => {
   //     (!filterDate || jobDate >= filterDate)
   //   );
   // });
-  // //DATE FILTER
+  //DATE FILTER
   // function getDateFromChoice(choice) {
   //   const now = new Date();
   //   switch (choice) {
@@ -69,26 +71,26 @@ const JobBoards = () => {
   //   return now;
   // }
 
-  // //SEE MORE
-  // function truncate(str, num, id) {
-  //   if (str.length <= num) {
-  //     return str;
-  //   }
-  //   return (
-  //     <span>
-  //       {str.slice(0, num)}
-  //       <a
-  //         href={`https://beehubvas.com/job-boards/bh/${id}`}
-  //         target="_blank"
-  //         rel="noreferrer"
-  //       >
-  //         ...see more
-  //       </a>
-  //     </span>
-  //   );
-  // }
+  //SEE MORE
+  function truncate(str, num, id) {
+    if (str.length <= num) {
+      return str;
+    }
+    return (
+      <span>
+        {str.slice(0, num)}
+        <a
+          href={`https://beehubvas.com/job-boards/bh/${id}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          ...see more
+        </a>
+      </span>
+    );
+  }
 
-  // // Pagination logic
+  // Pagination logic
   // const jobsPerPage = 6;
   // const indexOfLastJob = currentPage * jobsPerPage;
   // const indexOfFirstJob = indexOfLastJob - jobsPerPage;
@@ -108,25 +110,19 @@ const JobBoards = () => {
   //   start = Math.min(start, totalPages - maxPageNumbersToShow + 1);
   // }
 
-  // useEffect(() => {
-  //   setIsDataLoading(true);
-  //   Axios.get(`${process.env.REACT_APP_BASE_URL}/getJobData`).then((res) => {
-  //     setJobData(res.data);
-  //     setIsDataLoading(false);
-  //   });
-  // }, []);
+  useEffect(() => {
+    setIsDataLoading(true);
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getJobData`).then((res) => {
+      setJobData(res.data);
+      setIsDataLoading(false);
+    });
+  }, []);
 
   return (
     <div>
       <JobBoardNavbar />
-      <div className="manatal__container">
-        <iframe
-          className="manatal__iframe"
-          src="https://www.careers-page.com/beehub-virtual-assistants-co"
-        ></iframe>
-      </div>
 
-      {/* <div className="jobboard__header">
+      <div className="jobboard__header">
         <h1>
           Find your <span>new Remote Job</span> today!
         </h1>
@@ -205,39 +201,53 @@ const JobBoards = () => {
             <GridLoader className="grid-loader" color="#ffd325" />
           ) : (
             <div className="jobboardcard__container">
-              {currentJobs.length === 0 ? (
+              {jobData[0] === undefined ? (
                 <h1 className="nojobs__container">No Jobs Found</h1>
               ) : (
                 <Row>
-                  {currentJobs.map((job) => (
-                    <Col md={4} key={job._id}>
+                  {jobData.map((job) => (
+                    <Col md={4} key={job.id}>
                       <Card>
                         <Card.Body className="jobboard__card">
                           <div className="jobcard__first">
-                            <div className="jobcard__first-title">
-                              <Card.Title className="jobcard__title">
-                                {job.jobTitle}
-                              </Card.Title>
-                              <Card.Text className="jobtype__container">
-                                {job.jobEmploymentType}
-                              </Card.Text>
-                            </div>
+                            <Card.Title className="jobcard__title">
+                              {job.position_name}
+                            </Card.Title>
+           
+
                             <Card.Text className="jobcard__header">
-                              <MdWork /> {job.jobSalary} •{" "}
-                              {job.jobLevelExperience}
+                              <GrMoney />
+                              <strong>
+                              {getSymbolFromCurrency(job.currency)}{parseFloat(job.salary_min).toFixed(0)}-{parseFloat(job.salary_max).toFixed(0)}
+                              </strong> | <Card.Text className="jobtype__container">
+                              {job.contract_details === "part_time"
+                                ? "Part time"
+                                : job.contract_details === "full_time"
+                                ? "Full time"
+                                : job.contract_details === "temporary"
+                                ? "Temporary"
+                                : job.contract_details === "freelance"
+                                ? "Freelance"
+                                : job.contract_details === "internship"
+                                ? "Internship"
+                                : job.contract_details === "apprenticeship"
+                                ? "Apprenticeship"
+                                : job.contract_details === "contractor"
+                                ? "Contractor"
+                                : job.contract_details === "consultancy"
+                                ? "Consultancy"
+                                : ""}
+                            </Card.Text>
                             </Card.Text>
                             <Card.Text className="jobboards__posted-text">
                               <MdOutlineAccessTimeFilled size={17} /> Posted{" "}
-                              {formatDistanceToNow(job.jobPosted)} ago
-                            </Card.Text>
-                            <Card.Text style={{ marginTop: "1rem" }}>
-                              {truncate(job.jobSummary, 200, job._id)}
+                              {formatDistanceToNow(job.created_at)} ago
                             </Card.Text>
                           </div>
 
                           <div className="jobcard__second">
                             <a
-                              href={`https://beehubvas.com/job-boards/bh/${job._id}`}
+                              href={`https://beehubvas.com/job-boards/bh/${job.external_id}`}
                               target="_blank"
                               rel="noreferrer"
                             >
@@ -251,7 +261,7 @@ const JobBoards = () => {
                 </Row>
               )}
 
-              <Pagination className="jobboard__pagination">
+              {/* <Pagination className="jobboard__pagination">
                 {currentPage > 2 && (
                   <Pagination.Item onClick={() => setCurrentPage(1)}>
                     <IoChevronBack
@@ -289,11 +299,11 @@ const JobBoards = () => {
                     />
                   </Pagination.Item>
                 )}
-              </Pagination>
+              </Pagination> */}
             </div>
           )}
         </div>
-      </div>*/}
+      </div>
       <Footer />
     </div>
   );

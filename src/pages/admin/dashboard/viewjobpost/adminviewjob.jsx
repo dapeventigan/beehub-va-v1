@@ -19,8 +19,6 @@ const AdminViewJob = ({ jobData }) => {
     setOpen(false);
   };
 
-  useEffect(() => {}, []);
-
   const style = {
     position: "relative",
     top: "50%",

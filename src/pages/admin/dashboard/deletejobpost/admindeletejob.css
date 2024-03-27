@@ -12,8 +12,9 @@
 }
 
 .canceljob__buttons{
+    margin-top: 1rem;
     display: flex;
-    gap: 1rem;
-    justify-content: center;
+    gap: 0.5rem;
+    justify-content:flex-end;
     align-items: center;
 }

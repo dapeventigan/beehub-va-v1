@@ -29,11 +29,8 @@ const ApplyHome = () => {
   const [mainData, setMainData] = useState([]);
   const [manatalData, setManatalData] = useState([]);
 
-
-
   const [viewOnly, setViewOnly] = useState(true);
   const [skill, setSkill] = useState([]);
-
 
   const [joinedDate, setJoinedDate] = useState();
   const convertedDate = new Date(joinedDate).toString().substring(3, 15);
@@ -187,62 +184,60 @@ const ApplyHome = () => {
     {
       name: "Date Hired",
       selector: (row) => {
-        const date =
-          row.dateHired instanceof Date
-            ? row.dateHired
-            : new Date(row.dateHired);
-        return date
-          .toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })
-          .replace(",", "");
+        if (!row.hired_at) {
+          return "Not yet hired";
+        }
+        const date = new Date(row.hired_at);
+        const options = { month: "long", day: "numeric", year: "numeric" };
+        return date.toLocaleDateString("en-US", options);
       },
       sortable: true,
     },
     {
       name: "Employment Status",
-      selector: (row) => row.employmentStatus,
-    },
-    {
-      name: "Business/Company Name",
-      selector: (row) => row.clientName,
-      sortable: true,
+      selector: (row) => {
+        return !row.hired_at && row.dropped_at !== null
+          ? "Dropped"
+          : row.job_pipeline_stage.name;
+      },
     },
     {
       name: "Job",
-      selector: (row) => row.jobTitle,
+      selector: (row) => row.jobmanataldata.position_name,
       sortable: true,
     },
     {
       name: "Employment Type",
-      selector: (row) => row.jobEmploymentType,
-      sortable: true,
-    },
-    {
-      name: "# of hours per week",
-      selector: (row) => row.jobWorkHours,
+      selector: (row) =>
+        row.jobmanataldata.contract_details === "part_time"
+          ? "Part time"
+          : row.jobmanataldata.contract_details === "full_time"
+          ? "Full time"
+          : row.jobmanataldata.contract_details === "temporary"
+          ? "Temporary"
+          : row.jobmanataldata.contract_details === "freelance"
+          ? "Freelance"
+          : row.jobmanataldata.contract_details === "internship"
+          ? "Internship"
+          : row.jobmanataldata.contract_details === "apprenticeship"
+          ? "Apprenticeship"
+          : row.jobmanataldata.contract_details === "contractor"
+          ? "Contractor"
+          : row.jobmanataldata.contract_details === "consultancy"
+          ? "Consultancy"
+          : "",
       sortable: true,
     },
     {
       name: "Date Ended",
-      selector: (row) =>
-        row.dateEnded
-          ? (() => {
-              const date =
-                row.dateEnded instanceof Date
-                  ? row.dateEnded
-                  : new Date(row.dateEnded);
-              return date
-                .toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "short",
-                  day: "numeric",
-                })
-                .replace(",", "");
-            })()
-          : "Ongoing",
+      selector: (row) => {
+        if (!row.dropped_at) {
+          return "Ongoing";
+        }
+        const date = new Date(row.dropped_at);
+        const options = { month: "long", day: "numeric", year: "numeric" };
+        return date.toLocaleDateString("en-US", options);
+      },
       sortable: true,
     },
   ];
@@ -402,7 +397,7 @@ const ApplyHome = () => {
       ) : viewOnly && !isLoggedIn ? (
         <OfflineNavbar />
       ) : (
-        <UserNavbar userData={mainData} manatalData={manatalData}/>
+        <UserNavbar userData={mainData} manatalData={manatalData} />
       )}
 
       <div className="userprofile__container">
@@ -514,7 +509,7 @@ const ApplyHome = () => {
                   <div className="profile__secondrow">
                     <h4>Education</h4>
 
-                    <p>{userDetails.education || "None"}</p>
+                    <p>{manatalData.latest_university || "None"}</p>
                   </div>
                   <div className="profile__thirdrow">
                     <h4>Field/Industry</h4>

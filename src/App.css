@@ -28,7 +28,7 @@
   /* --color-bg-variant: #eec33d; */
   --color-bg-variant: #ffd325;
   --color-white: #f8f8f8;
-  --color-font-darkgrey: rgb(58, 58, 58);
+  --color-font-darkgrey: rgb(83, 83, 83);
   --color-font-lightgrey: #808080;
   --color-dark-yellow: #e5ac3f;
   --color-darker-yellow: #b68d41;
@@ -258,6 +258,12 @@ main {
   padding: 20px;
 }
 
+.modal-title{
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  color: var(--color-font-lightgrey);
+}
+
 @media screen and (max-width: 425px) {
   .modal__login {
     position: none;
@@ -303,6 +309,34 @@ main {
   overflow-y: scroll;
 }
 
+.modal__clientregister_submit-status{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 700px;
+  min-height: 300px;
+  background-color: #fff;
+  border: 2px solid #bdbdbd;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.4);
+  overflow-y: scroll;
+}
+
+.modal__addjob{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 600px;
+  height: 80%;
+  background-color: #fff;
+  border: 2px solid #bdbdbd;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.4);
+  overflow-y: scroll;
+}
+
 @media screen and (max-width: 880px) {
   .modal__clientregister {
     max-width: none;
@@ -317,6 +351,20 @@ main {
   }
 
   .modal__clientregister {
+    max-width: none;
+    width: 100%;
+    height: 100%;
+    position: none;
+    top: 0;
+    left: 0;
+    transform: none;
+    border: none;
+    border-radius: none;
+    box-shadow: none;
+    overflow-y: scroll;
+  }
+
+  .modal__addjob{
     max-width: none;
     width: 100%;
     height: 100%;
@@ -370,3 +418,6 @@ main {
     overflow-y: scroll;
   }
 }
+
+
+

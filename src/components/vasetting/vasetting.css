@@ -9,15 +9,15 @@
   background-color: var(--color-bg-variant);
 }
 
-.vaheader__left{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+.vaheader__left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .vaheader__left > h1 {
-    font-size: 1.5rem;
-    font-weight: 500;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .vasetting__container {
@@ -25,8 +25,8 @@
   margin: 2rem 0;
 }
 
-.vasettingresume__container{
-    margin-bottom: 1rem;
+.vasettingresume__container {
+  margin-bottom: 1rem;
 }
 
 .vaform__row {
@@ -54,9 +54,9 @@
 }
 
 .vasettingrdropdown__con {
-  flex: 1;
   position: relative;
   height: 3rem;
+  width: 100%;
   padding: 15px;
   border-radius: 7px;
   border: 1.5px solid var(--color-font-darkgrey);
@@ -72,17 +72,17 @@
   gap: 1rem;
 }
 
-.va__label{
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin-left: 0.2rem;
-    color: var(--color-font-darkgrey);
+.va__label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-left: 0.2rem;
+  color: var(--color-font-darkgrey);
 }
 
-.vasocialmedia__links{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.vasocialmedia__links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .vasettings-horizontal-line {

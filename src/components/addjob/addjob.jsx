@@ -5,6 +5,7 @@ import Modal from "@mui/material/Modal";
 import CircularProgress from "@mui/material/CircularProgress";
 import { TagsInput } from "react-tag-input-component";
 import DatePicker from "react-datepicker";
+import SelectCurrency from "react-select-currency";
 
 import { IoClose } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
@@ -22,7 +23,11 @@ const AddJob = ({ userdata }) => {
   //forms data
 
   const [jobTitle, setJobTitle] = useState("");
-  const [salary, setSalary] = useState("");
+  const [currency, setCurrency] = useState("USD");
+  const [minSalary, setMinSalary] = useState("");
+  const [maxSalary, setMaxSalary] = useState("");
+  const [headcount, setHeadcount] = useState("");
+  const [location, setLocation] = useState("");
   const [employmentType, setEmploymentType] = useState("");
   const [levelExperience, setLevelExperience] = useState("");
   const [applicationDeadline, setApplicationDeadline] = useState(null);
@@ -40,6 +45,11 @@ const AddJob = ({ userdata }) => {
     setLevelExperience(e.target.value);
   };
 
+  //Currency
+  const handleCurrencyChange = (currency) => {
+    setCurrency(currency);
+  };
+
   const handleEmploymentChange = (e) => {
     setEmploymentType(e.target.value);
   };
@@ -53,7 +63,7 @@ const AddJob = ({ userdata }) => {
   const toggleClose = () => {
     setOpen(false);
     setJobTitle("");
-    setSalary("");
+    setCurrency("USD");
     setEmploymentType("");
     setLevelExperience("");
     setApplicationDeadline(null);
@@ -63,6 +73,10 @@ const AddJob = ({ userdata }) => {
     setResponsibilities("");
     setRequirements("");
     setBenefits("");
+    setMaxSalary("");
+    setMinSalary("");
+    setHeadcount("");
+    setLocation("");
   };
 
   const handleFormSubmit = async (e) => {
@@ -71,7 +85,11 @@ const AddJob = ({ userdata }) => {
     const formData = new FormData();
     formData.append("companyOverview", companyOverview);
     formData.append("jobTitle", jobTitle);
-    formData.append("jobSalary", salary);
+    formData.append("jobHeadcount", headcount);
+    formData.append("jobCurrency", currency);
+    formData.append("jobMinSalary", minSalary);
+    formData.append("jobMaxSalary", maxSalary);
+    formData.append("jobLocation", location);
     formData.append("jobEmploymentType", employmentType);
     formData.append("jobLevelExperience", levelExperience);
     formData.append("jobDeadline", applicationDeadline);
@@ -94,20 +112,6 @@ const AddJob = ({ userdata }) => {
     });
   };
 
-  const style = {
-    position: "relative",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    maxWidth: 600,
-    maxHeight: 500,
-    bgcolor: "background.paper",
-    border: "2px solid #bdbdbd",
-    borderRadius: "0.5rem",
-    boxShadow: 24,
-    overflowY: "scroll",
-  };
-
   useEffect(() => {
     if (userdata.bio) {
       setCompanyOverview(userdata.bio);
@@ -117,14 +121,10 @@ const AddJob = ({ userdata }) => {
   return (
     <>
       <div className="jobpost-btn" onClick={handleOpen}>
-        <button
-          className="addcert-desktop"
-        >
+        <button className="addcert-desktop">
           <FaPlus /> Post a Job
         </button>
-        <button
-          className="addcert-mobile"
-        >
+        <button className="addcert-mobile">
           <FaPlus />
         </button>
       </div>
@@ -137,7 +137,7 @@ const AddJob = ({ userdata }) => {
           data-aos="fade"
           data-aos-once="true"
         >
-          <Box sx={style}>
+          <Box className="modal__addjob">
             <form onSubmit={handleFormSubmit}>
               <div className="vasettings__header">
                 <div className="vaheader__left">
@@ -199,22 +199,58 @@ const AddJob = ({ userdata }) => {
                     </div>
                   </div>
 
-                  <div className="vasettingform__container">
-                    <h4 className="va__label">Salary</h4>
-                    <div className="clientregisterinput__container">
-                      <input
-                        className="clientregisterinput__form"
-                        type="text"
-                        onChange={(e) => setSalary(e.target.value)}
-                        value={salary}
-                        placeholder="Salary range (e.g. $30,000 - $40,000)"
-                        required
-                      />
+                  <div className="salary__row">
+                    <div className="vasettingform__container-currency">
+                      <h4 className="va__label">Currency</h4>
+                      <div className="currency-input__container">
+                        <SelectCurrency
+                          value={currency ? currency : "USD"}
+                          onChange={handleCurrencyChange}
+                          name="currency"
+                          className="clientregisterinput__form"
+                        />
+                      </div>
+                    </div>
+                    <div className="vasettingform__container">
+                      <h4 className="va__label">Minimum Salary</h4>
+                      <div className="clientregisterinput__container">
+                        <input
+                          className="clientregisterinput__form"
+                          type="text"
+                          onChange={(e) => setMinSalary(e.target.value)}
+                          value={minSalary}
+                          placeholder="3000"
+                          onKeyPress={(event) => {
+                            if (!/[0-9]/.test(event.key)) {
+                              event.preventDefault();
+                            }
+                          }}
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="vasettingform__container">
+                      <h4 className="va__label">Maximum Salary</h4>
+                      <div className="clientregisterinput__container">
+                        <input
+                          className="clientregisterinput__form"
+                          type="text"
+                          onChange={(e) => setMaxSalary(e.target.value)}
+                          value={maxSalary}
+                          placeholder="4000"
+                          onKeyPress={(event) => {
+                            if (!/[0-9]/.test(event.key)) {
+                              event.preventDefault();
+                            }
+                          }}
+                          required
+                        />
+                      </div>
                     </div>
                   </div>
 
-                  <div className="vaform__row">
-                    <div>
+                  <div className="vaform__row-addjob">
+                    <div className="postjob__drop">
                       <h4 className="va__label">Level of Experience</h4>
                       <select
                         value={levelExperience}
@@ -230,7 +266,7 @@ const AddJob = ({ userdata }) => {
                       </select>
                     </div>
 
-                    <div>
+                    <div className="postjob__drop">
                       <h4 className="va__label">Employement Type</h4>
                       <select
                         value={employmentType}
@@ -240,29 +276,69 @@ const AddJob = ({ userdata }) => {
                         <option value="" disabled>
                           Choose your employment type
                         </option>
-                        <option value="Full-time">Full-time</option>
-                        <option value="Part-time">Part-time</option>
-                        <option value="Project-based">Project-based</option>
+                        <option value="full_time">Full-time</option>
+                        <option value="part_time">Part-time</option>
+                        <option value="temporary">Temporary</option>
+                        <option value="freelance">Freelance</option>
+                        <option value="internship">Internship</option>
+                        <option value="apprenticeship">Apprenticeship</option>
+                        <option value="contractor">Contractor</option>
+                        <option value="consultancy">Consultancy</option>
                       </select>
                     </div>
                   </div>
 
+                  <div className="vaform__row-addjob">
+                    <div className="vasettingform__container postjob__drop">
+                      <h4 className="va__label">Headcount</h4>
+                      <div className="clientregisterinput__container">
+                        <input
+                          className="clientregisterinput__form"
+                          type="text"
+                          onChange={(e) => setHeadcount(e.target.value)}
+                          value={headcount}
+                          placeholder="How many VAs"
+                          onKeyPress={(event) => {
+                            if (!/[0-9]/.test(event.key)) {
+                              event.preventDefault();
+                            }
+                          }}
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="vasettingform__container postjob__drop">
+                      <h4 className="va__label">
+                        Expected No. of working hours per week
+                      </h4>
+                      <div className="clientregisterinput__container">
+                        <input
+                          className="clientregisterinput__form"
+                          type="text"
+                          onChange={(e) => setWorkTime(e.target.value)}
+                          value={workTime}
+                          placeholder="Eg. 40 hours per week"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="vasettingform__container">
-                    <h4 className="va__label">
-                      Expected No. of working hours per week
-                    </h4>
+                    <h4 className="va__label">Full Address</h4>
                     <div className="clientregisterinput__container">
                       <input
                         className="clientregisterinput__form"
                         type="text"
-                        onChange={(e) => setWorkTime(e.target.value)}
-                        value={workTime}
-                        placeholder="Eg. 40 hours per week"
+                        onChange={(e) => setLocation(e.target.value)}
+                        value={location}
+                        placeholder="Enter your full address (street, city, state, postal code)"
                         required
                       />
                     </div>
                   </div>
-
+                  
                   <div className="vasettingform__container">
                     <h4 className="va__label">
                       Top (3) Skills required for the Job
@@ -320,9 +396,7 @@ const AddJob = ({ userdata }) => {
                   </div>
 
                   <div className="vasettingform__container">
-                    <h4 className="va__label">
-                      Benefits
-                    </h4>
+                    <h4 className="va__label">Benefits</h4>
                     <div className="textarea__form">
                       <textarea
                         type="text"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -8,20 +8,30 @@ import { IoClose } from "react-icons/io5";
 
 import "../../admin/dashboard/deletejobpost/admindeletejob.css";
 
-const Unhire = ({ jobData }) => {
+const Unhire = ({ jobData, user }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => toggleClose();
   const [isLoading, setIsLoading] = useState(false);
+  const [unhireStatus, setUnhireStatus] = useState();
+  const [message, setMessage] = useState("");
 
   const toggleClose = () => {
     setOpen(false);
+    setMessage("");
   };
 
   const handleDeleteJob = async () => {
     setIsLoading(true);
-    await Axios.put(`${process.env.REACT_APP_BASE_URL}/unhire`, {
-      jobID: jobData._id,
+    await Axios.post(`${process.env.REACT_APP_BASE_URL}/unhire`, {
+      vaID: jobData.candidate,
+      vaName: jobData.matcheddata.full_name,
+      matchID: jobData.id,
+      jobID: jobData.job,
+      jobName: jobData.matchedjob.position_name,
+      clientID: user.manatalID,
+      clientName: user.fname + " " + user.lname,
+      message: message,
     }).then((res) => {
       if (res.data === "Request sent") {
         setIsLoading(false);
@@ -30,6 +40,18 @@ const Unhire = ({ jobData }) => {
       }
     });
   };
+
+  useEffect(() => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/unhireStatus`, {
+      params: {
+        clientID: user.manatalID,
+        vaID: jobData.candidate,
+        matchID: jobData.id,
+      },
+    })
+      .then((res) => setUnhireStatus(res.data[0].status))
+      .catch((err) => console.log(err));
+  }, []);
 
   //DATE
 
@@ -75,9 +97,7 @@ const Unhire = ({ jobData }) => {
 
   return (
     <>
-      {jobData.employmentStatus === "Unhired" ? (
-        <p>Unhired</p>
-      ) : jobData.employmentStatus === "Unhire Requested" ? (
+      {unhireStatus === "request" ? (
         <p>In Process</p>
       ) : (
         <Button sx={buttonStyle} onClick={handleOpen}>
@@ -102,9 +122,21 @@ const Unhire = ({ jobData }) => {
                 onClick={toggleClose}
               />
 
-              <div className="canceljob__content" style={{ marginTop: "2rem" }}>
-                {/* <h2> Are you done with this job post?</h2> */}
-                <div className="canceljob__data">
+              <div style={{ marginTop: "2rem" }}>
+                <div className="vasettingform__container">
+                  <h4 className="va__label">Reason:</h4>
+                  <div className="clientregisterinput__container">
+                    <input
+                      className="clientregisterinput__form"
+                      type="text"
+                      onChange={(e) => setMessage(e.target.value)}
+                      value={message}
+                      placeholder="Why do you want to unhire this VA?"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="canceljob__data" style={{ marginTop: "1rem" }}>
                   <p>
                     This will notify <strong>{jobData.vaName}</strong> that you
                     are going to unhire them. Are you sure you want to proceed
@@ -118,7 +150,11 @@ const Unhire = ({ jobData }) => {
                   {isLoading ? (
                     <CircularProgress color="inherit" />
                   ) : (
-                    <Button sx={buttonStyle3} onClick={handleDeleteJob}>
+                    <Button
+                      sx={buttonStyle3}
+                      onClick={handleDeleteJob}
+                      disabled={!message}
+                    >
                       Yes
                     </Button>
                   )}

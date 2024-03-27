@@ -52,8 +52,6 @@ import AdminHire from "./pages/admin/hire/hire.jsx";
 //Training
 import AdminTraining from "./pages/admin/training/training.jsx";
 
-//Logs
-
 //to be delete
 import ComingSoon from "./pages/comingsoon/comingsoon.jsx";
 
@@ -80,7 +78,7 @@ const router = createBrowserRouter(
       <Route path="/job-boards" element={<JobBoard />} />
       <Route path="/job-boards/bh/:id" element={<ChosenJob />} />
       <Route path="/va-boards" element={<VABoards />} />
-      <Route path="/careers" element={<Careers />}/>
+      <Route path="/careers" element={<Careers />} />
 
       <Route path="/*" element={<Navigate to="/" />} />
       {/* TODO: 404 page */}
@@ -109,15 +107,17 @@ function App() {
   useEffect(() => {
     const getUserID = async () => {
       try {
-        await Axios.get(`${process.env.REACT_APP_BASE_URL}/verifylogin`).then((res) => {
-          if (res.data !== "User not found") {
-            socket.emit("authenticate", res.data._id);
+        await Axios.get(`${process.env.REACT_APP_BASE_URL}/verifylogin`).then(
+          (res) => {
+            if (res.data !== "User not found") {
+              socket.emit("authenticate", res.data._id);
 
-            setIsUserLogged(true);
-          } else {
-            setIsUserLogged(false);
+              setIsUserLogged(true);
+            } else {
+              setIsUserLogged(false);
+            }
           }
-        });
+        );
       } catch (error) {}
     };
     getUserID();
