@@ -59,8 +59,7 @@ import "./App.css";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayouts />}>
-      <Route index element={<ComingSoon />} />
-      <Route path="landing-page" element={<LandingPage />} />
+      <Route index element={<LandingPage />} />
       <Route path="login" element={<Login />} />
       <Route path="resetpasswordverify" element={<CheckEmail />} />
       <Route path="virtual-assistant" element={<VirtualHome />} />
